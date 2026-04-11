@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+client_secret_*.json
+c-chanpiano-*.json
+*-token.json
+playlist-images-response.json
+__pycache__/
+.claude/
