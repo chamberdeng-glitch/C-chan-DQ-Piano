@@ -11,6 +11,7 @@
     },
     nav: {
       library: "プレイリスト一覧",
+      songBrowser: "カテゴリから探す",
       langLabel: "言語切り替え"
     },
     hero: {
@@ -134,6 +135,7 @@
     },
     nav: {
       library: "Playlists",
+      songBrowser: "Browse by category",
       langLabel: "Language switch"
     },
     hero: {
@@ -270,13 +272,10 @@
   setMeta('meta[name="twitter:title"]', content.meta.twitterTitle);
   setMeta('meta[name="twitter:description"]', content.meta.twitterDescription);
 
-  const navLinks = document.querySelectorAll(".topbar-links a");
-  if (navLinks.length === 1) {
-    navLinks[0].textContent = content.nav.library;
-  } else {
-    if (navLinks[0]) navLinks[0].textContent = content.nav.about;
-    if (navLinks[1]) navLinks[1].textContent = content.nav.library;
-  }
+  const libraryLink = document.querySelector('.topbar-links [data-nav="library"]');
+  const songBrowserLink = document.querySelector('.topbar-links [data-nav="song-browser"]');
+  if (libraryLink) libraryLink.textContent = content.nav.library;
+  if (songBrowserLink) songBrowserLink.textContent = content.nav.songBrowser;
   document.querySelectorAll(".language-switch").forEach((el) => el.setAttribute("aria-label", content.nav.langLabel));
 
   setText(".hero-copy .eyebrow", content.hero.eyebrow);
