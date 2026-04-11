@@ -107,7 +107,7 @@ window.songReferenceData = {
       "songTitle": "王城",
       "category": "城",
       "videoUrl": "",
-      "difficultyLabel": "",
+      "difficultyLabel": "未設定",
       "difficultyStars": null
     },
     {
@@ -1477,8 +1477,8 @@ window.songReferenceData = {
       "sortNumber": 10,
       "songTitle": "静かな村",
       "category": "街",
-      "videoUrl": "",
-      "difficultyLabel": "",
+      "videoUrl": "https://www.youtube.com/watch?v=GElg72TZ8_o",
+      "difficultyLabel": "未設定",
       "difficultyStars": null
     },
     {
