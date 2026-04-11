@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent
 PAGE_URL = "https://www.youtube.com/@chamberd_piano/podcasts"
 HTML_FILE = ROOT / "podcasts-page.html"
 OUTPUT_FILE = ROOT / "playlist-data.js"
+COVERS_DIR = ROOT / "covers"
 ENV_FILE = ROOT / ".env"
 YOUTUBE_API_BASE = "https://www.googleapis.com/youtube/v3/playlistItems"
 
@@ -72,6 +73,17 @@ def fetch_json(url: str) -> dict:
     )
     with urllib.request.urlopen(request) as response:
         return json.loads(response.read().decode("utf-8"))
+
+
+def download_file(url: str, destination: Path) -> None:
+    request = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0 Safari/537.36"
+        },
+    )
+    with urllib.request.urlopen(request) as response:
+        destination.write_bytes(response.read())
 
 
 def clean_track_title(title: str) -> str:
@@ -177,11 +189,14 @@ def parse_podcasts(data: dict, api_key: str | None) -> list[dict]:
             ["thumbnailOverlayBadgeViewModel"]["thumbnailBadges"][0]["thumbnailBadgeViewModel"]["text"]
         )
 
+        cover_file = COVERS_DIR / f"{playlist_id}.jpg"
+        download_file(image_sources[-1]["url"], cover_file)
+
         podcast = {
             "id": playlist_id,
             "title": title,
             "description": subtitle,
-            "thumbnail": image_sources[-1]["url"],
+            "thumbnail": f"./covers/{playlist_id}.jpg",
             "itemCountText": episode_text,
             "url": f"https://www.youtube.com/playlist?list={playlist_id}",
         }
@@ -196,6 +211,7 @@ def parse_podcasts(data: dict, api_key: str | None) -> list[dict]:
 
 def main():
     load_env()
+    COVERS_DIR.mkdir(exist_ok=True)
     api_key = os.environ.get("YOUTUBE_API_KEY")
     html = fetch_page()
     data = extract_initial_data(html)
