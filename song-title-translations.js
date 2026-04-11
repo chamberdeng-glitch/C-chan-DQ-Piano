@@ -1,7 +1,33 @@
-﻿window.songTitleTranslations = {
+window.songTitleTranslations = {
   ja: {
-    categories: {},
-    difficulties: {}
+    categories: {
+      "オープニング": "オープニング",
+      "フィールド": "フィールド",
+      "教会・ほこら": "教会・ほこら",
+      "場面転換": "場面転換",
+      "城": "城",
+      "街・村": "街・村",
+      "海": "海",
+      "エンディング": "エンディング",
+      "イベント": "イベント",
+      "全滅": "全滅",
+      "カジノ": "カジノ",
+      "ダンジョン": "ダンジョン",
+      "ボス戦闘": "ボス戦闘",
+      "通常戦闘": "通常戦闘",
+      "キャラクターテーマ": "キャラクターテーマ",
+      "塔": "塔",
+      "プロローグ": "プロローグ",
+      "空": "空"
+},
+    difficulties: {
+      "初中級": "初中級",
+      "上級": "上級",
+      "中級": "中級",
+      "初級": "初級",
+      "未設定": "未設定",
+      "中上級": "中上級"
+}
   },
   en: {
     titles: {
@@ -271,8 +297,9 @@
       "黄昏の荒野": "Twilight Wasteland",
       "暗闇の回廊": "Corridor of Darkness",
       "生死を賭けて": "Wagering Life and Death",
-      "過ぎ去りし時を求めて": "Echoes of an Elusive Age"
-    },
+      "過ぎ去りし時を求めて": "Echoes of an Elusive Age",
+      "この道わが旅": "この道わが旅"
+},
     categories: {
       "オープニング": "Opening",
       "城": "Castle",

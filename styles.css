@@ -714,6 +714,14 @@ h1 {
   border-top: 1px solid rgba(244, 211, 124, 0.14);
 }
 
+.song-browser {
+  padding-top: 8px;
+}
+
+.song-browser-table-wrap {
+  margin-top: 10px;
+}
+
 .song-table-title {
   margin: 0 0 12px;
   color: #fff6d8;
@@ -772,10 +780,18 @@ h1 {
   text-decoration: underline;
   text-decoration-color: rgba(244, 211, 124, 0.34);
   text-underline-offset: 3px;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease, background-color 0.18s ease;
 }
 
 .song-link:hover {
   color: var(--brand-deep);
+  text-decoration-color: var(--brand-deep);
+  background: rgba(244, 211, 124, 0.08);
+}
+
+.song-number-link {
+  display: inline-block;
+  min-width: 56px;
 }
 
 .song-text {

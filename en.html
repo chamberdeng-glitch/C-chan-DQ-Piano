@@ -118,6 +118,7 @@
         <div class="hero-actions">
           <a class="button button-primary" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer">Visit the YouTube channel</a>
           <a class="button button-secondary" href="#library">Browse playlists</a>
+          <a class="button button-secondary" href="#song-browser">Browse by category</a>
         </div>
 
         <dl class="hero-metrics" aria-label="Channel overview">
@@ -176,6 +177,25 @@
       </div>
 
       <div class="library-grid" id="videoGrid"></div>
+    </section>
+
+    <section class="section song-browser" id="song-browser" aria-labelledby="song-browser-title">
+      <div class="section-heading">
+        <p class="section-kicker">Category Explorer</p>
+        <h2 id="song-browser-title">Browse by Category</h2>
+        <p class="section-copy">
+          Explore the song list across all series by category.
+          This makes it easier to jump straight into town themes, field music, battle tracks, and other moods.
+        </p>
+      </div>
+
+      <p class="library-summary" id="songCategorySummary"></p>
+
+      <div class="toolbar" aria-label="Song category filters">
+        <div class="filter-chips" id="songCategoryChips"></div>
+      </div>
+
+      <div id="songCategoryResults"></div>
     </section>
 
     <section class="section" id="faq" aria-labelledby="faq-title">

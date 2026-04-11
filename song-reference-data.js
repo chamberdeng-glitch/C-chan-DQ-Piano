@@ -22,7 +22,7 @@ window.songReferenceData = {
       "id": "I-3",
       "sortNumber": 3,
       "songTitle": "街の人々",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=lmnWkLR4u_w",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -49,7 +49,7 @@ window.songReferenceData = {
       "id": "I-6",
       "sortNumber": 6,
       "songTitle": "戦闘",
-      "category": "戦闘",
+      "category": "通常戦闘",
       "videoUrl": "https://www.youtube.com/watch?v=zfProK4N5sk",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -114,7 +114,7 @@ window.songReferenceData = {
       "id": "II-5",
       "sortNumber": 5,
       "songTitle": "街の賑わい",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=uF2CYnLwsNQ",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -177,7 +177,7 @@ window.songReferenceData = {
       "id": "II-12",
       "sortNumber": 12,
       "songTitle": "聖なるほこら",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=y94BYeWe9fY",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -186,7 +186,7 @@ window.songReferenceData = {
       "id": "II-13",
       "sortNumber": 13,
       "songTitle": "海原を行く",
-      "category": "船",
+      "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=7cJ45eWuBj8",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -251,7 +251,7 @@ window.songReferenceData = {
       "id": "III-4",
       "sortNumber": 4,
       "songTitle": "街",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=AqdEKQqLK4s",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -260,7 +260,7 @@ window.songReferenceData = {
       "id": "III-5",
       "sortNumber": 5,
       "songTitle": "ジパング",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=WlgjBleiSP4",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -278,7 +278,7 @@ window.songReferenceData = {
       "id": "III-7",
       "sortNumber": 7,
       "songTitle": "村",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=1PBdp15Z7Jo",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -350,7 +350,7 @@ window.songReferenceData = {
       "id": "III-15",
       "sortNumber": 15,
       "songTitle": "ほこら",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=VEuyuGRy9dQ",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -359,7 +359,7 @@ window.songReferenceData = {
       "id": "III-16",
       "sortNumber": 16,
       "songTitle": "海を越えて",
-      "category": "船",
+      "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=4ZQlKKvVbT0",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -505,7 +505,7 @@ window.songReferenceData = {
       "id": "IV-9",
       "sortNumber": 9,
       "songTitle": "街",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=_GZws3jW-5A",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -586,7 +586,7 @@ window.songReferenceData = {
       "id": "IV-18",
       "sortNumber": 18,
       "songTitle": "不思議のほこら",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=_bS7oeH3QT8",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -604,7 +604,7 @@ window.songReferenceData = {
       "id": "IV-20",
       "sortNumber": 20,
       "songTitle": "海図を広げて",
-      "category": "船",
+      "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=6FyUArpRMg0",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -613,7 +613,7 @@ window.songReferenceData = {
       "id": "IV-21",
       "sortNumber": 21,
       "songTitle": "ピサロ",
-      "category": "キャラクター",
+      "category": "キャラクターテーマ",
       "videoUrl": "https://www.youtube.com/watch?v=Sx8IFxvWwwk",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -705,7 +705,7 @@ window.songReferenceData = {
       "id": "V-4",
       "sortNumber": 4,
       "songTitle": "街角のメロディ",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=BtAcyv6A_eE",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -741,7 +741,7 @@ window.songReferenceData = {
       "id": "V-8",
       "sortNumber": 8,
       "songTitle": "街は生きている",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=84eW6pMkltk",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -768,7 +768,7 @@ window.songReferenceData = {
       "id": "V-11",
       "sortNumber": 11,
       "songTitle": "大海原へ",
-      "category": "船",
+      "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=lPz3xQV-HQs",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -804,7 +804,7 @@ window.songReferenceData = {
       "id": "V-15",
       "sortNumber": 15,
       "songTitle": "淋しい村",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=UhTUNcSJvpE",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -822,7 +822,7 @@ window.songReferenceData = {
       "id": "V-17",
       "sortNumber": 17,
       "songTitle": "さびれた村",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=dV3_MFsYsKo",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -867,7 +867,7 @@ window.songReferenceData = {
       "id": "V-22",
       "sortNumber": 22,
       "songTitle": "聖（ひじり）",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=g949lcK93wg",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -923,7 +923,7 @@ window.songReferenceData = {
       "id": "VI-3",
       "sortNumber": 3,
       "songTitle": "木洩れ日の中で",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=mtf_jzA43jw",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -941,7 +941,7 @@ window.songReferenceData = {
       "id": "VI-5",
       "sortNumber": 5,
       "songTitle": "ぬくもりの里に",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=6yks1LxqxCc",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -950,7 +950,7 @@ window.songReferenceData = {
       "id": "VI-6",
       "sortNumber": 6,
       "songTitle": "フォークダンス",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=RoVIzsVNyiM",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -977,7 +977,7 @@ window.songReferenceData = {
       "id": "VI-9",
       "sortNumber": 9,
       "songTitle": "静寂に漂う",
-      "category": "船",
+      "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=wDwklkszhVs",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1013,7 +1013,7 @@ window.songReferenceData = {
       "id": "VI-13",
       "sortNumber": 13,
       "songTitle": "エーゲ海に船出して",
-      "category": "船",
+      "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=-MUFswA90gM",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -1085,7 +1085,7 @@ window.songReferenceData = {
       "id": "VI-21",
       "sortNumber": 21,
       "songTitle": "奇蹟のオカリナ〜神に祈りを",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=r0OHWWTOy2I",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -1177,7 +1177,7 @@ window.songReferenceData = {
       "id": "VII-5",
       "sortNumber": 5,
       "songTitle": "憩いの街角",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=5UcZKwinKOQ",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -1195,7 +1195,7 @@ window.songReferenceData = {
       "id": "VII-7",
       "sortNumber": 7,
       "songTitle": "時の眠る園",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=SnXBIo4dEow",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -1204,7 +1204,7 @@ window.songReferenceData = {
       "id": "VII-8",
       "sortNumber": 8,
       "songTitle": "うたげの広場",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=b1h3w4Za5tw",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -1213,7 +1213,7 @@ window.songReferenceData = {
       "id": "VII-9",
       "sortNumber": 9,
       "songTitle": "のどかな家並",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=eYacW5mLou8",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1222,7 +1222,7 @@ window.songReferenceData = {
       "id": "VII-10",
       "sortNumber": 10,
       "songTitle": "哀しみの日々",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=Qx88RbP-P0o",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -1285,7 +1285,7 @@ window.songReferenceData = {
       "id": "VII-17",
       "sortNumber": 17,
       "songTitle": "大神殿",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=3yGIE3fihp4",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -1294,7 +1294,7 @@ window.songReferenceData = {
       "id": "VII-18",
       "sortNumber": 18,
       "songTitle": "小舟に揺られて〜海原の王者",
-      "category": "船",
+      "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=r_Rw3zOTwD8",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -1312,7 +1312,7 @@ window.songReferenceData = {
       "id": "VII-20",
       "sortNumber": 20,
       "songTitle": "トゥーラの舞",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=VIilEDODtKM",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -1348,7 +1348,7 @@ window.songReferenceData = {
       "id": "VII-24",
       "sortNumber": 24,
       "songTitle": "やすらぎの地",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=3C4LNEXQfxk",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1422,7 +1422,7 @@ window.songReferenceData = {
       "id": "VIII-4",
       "sortNumber": 4,
       "songTitle": "穏やかな街並み",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=IpJ7fDHh4ho",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -1476,7 +1476,7 @@ window.songReferenceData = {
       "id": "VIII-10",
       "sortNumber": 10,
       "songTitle": "静かな村",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=GElg72TZ8_o",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -1494,7 +1494,7 @@ window.songReferenceData = {
       "id": "VIII-12",
       "sortNumber": 12,
       "songTitle": "讃美歌に癒されて",
-      "category": "街",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=yy5gRhKAR8Q",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -1521,7 +1521,7 @@ window.songReferenceData = {
       "id": "VIII-15",
       "sortNumber": 15,
       "songTitle": "難関を突破せよ",
-      "category": "中ボス戦闘",
+      "category": "ボス戦闘",
       "videoUrl": "https://www.youtube.com/watch?v=2BTLfqfatbE",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -1539,7 +1539,7 @@ window.songReferenceData = {
       "id": "VIII-17",
       "sortNumber": 17,
       "songTitle": "修道僧の決意",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=TQ9iJqhmQmQ",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -1593,7 +1593,7 @@ window.songReferenceData = {
       "id": "VIII-23",
       "sortNumber": 23,
       "songTitle": "詩人の世界",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=Xy1XJuzwckU",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1602,7 +1602,7 @@ window.songReferenceData = {
       "id": "VIII-24",
       "sortNumber": 24,
       "songTitle": "海の記憶",
-      "category": "船",
+      "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=dYGysLcgB6s",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -1620,7 +1620,7 @@ window.songReferenceData = {
       "id": "VIII-26",
       "sortNumber": 26,
       "songTitle": "対話",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=O7At34-JxdA",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -1656,7 +1656,7 @@ window.songReferenceData = {
       "id": "VIII-30",
       "sortNumber": 30,
       "songTitle": "大聖堂のある街",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=gi1i_gHw_Bo",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -1730,7 +1730,7 @@ window.songReferenceData = {
       "id": "IX-3",
       "sortNumber": 3,
       "songTitle": "天の祈り",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=r14bBp7_nIY",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1748,7 +1748,7 @@ window.songReferenceData = {
       "id": "IX-5",
       "sortNumber": 5,
       "songTitle": "来たれわが街へ",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -1757,7 +1757,7 @@ window.songReferenceData = {
       "id": "IX-6",
       "sortNumber": 6,
       "songTitle": "讃美歌に癒されて",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -1766,7 +1766,7 @@ window.songReferenceData = {
       "id": "IX-7",
       "sortNumber": 7,
       "songTitle": "夢見るわが街",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -1793,7 +1793,7 @@ window.songReferenceData = {
       "id": "IX-10",
       "sortNumber": 10,
       "songTitle": "陽だまりの村",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -1802,7 +1802,7 @@ window.songReferenceData = {
       "id": "IX-11",
       "sortNumber": 11,
       "songTitle": "村の夕べ",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -1829,7 +1829,7 @@ window.songReferenceData = {
       "id": "IX-14",
       "sortNumber": 14,
       "songTitle": "海図を広げて",
-      "category": "船",
+      "category": "海",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -1946,7 +1946,7 @@ window.songReferenceData = {
       "id": "IX-27",
       "sortNumber": 27,
       "songTitle": "集え、者たち",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2038,7 +2038,7 @@ window.songReferenceData = {
       "id": "X-5",
       "sortNumber": 5,
       "songTitle": "街の息吹",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2047,7 +2047,7 @@ window.songReferenceData = {
       "id": "X-6",
       "sortNumber": 6,
       "songTitle": "まどろむ街並",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2056,7 +2056,7 @@ window.songReferenceData = {
       "id": "X-7",
       "sortNumber": 7,
       "songTitle": "夢のマイルーム",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=1mhRK7HifW8",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -2065,7 +2065,7 @@ window.songReferenceData = {
       "id": "X-8",
       "sortNumber": 8,
       "songTitle": "村人たちのおしゃべり",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2119,7 +2119,7 @@ window.songReferenceData = {
       "id": "X-14",
       "sortNumber": 14,
       "songTitle": "天空の世界",
-      "category": "フィールド（イベント）",
+      "category": "フィールド",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2164,7 +2164,7 @@ window.songReferenceData = {
       "id": "X-19",
       "sortNumber": 19,
       "songTitle": "風雅の都",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2292,7 +2292,7 @@ window.songReferenceData = {
       "id": "XI-3",
       "sortNumber": 3,
       "songTitle": "にぎわいの街並",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2310,7 +2310,7 @@ window.songReferenceData = {
       "id": "XI-5",
       "sortNumber": 5,
       "songTitle": "穏やかな村",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2319,7 +2319,7 @@ window.songReferenceData = {
       "id": "XI-6",
       "sortNumber": 6,
       "songTitle": "穏やかな村の夜",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2337,7 +2337,7 @@ window.songReferenceData = {
       "id": "XI-8",
       "sortNumber": 8,
       "songTitle": "山奥の隠れ里",
-      "category": "街",
+      "category": "街・村",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2445,7 +2445,7 @@ window.songReferenceData = {
       "id": "XI-20",
       "sortNumber": 20,
       "songTitle": "神秘へのいざない",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2499,7 +2499,7 @@ window.songReferenceData = {
       "id": "XI-26",
       "sortNumber": 26,
       "songTitle": "時の祭壇",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2508,7 +2508,7 @@ window.songReferenceData = {
       "id": "XI-27",
       "sortNumber": 27,
       "songTitle": "神話の里",
-      "category": "ほこら",
+      "category": "教会・ほこら",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null

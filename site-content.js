@@ -19,6 +19,7 @@
       lead: "",
       primaryCta: "YouTubeチャンネルを見る",
       secondaryCta: "プレイリストを見る",
+      tertiaryCta: "カテゴリから探す",
       metrics: [
         ["主な内容", "ドラクエ楽曲のピアノ演奏を公式楽譜を使用して忠実に弾いています。"]
       ]
@@ -46,6 +47,12 @@
       title: "プレイリスト一覧 - ジャンル・シリーズ別に探せるドラクエ ピアノ演奏",
       body: "YouTube と公開ページから取得した実際のプレイリスト一覧を表示しています。作品別、メドレー、戦闘曲などのカテゴリで絞り込みながら、見たいリストへそのまま進めます。",
       toolbarLabel: "プレイリストカテゴリの絞り込み"
+    },
+    songBrowser: {
+      kicker: "Category Explorer",
+      title: "カテゴリから曲を探す",
+      body: "シリーズ別の収録曲リストを横断して、カテゴリごとにまとめて見られます。町、フィールド、戦闘曲など、聴きたい雰囲気から曲を探したいときに便利です。",
+      toolbarLabel: "曲カテゴリの絞り込み"
     },
     faq: {
       kicker: "FAQ",
@@ -102,9 +109,13 @@
       },
       openPlaylist: "プレイリストを開く",
       songTableTitle: "収録曲一覧",
+      songCategoryAll: "すべて",
+      songCategorySummary: (total, activeLabel, count) =>
+        `カテゴリ ${total}種 / ${activeLabel} の曲 ${count}件を表示中`,
       headers: {
         number: "曲番号",
         title: "曲タイトル",
+        series: "作品",
         category: "カテゴリ",
         difficulty: "難易度"
       },
@@ -131,6 +142,7 @@
       lead: "",
       primaryCta: "Visit the YouTube channel",
       secondaryCta: "Browse playlists",
+      tertiaryCta: "Browse by category",
       metrics: [
         ["Main focus", "Dragon Quest piano performances on Official Score."]
       ]
@@ -158,6 +170,12 @@
       title: "Playlist Library - Dragon Quest Piano by Series, Medley and Battle Theme",
       body: "The library below uses the channel's public playlist and podcast data so visitors can move from overview to specific series, medleys, and individual tracks without friction.",
       toolbarLabel: "Playlist category filters"
+    },
+    songBrowser: {
+      kicker: "Category Explorer",
+      title: "Browse by Category",
+      body: "Explore the song list across all series by category. This makes it easier to jump straight into town themes, field music, battle tracks, and other moods.",
+      toolbarLabel: "Song category filters"
     },
     faq: {
       kicker: "FAQ",
@@ -214,9 +232,13 @@
       },
       openPlaylist: "Open playlist",
       songTableTitle: "Track List",
+      songCategoryAll: "All",
+      songCategorySummary: (total, activeLabel, count) =>
+        `Showing ${count} songs in ${activeLabel} across ${total} categories`,
       headers: {
         number: "No.",
         title: "Title",
+        series: "Series",
         category: "Category",
         difficulty: "Difficulty"
       },
@@ -268,6 +290,7 @@
   const heroButtons = document.querySelectorAll(".hero-actions a");
   if (heroButtons[0]) heroButtons[0].textContent = content.hero.primaryCta;
   if (heroButtons[1]) heroButtons[1].textContent = content.hero.secondaryCta;
+  if (heroButtons[2]) heroButtons[2].textContent = content.hero.tertiaryCta;
 
   const metricItems = document.querySelectorAll(".hero-metrics > div");
   metricItems.forEach((item, index) => {
@@ -297,6 +320,14 @@
     if (title) title.textContent = content.library.title;
     if (body) body.textContent = content.library.body;
   }
+  if (sectionHeadings[2]) {
+    const kicker = sectionHeadings[2].querySelector(".section-kicker");
+    const title = sectionHeadings[2].querySelector("h2");
+    const body = sectionHeadings[2].querySelector(".section-copy");
+    if (kicker) kicker.textContent = content.songBrowser.kicker;
+    if (title) title.textContent = content.songBrowser.title;
+    if (body) body.textContent = content.songBrowser.body;
+  }
 
   const introCards = document.querySelectorAll(".intro-grid .info-card");
   content.about.cards.forEach((card, index) => {
@@ -310,6 +341,8 @@
 
   const toolbar = document.querySelector(".toolbar");
   if (toolbar) toolbar.setAttribute("aria-label", content.library.toolbarLabel);
+  const songBrowserToolbar = document.querySelector(".song-browser .toolbar");
+  if (songBrowserToolbar) songBrowserToolbar.setAttribute("aria-label", content.songBrowser.toolbarLabel);
 
   const faqSection = document.querySelector("#faq");
   if (faqSection) {

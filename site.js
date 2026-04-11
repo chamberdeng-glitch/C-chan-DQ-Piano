@@ -10,6 +10,20 @@ const CATEGORY_KEYS = {
   series: "series"
 };
 
+const SERIES_ORDER = {
+  I: 1,
+  II: 2,
+  III: 3,
+  IV: 4,
+  V: 5,
+  VI: 6,
+  VII: 7,
+  VIII: 8,
+  IX: 9,
+  X: 10,
+  XI: 11
+};
+
 const FALLBACK_MESSAGES = {
   ja: {
     categoryLabels: {
@@ -35,9 +49,12 @@ const FALLBACK_MESSAGES = {
     openPlaylist: "プレイリストを開く",
     trackCount: (count) => `${count} tracks`,
     songTableTitle: "収録曲一覧",
+    songCategoryAll: "すべて",
+    songCategorySummary: (total, activeLabel, count) => `カテゴリ ${total}種 / ${activeLabel} の曲 ${count}件を表示中`,
     headers: {
       number: "曲番号",
       title: "曲タイトル",
+      series: "作品",
       category: "カテゴリ",
       difficulty: "難易度"
     },
@@ -67,9 +84,12 @@ const FALLBACK_MESSAGES = {
     openPlaylist: "Open playlist",
     trackCount: (count) => `${count} tracks`,
     songTableTitle: "Track List",
+    songCategoryAll: "All",
+    songCategorySummary: (total, activeLabel, count) => `Showing ${count} songs in ${activeLabel} across ${total} categories`,
     headers: {
       number: "No.",
       title: "Title",
+      series: "Series",
       category: "Category",
       difficulty: "Difficulty"
     },
@@ -100,14 +120,29 @@ const playlists = (window.playlistData || fallbackPlaylists)
   }))
   .sort(comparePlaylists);
 
+const songBrowseRows = Object.entries(songReferenceData)
+  .flatMap(([seriesKey, rows]) =>
+    (rows || []).map((row) => ({
+      ...row,
+      seriesKey,
+      seriesOrder: SERIES_ORDER[seriesKey] ?? Number.POSITIVE_INFINITY
+    }))
+  )
+  .filter((row) => row.category && row.category.trim())
+  .sort(compareSongBrowseRows);
+
 const state = {
-  activeCategory: CATEGORY_KEYS.all
+  activeCategory: CATEGORY_KEYS.all,
+  activeSongCategory: "__all__"
 };
 
 const elements = {
   filterChips: document.getElementById("filterChips"),
   videoGrid: document.getElementById("videoGrid"),
-  playlistSummary: document.getElementById("playlistSummary")
+  playlistSummary: document.getElementById("playlistSummary"),
+  songCategoryChips: document.getElementById("songCategoryChips"),
+  songCategoryResults: document.getElementById("songCategoryResults"),
+  songCategorySummary: document.getElementById("songCategorySummary")
 };
 
 function inferCategory(title) {
@@ -135,21 +170,7 @@ function inferSeriesKey(title) {
 
 function inferSeriesOrder(title) {
   const key = inferSeriesKey(title);
-  const map = {
-    I: 1,
-    II: 2,
-    III: 3,
-    IV: 4,
-    V: 5,
-    VI: 6,
-    VII: 7,
-    VIII: 8,
-    IX: 9,
-    X: 10,
-    XI: 11
-  };
-
-  return map[key] ?? Number.POSITIVE_INFINITY;
+  return SERIES_ORDER[key] ?? Number.POSITIVE_INFINITY;
 }
 
 function buildDescription(playlist) {
@@ -200,6 +221,18 @@ function comparePlaylists(a, b) {
   return a.title.localeCompare(b.title, "ja");
 }
 
+function compareSongBrowseRows(a, b) {
+  if (a.seriesOrder !== b.seriesOrder) {
+    return a.seriesOrder - b.seriesOrder;
+  }
+
+  if (a.sortNumber !== b.sortNumber) {
+    return a.sortNumber - b.sortNumber;
+  }
+
+  return `${a.id}`.localeCompare(`${b.id}`, "ja");
+}
+
 function categoriesFrom(items) {
   return [CATEGORY_KEYS.all, ...new Set(items.map((item) => item.categoryKey))];
 }
@@ -212,6 +245,19 @@ function filteredPlaylists() {
   return playlists.filter((playlist) => playlist.categoryKey === state.activeCategory);
 }
 
+function songCategoriesFrom(items) {
+  const categories = [...new Set(items.map((item) => item.category).filter(Boolean))];
+  return categories.sort((a, b) => a.localeCompare(b, "ja"));
+}
+
+function filteredSongBrowseRows() {
+  if (state.activeSongCategory === "__all__") {
+    return songBrowseRows;
+  }
+
+  return songBrowseRows.filter((row) => row.category === state.activeSongCategory);
+}
+
 function renderSummary(items) {
   if (!elements.playlistSummary) {
     return;
@@ -221,11 +267,39 @@ function renderSummary(items) {
   elements.playlistSummary.textContent = t.summary(playlists.length, activeLabel, items.length);
 }
 
+function renderSongCategorySummary(items) {
+  if (!elements.songCategorySummary) {
+    return;
+  }
+
+  const activeLabel =
+    state.activeSongCategory === "__all__"
+      ? t.songCategoryAll
+      : translateSongCategory(state.activeSongCategory);
+
+  elements.songCategorySummary.textContent = t.songCategorySummary(songCategoriesFrom(songBrowseRows).length, activeLabel, items.length);
+}
+
 function renderChips() {
   elements.filterChips.innerHTML = categoriesFrom(playlists)
     .map((category) => {
       const className = category === state.activeCategory ? "chip is-active" : "chip";
       return `<button class="${className}" type="button" data-category="${category}">${t.categoryLabels[category]}</button>`;
+    })
+    .join("");
+}
+
+function renderSongCategoryChips() {
+  if (!elements.songCategoryChips) {
+    return;
+  }
+
+  const categories = ["__all__", ...songCategoriesFrom(songBrowseRows)];
+  elements.songCategoryChips.innerHTML = categories
+    .map((category) => {
+      const label = category === "__all__" ? t.songCategoryAll : translateSongCategory(category);
+      const className = category === state.activeSongCategory ? "chip is-active" : "chip";
+      return `<button class="${className}" type="button" data-song-category="${escapeHtml(category)}">${escapeHtml(label)}</button>`;
     })
     .join("");
 }
@@ -298,10 +372,42 @@ function renderSongTable(seriesKey) {
   `;
 }
 
+function renderSongBrowseTable() {
+  const rows = filteredSongBrowseRows();
+  renderSongCategorySummary(rows);
+
+  if (!elements.songCategoryResults) {
+    return;
+  }
+
+  elements.songCategoryResults.innerHTML = `
+    <div class="song-table-wrap song-browser-table-wrap">
+      <div class="song-table-scroll">
+        <table class="song-table song-browser-table">
+          <thead>
+            <tr>
+              <th>${t.headers.number}</th>
+              <th>${t.headers.title}</th>
+              <th>${t.headers.category}</th>
+              <th>${t.headers.difficulty}</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows.map(renderSongBrowseRow).join("")}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
 function renderSongRow(row) {
   const displayTitle = translateSongTitle(row.songTitle);
   const displayCategory = translateSongCategory(row.category);
   const displayDifficulty = translateDifficulty(row.difficultyLabel);
+  const number = row.videoUrl
+    ? `<a class="song-link song-number-link" href="${row.videoUrl}" target="_blank" rel="noreferrer">${row.id}</a>`
+    : row.id;
   const title = row.videoUrl
     ? `<a class="song-link" href="${row.videoUrl}" target="_blank" rel="noreferrer">${displayTitle}</a>`
     : `<span class="song-text">${displayTitle}</span>`;
@@ -312,7 +418,32 @@ function renderSongRow(row) {
 
   return `
     <tr>
-      <td class="song-number">${row.id}</td>
+      <td class="song-number">${number}</td>
+      <td class="song-title-cell">${title}</td>
+      <td>${displayCategory || ""}</td>
+      <td>${difficulty}</td>
+    </tr>
+  `;
+}
+
+function renderSongBrowseRow(row) {
+  const displayTitle = translateSongTitle(row.songTitle);
+  const displayCategory = translateSongCategory(row.category);
+  const displayDifficulty = translateDifficulty(row.difficultyLabel);
+  const number = row.videoUrl
+    ? `<a class="song-link song-number-link" href="${row.videoUrl}" target="_blank" rel="noreferrer">${row.id}</a>`
+    : row.id;
+  const title = row.videoUrl
+    ? `<a class="song-link" href="${row.videoUrl}" target="_blank" rel="noreferrer">${displayTitle}</a>`
+    : `<span class="song-text">${displayTitle}</span>`;
+
+  const difficulty = row.difficultyLabel
+    ? `${displayDifficulty}${row.difficultyStars ? ` ${"★".repeat(row.difficultyStars)}` : ""}`
+    : t.noDifficulty;
+
+  return `
+    <tr>
+      <td class="song-number">${number}</td>
       <td class="song-title-cell">${title}</td>
       <td>${displayCategory || ""}</td>
       <td>${difficulty}</td>
@@ -391,6 +522,22 @@ if (elements.filterChips && elements.videoGrid) {
 
   renderChips();
   renderPlaylists();
+}
+
+if (elements.songCategoryChips && elements.songCategoryResults) {
+  elements.songCategoryChips.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-song-category]");
+    if (!button) {
+      return;
+    }
+
+    state.activeSongCategory = button.dataset.songCategory;
+    renderSongCategoryChips();
+    renderSongBrowseTable();
+  });
+
+  renderSongCategoryChips();
+  renderSongBrowseTable();
 }
 
 

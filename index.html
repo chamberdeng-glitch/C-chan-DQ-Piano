@@ -127,6 +127,7 @@
         <div class="hero-actions">
           <a class="button button-primary" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer">YouTubeチャンネルを見る</a>
           <a class="button button-secondary" href="#library">プレイリストを見る</a>
+          <a class="button button-secondary" href="#song-browser">カテゴリから探す</a>
         </div>
 
         <dl class="hero-metrics" aria-label="チャンネル概要">
@@ -188,6 +189,25 @@
       </div>
 
       <div class="library-grid" id="videoGrid"></div>
+    </section>
+
+    <section class="section song-browser" id="song-browser" aria-labelledby="song-browser-title">
+      <div class="section-heading">
+        <p class="section-kicker">Category Explorer</p>
+        <h2 id="song-browser-title">カテゴリから曲を探す</h2>
+        <p class="section-copy">
+          シリーズ別の収録曲リストを横断して、カテゴリごとにまとめて見られます。
+          町、フィールド、戦闘曲など、聴きたい雰囲気から曲を探したいときに便利です。
+        </p>
+      </div>
+
+      <p class="library-summary" id="songCategorySummary"></p>
+
+      <div class="toolbar" aria-label="曲カテゴリの絞り込み">
+        <div class="filter-chips" id="songCategoryChips"></div>
+      </div>
+
+      <div id="songCategoryResults"></div>
     </section>
 
     <section class="section" id="faq" aria-labelledby="faq-title">
