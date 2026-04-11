@@ -168,19 +168,10 @@ function escapeHtml(value = "") {
     .replaceAll(">", "&gt;");
 }
 
-function fallbackThumbnailFor(playlist) {
-  const firstTrackUrl = playlist.tracks?.[0]?.url || "";
-  const match = firstTrackUrl.match(/[?&]v=([^&]+)/);
-  return match ? `https://i.ytimg.com/vi/${match[1]}/hqdefault.jpg` : "";
-}
-
 function renderThumbnail(playlist) {
   const primarySrc = escapeHtml(playlist.thumbnail || "");
-  const fallbackSrc = escapeHtml(fallbackThumbnailFor(playlist));
   const alt = escapeHtml(playlist.title || "");
-  const fallbackHandler = fallbackSrc
-    ? `if(this.dataset.fallbackLoaded!=='1'){this.dataset.fallbackLoaded='1';this.src='${fallbackSrc}';return;}this.onerror=null;this.closest('article')?.classList.add('thumb-missing');this.remove();`
-    : `this.onerror=null;this.closest('article')?.classList.add('thumb-missing');this.remove();`;
+  const fallbackHandler = `this.onerror=null;this.closest('article')?.classList.add('thumb-missing');this.remove();`;
 
   return `<img class="playlist-thumb" src="${primarySrc}" alt="${alt}" loading="lazy" onerror="${fallbackHandler}">`;
 }
