@@ -96,6 +96,7 @@
         <div class="topbar-links">
           <a href="#library" data-nav="library">Playlists</a>
           <a class="topbar-shortcut" href="#song-browser" data-nav="song-browser">Browse by category</a>
+          <a class="topbar-cta" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer" data-nav="youtube">Visit the YouTube channel</a>
         </div>
         <div class="language-switch" aria-label="Language switch">
           <a class="lang-pill" href="./index.html" lang="ja">日本語</a>
@@ -115,12 +116,6 @@
         </div>
         <h1>Dragon Quest Piano Performances on YouTube</h1>
         <p class="lead" hidden></p>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer">Visit the YouTube channel</a>
-          <a class="button button-secondary" href="#library">Browse playlists</a>
-          <a class="button button-secondary" href="#song-browser">Browse by category</a>
-        </div>
 
         <dl class="hero-metrics" aria-label="Channel overview">
           <div>
@@ -162,26 +157,34 @@
       </div>
     </section>
 
-    <section class="section library" id="library" aria-labelledby="library-title">
-      <div class="section-heading">
+    <section class="section library section-collapsible" id="library" aria-labelledby="library-title">
+      <details class="section-disclosure" data-section="library">
+        <summary class="section-summary">
+<div class="section-heading">
         <p class="section-kicker">Playlist Library</p>
         <h2 id="library-title">Playlist Library — Dragon Quest Piano by Series, Medley &amp; Battle Theme</h2>
         <p class="section-copy">
           The library below uses the channel's public playlist and podcast data so visitors can move from overview to specific series, medleys, and individual tracks without friction.
         </p>
       </div>
-
-      <p class="library-summary" id="playlistSummary"></p>
+          <span class="section-toggle-label" data-open-label="Open" data-close-label="Close">Open</span>
+        </summary>
+        <div class="section-body">
+          <p class="library-summary" id="playlistSummary"></p>
 
       <div class="toolbar" aria-label="Playlist category filters">
         <div class="filter-chips" id="filterChips"></div>
       </div>
 
       <div class="library-grid" id="videoGrid"></div>
+        </div>
+      </details>
     </section>
 
-    <section class="section song-browser" id="song-browser" aria-labelledby="song-browser-title">
-      <div class="section-heading">
+    <section class="section song-browser section-collapsible" id="song-browser" aria-labelledby="song-browser-title">
+      <details class="section-disclosure" data-section="song-browser">
+        <summary class="section-summary">
+<div class="section-heading">
         <p class="section-kicker">Category Explorer</p>
         <h2 id="song-browser-title">Browse by Category</h2>
         <p class="section-copy">
@@ -189,14 +192,18 @@
           This makes it easier to jump straight into town themes, field music, battle tracks, and other moods.
         </p>
       </div>
-
-      <p class="library-summary" id="songCategorySummary"></p>
+          <span class="section-toggle-label" data-open-label="Open" data-close-label="Close">Open</span>
+        </summary>
+        <div class="section-body">
+          <p class="library-summary" id="songCategorySummary"></p>
 
       <div class="toolbar" aria-label="Song category filters">
         <div class="filter-chips" id="songCategoryChips"></div>
       </div>
 
       <div id="songCategoryResults"></div>
+        </div>
+      </details>
     </section>
 
     <section class="section" id="faq" aria-labelledby="faq-title">
@@ -256,3 +263,4 @@
   <script src="./site.js"></script>
 </body>
 </html>
+

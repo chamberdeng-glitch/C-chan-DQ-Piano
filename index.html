@@ -105,6 +105,7 @@
         <div class="topbar-links">
           <a href="#library" data-nav="library">プレイリスト一覧</a>
           <a class="topbar-shortcut" href="#song-browser" data-nav="song-browser">カテゴリから探す</a>
+          <a class="topbar-cta" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer" data-nav="youtube">YouTubeチャンネルを見る</a>
         </div>
         <div class="language-switch" aria-label="言語切り替え">
           <a class="lang-pill is-active" href="./index.html" lang="ja">日本語</a>
@@ -124,12 +125,6 @@
         </div>
         <h1>ドラゴンクエストの名曲をピアノで演奏する YouTube チャンネル</h1>
         <p class="lead" hidden></p>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer">YouTubeチャンネルを見る</a>
-          <a class="button button-secondary" href="#library">プレイリストを見る</a>
-          <a class="button button-secondary" href="#song-browser">カテゴリから探す</a>
-        </div>
 
         <dl class="hero-metrics" aria-label="チャンネル概要">
           <div>
@@ -173,8 +168,10 @@
       </div>
     </section>
 
-    <section class="section library" id="library" aria-labelledby="library-title">
-      <div class="section-heading">
+    <section class="section library section-collapsible" id="library" aria-labelledby="library-title">
+      <details class="section-disclosure" data-section="library">
+        <summary class="section-summary">
+<div class="section-heading">
         <p class="section-kicker">Playlist Library</p>
         <h2 id="library-title">プレイリスト一覧 — ジャンル・シリーズ別に探せるドラクエ ピアノ演奏</h2>
         <p class="section-copy">
@@ -182,18 +179,24 @@
           作品別、メドレー、戦闘曲などのカテゴリで絞り込みながら、見たいリストへそのまま進めます。
         </p>
       </div>
-
-      <p class="library-summary" id="playlistSummary"></p>
+          <span class="section-toggle-label" data-open-label="開く" data-close-label="閉じる">開く</span>
+        </summary>
+        <div class="section-body">
+          <p class="library-summary" id="playlistSummary"></p>
 
       <div class="toolbar" aria-label="プレイリストカテゴリの絞り込み">
         <div class="filter-chips" id="filterChips"></div>
       </div>
 
       <div class="library-grid" id="videoGrid"></div>
+        </div>
+      </details>
     </section>
 
-    <section class="section song-browser" id="song-browser" aria-labelledby="song-browser-title">
-      <div class="section-heading">
+    <section class="section song-browser section-collapsible" id="song-browser" aria-labelledby="song-browser-title">
+      <details class="section-disclosure" data-section="song-browser">
+        <summary class="section-summary">
+<div class="section-heading">
         <p class="section-kicker">Category Explorer</p>
         <h2 id="song-browser-title">カテゴリから曲を探す</h2>
         <p class="section-copy">
@@ -201,14 +204,18 @@
           町、フィールド、戦闘曲など、聴きたい雰囲気から曲を探したいときに便利です。
         </p>
       </div>
-
-      <p class="library-summary" id="songCategorySummary"></p>
+          <span class="section-toggle-label" data-open-label="開く" data-close-label="閉じる">開く</span>
+        </summary>
+        <div class="section-body">
+          <p class="library-summary" id="songCategorySummary"></p>
 
       <div class="toolbar" aria-label="曲カテゴリの絞り込み">
         <div class="filter-chips" id="songCategoryChips"></div>
       </div>
 
       <div id="songCategoryResults"></div>
+        </div>
+      </details>
     </section>
 
     <section class="section" id="faq" aria-labelledby="faq-title">
@@ -268,3 +275,5 @@
   <script src="./site.js"></script>
 </body>
 </html>
+
+

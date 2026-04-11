@@ -136,13 +136,16 @@ const state = {
   activeSongCategory: "__all__"
 };
 
+const SECTION_HASHES = new Set(["#library", "#song-browser"]);
+
 const elements = {
   filterChips: document.getElementById("filterChips"),
   videoGrid: document.getElementById("videoGrid"),
   playlistSummary: document.getElementById("playlistSummary"),
   songCategoryChips: document.getElementById("songCategoryChips"),
   songCategoryResults: document.getElementById("songCategoryResults"),
-  songCategorySummary: document.getElementById("songCategorySummary")
+  songCategorySummary: document.getElementById("songCategorySummary"),
+  disclosures: document.querySelectorAll(".section-disclosure")
 };
 
 function inferCategory(title) {
@@ -256,6 +259,40 @@ function filteredSongBrowseRows() {
   }
 
   return songBrowseRows.filter((row) => row.category === state.activeSongCategory);
+}
+
+function updateDisclosureLabel(details) {
+  const label = details?.querySelector(".section-toggle-label");
+  if (!label) {
+    return;
+  }
+
+  label.textContent = details.open ? label.dataset.closeLabel : label.dataset.openLabel;
+}
+
+function openDisclosureByHash(hash) {
+  if (!SECTION_HASHES.has(hash)) {
+    return;
+  }
+
+  const section = document.querySelector(hash);
+  const details = section?.querySelector(".section-disclosure");
+  if (!details) {
+    return;
+  }
+
+  details.open = true;
+  updateDisclosureLabel(details);
+}
+
+function setupDisclosures() {
+  elements.disclosures.forEach((details) => {
+    updateDisclosureLabel(details);
+    details.addEventListener("toggle", () => updateDisclosureLabel(details));
+  });
+
+  openDisclosureByHash(window.location.hash);
+  window.addEventListener("hashchange", () => openDisclosureByHash(window.location.hash));
 }
 
 function renderSummary(items) {
@@ -523,6 +560,8 @@ if (elements.filterChips && elements.videoGrid) {
   renderChips();
   renderPlaylists();
 }
+
+setupDisclosures();
 
 if (elements.songCategoryChips && elements.songCategoryResults) {
   elements.songCategoryChips.addEventListener("click", (event) => {
