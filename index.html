@@ -165,7 +165,7 @@
       <div class="topbar-right">
         <div class="topbar-links">
           <a href="#library" data-nav="library">プレイリスト一覧</a>
-          <a class="topbar-shortcut" href="#song-browser" data-nav="song-browser">カテゴリから探す</a>
+          <a class="topbar-shortcut" href="./category-index.html" data-nav="song-browser">カテゴリから探す</a>
           <a class="topbar-cta" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer" data-nav="youtube">YouTubeチャンネルを見る</a>
         </div>
         <div class="language-switch" aria-label="言語切り替え">
@@ -204,69 +204,7 @@
 
 
 
-    <section class="section library" id="library" aria-labelledby="library-title">
-      <div class="section-body section-body-flat">
-          <p class="library-summary" id="playlistSummary"></p>
-
-      <div class="toolbar" aria-label="プレイリストカテゴリの絞り込み">
-        <div class="filter-chips" id="filterChips"></div>
-      </div>
-
-      <div class="library-grid" id="videoGrid"></div>
-        </div>
-    </section>
-
-    <section class="section song-browser" id="song-browser" aria-labelledby="song-browser-title">
-      <div class="section-body section-body-flat">
-          <p class="library-summary" id="songCategorySummary"></p>
-
-      <div class="toolbar" aria-label="曲カテゴリの絞り込み">
-        <div class="filter-chips" id="songCategoryChips"></div>
-      </div>
-
-      <div id="songCategoryResults"></div>
-        </div>
-    </section>
-
-    <section class="section" id="faq" aria-labelledby="faq-title">
-      <div class="section-heading">
-        <p class="section-kicker">FAQ</p>
-        <h2 id="faq-title">よくある質問</h2>
-      </div>
-      <dl class="faq-list">
-        <details>
-          <summary>しーちゃんピアノ とはどんな YouTube チャンネルですか？</summary>
-          <p>ドラゴンクエストシリーズの楽曲をピアノで演奏する YouTube チャンネルです。DQ1〜DQ11 の名曲を中心に、フィールド曲・戦闘曲・エンディング・メドレーなど多彩なプレイリストを公開しています。</p>
-        </details>
-        <details>
-          <summary>どのシリーズのドラゴンクエスト楽曲を演奏していますか？</summary>
-          <p>DQ1 から DQ11 まで幅広いナンバリングの楽曲を演奏しています。このページの「プレイリスト一覧」から作品別に絞り込んで探すことができます。</p>
-        </details>
-        <details>
-          <summary>メドレーと作品別プレイリストの違いは何ですか？</summary>
-          <p>メドレーは複数のドラゴンクエスト作品の楽曲をつなげて演奏したプレイリストで、作業用 BGM や世界観に浸りたいときに向いています。作品別プレイリストは特定のナンバリングの楽曲をまとめたもので、好きな作品の曲を集中して聴くときに便利です。</p>
-        </details>
-        <details>
-          <summary>チャンネル登録は無料ですか？</summary>
-          <p>はい、YouTube 上のすべての演奏動画は無料で視聴できます。チャンネル登録することで新着動画を見逃さずに楽しめます。</p>
-        </details>
-      </dl>
-    </section>
-
-    <section class="section cta" aria-labelledby="cta-title">
-      <div class="cta-card">
-        <div>
-          <p class="section-kicker">Subscribe</p>
-          <h2 id="cta-title">次の冒険としてチャンネルへ進む</h2>
-          <p hidden></p>
-        </div>
-        <div class="cta-actions">
-          <a class="button button-primary" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer">チャンネルを開く</a>
-          <a class="button button-secondary" href="#top">上に戻る</a>
-        </div>
-      </div>
-    </section>
-  </main>
+    </main>
 
   <footer style="text-align:center;padding:28px 0 36px;color:var(--muted);font-size:0.85rem;border-top:1px solid var(--line);margin-top:8px;">
     <p style="margin:0 0 8px;">
@@ -278,11 +216,6 @@
     </p>
   </footer>
 
-  <script src="./playlist-data.js"></script>
-  <script src="./song-reference-data.js"></script>
-  <script src="./site-content.js"></script>
-  <script src="./song-title-translations.js"></script>
-  <script src="./site.js"></script>
 </body>
 </html>
 
