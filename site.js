@@ -107,6 +107,26 @@ const t = {
 const fallbackPlaylists = [];
 const songReferenceData = window.songReferenceData || {};
 const translationData = window.songTitleTranslations?.[locale] || {};
+const EN_CATEGORY_FALLBACKS = {
+  "イベント": "Event",
+  "エンディング": "Ending",
+  "オープニング": "Opening",
+  "カジノ": "Casino",
+  "キャラクターテーマ": "Character Theme",
+  "ダンジョン": "Dungeon",
+  "フィールド": "Field",
+  "プロローグ": "Prologue",
+  "ボス戦闘": "Boss Battle",
+  "全滅": "Game Over",
+  "城": "Castle",
+  "場面転換": "Interlude",
+  "塔": "Tower",
+  "教会・ほこら": "Churches & Shrines",
+  "海": "Sea",
+  "空": "Sky",
+  "街・村": "Towns & Villages",
+  "通常戦闘": "Normal Battle"
+};
 
 const playlists = (window.playlistData || fallbackPlaylists)
   .map((playlist) => ({
@@ -493,7 +513,15 @@ function translateSongTitle(value) {
 }
 
 function translateSongCategory(value) {
-  return translationData.categories?.[value] || value;
+  if (translationData.categories?.[value]) {
+    return translationData.categories[value];
+  }
+
+  if (locale === "en" && EN_CATEGORY_FALLBACKS[value]) {
+    return EN_CATEGORY_FALLBACKS[value];
+  }
+
+  return value;
 }
 
 function translateDifficulty(value) {
