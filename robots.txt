@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://c-chan-dq-piano.chamberdeng.workers.dev/sitemap.xml

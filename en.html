@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -12,40 +12,40 @@
   <meta property="og:locale" content="en_US">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#16334a">
-  <link rel="canonical" href="https://chamberd-piano.github.io/en.html">
-  <link rel="alternate" hreflang="ja" href="https://chamberd-piano.github.io/">
-  <link rel="alternate" hreflang="en" href="https://chamberd-piano.github.io/en.html">
-  <link rel="alternate" hreflang="x-default" href="https://chamberd-piano.github.io/">
-  <meta property="og:url" content="https://chamberd-piano.github.io/en.html">
-  <meta property="og:image" content="https://chamberd-piano.github.io/ogp.png">
+  <link rel="canonical" href="https://c-chan-dq-piano.chamberdeng.workers.dev/en.html">
+  <link rel="alternate" hreflang="ja" href="https://c-chan-dq-piano.chamberdeng.workers.dev/">
+  <link rel="alternate" hreflang="en" href="https://c-chan-dq-piano.chamberdeng.workers.dev/en.html">
+  <link rel="alternate" hreflang="x-default" href="https://c-chan-dq-piano.chamberdeng.workers.dev/">
+  <meta property="og:url" content="https://c-chan-dq-piano.chamberdeng.workers.dev/en.html">
+  <meta property="og:image" content="https://c-chan-dq-piano.chamberdeng.workers.dev/ogp.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="C-chan piano | Dragon Quest Piano Channel">
   <meta name="twitter:description" content="Dragon Quest piano performances on YouTube — browse playlists by series, medleys, and battle themes from DQ1 to DQ11.">
-  <meta name="twitter:image" content="https://chamberd-piano.github.io/ogp.png">
+  <meta name="twitter:image" content="https://c-chan-dq-piano.chamberdeng.workers.dev/ogp.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://chamberd-piano.github.io/#website",
-        "url": "https://chamberd-piano.github.io/",
+        "@id": "https://c-chan-dq-piano.chamberdeng.workers.dev/#website",
+        "url": "https://c-chan-dq-piano.chamberdeng.workers.dev/",
         "name": "C-chan piano",
         "description": "A YouTube channel dedicated to Dragon Quest piano performances, with playlists organized by series and theme.",
         "inLanguage": "en-US"
       },
       {
         "@type": "Person",
-        "@id": "https://chamberd-piano.github.io/#creator",
+        "@id": "https://c-chan-dq-piano.chamberdeng.workers.dev/#creator",
         "name": "C-chan piano",
         "url": "https://www.youtube.com/@chamberd_piano",
         "sameAs": ["https://www.youtube.com/@chamberd_piano"]
       },
       {
         "@type": "FAQPage",
-        "@id": "https://chamberd-piano.github.io/en.html#faq",
+        "@id": "https://c-chan-dq-piano.chamberdeng.workers.dev/en.html#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -85,7 +85,68 @@
   }
   </script>
   <link rel="stylesheet" href="./styles.css">
-</head>
+<script>(() => {
+  if (location.protocol !== "file:") return;
+
+  const current = new URL(location.href);
+  const isEnPage = current.pathname.replace(/\\/g, "/").includes("/en/") || /\/en\.html$/i.test(current.pathname);
+
+  const mapHref = (href) => {
+    if (!href || !href.startsWith("/")) return href;
+    if (href.startsWith("//")) return href;
+
+    const clean = href.replace(/^\//, "");
+    const base = current.href.replace(/[^/]*$/, "");
+
+    if (clean === "") return base;
+    if (clean === "en.html") return new URL("en.html", base).href;
+    if (clean.endsWith("/")) return new URL(clean + "index.html", base).href;
+    return new URL(clean, base).href;
+  };
+
+  document.querySelectorAll('a[href^="/"]').forEach((link) => {
+    const href = link.getAttribute("href");
+    const mapped = mapHref(href);
+    if (mapped) link.setAttribute("href", mapped);
+  });
+})();</script><script>
+(() => {
+  if (location.protocol !== "file:") return;
+
+  const mapHref = (href) => {
+    if (!href || !href.startsWith("/") || href.startsWith("//")) return href;
+    const clean = href.replace(/^\//, "");
+    const root = location.href.replace(/[^/]*$/, "");
+    if (!clean) return root;
+    if (clean === "en.html") return new URL("en.html", root).href;
+    if (clean.endsWith("/")) return new URL(clean + "index.html", root).href;
+    return new URL(clean, root).href;
+  };
+
+  const rewriteLinks = () => {
+    document.querySelectorAll('a[href^="/"]').forEach((link) => {
+      const raw = link.getAttribute('href');
+      const mapped = mapHref(raw);
+      if (mapped) link.setAttribute('href', mapped);
+    });
+  };
+
+  rewriteLinks();
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="/"]');
+    if (!link) return;
+    const raw = link.getAttribute('href');
+    const mapped = mapHref(raw);
+    if (!mapped) return;
+    event.preventDefault();
+    location.href = mapped;
+  }, true);
+
+  const observer = new MutationObserver(() => rewriteLinks());
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script></head>
 <body>
   <div class="site-bg" aria-hidden="true"></div>
 
@@ -129,47 +190,13 @@
   </header>
 
   <main class="page">
-    <section class="section intro" id="about" aria-labelledby="about-title">
-      <div class="section-heading">
-        <p class="section-kicker">About This Channel</p>
-        <h2 id="about-title">About C-chan piano — Dragon Quest Piano Channel on YouTube</h2>
-      </div>
+    <section class="section seo-hub-links" id="seo-links"><div class="section-heading"><p class="section-kicker">SEO Landing Pages</p><h2>Series and category landing pages</h2><p class="section-copy">Jump to Dragon Quest piano landing pages by series and category.</p></div><div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">Series</p><h3>Browse by Series</h3></div><div class="entry-link-grid"><a class="entry-card" href="./en/dq1/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zQPJ1090HeyInOa6mJ8NMEG.jpg" alt="DQ1" loading="lazy"><span class="entry-card-title">DQ1</span><span class="entry-card-body">Browse Dragon Quest I songs</span></a><a class="entry-card" href="./en/dq2/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zSHg5X4JCd8do3H0iJQwX_2.jpg" alt="DQ2" loading="lazy"><span class="entry-card-title">DQ2</span><span class="entry-card-body">Browse Dragon Quest II songs</span></a><a class="entry-card" href="./en/dq3/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zQTBOhcDsacdLfsGbO3W-8H.jpg" alt="DQ3" loading="lazy"><span class="entry-card-title">DQ3</span><span class="entry-card-body">Browse Dragon Quest III songs</span></a><a class="entry-card" href="./en/dq4/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zRn_ZqY2cydjdyKnFAMf6tV.jpg" alt="DQ4" loading="lazy"><span class="entry-card-title">DQ4</span><span class="entry-card-body">Browse Dragon Quest IV songs</span></a><a class="entry-card" href="./en/dq5/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zTnyJXHBeePBDWN2j1y_GQY.jpg" alt="DQ5" loading="lazy"><span class="entry-card-title">DQ5</span><span class="entry-card-body">Browse Dragon Quest V songs</span></a><a class="entry-card" href="./en/dq6/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zS3yRGnq2InCCNJ-Zxibyj5.jpg" alt="DQ6" loading="lazy"><span class="entry-card-title">DQ6</span><span class="entry-card-body">Browse Dragon Quest VI songs</span></a><a class="entry-card" href="./en/dq7/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zQF_udjbnq-LUujuDwFbtvN.jpg" alt="DQ7" loading="lazy"><span class="entry-card-title">DQ7</span><span class="entry-card-body">Browse Dragon Quest VII songs</span></a><a class="entry-card" href="./en/dq8/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zSBt3Jyo09jtK6S6IVaun8K.jpg" alt="DQ8" loading="lazy"><span class="entry-card-title">DQ8</span><span class="entry-card-body">Browse Dragon Quest VIII songs</span></a><a class="entry-card" href="./en/dq9/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zRUaZsmpZsF8ELqfgKT5tQu.jpg" alt="DQ9" loading="lazy"><span class="entry-card-title">DQ9</span><span class="entry-card-body">Browse Dragon Quest IX songs</span></a><a class="entry-card" href="./en/dq10/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zTdcYg3gqrtiyNqvvNpJFZi.jpg" alt="DQ10" loading="lazy"><span class="entry-card-title">DQ10</span><span class="entry-card-body">Browse Dragon Quest X songs</span></a><a class="entry-card" href="./en/dq11/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP.jpg" alt="DQ11" loading="lazy"><span class="entry-card-title">DQ11</span><span class="entry-card-body">Browse Dragon Quest XI songs</span></a></div></div><div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">Categories</p><h3>Browse by Category</h3></div><div class="entry-link-grid"><a class="entry-card" href="./en/category/opening/index.html"><span class="entry-card-title">Opening</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/prologue/index.html"><span class="entry-card-title">Prologue</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/interlude/index.html"><span class="entry-card-title">Interlude</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/field/index.html"><span class="entry-card-title">Field</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/sea/index.html"><span class="entry-card-title">Sea</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/sky/index.html"><span class="entry-card-title">Sky</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/town-village/index.html"><span class="entry-card-title">Towns &amp; Villages</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/castle/index.html"><span class="entry-card-title">Castle</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/church-shrine/index.html"><span class="entry-card-title">Churches &amp; Shrines</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/casino/index.html"><span class="entry-card-title">Casino</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/dungeon/index.html"><span class="entry-card-title">Dungeon</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/tower/index.html"><span class="entry-card-title">Tower</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/event/index.html"><span class="entry-card-title">Event</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/character-theme/index.html"><span class="entry-card-title">Character Theme</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/normal-battle/index.html"><span class="entry-card-title">Normal Battle</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/boss-battle/index.html"><span class="entry-card-title">Boss Battle</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/ending/index.html"><span class="entry-card-title">Ending</span><span class="entry-card-body">Category page</span></a><a class="entry-card" href="./en/category/game-over/index.html"><span class="entry-card-title">Game Over</span><span class="entry-card-body">Category page</span></a></div></div><div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">BGM</p><h3>Background Listening</h3></div><div class="entry-link-grid"><a class="entry-card" href="./en/category/medley/index.html"><span class="entry-card-title">Medleys</span><span class="entry-card-body">Medleys for background listening</span></a></div></div></section>
 
-      <div class="intro-grid">
-        <article class="info-card">
-          <h3>What you will find</h3>
-          <p>
-            The channel highlights Dragon Quest music through piano performance, making it easy to enjoy the emotional range of the series: adventure, nostalgia, calm town themes, and dramatic battle tracks.
-          </p>
-        </article>
-        <article class="info-card">
-          <h3>Who this is for</h3>
-          <p>
-            It is a great fit for Dragon Quest fans, listeners who enjoy game music on piano, and anyone who wants a quiet but expressive way to revisit familiar themes.
-          </p>
-        </article>
-        <article class="info-card">
-          <h3>Performance style and repertoire</h3>
-          <p>
-            Drawing on a classical piano background, the channel delivers carefully crafted Dragon Quest arrangements from DQ1 through DQ11. Field themes, battle tracks, endings, and medleys are all covered — from quiet background listening to focused soundtrack sessions.
-          </p>
-        </article>
-      </div>
-    </section>
 
-    <section class="section library section-collapsible" id="library" aria-labelledby="library-title">
-      <details class="section-disclosure" data-section="library">
-        <summary class="section-summary">
-<div class="section-heading">
-        <p class="section-kicker">Playlist Library</p>
-        <h2 id="library-title">Playlist Library — Dragon Quest Piano by Series, Medley &amp; Battle Theme</h2>
-        <p class="section-copy">
-          The library below uses the channel's public playlist and podcast data so visitors can move from overview to specific series, medleys, and individual tracks without friction.
-        </p>
-      </div>
-          <span class="section-toggle-label" data-open-label="Open" data-close-label="Close">Open</span>
-        </summary>
-        <div class="section-body">
+
+
+    <section class="section library" id="library" aria-labelledby="library-title">
+      <div class="section-body section-body-flat">
           <p class="library-summary" id="playlistSummary"></p>
 
       <div class="toolbar" aria-label="Playlist category filters">
@@ -178,23 +205,10 @@
 
       <div class="library-grid" id="videoGrid"></div>
         </div>
-      </details>
     </section>
 
-    <section class="section song-browser section-collapsible" id="song-browser" aria-labelledby="song-browser-title">
-      <details class="section-disclosure" data-section="song-browser">
-        <summary class="section-summary">
-<div class="section-heading">
-        <p class="section-kicker">Category Explorer</p>
-        <h2 id="song-browser-title">Browse by Category</h2>
-        <p class="section-copy">
-          Explore the song list across all series by category.
-          This makes it easier to jump straight into town themes, field music, battle tracks, and other moods.
-        </p>
-      </div>
-          <span class="section-toggle-label" data-open-label="Open" data-close-label="Close">Open</span>
-        </summary>
-        <div class="section-body">
+    <section class="section song-browser" id="song-browser" aria-labelledby="song-browser-title">
+      <div class="section-body section-body-flat">
           <p class="library-summary" id="songCategorySummary"></p>
 
       <div class="toolbar" aria-label="Song category filters">
@@ -203,7 +217,6 @@
 
       <div id="songCategoryResults"></div>
         </div>
-      </details>
     </section>
 
     <section class="section" id="faq" aria-labelledby="faq-title">

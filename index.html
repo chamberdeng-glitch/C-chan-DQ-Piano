@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -12,27 +12,27 @@
   <meta property="og:locale" content="ja_JP">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#16334a">
-  <!-- TODO: 公開URLが決まったら下記3箇所の https://chamberd-piano.github.io を実際のURLに置き換えてください -->
-  <link rel="canonical" href="https://chamberd-piano.github.io/">
-  <link rel="alternate" hreflang="ja" href="https://chamberd-piano.github.io/">
-  <link rel="alternate" hreflang="en" href="https://chamberd-piano.github.io/en.html">
-  <link rel="alternate" hreflang="x-default" href="https://chamberd-piano.github.io/">
-  <meta property="og:url" content="https://chamberd-piano.github.io/">
-  <meta property="og:image" content="https://chamberd-piano.github.io/ogp.png">
+  <!-- TODO: 公開URLが決まったら下記3箇所の https://c-chan-dq-piano.chamberdeng.workers.dev を実際のURLに置き換えてください -->
+  <link rel="canonical" href="https://c-chan-dq-piano.chamberdeng.workers.dev/">
+  <link rel="alternate" hreflang="ja" href="https://c-chan-dq-piano.chamberdeng.workers.dev/">
+  <link rel="alternate" hreflang="en" href="https://c-chan-dq-piano.chamberdeng.workers.dev/en.html">
+  <link rel="alternate" hreflang="x-default" href="https://c-chan-dq-piano.chamberdeng.workers.dev/">
+  <meta property="og:url" content="https://c-chan-dq-piano.chamberdeng.workers.dev/">
+  <meta property="og:image" content="https://c-chan-dq-piano.chamberdeng.workers.dev/ogp.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="しーちゃんピアノ | ドラクエピアノ演奏チャンネル">
   <meta name="twitter:description" content="ドラゴンクエストの名曲をピアノで演奏するYouTubeチャンネル。DQ1〜DQ11のフィールド曲・戦闘曲・メドレーをシリーズ別に探せます。">
-  <meta name="twitter:image" content="https://chamberd-piano.github.io/ogp.png">
+  <meta name="twitter:image" content="https://c-chan-dq-piano.chamberdeng.workers.dev/ogp.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://chamberd-piano.github.io/#website",
-        "url": "https://chamberd-piano.github.io/",
+        "@id": "https://c-chan-dq-piano.chamberdeng.workers.dev/#website",
+        "url": "https://c-chan-dq-piano.chamberdeng.workers.dev/",
         "name": "しーちゃんピアノ",
         "description": "ドラゴンクエストの名曲をピアノで演奏するYouTubeチャンネル しーちゃんピアノ の公式ページ",
         "inLanguage": "ja-JP",
@@ -47,14 +47,14 @@
       },
       {
         "@type": "Person",
-        "@id": "https://chamberd-piano.github.io/#creator",
+        "@id": "https://c-chan-dq-piano.chamberdeng.workers.dev/#creator",
         "name": "しーちゃんピアノ",
         "url": "https://www.youtube.com/@chamberd_piano",
         "sameAs": ["https://www.youtube.com/@chamberd_piano"]
       },
       {
         "@type": "FAQPage",
-        "@id": "https://chamberd-piano.github.io/#faq",
+        "@id": "https://c-chan-dq-piano.chamberdeng.workers.dev/#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -94,7 +94,68 @@
   }
   </script>
   <link rel="stylesheet" href="./styles.css">
-</head>
+<script>(() => {
+  if (location.protocol !== "file:") return;
+
+  const current = new URL(location.href);
+  const isEnPage = current.pathname.replace(/\\/g, "/").includes("/en/") || /\/en\.html$/i.test(current.pathname);
+
+  const mapHref = (href) => {
+    if (!href || !href.startsWith("/")) return href;
+    if (href.startsWith("//")) return href;
+
+    const clean = href.replace(/^\//, "");
+    const base = current.href.replace(/[^/]*$/, "");
+
+    if (clean === "") return base;
+    if (clean === "en.html") return new URL("en.html", base).href;
+    if (clean.endsWith("/")) return new URL(clean + "index.html", base).href;
+    return new URL(clean, base).href;
+  };
+
+  document.querySelectorAll('a[href^="/"]').forEach((link) => {
+    const href = link.getAttribute("href");
+    const mapped = mapHref(href);
+    if (mapped) link.setAttribute("href", mapped);
+  });
+})();</script><script>
+(() => {
+  if (location.protocol !== "file:") return;
+
+  const mapHref = (href) => {
+    if (!href || !href.startsWith("/") || href.startsWith("//")) return href;
+    const clean = href.replace(/^\//, "");
+    const root = location.href.replace(/[^/]*$/, "");
+    if (!clean) return root;
+    if (clean === "en.html") return new URL("en.html", root).href;
+    if (clean.endsWith("/")) return new URL(clean + "index.html", root).href;
+    return new URL(clean, root).href;
+  };
+
+  const rewriteLinks = () => {
+    document.querySelectorAll('a[href^="/"]').forEach((link) => {
+      const raw = link.getAttribute('href');
+      const mapped = mapHref(raw);
+      if (mapped) link.setAttribute('href', mapped);
+    });
+  };
+
+  rewriteLinks();
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="/"]');
+    if (!link) return;
+    const raw = link.getAttribute('href');
+    const mapped = mapHref(raw);
+    if (!mapped) return;
+    event.preventDefault();
+    location.href = mapped;
+  }, true);
+
+  const observer = new MutationObserver(() => rewriteLinks());
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script></head>
 <body>
   <div class="site-bg" aria-hidden="true"></div>
 
@@ -138,50 +199,13 @@
   </header>
 
   <main class="page">
-    <section class="section intro" id="about" aria-labelledby="about-title">
-      <div class="section-heading">
-        <p class="section-kicker">About This Channel</p>
-        <h2 id="about-title">しーちゃんピアノ について — ドラゴンクエスト ピアノ演奏チャンネル</h2>
-      </div>
+    <section class="section seo-hub-links" id="seo-links"><div class="section-heading"><p class="section-kicker">SEO Landing Pages</p><h2>作品別・カテゴリ別の着地ページ</h2><p class="section-copy">検索用途（例、DQ8、戦闘曲 等）に合わせて、ピアノ演奏動画の作品別・カテゴリ別ページへ進めます。</p></div><div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">Series</p><h3>作品別ページ</h3></div><div class="entry-link-grid"><a class="entry-card" href="./dq1/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zQPJ1090HeyInOa6mJ8NMEG.jpg" alt="DQ1" loading="lazy"><span class="entry-card-title">DQ1</span><span class="entry-card-body">ドラゴンクエストI の曲を探す</span></a><a class="entry-card" href="./dq2/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zSHg5X4JCd8do3H0iJQwX_2.jpg" alt="DQ2" loading="lazy"><span class="entry-card-title">DQ2</span><span class="entry-card-body">ドラゴンクエストII の曲を探す</span></a><a class="entry-card" href="./dq3/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zQTBOhcDsacdLfsGbO3W-8H.jpg" alt="DQ3" loading="lazy"><span class="entry-card-title">DQ3</span><span class="entry-card-body">ドラゴンクエストIII の曲を探す</span></a><a class="entry-card" href="./dq4/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zRn_ZqY2cydjdyKnFAMf6tV.jpg" alt="DQ4" loading="lazy"><span class="entry-card-title">DQ4</span><span class="entry-card-body">ドラゴンクエストIV の曲を探す</span></a><a class="entry-card" href="./dq5/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zTnyJXHBeePBDWN2j1y_GQY.jpg" alt="DQ5" loading="lazy"><span class="entry-card-title">DQ5</span><span class="entry-card-body">ドラゴンクエストV の曲を探す</span></a><a class="entry-card" href="./dq6/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zS3yRGnq2InCCNJ-Zxibyj5.jpg" alt="DQ6" loading="lazy"><span class="entry-card-title">DQ6</span><span class="entry-card-body">ドラゴンクエストVI の曲を探す</span></a><a class="entry-card" href="./dq7/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zQF_udjbnq-LUujuDwFbtvN.jpg" alt="DQ7" loading="lazy"><span class="entry-card-title">DQ7</span><span class="entry-card-body">ドラゴンクエストVII の曲を探す</span></a><a class="entry-card" href="./dq8/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zSBt3Jyo09jtK6S6IVaun8K.jpg" alt="DQ8" loading="lazy"><span class="entry-card-title">DQ8</span><span class="entry-card-body">ドラゴンクエストVIII の曲を探す</span></a><a class="entry-card" href="./dq9/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zRUaZsmpZsF8ELqfgKT5tQu.jpg" alt="DQ9" loading="lazy"><span class="entry-card-title">DQ9</span><span class="entry-card-body">ドラゴンクエストIX の曲を探す</span></a><a class="entry-card" href="./dq10/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zTdcYg3gqrtiyNqvvNpJFZi.jpg" alt="DQ10" loading="lazy"><span class="entry-card-title">DQ10</span><span class="entry-card-body">ドラゴンクエストX の曲を探す</span></a><a class="entry-card" href="./dq11/index.html"><img class="entry-card-thumb" src="./covers/PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP.jpg" alt="DQ11" loading="lazy"><span class="entry-card-title">DQ11</span><span class="entry-card-body">ドラゴンクエストXI の曲を探す</span></a></div></div><div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">Categories</p><h3>カテゴリ別ページ</h3></div><div class="entry-link-grid"><a class="entry-card" href="./category/opening/index.html"><span class="entry-card-title">オープニング</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/prologue/index.html"><span class="entry-card-title">プロローグ</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/interlude/index.html"><span class="entry-card-title">場面転換</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/field/index.html"><span class="entry-card-title">フィールド</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/sea/index.html"><span class="entry-card-title">海</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/sky/index.html"><span class="entry-card-title">空</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/town-village/index.html"><span class="entry-card-title">街・村</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/castle/index.html"><span class="entry-card-title">城</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/church-shrine/index.html"><span class="entry-card-title">教会・ほこら</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/casino/index.html"><span class="entry-card-title">カジノ</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/dungeon/index.html"><span class="entry-card-title">ダンジョン</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/tower/index.html"><span class="entry-card-title">塔</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/event/index.html"><span class="entry-card-title">イベント</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/character-theme/index.html"><span class="entry-card-title">キャラクターテーマ</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/normal-battle/index.html"><span class="entry-card-title">通常戦闘</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/boss-battle/index.html"><span class="entry-card-title">ボス戦闘</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/ending/index.html"><span class="entry-card-title">エンディング</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a><a class="entry-card" href="./category/game-over/index.html"><span class="entry-card-title">全滅</span><span class="entry-card-body">ドラゴンクエスト ピアノの入口</span></a></div></div><div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">BGM</p><h3>作業用BGM</h3></div><div class="entry-link-grid"><a class="entry-card" href="./category/medley/index.html"><span class="entry-card-title">メドレー</span><span class="entry-card-body">作業用BGM向けのメドレー</span></a></div></div></section>
 
-      <div class="intro-grid">
-        <article class="info-card">
-          <h3>チャンネル紹介</h3>
-          <p>
-            しーちゃんピアノ は、ドラクエ楽曲の世界観をピアノで味わえるチャンネルとして見せるのが強みです。
-            冒険感、懐かしさ、荘厳さといった感情の入口を最初に示すことで、新規視聴者の興味をつなぎやすくします。
-          </p>
-        </article>
-        <article class="info-card">
-          <h3>こんな人におすすめ</h3>
-          <p>
-            ドラクエが好きな人、ゲーム音楽のピアノアレンジを聴きたい人、懐かしい名曲を静かに味わいたい人に向いています。
-          </p>
-        </article>
-        <article class="info-card">
-          <h3>演奏スタイルと収録内容</h3>
-          <p>
-            元クラシックピアニストとしての技術を活かし、ドラゴンクエスト1〜11の楽曲を丁寧に演奏しています。
-            フィールド曲・戦闘曲・エンディング・メドレーと幅広い曲調をカバーし、作業用BGMから本格的な視聴まで対応できます。
-          </p>
-        </article>
-      </div>
-    </section>
 
-    <section class="section library section-collapsible" id="library" aria-labelledby="library-title">
-      <details class="section-disclosure" data-section="library">
-        <summary class="section-summary">
-<div class="section-heading">
-        <p class="section-kicker">Playlist Library</p>
-        <h2 id="library-title">プレイリスト一覧 — ジャンル・シリーズ別に探せるドラクエ ピアノ演奏</h2>
-        <p class="section-copy">
-          YouTube と公開ページから取得した実際のプレイリスト一覧を表示しています。
-          作品別、メドレー、戦闘曲などのカテゴリで絞り込みながら、見たいリストへそのまま進めます。
-        </p>
-      </div>
-          <span class="section-toggle-label" data-open-label="開く" data-close-label="閉じる">開く</span>
-        </summary>
-        <div class="section-body">
+
+
+    <section class="section library" id="library" aria-labelledby="library-title">
+      <div class="section-body section-body-flat">
           <p class="library-summary" id="playlistSummary"></p>
 
       <div class="toolbar" aria-label="プレイリストカテゴリの絞り込み">
@@ -190,23 +214,10 @@
 
       <div class="library-grid" id="videoGrid"></div>
         </div>
-      </details>
     </section>
 
-    <section class="section song-browser section-collapsible" id="song-browser" aria-labelledby="song-browser-title">
-      <details class="section-disclosure" data-section="song-browser">
-        <summary class="section-summary">
-<div class="section-heading">
-        <p class="section-kicker">Category Explorer</p>
-        <h2 id="song-browser-title">カテゴリから曲を探す</h2>
-        <p class="section-copy">
-          シリーズ別の収録曲リストを横断して、カテゴリごとにまとめて見られます。
-          町、フィールド、戦闘曲など、聴きたい雰囲気から曲を探したいときに便利です。
-        </p>
-      </div>
-          <span class="section-toggle-label" data-open-label="開く" data-close-label="閉じる">開く</span>
-        </summary>
-        <div class="section-body">
+    <section class="section song-browser" id="song-browser" aria-labelledby="song-browser-title">
+      <div class="section-body section-body-flat">
           <p class="library-summary" id="songCategorySummary"></p>
 
       <div class="toolbar" aria-label="曲カテゴリの絞り込み">
@@ -215,7 +226,6 @@
 
       <div id="songCategoryResults"></div>
         </div>
-      </details>
     </section>
 
     <section class="section" id="faq" aria-labelledby="faq-title">
