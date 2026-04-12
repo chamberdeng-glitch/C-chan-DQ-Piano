@@ -144,9 +144,20 @@ def normalize_thumb(src: str | None) -> str:
 def make_head(lang: str, title: str, desc: str, canon: str, ja_href: str, en_href: str, graph: list[dict]) -> str:
     locale = 'ja_JP' if lang == 'ja' else 'en_US'
     html_lang = 'ja' if lang == 'ja' else 'en'
+    analytics_tag = (
+        '<!-- Google tag (gtag.js) -->'
+        '<script async src="https://www.googletagmanager.com/gtag/js?id=G-S51EBHNVZ3"></script>'
+        '<script>'
+        'window.dataLayer = window.dataLayer || [];'
+        'function gtag(){dataLayer.push(arguments);}'
+        "gtag('js', new Date());"
+        "gtag('config', 'G-S51EBHNVZ3');"
+        '</script>'
+    )
     return (
         '<!DOCTYPE html>'
         f'<html lang="{html_lang}"><head>'
+        f'{analytics_tag}'
         '<meta charset="UTF-8">'
         '<meta name="viewport" content="width=device-width, initial-scale=1.0">'
         f'<title>{esc(title)}</title>'
