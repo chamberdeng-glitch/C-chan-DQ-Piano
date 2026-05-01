@@ -117,8 +117,12 @@ def load_js(filename: str, prefix: str):
 
 def load_titles():
     raw = (ROOT / 'song-title-translations.js').read_text(encoding='utf-8-sig')
-    match = re.search(r'en:\s*\{\s*titles:\s*(\{.*?\})\s*,\s*categories:', raw, re.S)
-    return json.loads(match.group(1)) if match else {}
+    by_id_match = re.search(r'en:\s*\{\s*titlesById:\s*(\{.*?\})\s*,\s*titles:', raw, re.S)
+    titles_match = re.search(r'en:\s*\{\s*titlesById:\s*\{.*?\}\s*,\s*titles:\s*(\{.*?\})\s*,\s*categories:', raw, re.S)
+    return {
+        'by_id': json.loads(by_id_match.group(1)) if by_id_match else {},
+        'by_title': json.loads(titles_match.group(1)) if titles_match else {},
+    }
 
 
 def esc(value=''):
@@ -446,7 +450,7 @@ def build() -> None:
         for row in rows:
             item = dict(row)
             item['seriesKey'] = skey
-            item['songTitleEn'] = en_titles.get(row['songTitle'], row['songTitle'])
+            item['songTitleEn'] = en_titles['by_id'].get(row['id']) or en_titles['by_title'].get(row['songTitle'], row['songTitle'])
             item['categoryEn'] = CAT_EN.get(row['category'], row['category'])
             item['difficultyEn'] = DIFF_EN.get(row.get('difficultyLabel', ''), row.get('difficultyLabel', ''))
             cooked.append(item)

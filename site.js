@@ -459,7 +459,7 @@ function renderSongBrowseTable() {
 }
 
 function renderSongRow(row) {
-  const displayTitle = translateSongTitle(row.songTitle);
+  const displayTitle = translateSongTitle(row);
   const displayCategory = translateSongCategory(row.category);
   const displayDifficulty = translateDifficulty(row.difficultyLabel);
   const number = row.videoUrl
@@ -484,7 +484,7 @@ function renderSongRow(row) {
 }
 
 function renderSongBrowseRow(row) {
-  const displayTitle = translateSongTitle(row.songTitle);
+  const displayTitle = translateSongTitle(row);
   const displayCategory = translateSongCategory(row.category);
   const displayDifficulty = translateDifficulty(row.difficultyLabel);
   const number = row.videoUrl
@@ -508,8 +508,18 @@ function renderSongBrowseRow(row) {
   `;
 }
 
-function translateSongTitle(value) {
-  return translationData.titles?.[value] || value;
+function translateSongTitle(rowOrValue) {
+  if (typeof rowOrValue === "object" && rowOrValue) {
+    const byId = translationData.titlesById?.[rowOrValue.id];
+    if (byId) {
+      return byId;
+    }
+
+    const byTitle = translationData.titles?.[rowOrValue.songTitle];
+    return byTitle || rowOrValue.songTitle;
+  }
+
+  return translationData.titles?.[rowOrValue] || rowOrValue;
 }
 
 function translateSongCategory(value) {
