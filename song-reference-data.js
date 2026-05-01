@@ -2455,7 +2455,7 @@ window.songReferenceData = {
       "sortNumber": 21,
       "songTitle": "空飛ぶ鯨",
       "category": "空",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=aak-OzJVSTg",
       "difficultyLabel": "",
       "difficultyStars": null
     },
