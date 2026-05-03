@@ -469,9 +469,7 @@ function renderSongRow(row) {
     ? `<a class="song-link" href="${row.videoUrl}" target="_blank" rel="noreferrer">${displayTitle}</a>`
     : `<span class="song-text">${displayTitle}</span>`;
 
-  const difficulty = row.difficultyLabel
-    ? `${displayDifficulty}${row.difficultyStars ? ` ${"★".repeat(row.difficultyStars)}` : ""}`
-    : t.noDifficulty;
+  const difficulty = renderDifficultyCell(displayDifficulty, row.difficultyStars);
 
   return `
     <tr>
@@ -494,9 +492,7 @@ function renderSongBrowseRow(row) {
     ? `<a class="song-link" href="${row.videoUrl}" target="_blank" rel="noreferrer">${displayTitle}</a>`
     : `<span class="song-text">${displayTitle}</span>`;
 
-  const difficulty = row.difficultyLabel
-    ? `${displayDifficulty}${row.difficultyStars ? ` ${"★".repeat(row.difficultyStars)}` : ""}`
-    : t.noDifficulty;
+  const difficulty = renderDifficultyCell(displayDifficulty, row.difficultyStars);
 
   return `
     <tr>
@@ -520,6 +516,21 @@ function translateSongTitle(rowOrValue) {
   }
 
   return translationData.titles?.[rowOrValue] || rowOrValue;
+}
+
+function renderDifficultyCell(label, stars) {
+  if (!label) {
+    return `<span class="difficulty-text">${t.noDifficulty}</span>`;
+  }
+
+  const filled = Number.isFinite(stars) ? Math.max(0, Math.min(5, stars)) : 0;
+  const empty = 5 - filled;
+  const starText = `${"★".repeat(filled)}${"☆".repeat(empty)}`;
+  const meter = filled
+    ? `<span class="difficulty-stars" aria-label="${label} ${filled}/5">${starText}</span>`
+    : `<span class="difficulty-stars is-empty" aria-label="${label}">${"☆".repeat(5)}</span>`;
+
+  return `<span class="difficulty-cell"><span class="difficulty-text">${label}</span>${meter}</span>`;
 }
 
 function translateSongCategory(value) {

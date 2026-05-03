@@ -864,7 +864,30 @@ h1 {
 
 .song-table td:last-child,
 .song-table th:last-child {
-  width: 122px;
+  width: 158px;
+}
+
+.difficulty-cell {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.difficulty-text {
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.difficulty-stars {
+  color: var(--brand-deep);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.difficulty-stars.is-empty {
+  color: rgba(184, 199, 207, 0.52);
 }
 
 .video-card h3,

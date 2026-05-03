@@ -308,6 +308,7 @@ def song_table(rows: list[dict], lang: str) -> str:
         title = row['songTitle'] if lang == 'ja' else row['songTitleEn']
         category = row['category'] if lang == 'ja' else row['categoryEn']
         difficulty = (row.get('difficultyLabel') or '未設定') if lang == 'ja' else (row.get('difficultyEn') or 'Not set')
+        difficulty_stars = row.get('difficultyStars')
         if row.get('videoUrl'):
             title_html = f'<a class="song-link" href="{row["videoUrl"]}" target="_blank" rel="noreferrer">{esc(title)}</a>'
             number_html = f'<a class="song-link song-number-link" href="{row["videoUrl"]}" target="_blank" rel="noreferrer">{esc(row["id"])}</a>'
@@ -319,7 +320,7 @@ def song_table(rows: list[dict], lang: str) -> str:
             f'<td>{number_html}</td>'
             f'<td>{title_html}</td>'
             f'<td>{esc(category)}</td>'
-            f'<td>{esc(difficulty)}</td>'
+            f'<td>{render_difficulty_html(difficulty, difficulty_stars)}</td>'
             '</tr>'
         )
     return (
@@ -327,6 +328,20 @@ def song_table(rows: list[dict], lang: str) -> str:
         '<table class="song-table"><thead><tr>'
         f'<th>{headers[0]}</th><th>{headers[1]}</th><th>{headers[2]}</th><th>{headers[3]}</th>'
         '</tr></thead><tbody>' + ''.join(body) + '</tbody></table></div></div>'
+    )
+
+
+def render_difficulty_html(label: str, stars: int | None) -> str:
+    filled = max(0, min(5, stars)) if isinstance(stars, int) else 0
+    empty = 5 - filled
+    star_text = ('★' * filled) + ('☆' * empty)
+    extra_class = ' is-empty' if filled == 0 else ''
+    aria = f'{label} {filled}/5' if filled else label
+    return (
+        '<span class="difficulty-cell">'
+        f'<span class="difficulty-text">{esc(label)}</span>'
+        f'<span class="difficulty-stars{extra_class}" aria-label="{esc(aria)}">{star_text}</span>'
+        '</span>'
     )
 
 
