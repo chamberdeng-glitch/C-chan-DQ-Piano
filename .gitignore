@@ -6,4 +6,14 @@ c-chanpiano-*.json
 *-token.json
 playlist-images-response.json
 __pycache__/
+.pycache_codex/
+.DS_Store
 .claude/
+discord-bot/
+discord-bot.log
+sedori_works/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
