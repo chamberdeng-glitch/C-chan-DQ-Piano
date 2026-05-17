@@ -59,16 +59,16 @@ window.playlistData = [
         "title": "【ドラクエ8】通常戦闘曲『雄叫びをあげて』 【クラシック勢が演奏】",
         "rawTitle": "【ドラクエ8】通常戦闘曲『雄叫びをあげて』 【クラシック勢が演奏】",
         "url": "https://www.youtube.com/watch?v=CcJ9m03N0w4",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
         "title": "【ドラクエ8】静かな村｜ピアノ演奏",
         "rawTitle": "【ドラクエ8】静かな村｜ピアノ演奏",
         "url": "https://www.youtube.com/watch?v=GElg72TZ8_o",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "初級",
+        "difficultyStars": 1,
         "difficultyDetail": ""
       },
       {
@@ -83,8 +83,8 @@ window.playlistData = [
         "title": "【ドラクエ8】讃美歌に癒されて｜ピアノ演奏",
         "rawTitle": "【ドラクエ8】讃美歌に癒されて｜ピアノ演奏",
         "url": "https://www.youtube.com/watch?v=yy5gRhKAR8Q",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "初級",
+        "difficultyStars": 1,
         "difficultyDetail": ""
       },
       {
@@ -107,24 +107,24 @@ window.playlistData = [
         "title": "【ドラクエ8】難関を突破せよ｜中ボス戦闘BGMをピアノで再現",
         "rawTitle": "【ドラクエ8】難関を突破せよ｜中ボス戦闘BGMをピアノで再現",
         "url": "https://www.youtube.com/watch?v=2BTLfqfatbE",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
         "title": "【ドラクエ8】海の記憶 | クラシック奏者のピアノ",
         "rawTitle": "【ドラクエ8】海の記憶 | クラシック奏者のピアノ",
         "url": "https://www.youtube.com/watch?v=dYGysLcgB6s",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "中級",
+        "difficultyStars": 3,
         "difficultyDetail": ""
       },
       {
         "title": "【ドラクエ8】対話｜軽快な街のBGMをピアノで再現",
         "rawTitle": "【ドラクエ8】対話｜軽快な街のBGMをピアノで再現",
         "url": "https://www.youtube.com/watch?v=O7At34-JxdA",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
@@ -139,8 +139,8 @@ window.playlistData = [
         "title": "【ドラクエ8】急げ！ピンチだ｜手に汗握る曲をクラシックピアノで",
         "rawTitle": "【ドラクエ8】急げ！ピンチだ｜手に汗握る曲をクラシックピアノで",
         "url": "https://www.youtube.com/watch?v=gNWdoEsQXSs",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
@@ -155,8 +155,8 @@ window.playlistData = [
         "title": "【ドラクエ8】つらい時を乗り越えて｜ピアノ演奏",
         "rawTitle": "【ドラクエ8】つらい時を乗り越えて｜ピアノ演奏",
         "url": "https://www.youtube.com/watch?v=rMojlffHSPY",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "初中級",
+        "difficultyStars": 2,
         "difficultyDetail": ""
       },
       {
@@ -211,8 +211,8 @@ window.playlistData = [
         "title": "【ドラクエ8】ラプソーン戦『おおぞらに戦う』｜クラシック奏者が本気で挑む",
         "rawTitle": "【ドラクエ8】ラプソーン戦『おおぞらに戦う』｜クラシック奏者が本気で挑む",
         "url": "https://www.youtube.com/watch?v=CQMKkbG4eEU",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
@@ -227,8 +227,8 @@ window.playlistData = [
         "title": "【ドラクエ8】ひんやりと暗い道～暗い道の奥で｜ダンジョンメドレーピアノ演奏",
         "rawTitle": "【ドラクエ8】ひんやりと暗い道～暗い道の奥で｜ダンジョンメドレーピアノ演奏",
         "url": "https://www.youtube.com/watch?v=bnmmqHWh83k",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "初中級",
+        "difficultyStars": 2,
         "difficultyDetail": ""
       }
     ]
@@ -733,8 +733,8 @@ window.playlistData = [
         "title": "【ドラクエ4】勇者の故郷｜哀愁あふれるフィールドBGMをクラシックピアノで",
         "rawTitle": "【ドラクエ4】勇者の故郷｜哀愁あふれるフィールドBGMをクラシックピアノで",
         "url": "https://www.youtube.com/watch?v=GOzVrDN6Ilc",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "初中級",
+        "difficultyStars": 2,
         "difficultyDetail": ""
       }
     ]
