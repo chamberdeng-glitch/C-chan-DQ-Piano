@@ -533,9 +533,9 @@ window.songReferenceData = {
       "sortNumber": 12,
       "songTitle": "勇者の故郷",
       "category": "フィールド",
-      "videoUrl": "https://www.youtube.com/watch?v=hOceSHUE7Pc",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=GOzVrDN6Ilc",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IV-13",
@@ -1451,26 +1451,26 @@ window.songReferenceData = {
       "songTitle": "雄叫びをあげて",
       "category": "通常戦闘",
       "videoUrl": "https://www.youtube.com/watch?v=CcJ9m03N0w4",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "上級",
+      "difficultyStars": 5
     },
     {
       "id": "VIII-8",
       "sortNumber": 8,
       "songTitle": "ひんやりと暗い道",
       "category": "ダンジョン",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=bnmmqHWh83k",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "VIII-9",
       "sortNumber": 9,
       "songTitle": "暗い道の奥で",
       "category": "ダンジョン",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=bnmmqHWh83k",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "VIII-10",
@@ -1478,8 +1478,8 @@ window.songReferenceData = {
       "songTitle": "静かな村",
       "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=GElg72TZ8_o",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "初級",
+      "difficultyStars": 1
     },
     {
       "id": "VIII-11",
@@ -1496,8 +1496,8 @@ window.songReferenceData = {
       "songTitle": "讃美歌に癒されて",
       "category": "教会・ほこら",
       "videoUrl": "https://www.youtube.com/watch?v=yy5gRhKAR8Q",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "初級",
+      "difficultyStars": 1
     },
     {
       "id": "VIII-13",
@@ -1523,8 +1523,8 @@ window.songReferenceData = {
       "songTitle": "難関を突破せよ",
       "category": "ボス戦闘",
       "videoUrl": "https://www.youtube.com/watch?v=2BTLfqfatbE",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "上級",
+      "difficultyStars": 5
     },
     {
       "id": "VIII-16",
@@ -1550,8 +1550,8 @@ window.songReferenceData = {
       "songTitle": "急げピンチだ",
       "category": "イベント",
       "videoUrl": "https://www.youtube.com/watch?v=gNWdoEsQXSs",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "上級",
+      "difficultyStars": 5
     },
     {
       "id": "VIII-19",
@@ -1568,8 +1568,8 @@ window.songReferenceData = {
       "songTitle": "つらい時を乗り越えて",
       "category": "イベント",
       "videoUrl": "https://www.youtube.com/watch?v=rMojlffHSPY",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "VIII-21",
@@ -1604,8 +1604,8 @@ window.songReferenceData = {
       "songTitle": "海の記憶",
       "category": "海",
       "videoUrl": "https://www.youtube.com/watch?v=dYGysLcgB6s",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "VIII-25",
@@ -1622,8 +1622,8 @@ window.songReferenceData = {
       "songTitle": "対話",
       "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=O7At34-JxdA",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "上級",
+      "difficultyStars": 5
     },
     {
       "id": "VIII-27",
@@ -1694,8 +1694,8 @@ window.songReferenceData = {
       "songTitle": "おおぞらに戦う",
       "category": "ボス戦闘",
       "videoUrl": "https://www.youtube.com/watch?v=CQMKkbG4eEU",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "difficultyLabel": "上級",
+      "difficultyStars": 5
     },
     {
       "id": "VIII-35",
@@ -2456,8 +2456,8 @@ window.songReferenceData = {
       "songTitle": "空飛ぶ鯨",
       "category": "空",
       "videoUrl": "https://www.youtube.com/watch?v=aak-OzJVSTg",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "XI-22",
