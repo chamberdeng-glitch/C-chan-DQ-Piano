@@ -9,6 +9,7 @@ __pycache__/
 .pycache_codex/
 .DS_Store
 .claude/
+.codex-bin/
 discord-bot/
 discord-bot.log
 sedori_works/
