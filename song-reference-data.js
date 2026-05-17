@@ -1703,8 +1703,8 @@ window.songReferenceData = {
       "songTitle": "空と海と大地",
       "category": "エンディング",
       "videoUrl": "https://www.youtube.com/watch?v=gi1i_gHw_Bo",
-      "difficultyLabel": "中級",
-      "difficultyStars": 3
+      "difficultyLabel": "上級",
+      "difficultyStars": 5
     }
   ],
   "IX": [

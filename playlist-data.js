@@ -219,8 +219,8 @@ window.playlistData = [
         "title": "【ドラクエ8 】大聖堂のある街〜空と海と大地【エンディング曲ピアノカバー】",
         "rawTitle": "【ドラクエ8 】大聖堂のある街〜空と海と大地【エンディング曲ピアノカバー】",
         "url": "https://www.youtube.com/watch?v=gi1i_gHw_Bo",
-        "difficultyLabel": "中級",
-        "difficultyStars": 3,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
