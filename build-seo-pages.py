@@ -157,6 +157,7 @@ def make_head(lang: str, title: str, desc: str, canon: str, ja_href: str, en_hre
         "gtag('js', new Date());"
         "gtag('config', 'G-S51EBHNVZ3');"
         '</script>'
+        '<script src="/analytics.js" defer></script>'
     )
     return (
         '<!DOCTYPE html>'
