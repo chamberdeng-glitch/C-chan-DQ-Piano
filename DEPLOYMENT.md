@@ -22,7 +22,7 @@ Set these secrets on the GitHub repository that owns the deployment branch:
 - `CLOUDFLARE_API_TOKEN`
 - `CLOUDFLARE_ACCOUNT_ID`
 
-The API token should be scoped to the Cloudflare account and Worker needed for this site. Do not commit token values to the repository.
+The API token should be scoped to the Cloudflare account and Worker needed for this site. For this Worker deploy, grant `Workers Scripts Write` on the target account. Do not commit token values to the repository.
 
 ## Remote Naming
 
