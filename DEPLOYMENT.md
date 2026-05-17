@@ -6,11 +6,14 @@ This site is deployed to Cloudflare Workers from the `cloudflare/workers-autocon
 
 1. Edit source data or pages locally.
 2. Run `python3 build-seo-pages.py`.
-3. Commit the intended files.
-4. Push to `origin cloudflare/workers-autoconfig`.
-5. GitHub Actions runs `wrangler deploy` and publishes the Worker directly.
+3. Optionally run `python3 build-worker-assets.py` to check the Cloudflare asset bundle.
+4. Commit the intended files.
+5. Push to `origin cloudflare/workers-autoconfig`.
+6. GitHub Actions regenerates pages, builds `dist/`, runs `wrangler deploy`, and publishes the Worker directly.
 
 Cloudflare dashboard promotion should not be needed for the normal flow.
+
+Only `dist/` is deployed. Local credentials, Discord bot files, and `sedori_works/` are intentionally excluded from the public asset bundle.
 
 ## Required GitHub Secrets
 

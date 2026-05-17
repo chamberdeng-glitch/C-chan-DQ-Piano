@@ -30,10 +30,14 @@ jobs:
           node --check analytics.js
           node --check site.js
 
+      - name: Build deploy assets
+        run: python3 build-worker-assets.py
+
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
+          wranglerVersion: "4"
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
