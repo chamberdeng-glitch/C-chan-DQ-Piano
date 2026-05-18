@@ -408,48 +408,80 @@ def write(path: str | Path, content: str) -> None:
     out.write_text(content, encoding='utf-8')
 
 
+BOOK_TONES = ['green', 'wine', 'navy', 'brown', 'purple', 'olive']
+
+
+def book_spine_card(href: str, title: str, body: str, tone_index: int, code: str = '') -> str:
+    code_html = f'<span class="book-spine-code">{esc(code)}</span>' if code else ''
+    return (
+        f'<a class="book-spine tone-{BOOK_TONES[tone_index % len(BOOK_TONES)]}" href="{esc(href)}">'
+        '<span class="book-spine-ornament" aria-hidden="true"></span>'
+        f'{code_html}'
+        f'<span class="book-spine-title">{esc(title)}</span>'
+        f'<span class="book-spine-subtitle">{esc(body)}</span>'
+        '</a>'
+    )
+
+
+def book_shelf(cards: list[str], label: str) -> str:
+    return (
+        f'<div class="bookcase-scroll" aria-label="{esc(label)}">'
+        '<div class="bookcase-shelf">'
+        f'{"".join(cards)}'
+        '</div>'
+        '</div>'
+    )
+
+
 def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> None:
     path = ROOT / path_str
     text = path.read_text(encoding='utf-8')
     text = text.replace('https://chamberd-piano.github.io', BASE)
     series_cards = []
-    for key, meta in SERIES_MAP.items():
+    for index, (key, meta) in enumerate(SERIES_MAP.items()):
         href = f'/{meta["slug"]}/' if lang == 'ja' else f'/en/{meta["slug"]}/'
-        body = f'{meta["ja"]} \u306e\u66f2\u3092\u63a2\u3059' if lang == 'ja' else f'Browse {meta["en"]} songs'
-        thumb = normalize_thumb(series_playlists.get(key, {}).get('thumbnail')) if series_playlists.get(key) else ''
-        series_cards.append(entry_card(href, meta['code'], body, thumb=thumb))
+        title = f'DQ {key}' if lang == 'ja' else f'DQ {key}'
+        body = meta['ja'] if lang == 'ja' else meta['en']
+        series_cards.append(book_spine_card(href, title, body, index, code=key))
+
+    featured_categories = [
+        ('field', 'フィールド曲', 'Field Music'),
+        ('normal-battle', '通常戦闘曲', 'Normal Battles'),
+        ('boss-battle', 'ボス戦闘曲', 'Boss Battles'),
+        ('town-village', '町・村の曲', 'Town Themes'),
+        ('ending', 'エンディング曲', 'Endings'),
+        ('event', 'イベント曲', 'Event Scenes'),
+        ('medley', 'メドレー', 'Medleys'),
+        ('medley', '作業用BGM', 'Background BGM'),
+    ]
     category_cards = []
-    bgm_cards = []
-    for slug, info in CATS.items():
+    for index, (slug, ja_label, en_label) in enumerate(featured_categories):
+        info = CATS[slug]
         href = f'/category/{slug}/' if lang == 'ja' else f'/en/category/{slug}/'
-        if slug == 'medley':
-            body = '\u4f5c\u696d\u7528BGM\u5411\u3051\u306e\u30e1\u30c9\u30ec\u30fc' if lang == 'ja' else 'Medleys for background listening'
-            bgm_cards.append(entry_card(href, info['ja'] if lang == 'ja' else info['en'], body))
-            continue
-        body = '\u30c9\u30e9\u30b4\u30f3\u30af\u30a8\u30b9\u30c8 \u30d4\u30a2\u30ce\u306e\u5165\u53e3' if lang == 'ja' else 'Category page'
-        category_cards.append(entry_card(href, info['ja'] if lang == 'ja' else info['en'], body))
+        title = ja_label if lang == 'ja' else en_label
+        body = 'カテゴリ別ページ' if lang == 'ja' else 'Category page'
+        if ja_label == '作業用BGM':
+            body = 'メドレーを作業用BGMとして聴く' if lang == 'ja' else 'Medleys for background listening'
+        category_cards.append(book_spine_card(href, title, body, index + 2))
     if lang == 'ja':
-        heading = '\u4f5c\u54c1\u5225\u30fb\u30ab\u30c6\u30b4\u30ea\u5225\u306e\u7740\u5730\u30da\u30fc\u30b8'
-        copy = '\u691c\u7d22\u7528\u9014\uff08\u4f8b\u3001DQ8\u3001\u6226\u95d8\u66f2 \u7b49\uff09\u306b\u5408\u308f\u305b\u3066\u3001\u30d4\u30a2\u30ce\u6f14\u594f\u52d5\u753b\u306e\u4f5c\u54c1\u5225\u30fb\u30ab\u30c6\u30b4\u30ea\u5225\u30da\u30fc\u30b8\u3078\u9032\u3081\u307e\u3059\u3002'
-        s_title = '\u4f5c\u54c1\u5225\u30da\u30fc\u30b8'
-        c_title = '\u30ab\u30c6\u30b4\u30ea\u5225\u30da\u30fc\u30b8'
-        b_title = '\u4f5c\u696d\u7528BGM'
+        heading = '音楽アーカイブ'
+        copy = '本棚から作品や曲調を選ぶように、ドラゴンクエストのピアノ演奏ライブラリーへ進めます。'
+        s_title = 'シリーズ別ライブラリー'
+        c_title = 'カテゴリ別ライブラリー'
     else:
-        heading = 'Series and category landing pages'
-        copy = 'Jump to Dragon Quest piano landing pages by series and category.'
-        s_title = 'Browse by Series'
-        c_title = 'Browse by Category'
-        b_title = 'Background Listening'
+        heading = 'Music Archive'
+        copy = 'Choose a series or mood from the shelf and enter the Dragon Quest piano library.'
+        s_title = 'Series Library'
+        c_title = 'Category Library'
     hub = (
-        '<section class="section seo-hub-links" id="seo-links">'
+        '<section class="section seo-hub-links bookcase-library" id="seo-links">'
         '<div class="section-heading">'
-        '<p class="section-kicker">SEO Landing Pages</p>'
+        '<p class="section-kicker">Piano Archive</p>'
         f'<h2>{esc(heading)}</h2>'
         f'<p class="section-copy">{esc(copy)}</p>'
         '</div>'
-        f'<div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">Series</p><h3>{esc(s_title)}</h3></div>{entry_grid(series_cards)}</div>'
-        f'<div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{entry_grid(category_cards)}</div>'
-        f'<div class="seo-hub-block"><div class="section-heading compact-heading"><p class="section-kicker">BGM</p><h3>{esc(b_title)}</h3></div>{entry_grid(bgm_cards)}</div>'
+        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading"><p class="section-kicker">Series</p><h3>{esc(s_title)}</h3></div>{book_shelf(series_cards, s_title)}</div>'
+        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{book_shelf(category_cards, c_title)}</div>'
         '</section>'
     )
     import re
