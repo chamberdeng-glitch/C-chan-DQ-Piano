@@ -411,22 +411,25 @@ def write(path: str | Path, content: str) -> None:
 BOOK_TONES = ['green', 'wine', 'navy', 'brown', 'purple', 'olive']
 
 
-def book_spine_card(href: str, title: str, body: str, tone_index: int, code: str = '') -> str:
+def book_spine_card(href: str, title: str, body: str, tone_index: int, code: str = '', icon: str = '', variant: str = 'series') -> str:
     code_html = f'<span class="book-spine-code">{esc(code)}</span>' if code else ''
+    icon_html = f'<span class="book-spine-icon" aria-hidden="true">{esc(icon)}</span>' if icon else ''
+    link_label = f'{title} {code}'.strip() if code else title
     return (
-        f'<a class="book-spine tone-{BOOK_TONES[tone_index % len(BOOK_TONES)]}" href="{esc(href)}">'
+        f'<a class="book-spine book-spine-{esc(variant)} tone-{BOOK_TONES[tone_index % len(BOOK_TONES)]}" style="--book-index:{tone_index}" href="{esc(href)}" aria-label="{esc(link_label)}">'
         '<span class="book-spine-ornament" aria-hidden="true"></span>'
+        f'<span class="book-spine-title">{esc(title)}</span> '
+        f'{icon_html}'
         f'{code_html}'
-        f'<span class="book-spine-title">{esc(title)}</span>'
         f'<span class="book-spine-subtitle">{esc(body)}</span>'
         '</a>'
     )
 
 
-def book_shelf(cards: list[str], label: str) -> str:
+def book_shelf(cards: list[str], label: str, variant: str) -> str:
     return (
-        f'<div class="bookcase-scroll" aria-label="{esc(label)}">'
-        '<div class="bookcase-shelf">'
+        f'<div class="bookcase-scroll bookcase-scroll-{esc(variant)}" aria-label="{esc(label)}">'
+        f'<div class="bookcase-shelf bookcase-shelf-{esc(variant)}">'
         f'{"".join(cards)}'
         '</div>'
         '</div>'
@@ -440,53 +443,44 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     series_cards = []
     for index, (key, meta) in enumerate(SERIES_MAP.items()):
         href = f'/{meta["slug"]}/' if lang == 'ja' else f'/en/{meta["slug"]}/'
-        title = f'DQ {key}' if lang == 'ja' else f'DQ {key}'
+        title = 'DQ'
         body = meta['ja'] if lang == 'ja' else meta['en']
-        series_cards.append(book_spine_card(href, title, body, index, code=key))
+        series_cards.append(book_spine_card(href, title, body, index, code=key, variant='series'))
 
     featured_categories = [
-        ('field', 'フィールド曲', 'Field Music'),
-        ('normal-battle', '通常戦闘曲', 'Normal Battles'),
-        ('boss-battle', 'ボス戦闘曲', 'Boss Battles'),
-        ('town-village', '町・村の曲', 'Town Themes'),
-        ('ending', 'エンディング曲', 'Endings'),
-        ('event', 'イベント曲', 'Event Scenes'),
-        ('medley', 'メドレー', 'Medleys'),
-        ('medley', '作業用BGM', 'Background BGM'),
+        ('field', 'フィールド曲', 'Field Music', '♪'),
+        ('normal-battle', '通常戦闘曲', 'Normal Battles', '♬'),
+        ('boss-battle', 'ボス戦闘曲', 'Boss Battles', '♭'),
+        ('town-village', '町・村の曲', 'Town Themes', '⌂'),
+        ('ending', 'エンディング曲', 'Endings', '♩'),
+        ('event', 'イベント曲', 'Event Scenes', '◇'),
+        ('medley', 'メドレー', 'Medleys', '♫'),
+        ('medley', '作業用BGM', 'Background BGM', '♨'),
     ]
     category_cards = []
-    for index, (slug, ja_label, en_label) in enumerate(featured_categories):
+    for index, (slug, ja_label, en_label, icon) in enumerate(featured_categories):
         info = CATS[slug]
         href = f'/category/{slug}/' if lang == 'ja' else f'/en/category/{slug}/'
         title = ja_label if lang == 'ja' else en_label
         body = 'カテゴリ別ページ' if lang == 'ja' else 'Category page'
         if ja_label == '作業用BGM':
             body = 'メドレーを作業用BGMとして聴く' if lang == 'ja' else 'Medleys for background listening'
-        category_cards.append(book_spine_card(href, title, body, index + 2))
+        category_cards.append(book_spine_card(href, title, body, index, icon=icon, variant='category'))
     if lang == 'ja':
-        heading = '音楽アーカイブ'
-        copy = '本棚から作品や曲調を選ぶように、ドラゴンクエストのピアノ演奏ライブラリーへ進めます。'
         s_title = 'シリーズ別ライブラリー'
         c_title = 'カテゴリ別ライブラリー'
     else:
-        heading = 'Music Archive'
-        copy = 'Choose a series or mood from the shelf and enter the Dragon Quest piano library.'
         s_title = 'Series Library'
         c_title = 'Category Library'
     hub = (
         '<section class="section seo-hub-links bookcase-library" id="seo-links">'
-        '<div class="section-heading">'
-        '<p class="section-kicker">Piano Archive</p>'
-        f'<h2>{esc(heading)}</h2>'
-        f'<p class="section-copy">{esc(copy)}</p>'
-        '</div>'
-        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading"><p class="section-kicker">Series</p><h3>{esc(s_title)}</h3></div>{book_shelf(series_cards, s_title)}</div>'
-        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{book_shelf(category_cards, c_title)}</div>'
+        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Series</p><h3>{esc(s_title)}</h3></div>{book_shelf(series_cards, s_title, "series")}</div>'
+        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{book_shelf(category_cards, c_title, "category-en" if lang == "en" else "category")}</div>'
         '</section>'
     )
     import re
     if 'seo-hub-links' in text:
-        text = re.sub(r'<section class="section seo-hub-links" id="seo-links">.*?</section>', hub, text, count=1, flags=re.S)
+        text = re.sub(r'<section class="section seo-hub-links[^"]*" id="seo-links">.*?</section>', hub, text, count=1, flags=re.S)
     else:
         text = text.replace('<main class="page">', '<main class="page">\n    ' + hub, 1)
     path.write_text(text, encoding='utf-8')
@@ -689,7 +683,7 @@ def build() -> None:
 
     urls.extend([BASE + '/series-index.html', BASE + '/en/series-index.html', BASE + '/category-index.html', BASE + '/en/category-index.html'])
     patch_home('index.html', 'ja', series_playlists)
-    patch_home('en.html', 'en', series_playlists)
+    patch_home('en/index.html', 'en', series_playlists)
     (ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: ' + BASE + '/sitemap.xml\n', encoding='utf-8')
     (ROOT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join(f'<url><loc>{url}</loc></url>' for url in urls) + '</urlset>', encoding='utf-8')
     print('generated', len(urls), 'urls')
