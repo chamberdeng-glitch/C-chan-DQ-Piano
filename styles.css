@@ -1700,13 +1700,13 @@ h1 {
 }
 
 .bookcase-shelf-category {
-  aspect-ratio: 1280 / 325;
-  background-image: url("./assets/bookshelf-category-reference.jpg");
+  aspect-ratio: 2172 / 560;
+  background-image: url("./assets/bookshelf-category-wide-reference.jpg");
 }
 
 .bookcase-shelf-category-en {
-  aspect-ratio: 1280 / 420;
-  background-image: url("./assets/bookshelf-category-reference-en.jpg");
+  aspect-ratio: 2172 / 560;
+  background-image: url("./assets/bookshelf-category-wide-reference-en.jpg");
 }
 
 .book-spine,
@@ -2119,13 +2119,13 @@ h1 {
 }
 
 .bookcase-shelf-category {
-  aspect-ratio: 1280 / 325;
-  background-image: url("./assets/bookshelf-category-reference.jpg");
+  aspect-ratio: 2172 / 560;
+  background-image: url("./assets/bookshelf-category-wide-reference.jpg");
 }
 
 .bookcase-shelf-category-en {
-  aspect-ratio: 1280 / 420;
-  background-image: url("./assets/bookshelf-category-reference-en.jpg");
+  aspect-ratio: 2172 / 560;
+  background-image: url("./assets/bookshelf-category-wide-reference-en.jpg");
 }
 
 .book-spine,
@@ -2171,10 +2171,10 @@ h1 {
 }
 
 .book-spine-category {
-  top: 24%;
-  bottom: 9%;
-  left: calc(4.2% + (var(--book-index) * 12.4%));
-  width: 10.8%;
+  top: 2.5%;
+  bottom: 5.5%;
+  left: calc(1.15% + (var(--book-index) * 4.82%));
+  width: 4.55%;
 }
 
 @media (max-width: 720px) {
@@ -2219,15 +2219,17 @@ h1 {
   }
 
   .bookcase-shelf-category {
-    aspect-ratio: 1280 / 242;
-    background-size: 100% auto;
-    background-position: center bottom;
+    min-width: 1700px;
+    aspect-ratio: 2172 / 560;
+    background-size: 100% 100%;
+    background-position: center;
   }
 
   .bookcase-shelf-category-en {
-    aspect-ratio: 1280 / 295;
-    background-size: 100% auto;
-    background-position: center bottom;
+    min-width: 1700px;
+    aspect-ratio: 2172 / 560;
+    background-size: 100% 100%;
+    background-position: center;
   }
 
   .book-spine-series {
@@ -2236,7 +2238,7 @@ h1 {
   }
 
   .book-spine-category {
-    top: 7%;
-    bottom: 9%;
+    top: 2.5%;
+    bottom: 5.5%;
   }
 }

@@ -436,6 +436,42 @@ def book_shelf(cards: list[str], label: str, variant: str) -> str:
     )
 
 
+CATEGORY_LIBRARY = [
+    ('opening', 'オープニング', 'Opening', '◇'),
+    ('prologue', 'プロローグ', 'Prologue', '♩'),
+    ('interlude', '場面転換', 'Transition', '↔'),
+    ('field', 'フィールド曲', 'Field', '♪'),
+    ('sea', '海', 'Ocean', '〜'),
+    ('sky', '空', 'Sky', '◇'),
+    ('town-village', '町・村の曲', 'Town & Village', '⌂'),
+    ('castle', '城', 'Castle', '⌂'),
+    ('church-shrine', '教会・ほこら', 'Church & Shrine', '◇'),
+    ('casino', 'カジノ', 'Casino', '♬'),
+    ('dungeon', 'ダンジョン', 'Dungeon', '◇'),
+    ('tower', '塔', 'Tower', '⌂'),
+    ('event', 'イベント曲', 'Event', '◇'),
+    ('character-theme', 'キャラクターテーマ', 'Character', '♩'),
+    ('normal-battle', '通常戦闘曲', 'Regular Battle', '♬'),
+    ('boss-battle', 'ボス戦闘曲', 'Boss Battle', '♭'),
+    ('ending', 'エンディング曲', 'Ending', '♩'),
+    ('game-over', '全滅', 'Defeat', '◇'),
+    ('medley', 'メドレー', 'Medley', '♫'),
+    ('medley', '作業用BGM', 'Work & Study BGM', '♨'),
+]
+
+
+def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[str]:
+    cards = []
+    for index, (slug, ja_label, en_label, icon) in enumerate(items):
+        href = f'/category/{slug}/' if lang == 'ja' else f'/en/category/{slug}/'
+        title = ja_label if lang == 'ja' else en_label
+        body = 'カテゴリ別ページ' if lang == 'ja' else 'Category page'
+        if ja_label == '作業用BGM':
+            body = 'メドレーを作業用BGMとして聴く' if lang == 'ja' else 'Medleys for background listening'
+        cards.append(book_spine_card(href, title, body, index, icon=icon, variant='category'))
+    return cards
+
+
 def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> None:
     path = ROOT / path_str
     text = path.read_text(encoding='utf-8')
@@ -447,25 +483,7 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
         body = meta['ja'] if lang == 'ja' else meta['en']
         series_cards.append(book_spine_card(href, title, body, index, code=key, variant='series'))
 
-    featured_categories = [
-        ('field', 'フィールド曲', 'Field Music', '♪'),
-        ('normal-battle', '通常戦闘曲', 'Normal Battles', '♬'),
-        ('boss-battle', 'ボス戦闘曲', 'Boss Battles', '♭'),
-        ('town-village', '町・村の曲', 'Town Themes', '⌂'),
-        ('ending', 'エンディング曲', 'Endings', '♩'),
-        ('event', 'イベント曲', 'Event Scenes', '◇'),
-        ('medley', 'メドレー', 'Medleys', '♫'),
-        ('medley', '作業用BGM', 'Background BGM', '♨'),
-    ]
-    category_cards = []
-    for index, (slug, ja_label, en_label, icon) in enumerate(featured_categories):
-        info = CATS[slug]
-        href = f'/category/{slug}/' if lang == 'ja' else f'/en/category/{slug}/'
-        title = ja_label if lang == 'ja' else en_label
-        body = 'カテゴリ別ページ' if lang == 'ja' else 'Category page'
-        if ja_label == '作業用BGM':
-            body = 'メドレーを作業用BGMとして聴く' if lang == 'ja' else 'Medleys for background listening'
-        category_cards.append(book_spine_card(href, title, body, index, icon=icon, variant='category'))
+    category_library_cards = category_cards(CATEGORY_LIBRARY, lang)
     if lang == 'ja':
         s_title = 'シリーズ別ライブラリー'
         c_title = 'カテゴリ別ライブラリー'
@@ -475,7 +493,7 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     hub = (
         '<section class="section seo-hub-links bookcase-library" id="seo-links">'
         f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Series</p><h3>{esc(s_title)}</h3></div>{book_shelf(series_cards, s_title, "series")}</div>'
-        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{book_shelf(category_cards, c_title, "category-en" if lang == "en" else "category")}</div>'
+        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{book_shelf(category_library_cards, c_title, "category-en" if lang == "en" else "category")}</div>'
         '</section>'
     )
     import re
