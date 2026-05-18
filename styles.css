@@ -1749,8 +1749,8 @@ h1 {
 .book-spine-series {
   top: 19%;
   bottom: 4%;
-  left: calc(2.6% + (var(--book-index) * 9.3%));
-  width: 7.7%;
+  left: calc(2.8% + (var(--book-index) * 8.35%));
+  width: 7.85%;
 }
 
 .book-spine-category {
@@ -2168,8 +2168,8 @@ h1 {
 .book-spine-series {
   top: 19%;
   bottom: 4%;
-  left: calc(2.6% + (var(--book-index) * 9.3%));
-  width: 7.7%;
+  left: calc(2.8% + (var(--book-index) * 8.35%));
+  width: 7.85%;
 }
 
 .book-spine-category {
