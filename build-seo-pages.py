@@ -209,11 +209,13 @@ def breadcrumb_json(items: list[tuple[str, str]]) -> dict:
 
 def topbar(lang: str, current: str, alt: str) -> str:
     is_home = current in ('/', '/en.html')
+    ja_brand = '<a class="brand" href="/" aria-label="しーちゃんピアノ ホーム"><img class="brand-logo" src="/assets/channel-logo.jpg" alt="" width="64" height="64"><span class="brand-text">しーちゃんピアノ</span></a>'
+    en_brand = '<a class="brand" href="/en.html" aria-label="C-chan piano home"><img class="brand-logo" src="/assets/channel-logo.jpg" alt="" width="64" height="64"><span class="brand-text">C-chan piano</span></a>'
     if lang == 'ja':
         home_link = '' if is_home else '<a class="topbar-home" href="/">ホーム</a>'
         return (
             '<nav class="topbar" aria-label="主要ナビゲーション">'
-            f'{home_link}<a class="brand" href="/">しーちゃんピアノ</a>'
+            f'{ja_brand}{home_link}'
             '<div class="topbar-right"><div class="topbar-links">'
             '<a href="/series-index.html">作品別ページ</a>'
             '<a class="topbar-shortcut" href="/category-index.html">カテゴリ別ページ</a>'
@@ -226,7 +228,7 @@ def topbar(lang: str, current: str, alt: str) -> str:
     home_link = '' if is_home else '<a class="topbar-home" href="/en.html">Home</a>'
     return (
         '<nav class="topbar" aria-label="Primary navigation">'
-        f'{home_link}<a class="brand" href="/en.html">C-chan piano</a>'
+        f'{en_brand}{home_link}'
         '<div class="topbar-right"><div class="topbar-links">'
         '<a href="/en/series-index.html">Browse by Series</a>'
         '<a class="topbar-shortcut" href="/en/category-index.html">Browse by Category</a>'

@@ -23,6 +23,7 @@ ROOT_FILES = [
 ]
 
 DIRECTORIES = [
+    "assets",
     "category",
     "covers",
     "dq1",

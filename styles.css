@@ -31,6 +31,7 @@ body {
     radial-gradient(circle at top, rgba(53, 104, 155, 0.18), transparent 30%),
     linear-gradient(180deg, #06101c 0%, var(--bg) 100%);
   font-family: "Yu Gothic UI", "Hiragino Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 a {
@@ -60,6 +61,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 22px 0 12px;
+  gap: 18px;
 }
 
 .topbar-home {
@@ -99,13 +101,26 @@ h3 {
 }
 
 .brand {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--brand-deep);
-  text-shadow: 0 0 12px rgba(244, 211, 124, 0.18);
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow:
+    0 14px 32px rgba(1, 7, 14, 0.32),
+    0 0 0 1px rgba(244, 211, 124, 0.32);
+  overflow: hidden;
 }
 
-.brand,
+.brand-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.brand-text,
 .hero-titleplate strong {
   display: none;
 }
@@ -432,6 +447,7 @@ h3 {
   padding: 42px;
   background:
     linear-gradient(180deg, rgba(23, 42, 66, 0.98) 0%, rgba(12, 24, 38, 0.92) 100%);
+  min-width: 0;
 }
 
 .eyebrow,
@@ -450,6 +466,7 @@ h1 {
   margin: 10px 0 0;
   font-size: clamp(2.5rem, 5vw, 4.2rem);
   line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .lead,
@@ -951,15 +968,27 @@ h1 {
   }
 
   .topbar {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 52px 1fr;
     align-items: flex-start;
-    gap: 10px;
+    gap: 10px 12px;
   }
 
   .topbar-right {
+    grid-column: 1 / -1;
     width: 100%;
     display: grid;
     gap: 12px;
+  }
+
+  .brand {
+    width: 52px;
+    height: 52px;
+  }
+
+  .topbar-home {
+    min-height: 52px;
+    align-self: stretch;
   }
 
   .topbar-links,
@@ -1002,7 +1031,9 @@ h1 {
   }
 
   .hero-copy-top {
+    display: grid;
     align-items: flex-start;
+    gap: 12px;
   }
 
   .topbar .language-switch {
@@ -1015,6 +1046,11 @@ h1 {
 
   .hero-copy {
     border-radius: 28px;
+    padding: 28px 20px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 11vw, 2.8rem);
   }
 
   .hero-metrics {
