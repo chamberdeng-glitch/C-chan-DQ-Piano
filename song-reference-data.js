@@ -488,7 +488,7 @@ window.songReferenceData = {
       "sortNumber": 7,
       "songTitle": "ジプシーダンス",
       "category": "通常戦闘",
-      "videoUrl": "https://www.youtube.com/watch?v=ZaQMq0FS1T0",
+      "videoUrl": "https://www.youtube.com/watch?v=ZaQMq0FS1T0&t=0s",
       "difficultyLabel": "未設定",
       "difficultyStars": null
     },
@@ -497,7 +497,7 @@ window.songReferenceData = {
       "sortNumber": 8,
       "songTitle": "ジプシーの旅",
       "category": "フィールド",
-      "videoUrl": "https://www.youtube.com/watch?v=ZaQMq0FS1T0",
+      "videoUrl": "https://www.youtube.com/watch?v=ZaQMq0FS1T0&t=106s",
       "difficultyLabel": "未設定",
       "difficultyStars": null
     },
@@ -1459,7 +1459,7 @@ window.songReferenceData = {
       "sortNumber": 8,
       "songTitle": "ひんやりと暗い道",
       "category": "ダンジョン",
-      "videoUrl": "https://www.youtube.com/watch?v=bnmmqHWh83k",
+      "videoUrl": "https://www.youtube.com/watch?v=bnmmqHWh83k&t=0s",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
     },
@@ -1468,7 +1468,7 @@ window.songReferenceData = {
       "sortNumber": 9,
       "songTitle": "暗い道の奥で",
       "category": "ダンジョン",
-      "videoUrl": "https://www.youtube.com/watch?v=bnmmqHWh83k",
+      "videoUrl": "https://www.youtube.com/watch?v=bnmmqHWh83k&t=112s",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
     },
@@ -1657,7 +1657,7 @@ window.songReferenceData = {
       "sortNumber": 30,
       "songTitle": "大聖堂のある街",
       "category": "教会・ほこら",
-      "videoUrl": "https://www.youtube.com/watch?v=gi1i_gHw_Bo",
+      "videoUrl": "https://www.youtube.com/watch?v=gi1i_gHw_Bo&t=0s",
       "difficultyLabel": "中級",
       "difficultyStars": 3
     },
@@ -1702,7 +1702,7 @@ window.songReferenceData = {
       "sortNumber": 35,
       "songTitle": "空と海と大地",
       "category": "エンディング",
-      "videoUrl": "https://www.youtube.com/watch?v=gi1i_gHw_Bo",
+      "videoUrl": "https://www.youtube.com/watch?v=gi1i_gHw_Bo&t=196s",
       "difficultyLabel": "上級",
       "difficultyStars": 5
     }
@@ -1821,7 +1821,7 @@ window.songReferenceData = {
       "sortNumber": 13,
       "songTitle": "野を越え山を越え",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=693s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1830,7 +1830,7 @@ window.songReferenceData = {
       "sortNumber": 14,
       "songTitle": "海図を広げて",
       "category": "海",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=6Rp2lOYCABE&t=489s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1893,7 +1893,7 @@ window.songReferenceData = {
       "sortNumber": 21,
       "songTitle": "箱舟に乗って",
       "category": "空",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=6Rp2lOYCABE&t=2517s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1929,7 +1929,7 @@ window.songReferenceData = {
       "sortNumber": 25,
       "songTitle": "仲間とともに",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=3541s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2075,7 +2075,7 @@ window.songReferenceData = {
       "sortNumber": 9,
       "songTitle": "空飛ぶ小舟",
       "category": "空",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=6Rp2lOYCABE&t=2499s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2120,7 +2120,7 @@ window.songReferenceData = {
       "sortNumber": 14,
       "songTitle": "天空の世界",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=2361s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2129,7 +2129,7 @@ window.songReferenceData = {
       "sortNumber": 15,
       "songTitle": "花の民プクリポ",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=2639s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2138,7 +2138,7 @@ window.songReferenceData = {
       "sortNumber": 16,
       "songTitle": "地の民ドワーフ",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=3110s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2156,7 +2156,7 @@ window.songReferenceData = {
       "sortNumber": 18,
       "songTitle": "あの丘を越えたら",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=2222s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2183,7 +2183,7 @@ window.songReferenceData = {
       "sortNumber": 21,
       "songTitle": "水の民ウェディ",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=2717s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2192,7 +2192,7 @@ window.songReferenceData = {
       "sortNumber": 22,
       "songTitle": "風の民エルフ",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=2906s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2201,7 +2201,7 @@ window.songReferenceData = {
       "sortNumber": 23,
       "songTitle": "炎の民オーガ",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=3240s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2302,7 +2302,7 @@ window.songReferenceData = {
       "sortNumber": 4,
       "songTitle": "勇者は征く",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=4606s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2518,7 +2518,7 @@ window.songReferenceData = {
       "sortNumber": 28,
       "songTitle": "希望はいずこへ",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=4135s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2527,7 +2527,7 @@ window.songReferenceData = {
       "sortNumber": 29,
       "songTitle": "黄昏の荒野",
       "category": "フィールド",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=4406s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
