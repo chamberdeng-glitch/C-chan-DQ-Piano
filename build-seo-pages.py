@@ -338,10 +338,10 @@ def song_table(rows: list[dict], lang: str) -> str:
             number_html = esc(row['id'])
         body.append(
             '<tr>'
-            f'<td>{number_html}</td>'
-            f'<td>{title_html}</td>'
-            f'<td>{esc(category)}</td>'
-            f'<td>{render_difficulty_html(difficulty, difficulty_stars)}</td>'
+            f'<td data-label="{esc(headers[0])}">{number_html}</td>'
+            f'<td data-label="{esc(headers[1])}">{title_html}</td>'
+            f'<td data-label="{esc(headers[2])}">{esc(category)}</td>'
+            f'<td data-label="{esc(headers[3])}">{render_difficulty_html(difficulty, difficulty_stars)}</td>'
             '</tr>'
         )
     return (
