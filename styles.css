@@ -1661,13 +1661,8 @@ h1 {
 }
 
 .bookcase-block .shelf-heading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  margin: 0;
+  text-align: center;
 }
 
 .bookcase-scroll {
@@ -1695,8 +1690,10 @@ h1 {
 }
 
 .bookcase-shelf-series {
-  aspect-ratio: 1393 / 560;
+  aspect-ratio: 1393 / 475;
   background-image: url("./assets/bookshelf-series-reference.jpg");
+  background-size: 100% auto;
+  background-position: center bottom;
 }
 
 .bookcase-shelf-category {
@@ -1745,7 +1742,7 @@ h1 {
 }
 
 .book-spine-series {
-  top: 19%;
+  top: 5%;
   bottom: 4%;
   left: calc(2.8% + (var(--book-index) * 8.35%));
   width: 7.85%;
@@ -2091,13 +2088,8 @@ h1 {
 
 /* Image-based homepage shelves. Kept late so mobile legacy book styles cannot override them. */
 .bookcase-block .shelf-heading {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  margin: 0;
+  text-align: center;
 }
 
 .bookcase-shelf {
@@ -2113,8 +2105,10 @@ h1 {
 }
 
 .bookcase-shelf-series {
-  aspect-ratio: 1393 / 560;
+  aspect-ratio: 1393 / 475;
   background-image: url("./assets/bookshelf-series-reference.jpg");
+  background-size: 100% auto;
+  background-position: center bottom;
 }
 
 .bookcase-shelf-category {
@@ -2163,8 +2157,8 @@ h1 {
 }
 
 .book-spine-series {
-  top: 19%;
-  bottom: 7%;
+  top: 5%;
+  bottom: 4%;
   left: calc(3.6% + (var(--book-index) * 8.75%));
   width: 7.55%;
 }
