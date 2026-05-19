@@ -2169,6 +2169,61 @@ h1 {
   width: 7.55%;
 }
 
+.book-spine-series:nth-child(1) {
+  left: 5.599%;
+  width: 6.748%;
+}
+
+.book-spine-series:nth-child(2) {
+  left: 13.496%;
+  width: 7.538%;
+}
+
+.book-spine-series:nth-child(3) {
+  left: 21.752%;
+  width: 7.681%;
+}
+
+.book-spine-series:nth-child(4) {
+  left: 30.366%;
+  width: 7.394%;
+}
+
+.book-spine-series:nth-child(5) {
+  left: 38.622%;
+  width: 7.179%;
+}
+
+.book-spine-series:nth-child(6) {
+  left: 46.518%;
+  width: 7.753%;
+}
+
+.book-spine-series:nth-child(7) {
+  left: 54.702%;
+  width: 7.681%;
+}
+
+.book-spine-series:nth-child(8) {
+  left: 63.317%;
+  width: 7.609%;
+}
+
+.book-spine-series:nth-child(9) {
+  left: 71.572%;
+  width: 7.681%;
+}
+
+.book-spine-series:nth-child(10) {
+  left: 80.258%;
+  width: 7.466%;
+}
+
+.book-spine-series:nth-child(11) {
+  left: 88.514%;
+  width: 7.251%;
+}
+
 .book-spine-category {
   top: 2.5%;
   bottom: 5.5%;
