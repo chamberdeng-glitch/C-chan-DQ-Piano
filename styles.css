@@ -1854,8 +1854,7 @@ h1 {
 
   .bookcase-scroll::before,
   .bookcase-scroll::after {
-    display: block;
-    height: 150px;
+    display: none;
   }
 
   .bookcase-shelf {
