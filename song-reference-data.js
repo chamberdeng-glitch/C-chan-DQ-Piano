@@ -2056,7 +2056,7 @@ window.songReferenceData = {
       "id": "X-7",
       "sortNumber": 7,
       "songTitle": "夢のマイルーム",
-      "category": "教会・ほこら",
+      "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=1mhRK7HifW8",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
