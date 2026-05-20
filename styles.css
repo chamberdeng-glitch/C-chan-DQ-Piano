@@ -1811,7 +1811,7 @@ h1 {
 }
 
 .bookcase-shelf-category-en {
-  aspect-ratio: 2260 / 560;
+  aspect-ratio: 3060 / 560;
   background-image: url("./assets/bookshelf-category-wide-reference-en.jpg");
 }
 
@@ -2226,7 +2226,7 @@ h1 {
 }
 
 .bookcase-shelf-category-en {
-  aspect-ratio: 2260 / 560;
+  aspect-ratio: 3060 / 560;
   background-image: url("./assets/bookshelf-category-wide-reference-en.jpg");
 }
 
@@ -2334,6 +2334,11 @@ h1 {
   width: 4.6%;
 }
 
+.bookcase-shelf-category-en .book-spine-category {
+  left: calc(1.27% + (var(--book-index) * 4.902%));
+  width: 4.32%;
+}
+
 @media (max-width: 720px) {
   .bookcase-library {
     gap: 26px;
@@ -2385,7 +2390,7 @@ h1 {
 
   .bookcase-shelf-category-en {
     min-width: 1700px;
-    aspect-ratio: 2260 / 560;
+    aspect-ratio: 3060 / 560;
     background-size: 100% 100%;
     background-position: center;
   }
