@@ -1806,7 +1806,7 @@ h1 {
 }
 
 .bookcase-shelf-category {
-  aspect-ratio: 2260 / 560;
+  aspect-ratio: 2284 / 560;
   background-image: url("./assets/bookshelf-category-wide-reference.jpg");
 }
 
@@ -2221,7 +2221,7 @@ h1 {
 }
 
 .bookcase-shelf-category {
-  aspect-ratio: 2260 / 560;
+  aspect-ratio: 2284 / 560;
   background-image: url("./assets/bookshelf-category-wide-reference.jpg");
 }
 
@@ -2332,6 +2332,106 @@ h1 {
   bottom: 5.5%;
   left: calc(1.24% + (var(--book-index) * 4.867%));
   width: 4.6%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(1) {
+  left: 1.401%;
+  width: 4.860%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(2) {
+  left: 6.305%;
+  width: 4.597%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(3) {
+  left: 11.252%;
+  width: 4.597%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(4) {
+  left: 16.506%;
+  width: 4.335%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(5) {
+  left: 21.191%;
+  width: 4.685%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(6) {
+  left: 26.226%;
+  width: 4.159%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(7) {
+  left: 30.736%;
+  width: 4.729%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(8) {
+  left: 35.508%;
+  width: 4.641%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(9) {
+  left: 40.193%;
+  width: 4.335%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(10) {
+  left: 44.790%;
+  width: 4.729%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(11) {
+  left: 49.781%;
+  width: 4.378%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(12) {
+  left: 54.159%;
+  width: 4.422%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(13) {
+  left: 59.151%;
+  width: 4.466%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(14) {
+  left: 63.660%;
+  width: 4.553%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(15) {
+  left: 68.520%;
+  width: 4.947%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(16) {
+  left: 73.468%;
+  width: 4.597%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(17) {
+  left: 78.371%;
+  width: 4.947%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(18) {
+  left: 83.144%;
+  width: 5.254%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(19) {
+  left: 88.266%;
+  width: 5.210%;
+}
+
+.bookcase-shelf-category .book-spine-category:nth-child(20) {
+  left: 93.476%;
+  width: 4.947%;
 }
 
 .bookcase-shelf-category-en .book-spine-category {
@@ -2482,7 +2582,7 @@ h1 {
 
   .bookcase-shelf-category {
     min-width: 1700px;
-    aspect-ratio: 2260 / 560;
+    aspect-ratio: 2284 / 560;
     background-size: 100% 100%;
     background-position: center;
   }
