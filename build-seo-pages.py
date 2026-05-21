@@ -563,7 +563,7 @@ def build() -> None:
                 'thumbnail': playlist.get('thumbnail', ''),
             })
 
-    urls = [BASE + '/', BASE + '/en.html']
+    urls = [BASE + '/', BASE + '/en/']
 
     for key, slug, ja_name, en_name, code in SERIES:
         rows = sorted(by_series[key], key=lambda row: row['sortNumber'])
