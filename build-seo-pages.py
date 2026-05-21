@@ -208,30 +208,30 @@ def breadcrumb_json(items: list[tuple[str, str]]) -> dict:
 
 
 def topbar(lang: str, current: str, alt: str) -> str:
-    is_home = current in ('/', '/en.html')
+    is_home = current in ('/', '/en/')
     ja_brand = '<a class="brand" href="/" aria-label="しーちゃんピアノ ホーム"><img class="brand-logo" src="/assets/channel-logo.jpg" alt="" width="64" height="64"><span class="brand-text">しーちゃんピアノ</span></a>'
-    en_brand = '<a class="brand" href="/en.html" aria-label="C-chan piano home"><img class="brand-logo" src="/assets/channel-logo.jpg" alt="" width="64" height="64"><span class="brand-text">C-chan piano</span></a>'
+    en_brand = '<a class="brand" href="/en/" aria-label="C-chan piano home"><img class="brand-logo" src="/assets/channel-logo.jpg" alt="" width="64" height="64"><span class="brand-text">C-chan piano</span></a>'
     if lang == 'ja':
         home_link = '' if is_home else '<a class="topbar-home" href="/">ホーム</a>'
         return (
             '<nav class="topbar" aria-label="主要ナビゲーション">'
             f'{ja_brand}{home_link}'
             '<div class="topbar-right"><div class="topbar-links">'
-            '<a href="/series-index.html">作品別ページ</a>'
-            '<a class="topbar-shortcut" href="/category-index.html">カテゴリ別ページ</a>'
+            '<a href="/series-index/">作品別ページ</a>'
+            '<a class="topbar-shortcut" href="/category-index/">カテゴリ別ページ</a>'
             '<a class="topbar-cta" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer">YouTubeチャンネルを見る</a>'
             '</div><div class="language-switch" aria-label="言語切り替え">'
             f'<a class="lang-pill is-active" href="{current}">日本語</a>'
             f'<a class="lang-pill" href="{alt}">English</a>'
             '</div></div></nav>'
         )
-    home_link = '' if is_home else '<a class="topbar-home" href="/en.html">Home</a>'
+    home_link = '' if is_home else '<a class="topbar-home" href="/en/">Home</a>'
     return (
         '<nav class="topbar" aria-label="Primary navigation">'
         f'{en_brand}{home_link}'
         '<div class="topbar-right"><div class="topbar-links">'
-        '<a href="/en/series-index.html">Browse by Series</a>'
-        '<a class="topbar-shortcut" href="/en/category-index.html">Browse by Category</a>'
+        '<a href="/en/series-index/">Browse by Series</a>'
+        '<a class="topbar-shortcut" href="/en/category-index/">Browse by Category</a>'
         '<a class="topbar-cta" href="https://www.youtube.com/@chamberd_piano" target="_blank" rel="noreferrer">Visit the YouTube channel</a>'
         '</div><div class="language-switch" aria-label="Language switch">'
         f'<a class="lang-pill" href="{alt}">日本語</a>'
@@ -477,6 +477,12 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     text = path.read_text(encoding='utf-8')
     text = text.replace('https://chamberd-piano.github.io', BASE)
     text = text.replace('https://c-chan-dq-piano.chamberdeng.workers.dev', BASE)
+    text = re.sub(r'\s*<meta\s+name="keywords"[^>]*>\n?', '\n', text, flags=re.I)
+    text = text.replace('href="./series-index.html"', 'href="/series-index/"')
+    text = text.replace('href="./category-index.html"', 'href="/category-index/"')
+    text = text.replace('href="/en/series-index.html"', 'href="/en/series-index/"')
+    text = text.replace('href="/en/category-index.html"', 'href="/en/category-index/"')
+    text = text.replace('href="/en.html"', 'href="/en/"')
     series_cards = []
     for index, (key, meta) in enumerate(SERIES_MAP.items()):
         href = f'/{meta["slug"]}/' if lang == 'ja' else f'/en/{meta["slug"]}/'
@@ -497,7 +503,6 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
         f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{book_shelf(category_library_cards, c_title, "category-en" if lang == "en" else "category")}</div>'
         '</section>'
     )
-    import re
     if 'seo-hub-links' in text:
         text = re.sub(r'<section class="section seo-hub-links[^"]*" id="seo-links">.*?</section>', hub, text, count=1, flags=re.S)
     else:
@@ -579,7 +584,7 @@ def build() -> None:
                 if lang == 'ja' else
                 f'Browse {en_name} piano performances with song links and YouTube playlist access.'
             )
-            crumbs = [('ホーム', '/') if lang == 'ja' else ('Home', '/en.html'), (code, page)]
+            crumbs = [('ホーム', '/') if lang == 'ja' else ('Home', '/en/'), (code, page)]
             graph = [
                 breadcrumb_json(crumbs),
                 {'@type': 'CollectionPage', 'name': title, 'description': desc, 'url': BASE + page, 'inLanguage': 'ja-JP' if lang == 'ja' else 'en-US'},
@@ -596,7 +601,7 @@ def build() -> None:
             actions = []
             if playlist_items:
                 actions.append(action(playlist_items[0]['url'], 'YouTubeの作品別プレイリスト' if lang == 'ja' else 'Open playlist', primary=True, external=True))
-            actions.append(action('/category-index.html' if lang == 'ja' else '/en/category-index.html', 'カテゴリ別に探す' if lang == 'ja' else 'Browse categories'))
+            actions.append(action('/category-index/' if lang == 'ja' else '/en/category-index/', 'カテゴリ別に探す' if lang == 'ja' else 'Browse categories'))
             actions.append(action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る' if lang == 'ja' else 'Visit YouTube', external=True))
             feature = playlist_cards(playlist_items, lang, hero=True) if playlist_items else ''
             main = ''
@@ -627,7 +632,7 @@ def build() -> None:
                 f'Browse {info["en"]} across the Dragon Quest piano library.'
             )
             label = info['ja'] if lang == 'ja' else info['en']
-            crumbs = [('ホーム', '/') if lang == 'ja' else ('Home', '/en.html'), (label, page)]
+            crumbs = [('ホーム', '/') if lang == 'ja' else ('Home', '/en/'), (label, page)]
             if slug == 'medley':
                 item_list = [
                     {'@type': 'ListItem', 'position': i + 1, 'name': track['title'], 'url': track['url']}
@@ -649,8 +654,8 @@ def build() -> None:
                 metric('動画リンク' if lang == 'ja' else 'Linked videos', str(linked_count if slug != 'medley' else len(medley_tracks))),
             ])
             actions = [
-                action('/category-index.html' if lang == 'ja' else '/en/category-index.html', 'カテゴリ一覧へ' if lang == 'ja' else 'Category index', primary=True),
-                action('/series-index.html' if lang == 'ja' else '/en/series-index.html', '作品別ページへ' if lang == 'ja' else 'Browse series'),
+                action('/category-index/' if lang == 'ja' else '/en/category-index/', 'カテゴリ一覧へ' if lang == 'ja' else 'Category index', primary=True),
+                action('/series-index/' if lang == 'ja' else '/en/series-index/', '作品別ページへ' if lang == 'ja' else 'Browse series'),
                 action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る' if lang == 'ja' else 'Visit YouTube', external=True),
             ]
             feature = playlist_cards(featured, lang, hero=True) if featured else ''
@@ -695,12 +700,21 @@ def build() -> None:
     ja_bgm_cards = [entry_card('/category/medley/', CATS['medley']['ja'], '作業用BGM向けメドレー')]
     en_bgm_cards = [entry_card('/en/category/medley/', CATS['medley']['en'], 'Medleys for background listening')]
 
-    write('series-index.html', make_head('ja', '作品別ページ一覧 | しーちゃんピアノ', 'DQ1〜DQ11の作品別ページ一覧です。', BASE + '/series-index.html', BASE + '/series-index.html', BASE + '/en/series-index.html', [breadcrumb_json([('ホーム', '/'), ('作品別ページ一覧', '/series-index.html')]), {'@type': 'CollectionPage', 'name': '作品別ページ一覧', 'description': 'DQ1〜DQ11の作品別ページ一覧です。', 'url': BASE + '/series-index.html', 'inLanguage': 'ja-JP'}]) + shell('ja', '/series-index.html', '/en/series-index.html', breadcrumbs([('ホーム', '/'), ('作品別ページ一覧', '/series-index.html')]), '作品別ページ一覧', 'DQ1〜DQ11の作品別ページ一覧です。', metric('ページ数', '11') + metric('言語', '日本語 / English') + metric('目的', '作品名検索の入口'), action('/category-index.html', 'カテゴリ別も見る', primary=True) + action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る', external=True), '', section('Series', 'DQ1〜DQ11', entry_grid(ja_series_cards), '各作品ページから曲一覧とYouTube導線に進めます。')))
-    write('en/series-index.html', make_head('en', 'Browse by Series | C-chan piano', 'Series landing pages from DQ1 to DQ11.', BASE + '/en/series-index.html', BASE + '/series-index.html', BASE + '/en/series-index.html', [breadcrumb_json([('Home', '/en.html'), ('Browse by Series', '/en/series-index.html')]), {'@type': 'CollectionPage', 'name': 'Browse by Series', 'description': 'Series landing pages from DQ1 to DQ11.', 'url': BASE + '/en/series-index.html', 'inLanguage': 'en-US'}]) + shell('en', '/en/series-index.html', '/series-index.html', breadcrumbs([('Home', '/en.html'), ('Browse by Series', '/en/series-index.html')]), 'Browse by Series', 'Category pages from DQ1 to DQ11.', metric('Pages', '11') + metric('Language', 'English / Japanese') + metric('Purpose', 'Series search landing'), action('/en/category-index.html', 'Browse categories', primary=True) + action('https://www.youtube.com/@chamberd_piano', 'Visit YouTube', external=True), '', section('Series', 'DQ1–DQ11', entry_grid(en_series_cards), 'Each page leads into song lists and the YouTube channel.')))
-    write('category-index.html', make_head('ja', 'カテゴリ別ページ一覧 | しーちゃんピアノ', 'フィールド曲・戦闘曲・街村・エンディング・メドレーのカテゴリ別ページ一覧です。', BASE + '/category-index.html', BASE + '/category-index.html', BASE + '/en/category-index.html', [breadcrumb_json([('ホーム', '/'), ('カテゴリ別ページ一覧', '/category-index.html')]), {'@type': 'CollectionPage', 'name': 'カテゴリ別ページ一覧', 'description': 'カテゴリ別ページ一覧です。', 'url': BASE + '/category-index.html', 'inLanguage': 'ja-JP'}]) + shell('ja', '/category-index.html', '/en/category-index.html', breadcrumbs([('ホーム', '/'), ('カテゴリ別ページ一覧', '/category-index.html')]), 'カテゴリ別ページ一覧', 'フィールド曲・戦闘曲・街村・エンディング・メドレーをカテゴリ別にまとめています。', metric('カテゴリ数', str(len(CATS) - 1)) + metric('言語', '日本語 / English') + metric('目的', 'カテゴリ検索の入口'), action('/series-index.html', '作品別ページも見る', primary=True) + action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る', external=True), playlist_cards(medley_playlists[:2], 'ja', hero=True), section('Categories', 'カテゴリ別ページ', entry_grid(ja_cat_cards), 'フィールド曲や戦闘曲などの探し方に対応しています。') + section('BGM', '作業用BGM', entry_grid(ja_bgm_cards), 'メドレーを作業用BGM向けにまとめています。')))
-    write('en/category-index.html', make_head('en', 'Browse by Category | C-chan piano', 'Landing pages for opening themes, casino tracks, churches, battles, endings, and medleys.', BASE + '/en/category-index.html', BASE + '/category-index.html', BASE + '/en/category-index.html', [breadcrumb_json([('Home', '/en.html'), ('Browse by Category', '/en/category-index.html')]), {'@type': 'CollectionPage', 'name': 'Browse by Category', 'description': 'Category landing pages.', 'url': BASE + '/en/category-index.html', 'inLanguage': 'en-US'}]) + shell('en', '/en/category-index.html', '/category-index.html', breadcrumbs([('Home', '/en.html'), ('Browse by Category', '/en/category-index.html')]), 'Browse by Category', 'Opening themes, casino tracks, churches, battles, endings, and medleys.', metric('Categories', str(len(CATS) - 1)) + metric('Language', 'English / Japanese') + metric('Purpose', 'Search landing pages'), action('/en/series-index.html', 'Browse series', primary=True) + action('https://www.youtube.com/@chamberd_piano', 'Visit YouTube', external=True), playlist_cards(medley_playlists[:2], 'en', hero=True), section('Categories', 'Category Pages', entry_grid(en_cat_cards), 'Built for clearer discovery across search intents.') + section('BGM', 'Background Listening', entry_grid(en_bgm_cards), 'Medley pages are grouped for background listening.')))
+    series_index_ja = make_head('ja', '作品別ページ一覧 | しーちゃんピアノ', 'DQ1〜DQ11の作品別ページ一覧です。', BASE + '/series-index/', BASE + '/series-index/', BASE + '/en/series-index/', [breadcrumb_json([('ホーム', '/'), ('作品別ページ一覧', '/series-index/')]), {'@type': 'CollectionPage', 'name': '作品別ページ一覧', 'description': 'DQ1〜DQ11の作品別ページ一覧です。', 'url': BASE + '/series-index/', 'inLanguage': 'ja-JP'}]) + shell('ja', '/series-index/', '/en/series-index/', breadcrumbs([('ホーム', '/'), ('作品別ページ一覧', '/series-index/')]), '作品別ページ一覧', 'DQ1〜DQ11の作品別ページ一覧です。', metric('ページ数', '11') + metric('言語', '日本語 / English') + metric('目的', '作品名検索の入口'), action('/category-index/', 'カテゴリ別も見る', primary=True) + action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る', external=True), '', section('Series', 'DQ1〜DQ11', entry_grid(ja_series_cards), '各作品ページから曲一覧とYouTube導線に進めます。'))
+    series_index_en = make_head('en', 'Browse by Series | C-chan piano', 'Series landing pages from DQ1 to DQ11.', BASE + '/en/series-index/', BASE + '/series-index/', BASE + '/en/series-index/', [breadcrumb_json([('Home', '/en/'), ('Browse by Series', '/en/series-index/')]), {'@type': 'CollectionPage', 'name': 'Browse by Series', 'description': 'Series landing pages from DQ1 to DQ11.', 'url': BASE + '/en/series-index/', 'inLanguage': 'en-US'}]) + shell('en', '/en/series-index/', '/series-index/', breadcrumbs([('Home', '/en/'), ('Browse by Series', '/en/series-index/')]), 'Browse by Series', 'Category pages from DQ1 to DQ11.', metric('Pages', '11') + metric('Language', 'English / Japanese') + metric('Purpose', 'Series search landing'), action('/en/category-index/', 'Browse categories', primary=True) + action('https://www.youtube.com/@chamberd_piano', 'Visit YouTube', external=True), '', section('Series', 'DQ1–DQ11', entry_grid(en_series_cards), 'Each page leads into song lists and the YouTube channel.'))
+    category_index_ja = make_head('ja', 'カテゴリ別ページ一覧 | しーちゃんピアノ', 'フィールド曲・戦闘曲・街村・エンディング・メドレーのカテゴリ別ページ一覧です。', BASE + '/category-index/', BASE + '/category-index/', BASE + '/en/category-index/', [breadcrumb_json([('ホーム', '/'), ('カテゴリ別ページ一覧', '/category-index/')]), {'@type': 'CollectionPage', 'name': 'カテゴリ別ページ一覧', 'description': 'カテゴリ別ページ一覧です。', 'url': BASE + '/category-index/', 'inLanguage': 'ja-JP'}]) + shell('ja', '/category-index/', '/en/category-index/', breadcrumbs([('ホーム', '/'), ('カテゴリ別ページ一覧', '/category-index/')]), 'カテゴリ別ページ一覧', 'フィールド曲・戦闘曲・街村・エンディング・メドレーをカテゴリ別にまとめています。', metric('カテゴリ数', str(len(CATS) - 1)) + metric('言語', '日本語 / English') + metric('目的', 'カテゴリ検索の入口'), action('/series-index/', '作品別ページも見る', primary=True) + action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る', external=True), playlist_cards(medley_playlists[:2], 'ja', hero=True), section('Categories', 'カテゴリ別ページ', entry_grid(ja_cat_cards), 'フィールド曲や戦闘曲などの探し方に対応しています。') + section('BGM', '作業用BGM', entry_grid(ja_bgm_cards), 'メドレーを作業用BGM向けにまとめています。'))
+    category_index_en = make_head('en', 'Browse by Category | C-chan piano', 'Landing pages for opening themes, casino tracks, churches, battles, endings, and medleys.', BASE + '/en/category-index/', BASE + '/category-index/', BASE + '/en/category-index/', [breadcrumb_json([('Home', '/en/'), ('Browse by Category', '/en/category-index/')]), {'@type': 'CollectionPage', 'name': 'Browse by Category', 'description': 'Category landing pages.', 'url': BASE + '/en/category-index/', 'inLanguage': 'en-US'}]) + shell('en', '/en/category-index/', '/category-index/', breadcrumbs([('Home', '/en/'), ('Browse by Category', '/en/category-index/')]), 'Browse by Category', 'Opening themes, casino tracks, churches, battles, endings, and medleys.', metric('Categories', str(len(CATS) - 1)) + metric('Language', 'English / Japanese') + metric('Purpose', 'Search landing pages'), action('/en/series-index/', 'Browse series', primary=True) + action('https://www.youtube.com/@chamberd_piano', 'Visit YouTube', external=True), playlist_cards(medley_playlists[:2], 'en', hero=True), section('Categories', 'Category Pages', entry_grid(en_cat_cards), 'Built for clearer discovery across search intents.') + section('BGM', 'Background Listening', entry_grid(en_bgm_cards), 'Medley pages are grouped for background listening.'))
 
-    urls.extend([BASE + '/series-index.html', BASE + '/en/series-index.html', BASE + '/category-index.html', BASE + '/en/category-index.html'])
+    write('series-index/index.html', series_index_ja)
+    write('series-index.html', series_index_ja)
+    write('en/series-index/index.html', series_index_en)
+    write('en/series-index.html', series_index_en)
+    write('category-index/index.html', category_index_ja)
+    write('category-index.html', category_index_ja)
+    write('en/category-index/index.html', category_index_en)
+    write('en/category-index.html', category_index_en)
+
+    urls.extend([BASE + '/series-index/', BASE + '/en/series-index/', BASE + '/category-index/', BASE + '/en/category-index/'])
     patch_home('index.html', 'ja', series_playlists)
     patch_home('en/index.html', 'en', series_playlists)
     (ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: ' + BASE + '/sitemap.xml\n', encoding='utf-8')

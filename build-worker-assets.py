@@ -24,6 +24,7 @@ ROOT_FILES = [
 
 DIRECTORIES = [
     "assets",
+    "category-index",
     "category",
     "covers",
     "dq1",
@@ -38,6 +39,7 @@ DIRECTORIES = [
     "dq10",
     "dq11",
     "en",
+    "series-index",
 ]
 
 
