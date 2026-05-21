@@ -1,11 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "c-chan-dq-piano",
+  "main": "src/worker.js",
   "compatibility_date": "2026-05-03",
   "observability": {
     "enabled": true
   },
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "run_worker_first": true
   }
 }
