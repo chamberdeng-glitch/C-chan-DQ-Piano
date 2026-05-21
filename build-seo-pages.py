@@ -3,7 +3,7 @@ import json
 import re
 from pathlib import Path
 
-BASE = 'https://dqpiano.com'
+BASE = 'https://c-chan-dq-piano.chamberdeng.workers.dev'
 ROOT = Path(__file__).resolve().parent
 
 SERIES = [
@@ -476,7 +476,6 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     path = ROOT / path_str
     text = path.read_text(encoding='utf-8')
     text = text.replace('https://chamberd-piano.github.io', BASE)
-    text = text.replace('https://c-chan-dq-piano.chamberdeng.workers.dev', BASE)
     series_cards = []
     for index, (key, meta) in enumerate(SERIES_MAP.items()):
         href = f'/{meta["slug"]}/' if lang == 'ja' else f'/en/{meta["slug"]}/'
