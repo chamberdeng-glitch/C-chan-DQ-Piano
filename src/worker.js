@@ -15,6 +15,12 @@ function canonicalPath(pathname) {
     ["/en/series-index.html", "/en/series-index/"],
     ["/en/category-index", "/en/category-index/"],
     ["/en/category-index.html", "/en/category-index/"],
+    ["/category/battle", "/category/normal-battle/"],
+    ["/category/battle/", "/category/normal-battle/"],
+    ["/category/battle.html", "/category/normal-battle/"],
+    ["/en/category/battle", "/en/category/normal-battle/"],
+    ["/en/category/battle/", "/en/category/normal-battle/"],
+    ["/en/category/battle.html", "/en/category/normal-battle/"],
   ]);
 
   if (mappings.has(path)) {

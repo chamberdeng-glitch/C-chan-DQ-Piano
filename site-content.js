@@ -382,7 +382,7 @@
     if (paragraphs[0]) {
       paragraphs[0].textContent = content.footer.title;
     }
-    const footerLinks = footer.querySelectorAll('a[href="./index.html"], a[href="./en.html"]');
+    const footerLinks = footer.querySelectorAll('a[href="/"], a[href="/en/"]');
     if (footerLinks[0]) footerLinks[0].textContent = content.footer.ja;
     if (footerLinks[1]) footerLinks[1].textContent = content.footer.en;
   }
