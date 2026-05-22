@@ -50,12 +50,6 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
-    if (normalizedPath !== "/" && normalizedPath.endsWith("/")) {
-      const assetUrl = new URL(request.url);
-      assetUrl.pathname = `${normalizedPath}index.html`;
-      return env.ASSETS.fetch(new Request(assetUrl, request));
-    }
-
     return env.ASSETS.fetch(request);
   },
 };
