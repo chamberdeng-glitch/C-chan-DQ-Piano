@@ -79,7 +79,7 @@ window.songReferenceData = {
       "sortNumber": 1,
       "songTitle": "ドラゴンクエスト・マーチ",
       "category": "オープニング",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=RXEvjVzl9wY&t=540s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1713,7 +1713,7 @@ window.songReferenceData = {
       "sortNumber": 1,
       "songTitle": "序曲",
       "category": "オープニング",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=RXEvjVzl9wY&t=953s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1722,7 +1722,7 @@ window.songReferenceData = {
       "sortNumber": 2,
       "songTitle": "インテルメッツオ",
       "category": "場面転換",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=tygUBJrYrBw",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2003,7 +2003,7 @@ window.songReferenceData = {
       "sortNumber": 1,
       "songTitle": "序曲X",
       "category": "オープニング",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=RXEvjVzl9wY&t=1072s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2275,7 +2275,7 @@ window.songReferenceData = {
       "sortNumber": 1,
       "songTitle": "序曲XI",
       "category": "オープニング",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=RXEvjVzl9wY&t=1197s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
