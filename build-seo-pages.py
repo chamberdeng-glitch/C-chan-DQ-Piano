@@ -22,6 +22,44 @@ SERIES = [
 SERIES_MAP = {k: {'slug': slug, 'ja': ja, 'en': en, 'code': code} for k, slug, ja, en, code in SERIES}
 SERIES_ORDER = [key for key, *_ in SERIES]
 
+SPECIAL_COLLECTIONS = {
+    'X': [
+        {'sourceId': 'IV-2', 'songTitle': 'インテルメッツォ'},
+        {'sourceId': 'IV-17'},
+        {'sourceId': 'VIII-14', 'songTitle': 'この想いを…'},
+        {'sourceId': 'VIII-26'},
+        {'sourceId': 'VIII-18', 'songTitle': '急げ！ピンチだ'},
+        {'sourceId': 'VII-19'},
+        {'sourceId': 'V-7'},
+        {'sourceId': 'IV-18'},
+        {'sourceId': 'VIII-5'},
+        {'sourceId': 'VIII-12'},
+        {'sourceId': 'IX-21'},
+        {'sourceId': 'VIII-25'},
+        {'sourceId': 'IV-11'},
+        {'sourceId': 'II-2'},
+    ],
+    'XI': [
+        {'sourceId': 'I-3'},
+        {'sourceId': 'III-9'},
+        {'sourceId': 'III-5'},
+        {'sourceId': 'III-14'},
+        {'sourceId': 'III-15'},
+        {'sourceId': 'III-22'},
+        {'sourceId': 'IV-20'},
+        {'sourceId': 'V-17'},
+        {'sourceId': 'V-16'},
+        {'sourceId': 'V-22'},
+        {'sourceId': 'V-3'},
+        {'sourceId': 'VI-6'},
+        {'sourceId': 'VI-11'},
+        {'sourceId': 'VII-23'},
+        {'sourceId': 'VII-6'},
+        {'sourceId': 'VIII-30'},
+        {'sourceId': 'X-17'},
+    ],
+}
+
 CATS = {
     'opening': {'ja': '\u30aa\u30fc\u30d7\u30cb\u30f3\u30b0', 'en': 'Opening', 'match': ['\u30aa\u30fc\u30d7\u30cb\u30f3\u30b0']},
     'prologue': {'ja': '\u30d7\u30ed\u30ed\u30fc\u30b0', 'en': 'Prologue', 'match': ['\u30d7\u30ed\u30ed\u30fc\u30b0']},
@@ -567,6 +605,20 @@ def related_category_cards(lang: str) -> str:
     return entry_grid(cards)
 
 
+def special_collection_rows(key: str, rows_by_id: dict[str, dict], en_titles: dict) -> list[dict]:
+    rows = []
+    for spec in SPECIAL_COLLECTIONS.get(key, []):
+        source = rows_by_id.get(spec['sourceId'])
+        if not source:
+            continue
+        row = dict(source)
+        if spec.get('songTitle'):
+            row['songTitle'] = spec['songTitle']
+            row['songTitleEn'] = en_titles['by_title'].get(spec['songTitle']) or source['songTitleEn']
+        rows.append(row)
+    return rows
+
+
 def build() -> None:
     songs = load_js('song-reference-data.js', 'window.songReferenceData = ')
     playlists = load_js('playlist-data.js', 'window.playlistData = ')
@@ -574,6 +626,7 @@ def build() -> None:
 
     all_rows = []
     by_series = {}
+    rows_by_id = {}
     for skey, rows in songs.items():
         cooked = []
         for row in rows:
@@ -584,6 +637,7 @@ def build() -> None:
             item['difficultyEn'] = DIFF_EN.get(row.get('difficultyLabel', ''), row.get('difficultyLabel', ''))
             cooked.append(item)
             all_rows.append(item)
+            rows_by_id[item['id']] = item
         by_series[skey] = cooked
 
     series_playlists = {}
@@ -615,6 +669,7 @@ def build() -> None:
 
     for key, slug, ja_name, en_name, code in SERIES:
         rows = sorted(by_series[key], key=lambda row: row['sortNumber'])
+        special_rows = special_collection_rows(key, rows_by_id, en_titles)
         linked_count = sum(1 for row in rows if row.get('videoUrl'))
         playlist_items = series_feature_playlist(key, series_playlists)
 
@@ -651,6 +706,13 @@ def build() -> None:
             feature = playlist_cards(playlist_items, lang, hero=True) if playlist_items else ''
             main = ''
             main += section('Songs', '収録曲一覧' if lang == 'ja' else 'Song List', song_table(rows, lang), '曲番号順でたどれる一覧です。' if lang == 'ja' else 'Song list ordered by catalog number.')
+            if special_rows:
+                main += section(
+                    'Special',
+                    '特別収録' if lang == 'ja' else 'Special Selections',
+                    song_table(special_rows, lang),
+                    '過去シリーズ楽譜からの特別収録曲です。曲番号・リンクは出典元シリーズに合わせています。' if lang == 'ja' else 'Special selections from earlier series. Numbers and links follow the original source series.',
+                )
             main += section('Related', '関連カテゴリ' if lang == 'ja' else 'Related Categories', related_category_cards(lang), 'フィールド曲・戦闘曲・メドレーなど横断導線を用意しています。' if lang == 'ja' else 'Cross-link into field, battle, and medley pages.')
             html = make_head(lang, title, desc, BASE + page, BASE + f'/{slug}/', BASE + f'/en/{slug}/', graph)
             html += shell(lang, page, alt, breadcrumbs(crumbs), f'{ja_name} ピアノ演奏ライブラリー' if lang == 'ja' else f'{en_name} Piano Library', desc, metrics, ''.join(actions), feature, main)
