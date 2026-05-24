@@ -13,6 +13,7 @@ ROOT_FILES = [
     "index.html",
     "playlist-data.js",
     "robots.txt",
+    "scroll-hint.js",
     "series-index.html",
     "site-content.js",
     "site.js",
