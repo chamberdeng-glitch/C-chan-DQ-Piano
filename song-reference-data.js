@@ -106,9 +106,9 @@ window.songReferenceData = {
       "sortNumber": 4,
       "songTitle": "王城",
       "category": "城",
-      "videoUrl": "",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=2-6cYK5kKEI",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "II-5",

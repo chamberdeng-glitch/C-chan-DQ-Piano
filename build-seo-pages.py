@@ -66,6 +66,7 @@ SCORE_LIBRARY = [
         'ja': 'ドラゴンクエスト オフィシャル・ベスト・アルバム',
         'en': 'Dragon Quest Official Best Album',
         'amazonUrl': 'https://www.amazon.co.jp/%E3%83%94%E3%82%A2%E3%83%8E%E6%9B%B2%E9%9B%86-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88-%E3%82%AA%E3%83%95%E3%82%A3%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%BB%E3%83%99%E3%82%B9%E3%83%88%E3%83%BB%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0-%E6%A5%BD%E8%AD%9C-%E3%81%99%E3%81%8E%E3%82%84%E3%81%BE%E3%81%93%E3%81%86%E3%81%84%E3%81%A1/dp/4773243848',
+        'cover': '/assets/score-best-album-cover.jpg',
         'sourceIds': [
             'I-2', 'I-3', 'I-4', 'I-7', 'I-8',
             'II-2', 'II-4', 'II-5', 'II-9', 'II-8', 'II-16',
@@ -663,6 +664,19 @@ def score_collection_rows(score: dict, rows_by_id: dict[str, dict]) -> list[dict
     return rows
 
 
+def score_cover_card(score: dict, lang: str) -> str:
+    label = '楽譜写真' if lang == 'ja' else 'Score Cover'
+    title = score['ja'] if lang == 'ja' else score['en']
+    return (
+        '<aside class="score-cover-card">'
+        f'<p class="hero-playlist-kicker">{esc(label)}</p>'
+        f'<a class="score-cover-link" href="{esc(score["amazonUrl"])}" target="_blank" rel="noreferrer">'
+        f'<img class="score-cover-image" src="{esc(score["cover"])}" alt="{esc(title)}" loading="lazy">'
+        '</a>'
+        '</aside>'
+    )
+
+
 def build() -> None:
     songs = load_js('song-reference-data.js', 'window.songReferenceData = ')
     playlists = load_js('playlist-data.js', 'window.playlistData = ')
@@ -909,7 +923,7 @@ def build() -> None:
                 '楽譜から作品別・カテゴリ別のページへ移動できます。' if lang == 'ja' else 'Move from the score page into series and category pages.',
             )
             html = make_head(lang, title, desc, BASE + page, BASE + f'/score/{score["slug"]}/', BASE + f'/en/score/{score["slug"]}/', graph)
-            html += shell(lang, page, alt, breadcrumbs(crumbs), label, desc, metrics, ''.join(actions), '', main)
+            html += shell(lang, page, alt, breadcrumbs(crumbs), label, desc, metrics, ''.join(actions), score_cover_card(score, lang), main)
             write(Path(page[1:]) / 'index.html', html)
         urls.extend([BASE + f'/score/{score["slug"]}/', BASE + f'/en/score/{score["slug"]}/'])
 
