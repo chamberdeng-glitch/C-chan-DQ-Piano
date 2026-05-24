@@ -1815,6 +1815,11 @@ h1 {
   background-image: url("./assets/bookshelf-category-wide-reference-en.jpg");
 }
 
+.bookcase-shelf-score {
+  aspect-ratio: 1977 / 795;
+  background-image: url("./assets/bookshelf-score-best-album.png");
+}
+
 .book-spine,
 .book-spine-category {
   position: absolute;
@@ -1862,6 +1867,13 @@ h1 {
   bottom: 9%;
   left: calc(4.2% + (var(--book-index) * 12.4%));
   width: 10.8%;
+}
+
+.book-spine-score {
+  top: 4.5%;
+  bottom: 8%;
+  left: 44.5%;
+  width: 11%;
 }
 
 .hero-simple {
@@ -2230,6 +2242,11 @@ h1 {
   background-image: url("./assets/bookshelf-category-wide-reference-en.jpg");
 }
 
+.bookcase-shelf-score {
+  aspect-ratio: 1977 / 795;
+  background-image: url("./assets/bookshelf-score-best-album.png");
+}
+
 .book-spine,
 .book-spine-category {
   position: absolute;
@@ -2332,6 +2349,13 @@ h1 {
   bottom: 5.5%;
   left: calc(1.24% + (var(--book-index) * 4.867%));
   width: 4.6%;
+}
+
+.book-spine-score {
+  top: 4.5%;
+  bottom: 8%;
+  left: 44.5%;
+  width: 11%;
 }
 
 .bookcase-shelf-category .book-spine-category:nth-child(1) {
@@ -2594,6 +2618,13 @@ h1 {
     background-position: center;
   }
 
+  .bookcase-shelf-score {
+    min-width: 1100px;
+    aspect-ratio: 1977 / 795;
+    background-size: 100% 100%;
+    background-position: center;
+  }
+
   .book-spine-series {
     top: 5%;
     bottom: 4%;
@@ -2602,5 +2633,10 @@ h1 {
   .book-spine-category {
     top: 2.5%;
     bottom: 5.5%;
+  }
+
+  .book-spine-score {
+    top: 4.5%;
+    bottom: 8%;
   }
 }

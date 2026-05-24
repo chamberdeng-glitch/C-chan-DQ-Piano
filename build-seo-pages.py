@@ -60,6 +60,28 @@ SPECIAL_COLLECTIONS = {
     ],
 }
 
+SCORE_LIBRARY = [
+    {
+        'slug': 'best-album',
+        'ja': 'ドラゴンクエスト オフィシャル・ベスト・アルバム',
+        'en': 'Dragon Quest Official Best Album',
+        'amazonUrl': 'https://www.amazon.co.jp/%E3%83%94%E3%82%A2%E3%83%8E%E6%9B%B2%E9%9B%86-%E3%83%89%E3%83%A9%E3%82%B4%E3%83%B3%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88-%E3%82%AA%E3%83%95%E3%82%A3%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%BB%E3%83%99%E3%82%B9%E3%83%88%E3%83%BB%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0-%E6%A5%BD%E8%AD%9C-%E3%81%99%E3%81%8E%E3%82%84%E3%81%BE%E3%81%93%E3%81%86%E3%81%84%E3%81%A1/dp/4773243848',
+        'sourceIds': [
+            'I-2', 'I-3', 'I-4', 'I-7', 'I-8',
+            'II-2', 'II-4', 'II-5', 'II-9', 'II-8', 'II-16',
+            'III-3', 'III-9', 'III-10', 'III-14', 'III-17', 'III-23',
+            'IV-2', 'IV-3', 'IV-5', 'IV-12', 'IV-16', 'IV-19', 'IV-20',
+            'V-3', 'V-4', 'V-9', 'V-11', 'V-18', 'V-24', 'V-25',
+            'VI-3', 'VI-8', 'VI-11', 'VI-13', 'VI-19', 'VI-20', 'VI-26',
+            'VII-9', 'VII-10', 'VII-7', 'VII-11', 'VII-19', 'VII-20', 'VII-24', 'VII-28',
+            'VIII-4', 'VIII-6', 'VIII-10', 'VIII-14', 'VIII-21', 'VIII-30', 'VIII-35',
+            'IX-3', 'IX-5', 'IX-8', 'IX-10', 'IX-13', 'IX-19', 'IX-30',
+            'X-2', 'X-12', 'X-14', 'X-15', 'X-16', 'X-17', 'X-21', 'X-22', 'X-23',
+            'XI-1', 'XI-4', 'XI-5', 'XI-12', 'XI-7', 'XI-21', 'XI-23', 'XI-24',
+        ],
+    },
+]
+
 CATS = {
     'opening': {'ja': '\u30aa\u30fc\u30d7\u30cb\u30f3\u30b0', 'en': 'Opening', 'match': ['\u30aa\u30fc\u30d7\u30cb\u30f3\u30b0']},
     'prologue': {'ja': '\u30d7\u30ed\u30ed\u30fc\u30b0', 'en': 'Prologue', 'match': ['\u30d7\u30ed\u30ed\u30fc\u30b0']},
@@ -517,6 +539,16 @@ def book_shelf(cards: list[str], label: str, variant: str) -> str:
     )
 
 
+def score_cards(lang: str) -> list[str]:
+    cards = []
+    for index, score in enumerate(SCORE_LIBRARY):
+        href = f'/score/{score["slug"]}/' if lang == 'ja' else f'/en/score/{score["slug"]}/'
+        title = 'ベストアルバム' if lang == 'ja' else 'Best Album'
+        body = '楽譜別ページ' if lang == 'ja' else 'Score page'
+        cards.append(book_spine_card(href, title, body, index, icon='♪', variant='score'))
+    return cards
+
+
 CATEGORY_LIBRARY = [
     ('opening', 'オープニング', 'Opening', '◇'),
     ('prologue', 'プロローグ', 'Prologue', '♩'),
@@ -575,13 +607,16 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     if lang == 'ja':
         s_title = 'シリーズ別ライブラリー'
         c_title = 'カテゴリ別ライブラリー'
+        score_title = '楽譜別ライブラリー'
     else:
         s_title = 'Series Library'
         c_title = 'Category Library'
+        score_title = 'Score Library'
     hub = (
         '<section class="section seo-hub-links bookcase-library" id="seo-links">'
         f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Series</p><h3>{esc(s_title)}</h3></div>{book_shelf(series_cards, s_title, "series")}</div>'
         f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{book_shelf(category_library_cards, c_title, "category-en" if lang == "en" else "category")}</div>'
+        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Scores</p><h3>{esc(score_title)}</h3></div>{book_shelf(score_cards(lang), score_title, "score")}</div>'
         '</section>'
     )
     if 'seo-hub-links' in text:
@@ -616,6 +651,15 @@ def special_collection_rows(key: str, rows_by_id: dict[str, dict], en_titles: di
             row['songTitle'] = spec['songTitle']
             row['songTitleEn'] = en_titles['by_title'].get(spec['songTitle']) or source['songTitleEn']
         rows.append(row)
+    return rows
+
+
+def score_collection_rows(score: dict, rows_by_id: dict[str, dict]) -> list[dict]:
+    rows = []
+    for source_id in score['sourceIds']:
+        source = rows_by_id.get(source_id)
+        if source:
+            rows.append(dict(source))
     return rows
 
 
@@ -800,6 +844,74 @@ def build() -> None:
             html += shell(lang, page, alt, breadcrumbs(crumbs), hero_title, desc, metrics, ''.join(actions), feature, main)
             write(Path(page[1:]) / 'index.html', html)
         urls.extend([BASE + f'/category/{slug}/', BASE + f'/en/category/{slug}/'])
+
+    for score in SCORE_LIBRARY:
+        rows = score_collection_rows(score, rows_by_id)
+        linked_count = sum(1 for row in rows if row.get('videoUrl'))
+        series_count = len({row['seriesKey'] for row in rows})
+
+        for lang in ('ja', 'en'):
+            page = f'/score/{score["slug"]}/' if lang == 'ja' else f'/en/score/{score["slug"]}/'
+            alt = f'/en/score/{score["slug"]}/' if lang == 'ja' else f'/score/{score["slug"]}/'
+            label = score['ja'] if lang == 'ja' else score['en']
+            title = (
+                f'{label} | 楽譜別ピアノ収載曲 | しーちゃんピアノ'
+                if lang == 'ja' else
+                f'{label} | Score Library | C-chan piano'
+            )
+            desc = (
+                'DQ1〜DQ11から選ばれたピアノ楽譜「ドラゴンクエスト オフィシャル・ベスト・アルバム」の収載曲を、出典元の曲番号とYouTubeリンクで整理しています。'
+                if lang == 'ja' else
+                'Browse the Dragon Quest Official Best Album score selections from DQ1 to DQ11 with original source numbers and YouTube links.'
+            )
+            crumbs = [('ホーム', '/') if lang == 'ja' else ('Home', '/en/'), (label, page)]
+            item_list = [
+                {
+                    '@type': 'ListItem',
+                    'position': i + 1,
+                    'name': row['songTitle'] if lang == 'ja' else row['songTitleEn'],
+                    **({'url': row['videoUrl']} if row.get('videoUrl') else {}),
+                }
+                for i, row in enumerate(rows)
+            ]
+            graph = [
+                website_json(lang),
+                breadcrumb_json(crumbs),
+                {'@type': 'CollectionPage', 'name': title, 'description': desc, 'url': BASE + page, 'inLanguage': 'ja-JP' if lang == 'ja' else 'en-US'},
+                music_playlist_json(lang, title, desc, page, rows),
+                {'@type': 'ItemList', 'itemListElement': item_list},
+            ]
+            metrics = ''.join([
+                metric('収載曲数' if lang == 'ja' else 'Songs', str(len(rows))),
+                metric('対象シリーズ' if lang == 'ja' else 'Series', str(series_count)),
+                metric('動画リンク' if lang == 'ja' else 'Linked videos', str(linked_count)),
+            ])
+            actions = [
+                action(score['amazonUrl'], 'Amazonで楽譜を見る' if lang == 'ja' else 'View score on Amazon', primary=True, external=True),
+                action('/series-index/' if lang == 'ja' else '/en/series-index/', '作品別ページへ' if lang == 'ja' else 'Browse series'),
+                action('/category-index/' if lang == 'ja' else '/en/category-index/', 'カテゴリ別に探す' if lang == 'ja' else 'Browse categories'),
+            ]
+            related_cards = [
+                entry_card('/series-index/' if lang == 'ja' else '/en/series-index/', '作品別ライブラリー' if lang == 'ja' else 'Series Library', 'DQ1〜DQ11へ' if lang == 'ja' else 'Browse DQ1-DQ11'),
+                entry_card('/category-index/' if lang == 'ja' else '/en/category-index/', 'カテゴリ別ライブラリー' if lang == 'ja' else 'Category Library', '曲の種類から探す' if lang == 'ja' else 'Browse by category'),
+                entry_card('https://www.youtube.com/@chamberd_piano', 'YouTube', 'チャンネルへ' if lang == 'ja' else 'Open channel'),
+            ]
+            main = section(
+                'Score',
+                '収載曲一覧' if lang == 'ja' else 'Score Selections',
+                song_table(rows, lang),
+                '曲番号・リンク・難易度は、各作品ページの出典元データに合わせています。' if lang == 'ja' else 'Numbers, links, and difficulty values follow the source series entries.',
+            )
+            main += section(
+                'Related',
+                '関連導線' if lang == 'ja' else 'Related Links',
+                entry_grid(related_cards),
+                '楽譜から作品別・カテゴリ別のページへ移動できます。' if lang == 'ja' else 'Move from the score page into series and category pages.',
+            )
+            html = make_head(lang, title, desc, BASE + page, BASE + f'/score/{score["slug"]}/', BASE + f'/en/score/{score["slug"]}/', graph)
+            html += shell(lang, page, alt, breadcrumbs(crumbs), label, desc, metrics, ''.join(actions), '', main)
+            write(Path(page[1:]) / 'index.html', html)
+        urls.extend([BASE + f'/score/{score["slug"]}/', BASE + f'/en/score/{score["slug"]}/'])
 
     ja_series_cards = [entry_card(f'/{meta["slug"]}/', meta['code'], meta['ja'], thumb=normalize_thumb(series_playlists.get(key, {}).get('thumbnail')) if series_playlists.get(key) else '') for key, meta in SERIES_MAP.items()]
     en_series_cards = [entry_card(f'/en/{meta["slug"]}/', meta['code'], meta['en'], thumb=normalize_thumb(series_playlists.get(key, {}).get('thumbnail')) if series_playlists.get(key) else '') for key, meta in SERIES_MAP.items()]
