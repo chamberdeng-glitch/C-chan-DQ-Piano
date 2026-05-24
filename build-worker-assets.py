@@ -39,6 +39,7 @@ DIRECTORIES = [
     "dq10",
     "dq11",
     "en",
+    "score",
     "series-index",
 ]
 
