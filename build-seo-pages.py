@@ -617,7 +617,7 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
         '<section class="section seo-hub-links bookcase-library" id="seo-links">'
         f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Series</p><h3>{esc(s_title)}</h3></div>{book_shelf(series_cards, s_title, "series")}</div>'
         f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Categories</p><h3>{esc(c_title)}</h3></div>{book_shelf(category_library_cards, c_title, "category-en" if lang == "en" else "category")}</div>'
-        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Scores</p><h3>{esc(score_title)}</h3></div>{book_shelf(score_cards(lang), score_title, "score")}</div>'
+        f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Scores</p><h3>{esc(score_title)}</h3></div>{book_shelf(score_cards(lang), score_title, "score-en" if lang == "en" else "score")}</div>'
         '</section>'
     )
     if 'seo-hub-links' in text:
