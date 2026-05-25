@@ -253,14 +253,14 @@ def website_json(lang: str) -> dict:
         return {
             '@type': 'WebSite',
             '@id': BASE + '/#website',
-            'name': 'しーちゃんピアノ｜ドラゴンクエスト ピアノライブラリー',
+            'name': 'ドラゴンクエスト ピアノ演奏・BGMライブラリー',
             'url': BASE + '/',
             'inLanguage': 'ja',
         }
     return {
         '@type': 'WebSite',
         '@id': BASE + '/en/#website',
-        'name': 'Dragon Quest Piano Library',
+        'name': 'Dragon Quest Piano Music Library',
         'url': BASE + '/en/',
         'inLanguage': 'en',
     }

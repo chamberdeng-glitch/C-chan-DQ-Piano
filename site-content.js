@@ -1,12 +1,12 @@
 ﻿window.siteContentData = {
   ja: {
     meta: {
-      title: "しーちゃんピアノ | ドラクエピアノ演奏チャンネル",
+      title: "ドラゴンクエスト ピアノ演奏・BGMライブラリー",
       description: "しーちゃんピアノ のドラクエピアノ演奏をまとめた紹介ページ。冒険の雰囲気を感じる演奏動画を、曲調や目的別に探しやすく整理しています。",
       keywords: "しーちゃんピアノ,ドラクエ,ドラゴンクエスト,ピアノ演奏,ゲーム音楽,YouTube,ドラクエピアノ",
-      ogTitle: "しーちゃんピアノ | ドラクエピアノ演奏チャンネル",
+      ogTitle: "ドラゴンクエスト ピアノ演奏・BGMライブラリー",
       ogDescription: "ドラクエの世界観をピアノで楽しめる しーちゃんピアノ の紹介ページ。検索流入から動画回遊までつなぎます。",
-      twitterTitle: "しーちゃんピアノ | ドラクエピアノ演奏チャンネル",
+      twitterTitle: "ドラゴンクエスト ピアノ演奏・BGMライブラリー",
       twitterDescription: "ドラゴンクエストの名曲をピアノで演奏するYouTubeチャンネル。DQ1〜DQ11のフィールド曲・戦闘曲・メドレーをシリーズ別に探せます。"
     },
     nav: {
@@ -16,7 +16,7 @@
     },
     hero: {
       eyebrow: "Dragon Quest Piano Channel",
-      title: "ドラゴンクエストの名曲をピアノで演奏する YouTube チャンネル",
+      title: "ドラゴンクエスト ピアノ演奏・BGMライブラリー",
       lead: "",
       primaryCta: "YouTubeチャンネルを見る",
       secondaryCta: "プレイリストを見る",
@@ -125,12 +125,12 @@
   },
   en: {
     meta: {
-      title: "C-chan piano | Dragon Quest Piano Channel",
+      title: "Dragon Quest Piano Music Library",
       description: "An English landing page for C-chan piano, a YouTube channel focused on Dragon Quest piano performances, organized for easy discovery and playlist browsing.",
       keywords: "C-chan piano,Dragon Quest,piano,game music,YouTube,DQ piano",
-      ogTitle: "C-chan piano | Dragon Quest Piano Channel",
+      ogTitle: "Dragon Quest Piano Music Library",
       ogDescription: "Explore Dragon Quest piano performances by C-chan piano with a clear English guide, playlist organization, and quick links.",
-      twitterTitle: "C-chan piano | Dragon Quest Piano Channel",
+      twitterTitle: "Dragon Quest Piano Music Library",
       twitterDescription: "Dragon Quest piano performances on YouTube - browse playlists by series, medleys, and battle themes from DQ1 to DQ11."
     },
     nav: {
@@ -140,7 +140,7 @@
     },
     hero: {
       eyebrow: "Dragon Quest Piano Channel",
-      title: "Dragon Quest Piano Performances on YouTube",
+      title: "Dragon Quest Piano Music Library",
       lead: "",
       primaryCta: "Visit the YouTube channel",
       secondaryCta: "Browse playlists",
