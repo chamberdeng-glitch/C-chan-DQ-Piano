@@ -1758,7 +1758,7 @@ window.songReferenceData = {
       "sortNumber": 6,
       "songTitle": "讃美歌に癒されて",
       "category": "教会・ほこら",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=yy5gRhKAR8Q",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1785,7 +1785,7 @@ window.songReferenceData = {
       "sortNumber": 9,
       "songTitle": "錬金がま",
       "category": "カジノ",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=aMaaqQwvwsM&t=4233s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
