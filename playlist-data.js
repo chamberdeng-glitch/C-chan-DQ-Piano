@@ -296,6 +296,14 @@ window.playlistData = [
         "difficultyLabel": "未設定",
         "difficultyStars": null,
         "difficultyDetail": ""
+      },
+      {
+        "title": "【ドラクエの日 40th】ドラクエ8 全曲ピアノメドレー｜全35曲＋ME集",
+        "rawTitle": "【ドラクエの日 40th】ドラクエ8 全曲ピアノメドレー｜全35曲＋ME集",
+        "url": "https://www.youtube.com/watch?v=aMaaqQwvwsM",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
       }
     ]
   },

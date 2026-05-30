@@ -205,7 +205,18 @@ def is_medley(title: str) -> bool:
 def normalize_thumb(src: str | None) -> str:
     if not src:
         return ''
+    if src.startswith(('http://', 'https://')):
+        return src
     return '/' + src.lstrip('./').lstrip('/')
+
+
+def youtube_video_thumb(url: str | None) -> str:
+    if not url:
+        return ''
+    match = re.search(r'(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})', url)
+    if not match:
+        return ''
+    return f'https://i.ytimg.com/vi/{match.group(1)}/hqdefault.jpg'
 
 
 def make_head(lang: str, title: str, desc: str, canon: str, ja_href: str, en_href: str, graph: list[dict]) -> str:
@@ -722,7 +733,7 @@ def build() -> None:
                 'title': track.get('title') or track.get('rawTitle') or playlist['title'],
                 'url': url,
                 'playlistTitle': playlist['title'],
-                'thumbnail': playlist.get('thumbnail', ''),
+                'thumbnail': track.get('thumbnail') or youtube_video_thumb(url) or playlist.get('thumbnail', ''),
             })
 
     urls = [BASE + '/', BASE + '/en/']

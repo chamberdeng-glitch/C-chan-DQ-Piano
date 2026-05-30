@@ -1531,7 +1531,7 @@ window.songReferenceData = {
       "sortNumber": 16,
       "songTitle": "そうだあの時は",
       "category": "イベント",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=aMaaqQwvwsM&t=2264s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1576,7 +1576,7 @@ window.songReferenceData = {
       "sortNumber": 21,
       "songTitle": "城の威容",
       "category": "城",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=aMaaqQwvwsM&t=3353s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1612,7 +1612,7 @@ window.songReferenceData = {
       "sortNumber": 25,
       "songTitle": "錬金がま",
       "category": "カジノ",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=aMaaqQwvwsM&t=4233s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1639,7 +1639,7 @@ window.songReferenceData = {
       "sortNumber": 28,
       "songTitle": "闇の遺跡",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=aMaaqQwvwsM&t=4318s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1666,7 +1666,7 @@ window.songReferenceData = {
       "sortNumber": 31,
       "songTitle": "終末へ向かう",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=aMaaqQwvwsM&t=4911s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
