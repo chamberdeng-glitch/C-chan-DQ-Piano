@@ -1985,6 +1985,53 @@ h1 {
   height: 100%;
 }
 
+.performer-profile {
+  padding-top: 10px;
+}
+
+.performer-profile-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid rgba(244, 211, 124, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(244, 211, 124, 0.08), rgba(244, 211, 124, 0.02) 44%, rgba(0, 0, 0, 0.16)),
+    rgba(8, 7, 5, 0.72);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 239, 189, 0.08);
+}
+
+.performer-profile-logo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 211, 124, 0.42);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.34);
+  object-fit: cover;
+}
+
+.performer-profile-copy h2 {
+  margin: 4px 0 14px;
+  color: var(--brand-light);
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  letter-spacing: 0;
+}
+
+.performer-profile-copy p {
+  margin: 0;
+  color: var(--text);
+  line-height: 1.9;
+}
+
+.performer-profile-copy p + p {
+  margin-top: 3px;
+}
+
 .seo-song-table-wrap {
   margin-top: 0;
 }
@@ -2023,6 +2070,18 @@ h1 {
   .bookcase-block .compact-heading::before,
   .bookcase-block .compact-heading::after {
     display: none;
+  }
+
+  .performer-profile-card {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .performer-profile-logo {
+    width: 76px;
+    height: 76px;
   }
 
   .bookcase-scroll {
