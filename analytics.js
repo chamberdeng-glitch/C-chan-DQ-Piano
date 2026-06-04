@@ -19,8 +19,8 @@
     const withoutLang = normalized.replace(/^\/en\//, "/");
 
     if (withoutLang === "/" || path === "/en.html") return "home";
-    if (withoutLang === "/series-index.html/") return "series_index";
-    if (withoutLang === "/category-index.html/") return "category_index";
+    if (withoutLang === "/series-index/" || withoutLang === "/series-index.html/") return "series_index";
+    if (withoutLang === "/category-index/" || withoutLang === "/category-index.html/") return "category_index";
     if (/^\/dq\d+\//.test(withoutLang)) return "series_page";
     if (withoutLang.startsWith("/category/")) return "category_page";
     return "other";
