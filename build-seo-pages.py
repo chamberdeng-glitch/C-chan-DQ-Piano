@@ -570,7 +570,7 @@ CATEGORY_LIBRARY = [
     ('field', 'フィールド', 'Field', '♪'),
     ('sea', '海', 'Ocean', '〜'),
     ('sky', '空', 'Sky', '◇'),
-    ('town-village', '町・村', 'Town & Village', '⌂'),
+    ('town-village', '街・村', 'Town & Village', '⌂'),
     ('castle', '城', 'Castle', '⌂'),
     ('church-shrine', '教会・ほこら', 'Church & Shrine', '◇'),
     ('casino', 'カジノ', 'Casino', '♬'),
