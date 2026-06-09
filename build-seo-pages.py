@@ -583,6 +583,7 @@ CATEGORY_LIBRARY = [
     ('ending', 'エンディング', 'Ending', '♩'),
     ('game-over', '全滅', 'Defeat', '◇'),
     ('medley', 'メドレー', 'Medley', '♫'),
+    ('medley', '作業用BGM', 'Work & Study BGM', '♨'),
 ]
 
 
