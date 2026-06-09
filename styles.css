@@ -1918,15 +1918,15 @@ h1 {
 .book-spine-series {
   top: 13%;
   bottom: 12%;
-  left: calc(3.0% + (var(--book-index) * 8.82%));
-  width: 8.15%;
+  left: calc(2.969% + (var(--book-index) * 8.797%));
+  width: 8.25%;
 }
 
 .book-spine-category {
   top: 15.8%;
   bottom: 15%;
-  left: calc(0.6% + (var(--book-index) * 4.95%));
-  width: 4.55%;
+  left: calc(0.391% + (var(--book-index) * 4.984%));
+  width: 4.6%;
 }
 
 .book-spine-score {
@@ -2441,70 +2441,60 @@ h1 {
 .book-spine-series {
   top: 13%;
   bottom: 12%;
-  left: calc(3.0% + (var(--book-index) * 8.82%));
-  width: 8.15%;
+  left: calc(2.969% + (var(--book-index) * 8.797%));
+  width: 8.25%;
 }
 
 .book-spine-series:nth-child(1) {
-  left: 3.000%;
-  width: 8.150%;
+  left: 2.969%;
+  width: 8.125%;
 }
-
 .book-spine-series:nth-child(2) {
-  left: 11.820%;
-  width: 8.150%;
+  left: 11.953%;
+  width: 7.969%;
 }
-
 .book-spine-series:nth-child(3) {
-  left: 20.640%;
-  width: 8.150%;
+  left: 20.547%;
+  width: 8.281%;
 }
-
 .book-spine-series:nth-child(4) {
-  left: 29.460%;
-  width: 8.150%;
+  left: 29.375%;
+  width: 8.281%;
 }
-
 .book-spine-series:nth-child(5) {
-  left: 38.280%;
-  width: 8.150%;
+  left: 38.047%;
+  width: 8.359%;
 }
-
 .book-spine-series:nth-child(6) {
-  left: 47.100%;
-  width: 8.150%;
+  left: 46.875%;
+  width: 8.359%;
 }
-
 .book-spine-series:nth-child(7) {
-  left: 55.920%;
-  width: 8.150%;
+  left: 55.547%;
+  width: 8.516%;
 }
-
 .book-spine-series:nth-child(8) {
-  left: 64.740%;
-  width: 8.150%;
+  left: 64.219%;
+  width: 8.594%;
 }
-
 .book-spine-series:nth-child(9) {
-  left: 73.560%;
-  width: 8.150%;
+  left: 73.203%;
+  width: 8.516%;
 }
-
 .book-spine-series:nth-child(10) {
-  left: 82.380%;
-  width: 8.150%;
+  left: 82.109%;
+  width: 8.438%;
 }
-
 .book-spine-series:nth-child(11) {
-  left: 91.200%;
-  width: 8.150%;
+  left: 90.938%;
+  width: 8.438%;
 }
 
 .book-spine-category {
   top: 15.8%;
   bottom: 15%;
-  left: calc(0.6% + (var(--book-index) * 4.95%));
-  width: 4.55%;
+  left: calc(0.391% + (var(--book-index) * 4.984%));
+  width: 4.6%;
 }
 
 .book-spine-score {
@@ -2515,84 +2505,84 @@ h1 {
 }
 
 .bookcase-shelf-category .book-spine-category:nth-child(1) {
-  left: 0.600%;
-  width: 4.550%;
+  left: 0.391%;
+  width: 5.000%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(2) {
-  left: 5.550%;
-  width: 4.550%;
+  left: 5.859%;
+  width: 4.609%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(3) {
-  left: 10.500%;
-  width: 4.550%;
+  left: 10.938%;
+  width: 4.688%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(4) {
-  left: 15.450%;
-  width: 4.550%;
+  left: 16.094%;
+  width: 4.609%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(5) {
-  left: 20.400%;
-  width: 4.550%;
+  left: 21.172%;
+  width: 4.609%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(6) {
-  left: 25.350%;
-  width: 4.550%;
+  left: 26.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(7) {
-  left: 30.300%;
-  width: 4.550%;
+  left: 31.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(8) {
-  left: 35.250%;
-  width: 4.550%;
+  left: 36.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(9) {
-  left: 40.200%;
-  width: 4.550%;
+  left: 41.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(10) {
-  left: 45.150%;
-  width: 4.550%;
+  left: 46.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(11) {
-  left: 50.100%;
-  width: 4.550%;
+  left: 51.250%;
+  width: 4.375%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(12) {
-  left: 55.050%;
-  width: 4.550%;
+  left: 56.094%;
+  width: 4.375%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(13) {
-  left: 60.000%;
-  width: 4.550%;
+  left: 60.938%;
+  width: 4.609%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(14) {
-  left: 64.950%;
-  width: 4.550%;
+  left: 66.016%;
+  width: 4.531%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(15) {
-  left: 69.900%;
-  width: 4.550%;
+  left: 71.016%;
+  width: 4.453%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(16) {
-  left: 74.850%;
-  width: 4.550%;
+  left: 75.938%;
+  width: 4.453%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(17) {
-  left: 79.800%;
-  width: 4.550%;
+  left: 80.859%;
+  width: 4.531%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(18) {
-  left: 84.750%;
-  width: 4.550%;
+  left: 85.859%;
+  width: 4.062%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(19) {
-  left: 89.700%;
-  width: 4.550%;
+  left: 90.391%;
+  width: 4.219%;
 }
 .bookcase-shelf-category .book-spine-category:nth-child(20) {
-  left: 94.650%;
-  width: 4.550%;
+  left: 95.078%;
+  width: 4.609%;
 }
 
 .bookcase-shelf-category-en .book-spine-category {
@@ -2600,84 +2590,84 @@ h1 {
 }
 
 .bookcase-shelf-category-en .book-spine-category:nth-child(1) {
-  left: 0.600%;
-  width: 4.550%;
+  left: 0.391%;
+  width: 5.000%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(2) {
-  left: 5.550%;
-  width: 4.550%;
+  left: 5.859%;
+  width: 4.609%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(3) {
-  left: 10.500%;
-  width: 4.550%;
+  left: 10.938%;
+  width: 4.688%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(4) {
-  left: 15.450%;
-  width: 4.550%;
+  left: 16.094%;
+  width: 4.609%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(5) {
-  left: 20.400%;
-  width: 4.550%;
+  left: 21.172%;
+  width: 4.609%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(6) {
-  left: 25.350%;
-  width: 4.550%;
+  left: 26.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(7) {
-  left: 30.300%;
-  width: 4.550%;
+  left: 31.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(8) {
-  left: 35.250%;
-  width: 4.550%;
+  left: 36.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(9) {
-  left: 40.200%;
-  width: 4.550%;
+  left: 41.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(10) {
-  left: 45.150%;
-  width: 4.550%;
+  left: 46.250%;
+  width: 4.531%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(11) {
-  left: 50.100%;
-  width: 4.550%;
+  left: 51.250%;
+  width: 4.375%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(12) {
-  left: 55.050%;
-  width: 4.550%;
+  left: 56.094%;
+  width: 4.375%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(13) {
-  left: 60.000%;
-  width: 4.550%;
+  left: 60.938%;
+  width: 4.609%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(14) {
-  left: 64.950%;
-  width: 4.550%;
+  left: 66.016%;
+  width: 4.531%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(15) {
-  left: 69.900%;
-  width: 4.550%;
+  left: 71.016%;
+  width: 4.453%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(16) {
-  left: 74.850%;
-  width: 4.550%;
+  left: 75.938%;
+  width: 4.453%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(17) {
-  left: 79.800%;
-  width: 4.550%;
+  left: 80.859%;
+  width: 4.531%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(18) {
-  left: 84.750%;
-  width: 4.550%;
+  left: 85.859%;
+  width: 4.062%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(19) {
-  left: 89.700%;
-  width: 4.550%;
+  left: 90.391%;
+  width: 4.219%;
 }
 .bookcase-shelf-category-en .book-spine-category:nth-child(20) {
-  left: 94.650%;
-  width: 4.550%;
+  left: 95.078%;
+  width: 4.609%;
 }
 
 @media (max-width: 720px) {
