@@ -2738,14 +2738,14 @@ h1 {
   }
 
   .bookcase-shelf-category {
-    min-width: 1700px;
+    min-width: 1100px;
     aspect-ratio: 1280 / 572;
     background-size: 100% 100%;
     background-position: center;
   }
 
   .bookcase-shelf-category-en {
-    min-width: 1700px;
+    min-width: 1100px;
     aspect-ratio: 1280 / 574;
     background-size: 100% 100%;
     background-position: center;
