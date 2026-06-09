@@ -583,7 +583,6 @@ CATEGORY_LIBRARY = [
     ('ending', 'エンディング', 'Ending', '♩'),
     ('game-over', '全滅', 'Defeat', '◇'),
     ('medley', 'メドレー', 'Medley', '♫'),
-    ('medley', '作業用BGM', 'Work & Study BGM', '♨'),
 ]
 
 
@@ -593,8 +592,6 @@ def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[st
         href = f'/category/{slug}/' if lang == 'ja' else f'/en/category/{slug}/'
         title = ja_label if lang == 'ja' else en_label
         body = 'カテゴリ別ページ' if lang == 'ja' else 'Category page'
-        if ja_label == '作業用BGM':
-            body = 'メドレーを作業用BGMとして聴く' if lang == 'ja' else 'Medleys for background listening'
         cards.append(book_spine_card(href, title, body, index, icon=icon, variant='category'))
     return cards
 
