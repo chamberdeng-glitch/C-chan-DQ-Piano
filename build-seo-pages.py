@@ -219,6 +219,15 @@ def youtube_video_thumb(url: str | None) -> str:
     return f'https://i.ytimg.com/vi/{match.group(1)}/hqdefault.jpg'
 
 
+def youtube_video_id(url: str | None) -> str:
+    match = re.search(r'(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})', url or '')
+    return match.group(1) if match else ''
+
+
+# 曲別ページを持つ曲のID -> ページパス。build() 冒頭で song-page-content.js から作る。
+SONG_PAGE_PATHS: dict[str, str] = {}
+
+
 def make_head(lang: str, title: str, desc: str, canon: str, ja_href: str, en_href: str, graph: list[dict]) -> str:
     locale = 'ja_JP' if lang == 'ja' else 'en_US'
     html_lang = 'ja' if lang == 'ja' else 'en'
@@ -447,7 +456,11 @@ def song_table(rows: list[dict], lang: str) -> str:
         category = row['category'] if lang == 'ja' else row['categoryEn']
         difficulty = (row.get('difficultyLabel') or '未設定') if lang == 'ja' else (row.get('difficultyEn') or 'Not set')
         difficulty_stars = row.get('difficultyStars')
-        if row.get('videoUrl'):
+        page_path = SONG_PAGE_PATHS.get(row['id']) if lang == 'ja' else None
+        if page_path:
+            title_html = f'<a class="song-link" href="{page_path}">{esc(title)}</a>'
+            number_html = f'<a class="song-link song-number-link" href="{page_path}">{esc(row["id"])}</a>'
+        elif row.get('videoUrl'):
             title_html = f'<a class="song-link" href="{row["videoUrl"]}" target="_blank" rel="noreferrer">{esc(title)}</a>'
             number_html = f'<a class="song-link song-number-link" href="{row["videoUrl"]}" target="_blank" rel="noreferrer">{esc(row["id"])}</a>'
         else:
@@ -688,6 +701,162 @@ def score_cover_card(score: dict, lang: str) -> str:
     )
 
 
+SONG_STYLES = (
+    '<style>'
+    '.yt-facade{position:relative;aspect-ratio:16/9;border-radius:var(--radius-md);overflow:hidden;'
+    'background:#000;border:1px solid var(--line);box-shadow:var(--shadow)}'
+    '.yt-facade-btn{all:unset;cursor:pointer;display:block;width:100%;height:100%}'
+    '.yt-facade-btn:focus-visible{outline:2px solid var(--brand-deep);outline-offset:2px}'
+    '.yt-facade img{width:100%;height:100%;object-fit:cover;display:block}'
+    '.yt-facade iframe{position:absolute;inset:0;width:100%;height:100%;border:0}'
+    '.yt-facade-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);'
+    'width:74px;height:50px;border-radius:14px;background:rgba(3,3,2,.74);'
+    'border:1px solid var(--line);display:grid;place-items:center;transition:background .2s ease}'
+    '.yt-facade-btn:hover .yt-facade-play{background:rgba(20,50,77,.9)}'
+    '.yt-facade-play::after{content:"";display:block;border-style:solid;'
+    'border-width:11px 0 11px 18px;border-color:transparent transparent transparent var(--brand-deep)}'
+    '</style>'
+)
+
+SONG_FACADE_SCRIPT = (
+    '<script>'
+    'document.querySelectorAll(".yt-facade-btn").forEach((btn)=>{'
+    'btn.addEventListener("click",()=>{'
+    'const wrap=btn.closest(".yt-facade");'
+    'const id=wrap.dataset.videoId;'
+    'const iframe=document.createElement("iframe");'
+    'iframe.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1";'
+    'iframe.title=wrap.dataset.videoTitle||"YouTube video";'
+    'iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";'
+    'iframe.allowFullscreen=true;'
+    'wrap.replaceChildren(iframe);'
+    '},{once:true});'
+    '});'
+    '</script>'
+)
+
+
+def song_facade(vid: str, video_title: str, thumb: str) -> str:
+    return (
+        f'<div class="yt-facade" data-video-id="{esc(vid)}" data-video-title="{esc(video_title)}">'
+        f'<button class="yt-facade-btn" type="button" aria-label="{esc(video_title)}を再生">'
+        f'<img src="{thumb}" alt="{esc(video_title)}のサムネイル" width="480" height="360" loading="eager" fetchpriority="high">'
+        '<span class="yt-facade-play" aria-hidden="true"></span>'
+        '</button></div>'
+    )
+
+
+def song_difficulty_text(row: dict) -> str:
+    stars = row.get('difficultyStars')
+    label = row.get('difficultyLabel', '')
+    if not stars:
+        return label or '未設定'
+    return f'{label} ' + '★' * stars + '☆' * (5 - stars)
+
+
+def song_neighbor_card(neighbor: dict | None, label: str) -> str:
+    if not neighbor:
+        return ''
+    page_path = SONG_PAGE_PATHS.get(neighbor['id'])
+    if page_path:
+        return entry_card(page_path, f'{label}: {neighbor["songTitle"]}', f'{neighbor["id"]} / {neighbor["category"]}')
+    if neighbor.get('videoUrl'):
+        return (
+            f'<a class="entry-card" href="{neighbor["videoUrl"]}" target="_blank" rel="noreferrer">'
+            f'<span class="entry-card-title">{label}: {esc(neighbor["songTitle"])}</span>'
+            f'<span class="entry-card-body">{esc(neighbor["id"])} / {esc(neighbor["category"])} / YouTubeで見る</span></a>'
+        )
+    return ''
+
+
+def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, meta: dict) -> None:
+    series = SERIES_MAP[row['seriesKey']]
+    page = SONG_PAGE_PATHS[row['id']]
+    canon = BASE + page
+    vid = youtube_video_id(row['videoUrl'])
+    thumb = f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'
+    song_title = row['songTitle']
+    video_title = f'{song_title}（{series["ja"]}）ピアノ演奏'
+
+    title = f'{song_title} ピアノ | {series["ja"]} | {JA_LIBRARY_NAME}'
+    desc = (
+        f'{series["ja"]}の「{song_title}」のピアノ演奏ページです。'
+        f'演奏動画と曲の情報、同シリーズや同カテゴリの曲への入口をまとめています。'
+    )
+    lead = meta.get('lead') or f'{series["ja"]}の{row["category"]}曲「{song_title}」のピアノ演奏です。'
+
+    crumbs = [('ホーム', '/'), (series['code'], f'/{series["slug"]}/'), (song_title, page)]
+    video_json = {
+        '@type': 'VideoObject',
+        'name': video_title,
+        'description': desc,
+        'thumbnailUrl': [thumb],
+        'contentUrl': row['videoUrl'],
+        'embedUrl': f'https://www.youtube.com/embed/{vid}',
+    }
+    if meta.get('uploadDate'):
+        video_json['uploadDate'] = meta['uploadDate']
+    graph = [website_json('ja'), breadcrumb_json(crumbs), video_json]
+
+    head = make_head('ja', title, desc, canon, canon, canon, graph)
+    # 英語版曲ページは未作成のため hreflang=en は出さない
+    head = head.replace(f'<link rel="alternate" hreflang="en" href="{canon}">', '')
+    head = head.replace(
+        '<meta property="og:type" content="website">',
+        '<meta property="og:type" content="video.other">',
+    )
+    og_image = (
+        f'<meta property="og:image" content="{thumb}">'
+        '<meta property="og:image:width" content="480">'
+        '<meta property="og:image:height" content="360">'
+        f'<meta property="og:image:alt" content="{esc(video_title)}のサムネイル">'
+        f'<meta name="twitter:image" content="{thumb}">'
+    )
+    head = head.replace('<meta name="twitter:card"', og_image + '<meta name="twitter:card"')
+    head = head.replace('</head>', SONG_STYLES + '</head>')
+
+    metrics = ''.join([
+        metric('カテゴリ', row['category']),
+        metric('難易度', song_difficulty_text(row)),
+        metric('収録作品', series['ja']),
+    ])
+    actions = ''.join([
+        action(row['videoUrl'], 'YouTubeで見る', primary=True, external=True),
+        action(f'/{series["slug"]}/', f'{series["code"]}の曲一覧'),
+        action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る', external=True),
+    ])
+
+    main = ''
+    if meta.get('description'):
+        main += section('About', 'この曲について', f'<p class="section-copy">{esc(meta["description"])}</p>')
+    if meta.get('timestamps'):
+        items = ''.join(
+            f'<li><span class="song-link">{esc(ts["time"])}</span> {esc(ts["label"])}</li>'
+            for ts in meta['timestamps']
+        )
+        main += section('Chapters', '演奏の流れ', f'<ul>{items}</ul>')
+
+    related = [card for card in (
+        song_neighbor_card(prev_row, '前の曲'),
+        song_neighbor_card(next_row, '次の曲'),
+    ) if card]
+    related.append(entry_card(f'/{series["slug"]}/', f'{series["ja"]} の曲一覧', '作品別ページへ'))
+    cat_slug = next((slug for slug, info in CATS.items() if row['category'] in info['match']), '')
+    if cat_slug:
+        related.append(entry_card(f'/category/{cat_slug}/', f'{row["category"]}の曲', 'カテゴリ別ページへ'))
+    main += section('Related', '関連の曲とページ', entry_grid(related), '同じ作品・同じカテゴリの曲をたどれます。')
+
+    html = head + shell(
+        'ja', page, f'/en/{series["slug"]}/',
+        breadcrumbs(crumbs),
+        song_title, lead, metrics, actions,
+        song_facade(vid, video_title, thumb),
+        main,
+    )
+    html = html.replace('</body></html>', SONG_FACADE_SCRIPT + '</body></html>')
+    write(Path(page[1:]) / 'index.html', html)
+
+
 def build() -> None:
     songs = load_js('song-reference-data.js', 'window.songReferenceData = ')
     playlists = load_js('playlist-data.js', 'window.playlistData = ')
@@ -708,6 +877,13 @@ def build() -> None:
             all_rows.append(item)
             rows_by_id[item['id']] = item
         by_series[skey] = cooked
+
+    song_content = load_js('song-page-content.js', 'window.songPageContent = ')
+    SONG_PAGE_PATHS.clear()
+    for song_id, meta in song_content.items():
+        skey = song_id.split('-')[0]
+        if meta.get('slug') and rows_by_id.get(song_id, {}).get('videoUrl'):
+            SONG_PAGE_PATHS[song_id] = f'/{SERIES_MAP[skey]["slug"]}/{meta["slug"]}/'
 
     series_playlists = {}
     medley_playlists = []
@@ -787,6 +963,14 @@ def build() -> None:
             html += shell(lang, page, alt, breadcrumbs(crumbs), f'{ja_name} ピアノ演奏ライブラリー' if lang == 'ja' else f'{en_name} Piano Library', desc, metrics, ''.join(actions), feature, main)
             write(Path(page[1:]) / 'index.html', html)
         urls.extend([BASE + f'/{slug}/', BASE + f'/en/{slug}/'])
+
+        for i, row in enumerate(rows):
+            if row['id'] not in SONG_PAGE_PATHS:
+                continue
+            prev_row = rows[i - 1] if i > 0 else None
+            next_row = rows[i + 1] if i + 1 < len(rows) else None
+            write_song_page(row, prev_row, next_row, song_content[row['id']])
+            urls.append(BASE + SONG_PAGE_PATHS[row['id']])
 
     for slug, info in CATS.items():
         rows = [row for row in all_rows if row['category'] in info['match']]
