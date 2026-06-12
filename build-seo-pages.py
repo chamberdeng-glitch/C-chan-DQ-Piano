@@ -456,7 +456,9 @@ def song_table(rows: list[dict], lang: str) -> str:
         category = row['category'] if lang == 'ja' else row['categoryEn']
         difficulty = (row.get('difficultyLabel') or '未設定') if lang == 'ja' else (row.get('difficultyEn') or 'Not set')
         difficulty_stars = row.get('difficultyStars')
-        page_path = SONG_PAGE_PATHS.get(row['id']) if lang == 'ja' else None
+        page_path = SONG_PAGE_PATHS.get(row['id'])
+        if page_path and lang == 'en':
+            page_path = '/en' + page_path
         if page_path:
             title_html = f'<a class="song-link" href="{page_path}">{esc(title)}</a>'
             number_html = f'<a class="song-link song-number-link" href="{page_path}">{esc(row["id"])}</a>'
@@ -736,56 +738,82 @@ SONG_FACADE_SCRIPT = (
 )
 
 
-def song_facade(vid: str, video_title: str, thumb: str) -> str:
+def song_facade(vid: str, video_title: str, thumb: str, play_label: str, image_alt: str) -> str:
     return (
         f'<div class="yt-facade" data-video-id="{esc(vid)}" data-video-title="{esc(video_title)}">'
-        f'<button class="yt-facade-btn" type="button" aria-label="{esc(video_title)}を再生">'
-        f'<img src="{thumb}" alt="{esc(video_title)}のサムネイル" width="480" height="360" loading="eager" fetchpriority="high">'
+        f'<button class="yt-facade-btn" type="button" aria-label="{esc(play_label)}">'
+        f'<img src="{thumb}" alt="{esc(image_alt)}" width="480" height="360" loading="eager" fetchpriority="high">'
         '<span class="yt-facade-play" aria-hidden="true"></span>'
         '</button></div>'
     )
 
 
-def song_difficulty_text(row: dict) -> str:
+def song_difficulty_text(row: dict, lang: str) -> str:
     stars = row.get('difficultyStars')
-    label = row.get('difficultyLabel', '')
+    if lang == 'ja':
+        label = row.get('difficultyLabel') or '未設定'
+    else:
+        label = row.get('difficultyEn') or 'Not set'
     if not stars:
-        return label or '未設定'
+        return label
     return f'{label} ' + '★' * stars + '☆' * (5 - stars)
 
 
-def song_neighbor_card(neighbor: dict | None, label: str) -> str:
+def song_neighbor_card(neighbor: dict | None, label: str, lang: str) -> str:
     if not neighbor:
         return ''
+    title = neighbor['songTitle'] if lang == 'ja' else neighbor['songTitleEn']
+    category = neighbor['category'] if lang == 'ja' else neighbor['categoryEn']
     page_path = SONG_PAGE_PATHS.get(neighbor['id'])
     if page_path:
-        return entry_card(page_path, f'{label}: {neighbor["songTitle"]}', f'{neighbor["id"]} / {neighbor["category"]}')
+        href = page_path if lang == 'ja' else '/en' + page_path
+        return entry_card(href, f'{label}: {title}', f'{neighbor["id"]} / {category}')
     if neighbor.get('videoUrl'):
+        watch = 'YouTubeで見る' if lang == 'ja' else 'Watch on YouTube'
         return (
             f'<a class="entry-card" href="{neighbor["videoUrl"]}" target="_blank" rel="noreferrer">'
-            f'<span class="entry-card-title">{label}: {esc(neighbor["songTitle"])}</span>'
-            f'<span class="entry-card-body">{esc(neighbor["id"])} / {esc(neighbor["category"])} / YouTubeで見る</span></a>'
+            f'<span class="entry-card-title">{label}: {esc(title)}</span>'
+            f'<span class="entry-card-body">{esc(neighbor["id"])} / {esc(category)} / {watch}</span></a>'
         )
     return ''
 
 
-def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, meta: dict) -> None:
+def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, meta: dict, lang: str) -> None:
     series = SERIES_MAP[row['seriesKey']]
-    page = SONG_PAGE_PATHS[row['id']]
+    ja_page = SONG_PAGE_PATHS[row['id']]
+    en_page = '/en' + ja_page
+    page = ja_page if lang == 'ja' else en_page
     canon = BASE + page
     vid = youtube_video_id(row['videoUrl'])
     thumb = f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'
-    song_title = row['songTitle']
-    video_title = f'{song_title}（{series["ja"]}）ピアノ演奏'
 
-    title = f'{song_title} ピアノ | {series["ja"]} | {JA_LIBRARY_NAME}'
-    desc = (
-        f'{series["ja"]}の「{song_title}」のピアノ演奏ページです。'
-        f'演奏動画と曲の情報、同シリーズや同カテゴリの曲への入口をまとめています。'
-    )
-    lead = meta.get('lead') or f'{series["ja"]}の{row["category"]}曲「{song_title}」のピアノ演奏です。'
+    if lang == 'ja':
+        song_title = row['songTitle']
+        video_title = f'{song_title}（{series["ja"]}）ピアノ演奏'
+        title = f'{song_title} ピアノ | {series["ja"]} | {JA_LIBRARY_NAME}'
+        desc = (
+            f'{series["ja"]}の「{song_title}」のピアノ演奏ページです。'
+            f'演奏動画と曲の情報、同シリーズや同カテゴリの曲への入口をまとめています。'
+        )
+        lead = meta.get('lead') or f'{series["ja"]}の{row["category"]}曲「{song_title}」のピアノ演奏です。'
+        crumbs = [('ホーム', '/'), (series['code'], f'/{series["slug"]}/'), (song_title, page)]
+        play_label = f'{video_title}を再生'
+        image_alt = f'{video_title}のサムネイル'
+        about_text = meta.get('description', '')
+    else:
+        song_title = row['songTitleEn']
+        video_title = f'{song_title} ({series["en"]}) Piano Performance'
+        title = f'{song_title} Piano | {series["en"]} | {EN_LIBRARY_NAME}'
+        desc = (
+            f'A piano performance of "{song_title}" from {series["en"]}, '
+            f'with links to related pieces from the same game and category.'
+        )
+        lead = meta.get('leadEn') or f'A piano performance of "{song_title}" from {series["en"]}.'
+        crumbs = [('Home', '/en/'), (series['code'], f'/en/{series["slug"]}/'), (song_title, page)]
+        play_label = f'Play {video_title}'
+        image_alt = f'Thumbnail of {video_title}'
+        about_text = meta.get('descriptionEn', '')
 
-    crumbs = [('ホーム', '/'), (series['code'], f'/{series["slug"]}/'), (song_title, page)]
     video_json = {
         '@type': 'VideoObject',
         'name': video_title,
@@ -796,11 +824,9 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
     }
     if meta.get('uploadDate'):
         video_json['uploadDate'] = meta['uploadDate']
-    graph = [website_json('ja'), breadcrumb_json(crumbs), video_json]
+    graph = [website_json(lang), breadcrumb_json(crumbs), video_json]
 
-    head = make_head('ja', title, desc, canon, canon, canon, graph)
-    # 英語版曲ページは未作成のため hreflang=en は出さない
-    head = head.replace(f'<link rel="alternate" hreflang="en" href="{canon}">', '')
+    head = make_head(lang, title, desc, canon, BASE + ja_page, BASE + en_page, graph)
     head = head.replace(
         '<meta property="og:type" content="website">',
         '<meta property="og:type" content="video.other">',
@@ -809,27 +835,39 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
         f'<meta property="og:image" content="{thumb}">'
         '<meta property="og:image:width" content="480">'
         '<meta property="og:image:height" content="360">'
-        f'<meta property="og:image:alt" content="{esc(video_title)}のサムネイル">'
+        f'<meta property="og:image:alt" content="{esc(image_alt)}">'
         f'<meta name="twitter:image" content="{thumb}">'
     )
     head = head.replace('<meta name="twitter:card"', og_image + '<meta name="twitter:card"')
     head = head.replace('</head>', SONG_STYLES + '</head>')
 
-    metrics = ''.join([
-        metric('カテゴリ', row['category']),
-        metric('難易度', song_difficulty_text(row)),
-        metric('収録作品', series['ja']),
-    ])
-    actions = ''.join([
-        action(row['videoUrl'], 'YouTubeで見る', primary=True, external=True),
-        action(f'/{series["slug"]}/', f'{series["code"]}の曲一覧'),
-        action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る', external=True),
-    ])
+    if lang == 'ja':
+        metrics = ''.join([
+            metric('カテゴリ', row['category']),
+            metric('難易度', song_difficulty_text(row, lang)),
+            metric('収録作品', series['ja']),
+        ])
+        actions = ''.join([
+            action(row['videoUrl'], 'YouTubeで見る', primary=True, external=True),
+            action(f'/{series["slug"]}/', f'{series["code"]}の曲一覧'),
+            action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る', external=True),
+        ])
+    else:
+        metrics = ''.join([
+            metric('Category', row['categoryEn']),
+            metric('Difficulty', song_difficulty_text(row, lang)),
+            metric('Series', series['en']),
+        ])
+        actions = ''.join([
+            action(row['videoUrl'], 'Watch on YouTube', primary=True, external=True),
+            action(f'/en/{series["slug"]}/', f'{series["code"]} song list'),
+            action('https://www.youtube.com/@chamberd_piano', 'Visit the YouTube channel', external=True),
+        ])
 
     main = ''
-    if meta.get('description'):
-        main += section('About', 'この曲について', f'<p class="section-copy">{esc(meta["description"])}</p>')
-    if meta.get('timestamps'):
+    if about_text:
+        main += section('About', 'この曲について' if lang == 'ja' else 'About This Piece', f'<p class="section-copy">{esc(about_text)}</p>')
+    if lang == 'ja' and meta.get('timestamps'):
         items = ''.join(
             f'<li><span class="song-link">{esc(ts["time"])}</span> {esc(ts["label"])}</li>'
             for ts in meta['timestamps']
@@ -837,20 +875,31 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
         main += section('Chapters', '演奏の流れ', f'<ul>{items}</ul>')
 
     related = [card for card in (
-        song_neighbor_card(prev_row, '前の曲'),
-        song_neighbor_card(next_row, '次の曲'),
+        song_neighbor_card(prev_row, '前の曲' if lang == 'ja' else 'Previous', lang),
+        song_neighbor_card(next_row, '次の曲' if lang == 'ja' else 'Next', lang),
     ) if card]
-    related.append(entry_card(f'/{series["slug"]}/', f'{series["ja"]} の曲一覧', '作品別ページへ'))
+    if lang == 'ja':
+        related.append(entry_card(f'/{series["slug"]}/', f'{series["ja"]} の曲一覧', '作品別ページへ'))
+    else:
+        related.append(entry_card(f'/en/{series["slug"]}/', f'{series["en"]} song list', 'Series page'))
     cat_slug = next((slug for slug, info in CATS.items() if row['category'] in info['match']), '')
     if cat_slug:
-        related.append(entry_card(f'/category/{cat_slug}/', f'{row["category"]}の曲', 'カテゴリ別ページへ'))
-    main += section('Related', '関連の曲とページ', entry_grid(related), '同じ作品・同じカテゴリの曲をたどれます。')
+        if lang == 'ja':
+            related.append(entry_card(f'/category/{cat_slug}/', f'{row["category"]}の曲', 'カテゴリ別ページへ'))
+        else:
+            related.append(entry_card(f'/en/category/{cat_slug}/', f'{row["categoryEn"]} pieces', 'Category page'))
+    main += section(
+        'Related',
+        '関連の曲とページ' if lang == 'ja' else 'Related Songs & Pages',
+        entry_grid(related),
+        '同じ作品・同じカテゴリの曲をたどれます。' if lang == 'ja' else 'Browse pieces from the same game and category.',
+    )
 
     html = head + shell(
-        'ja', page, f'/en/{series["slug"]}/',
+        lang, page, en_page if lang == 'ja' else ja_page,
         breadcrumbs(crumbs),
         song_title, lead, metrics, actions,
-        song_facade(vid, video_title, thumb),
+        song_facade(vid, video_title, thumb, play_label, image_alt),
         main,
     )
     html = html.replace('</body></html>', SONG_FACADE_SCRIPT + '</body></html>')
@@ -923,9 +972,9 @@ def build() -> None:
             alt = f'/en/{slug}/' if lang == 'ja' else f'/{slug}/'
             title = f'{code} ピアノ | {ja_name} ピアノ演奏ライブラリー | {JA_LIBRARY_NAME}' if lang == 'ja' else f'{code} Piano | {en_name} Piano Library | {EN_LIBRARY_NAME}'
             desc = (
-                f'{ja_name} の楽曲を作品別に探せるページです。ドラゴンクエスト ピアノ、{code} ピアノ、ゲーム音楽 ピアノの検索着地として、曲一覧とYouTube導線を整理しています。'
+                f'{ja_name}の楽曲をピアノで演奏した動画を、曲番号順の一覧でまとめています。曲名をクリックすると、各曲の演奏動画と関連曲をたどれます。'
                 if lang == 'ja' else
-                f'Browse {en_name} piano performances with song links and YouTube playlist access.'
+                f'Piano performances of music from {en_name}, listed in song order. Click a title to watch the performance and explore related pieces.'
             )
             crumbs = [('ホーム', '/') if lang == 'ja' else ('Home', '/en/'), (code, page)]
             graph = [
@@ -958,7 +1007,7 @@ def build() -> None:
                     song_table(special_rows, lang),
                     '過去シリーズ楽譜からの特別収録曲です。曲番号・リンクは出典元シリーズに合わせています。' if lang == 'ja' else 'Special selections from earlier series. Numbers and links follow the original source series.',
                 )
-            main += section('Related', '関連カテゴリ' if lang == 'ja' else 'Related Categories', related_category_cards(lang), 'フィールド曲・戦闘曲・メドレーなど横断導線を用意しています。' if lang == 'ja' else 'Cross-link into field, battle, and medley pages.')
+            main += section('Related', '関連カテゴリ' if lang == 'ja' else 'Related Categories', related_category_cards(lang), 'フィールド曲・戦闘曲・メドレーなど、曲の種類からも探せます。' if lang == 'ja' else 'Browse field themes, battle music, medleys, and more by category.')
             html = make_head(lang, title, desc, BASE + page, BASE + f'/{slug}/', BASE + f'/en/{slug}/', graph)
             html += shell(lang, page, alt, breadcrumbs(crumbs), f'{ja_name} ピアノ演奏ライブラリー' if lang == 'ja' else f'{en_name} Piano Library', desc, metrics, ''.join(actions), feature, main)
             write(Path(page[1:]) / 'index.html', html)
@@ -969,8 +1018,9 @@ def build() -> None:
                 continue
             prev_row = rows[i - 1] if i > 0 else None
             next_row = rows[i + 1] if i + 1 < len(rows) else None
-            write_song_page(row, prev_row, next_row, song_content[row['id']])
-            urls.append(BASE + SONG_PAGE_PATHS[row['id']])
+            for song_lang in ('ja', 'en'):
+                write_song_page(row, prev_row, next_row, song_content[row['id']], song_lang)
+            urls.extend([BASE + SONG_PAGE_PATHS[row['id']], BASE + '/en' + SONG_PAGE_PATHS[row['id']]])
 
     for slug, info in CATS.items():
         rows = [row for row in all_rows if row['category'] in info['match']]
@@ -986,11 +1036,18 @@ def build() -> None:
             page = f'/category/{slug}/' if lang == 'ja' else f'/en/category/{slug}/'
             alt = f'/en/category/{slug}/' if lang == 'ja' else f'/category/{slug}/'
             title = f'{info["ja"]} ピアノ | ドラクエ ピアノ演奏ライブラリー | {JA_LIBRARY_NAME}' if lang == 'ja' else f'{info["en"]} | {EN_LIBRARY_NAME}'
-            desc = (
-                f'{info["ja"]} を作品横断で探せるページです。ドラゴンクエスト ピアノ、ドラクエ ピアノ演奏、作業用BGMの入口として使いやすく整理しています。'
-                if lang == 'ja' else
-                f'Browse {info["en"]} across the Dragon Quest piano library.'
-            )
+            if slug == 'medley':
+                desc = (
+                    'ドラゴンクエストのピアノメドレー動画を集めたページです。作業用BGMとしても聴きやすい、長めの演奏をまとめています。'
+                    if lang == 'ja' else
+                    'Dragon Quest piano medleys, collected for longer listening sessions and background music.'
+                )
+            else:
+                desc = (
+                    f'シリーズ各作品の{info["ja"]}の曲を、ひとつの一覧にまとめたページです。曲名をクリックすると、各曲の演奏動画と関連曲をたどれます。'
+                    if lang == 'ja' else
+                    f'{info["en"]} pieces from across the Dragon Quest series. Click a title to watch the performance and explore related pieces.'
+                )
             label = info['ja'] if lang == 'ja' else info['en']
             crumbs = [('ホーム', '/') if lang == 'ja' else ('Home', '/en/'), (label, page)]
             if slug == 'medley':
@@ -1047,7 +1104,7 @@ def build() -> None:
                     href = f'/{meta["slug"]}/' if lang == 'ja' else f'/en/{meta["slug"]}/'
                     related_cards.append(entry_card(href, meta['code'], '作品別ページへ' if lang == 'ja' else 'Series page'))
             main = section('Category', section_title, table_or_cards, section_copy)
-            main += section('Related', '関連作品' if lang == 'ja' else 'Related Series', entry_grid(related_cards), '関連作品へ回遊しやすい導線です。' if lang == 'ja' else 'Jump into related series pages.')
+            main += section('Related', '関連作品' if lang == 'ja' else 'Related Series', entry_grid(related_cards), 'このカテゴリの曲を収録している作品のページです。' if lang == 'ja' else 'Series pages featuring pieces from this category.')
             hero_title = f'{info["ja"]}を探す' if lang == 'ja' else f'Browse {info["en"]}'
             html = make_head(lang, title, desc, BASE + page, BASE + f'/category/{slug}/', BASE + f'/en/category/{slug}/', graph)
             html += shell(lang, page, alt, breadcrumbs(crumbs), hero_title, desc, metrics, ''.join(actions), feature, main)
@@ -1113,7 +1170,7 @@ def build() -> None:
             )
             main += section(
                 'Related',
-                '関連導線' if lang == 'ja' else 'Related Links',
+                '関連ページ' if lang == 'ja' else 'Related Links',
                 entry_grid(related_cards),
                 '楽譜から作品別・カテゴリ別のページへ移動できます。' if lang == 'ja' else 'Move from the score page into series and category pages.',
             )
