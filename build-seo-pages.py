@@ -224,6 +224,15 @@ def youtube_video_id(url: str | None) -> str:
     return match.group(1) if match else ''
 
 
+def youtube_start_seconds(url: str | None) -> int:
+    """videoUrl の t= / start= パラメータを秒に変換する(例 t=540s, t=1h2m3s)。"""
+    match = re.search(r'[?&#](?:t|start)=(\d+h)?(\d+m)?(\d+s?)?(?=[&#]|$)', url or '')
+    if not match or not any(match.groups()):
+        return 0
+    hours, minutes, seconds = (int(g.rstrip('hms')) if g else 0 for g in match.groups())
+    return hours * 3600 + minutes * 60 + seconds
+
+
 # 曲別ページを持つ曲のID -> ページパス。build() 冒頭で song-page-content.js から作る。
 SONG_PAGE_PATHS: dict[str, str] = {}
 
@@ -727,7 +736,8 @@ SONG_FACADE_SCRIPT = (
     'const wrap=btn.closest(".yt-facade");'
     'const id=wrap.dataset.videoId;'
     'const iframe=document.createElement("iframe");'
-    'iframe.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1";'
+    'const start=parseInt(wrap.dataset.start||"0",10);'
+    'iframe.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1"+(start>0?"&start="+start:"");'
     'iframe.title=wrap.dataset.videoTitle||"YouTube video";'
     'iframe.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";'
     'iframe.allowFullscreen=true;'
@@ -738,9 +748,10 @@ SONG_FACADE_SCRIPT = (
 )
 
 
-def song_facade(vid: str, video_title: str, thumb: str, play_label: str, image_alt: str) -> str:
+def song_facade(vid: str, video_title: str, thumb: str, play_label: str, image_alt: str, start: int = 0) -> str:
+    start_attr = f' data-start="{start}"' if start > 0 else ''
     return (
-        f'<div class="yt-facade" data-video-id="{esc(vid)}" data-video-title="{esc(video_title)}">'
+        f'<div class="yt-facade" data-video-id="{esc(vid)}" data-video-title="{esc(video_title)}"{start_attr}>'
         f'<button class="yt-facade-btn" type="button" aria-label="{esc(play_label)}">'
         f'<img src="{thumb}" alt="{esc(image_alt)}" width="480" height="360" loading="eager" fetchpriority="high">'
         '<span class="yt-facade-play" aria-hidden="true"></span>'
@@ -785,6 +796,7 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
     page = ja_page if lang == 'ja' else en_page
     canon = BASE + page
     vid = youtube_video_id(row['videoUrl'])
+    start = youtube_start_seconds(row['videoUrl'])
     thumb = f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'
 
     if lang == 'ja':
@@ -820,7 +832,7 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
         'description': desc,
         'thumbnailUrl': [thumb],
         'contentUrl': row['videoUrl'],
-        'embedUrl': f'https://www.youtube.com/embed/{vid}',
+        'embedUrl': f'https://www.youtube.com/embed/{vid}' + (f'?start={start}' if start > 0 else ''),
     }
     if meta.get('uploadDate'):
         video_json['uploadDate'] = meta['uploadDate']
@@ -899,7 +911,7 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
         lang, page, en_page if lang == 'ja' else ja_page,
         breadcrumbs(crumbs),
         song_title, lead, metrics, actions,
-        song_facade(vid, video_title, thumb, play_label, image_alt),
+        song_facade(vid, video_title, thumb, play_label, image_alt, start),
         main,
     )
     html = html.replace('</body></html>', SONG_FACADE_SCRIPT + '</body></html>')
