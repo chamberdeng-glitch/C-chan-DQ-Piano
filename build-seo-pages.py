@@ -236,6 +236,9 @@ def youtube_start_seconds(url: str | None) -> int:
 # 曲別ページを持つ曲のID -> ページパス。build() 冒頭で song-page-content.js から作る。
 SONG_PAGE_PATHS: dict[str, str] = {}
 
+# 動画サイトマップ用エントリ。ページURL(canonical) -> video メタ。write_song_pageで登録。
+SONG_VIDEO_ENTRIES: dict[str, dict] = {}
+
 
 def make_head(lang: str, title: str, desc: str, canon: str, ja_href: str, en_href: str, graph: list[dict]) -> str:
     locale = 'ja_JP' if lang == 'ja' else 'en_US'
@@ -917,6 +920,14 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
     html = html.replace('</body></html>', SONG_FACADE_SCRIPT + '</body></html>')
     write(Path(page[1:]) / 'index.html', html)
 
+    SONG_VIDEO_ENTRIES[canon] = {
+        'thumbnail': thumb,
+        'title': video_title,
+        'description': desc,
+        'player_loc': f'https://www.youtube.com/embed/{vid}' + (f'?start={start}' if start > 0 else ''),
+        'publication_date': meta.get('uploadDate', ''),
+    }
+
 
 def build() -> None:
     songs = load_js('song-reference-data.js', 'window.songReferenceData = ')
@@ -1216,7 +1227,27 @@ def build() -> None:
     patch_home('index.html', 'ja', series_playlists)
     patch_home('en/index.html', 'en', series_playlists)
     (ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: ' + BASE + '/sitemap.xml\n', encoding='utf-8')
-    (ROOT / 'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join(f'<url><loc>{url}</loc></url>' for url in urls) + '</urlset>', encoding='utf-8')
+    def sitemap_url_xml(url: str) -> str:
+        video = SONG_VIDEO_ENTRIES.get(url)
+        if not video:
+            return f'<url><loc>{url}</loc></url>'
+        parts = [
+            f'<video:thumbnail_loc>{esc(video["thumbnail"])}</video:thumbnail_loc>',
+            f'<video:title>{esc(video["title"])}</video:title>',
+            f'<video:description>{esc(video["description"])}</video:description>',
+            f'<video:player_loc>{esc(video["player_loc"])}</video:player_loc>',
+        ]
+        if video.get('publication_date'):
+            parts.append(f'<video:publication_date>{esc(video["publication_date"])}</video:publication_date>')
+        return f'<url><loc>{url}</loc><video:video>' + ''.join(parts) + '</video:video></url>'
+
+    (ROOT / 'sitemap.xml').write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+        'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">'
+        + ''.join(sitemap_url_xml(url) for url in urls) + '</urlset>',
+        encoding='utf-8',
+    )
     print('generated', len(urls), 'urls')
 
 
