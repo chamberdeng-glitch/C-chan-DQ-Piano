@@ -639,6 +639,16 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
         '<section class="section performer-profile" aria-labelledby="performer-profile-title">',
         '<section class="section performer-profile" id="performer-profile" aria-labelledby="performer-profile-title">'
     )
+    if 'performer-profile-name' not in text and lang == 'ja':
+        text = text.replace(
+            '<h2 id="performer-profile-title">演奏者プロフィール</h2>',
+            '<h2 id="performer-profile-title">演奏者プロフィール</h2>\n          <p class="performer-profile-name">しーちゃん</p>'
+        )
+    elif 'performer-profile-name' not in text:
+        text = text.replace(
+            '<h2 id="performer-profile-title">Performer Profile</h2>',
+            '<h2 id="performer-profile-title">Performer Profile</h2>\n          <p class="performer-profile-name">C-chan</p>'
+        )
     series_cards = []
     for index, (key, meta) in enumerate(SERIES_MAP.items()):
         href = f'/{meta["slug"]}/' if lang == 'ja' else f'/en/{meta["slug"]}/'

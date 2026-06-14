@@ -2022,6 +2022,15 @@ h1 {
   letter-spacing: 0;
 }
 
+.performer-profile-name {
+  margin: -6px 0 12px;
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
 .performer-profile-copy p {
   margin: 0;
   color: var(--text);
