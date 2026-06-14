@@ -25,7 +25,13 @@ window.songPageContent = {
     "uploadDate": "2023-10-26T20:00:07-07:00",
     "lead": "",
     "description": "",
-    "timestamps": []
+    "timestamps": [],
+    "scorebook": {
+      "name": "ピアノ曲集 ドラゴンクエスト I・II・III オフィシャル・スコア・ブック",
+      "publisher": "KMP / すぎやまこういち 監修",
+      "amazon": "https://amzn.to/4pOvadt",
+      "rakuten": "https://a.r10.to/hkH1j5"
+    }
   },
   "I-5": {
     "slug": "dungeon",

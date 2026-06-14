@@ -792,6 +792,249 @@ def song_neighbor_card(neighbor: dict | None, label: str, lang: str) -> str:
     return ''
 
 
+# =========================================================================
+# 曲別ページ(リッチデザイン)。データ(song-reference-data.js + song-page-content.js)
+# を流し込むだけで全曲に反映される。HTML直書きは禁止。
+# 曲別ページはrich版を標準出力する。旧write_song_pageは保守用に残す。
+# =========================================================================
+SERIES_RELEASE = {'I': 1986, 'II': 1987, 'III': 1988, 'IV': 1990, 'V': 1992,
+                  'VI': 1995, 'VII': 2000, 'VIII': 2004, 'IX': 2009, 'X': 2012, 'XI': 2017}
+SONG_COMPOSER = 'すぎやまこういち'
+SONG_RICH_IDS = set()  # 互換用。曲別ページは全件rich版で生成する。
+
+SONG_PROFILE = {
+    'name': 'しーちゃんピアノ',
+    'avatar': '/assets/channel-logo.jpg',
+    'body': '元クラシックピアニストとしての技術を活かし、ドラゴンクエスト1〜11の楽曲を丁寧に演奏しています。'
+            'フィールド曲・戦闘曲・エンディング・メドレーと幅広い曲調をカバーし、作業用BGMから本格的な視聴まで対応できます。',
+    'link': 'https://www.youtube.com/@chamberd_piano',
+    'link_label': 'YouTubeチャンネルを見る',
+}
+
+
+def stars_html(stars, lang: str = 'ja') -> str:
+    """difficulty の数字から ★★★☆☆ を描画。0/未設定は未設定表示。"""
+    n = stars if isinstance(stars, int) and 0 <= stars <= 5 else 0
+    if not n:
+        label = '未設定' if lang == 'ja' else 'Not set'
+        return f'<span class="sr-stars is-empty">{label}</span>'
+    return '<span class="sr-stars">' + '★' * n + f'<span class="is-empty">{"☆" * (5 - n)}</span></span>'
+
+
+def score_arranger(meta: dict, lang: str = 'ja') -> str:
+    """ピアノ編曲者。現行の使用楽譜は一律で今村康として表示する。"""
+    return '今村 康' if lang == 'ja' else 'Yasushi Imamura'
+
+
+def sr_video_card(row: dict, lang: str = 'ja') -> str:
+    """関連/前後の曲カード。曲ページが有れば内部リンク、無ければYouTube直リンク。"""
+    series = SERIES_MAP[row['seriesKey']]
+    vid = youtube_video_id(row.get('videoUrl', ''))
+    thumb = f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg' if vid else ''
+    page = SONG_PAGE_PATHS.get(row['id'])
+    href = (page if lang == 'ja' else '/en' + page) if page else (row.get('videoUrl') or '#')
+    ext = '' if page else ' target="_blank" rel="noreferrer"'
+    title = row['songTitle'] if lang == 'ja' else row['songTitleEn']
+    category = row['category'] if lang == 'ja' else row['categoryEn']
+    thumb_html = f'<img class="sr-card-thumb" src="{thumb}" alt="" loading="lazy" width="480" height="270">' if thumb else ''
+    return (
+        f'<a class="sr-card" href="{href}"{ext}>{thumb_html}'
+        '<span class="sr-card-body">'
+        f'<span class="sr-card-eyebrow">{esc(series["code"])}</span>'
+        f'<span class="sr-card-title">{esc(title)}</span>'
+        f'<span class="sr-card-sub">{esc(category)}</span>'
+        '</span></a>'
+    )
+
+
+def sr_section(kicker: str, title: str, inner: str, foot: str = '') -> str:
+    foot_html = f'<div class="sr-section-foot">{foot}</div>' if foot else ''
+    return (
+        '<section class="sr-section"><div class="sr-section-head">'
+        f'<p class="sr-kicker">{esc(kicker)}</p><h2>{esc(title)}</h2></div>'
+        f'{inner}{foot_html}</section>'
+    )
+
+
+def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None,
+                         meta: dict, rows_by_id: dict, lang: str = 'ja') -> None:
+    series = SERIES_MAP[row['seriesKey']]
+    ja_page = SONG_PAGE_PATHS[row['id']]
+    en_page = '/en' + ja_page
+    page = ja_page if lang == 'ja' else en_page
+    alt = en_page if lang == 'ja' else ja_page
+    canon = BASE + page
+    vid = youtube_video_id(row['videoUrl'])
+    start = youtube_start_seconds(row['videoUrl'])
+    thumb = f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'
+
+    if lang == 'ja':
+        song_title = row['songTitle']
+        song_subtitle = row.get('songTitleEn', '')
+        video_title = f'{song_title}（{series["ja"]}）ピアノ演奏'
+        title = f'{song_title} ピアノ | {series["ja"]} | {JA_LIBRARY_NAME}'
+        desc = (f'{series["ja"]}の「{song_title}」のピアノ演奏ページです。'
+                f'演奏動画と曲の情報、参考楽譜、同シリーズや同カテゴリの曲への入口をまとめています。')
+        crumbs = [('ホーム', '/'), (series['ja'], f'/{series["slug"]}/'), (song_title, page)]
+        tags = (f'<li class="sr-tag">{esc(series["ja"])}</li>'
+                f'<li class="sr-tag is-cat">{esc(row["category"])}曲</li>')
+        labels = {
+            'composer': '作曲', 'arranger': 'ピアノ編曲', 'category': 'カテゴリ', 'difficulty': '難易度',
+            'series': '収録作品', 'info': '曲の基本情報', 'score': '参考楽譜', 'amazon': 'Amazonで見る',
+            'rakuten': '楽天ブックスで見る', 'same': '同シリーズの前後の曲', 'medleys': 'この曲を含むメドレー・関連動画',
+            'takes': '別テイク・バージョン', 'related': f'関連する楽曲（{row["category"]}）',
+            'related_foot': f'{row["category"]}曲一覧を見る →', 'performer_head': '演奏者',
+            'performed_by': '演奏：しーちゃん', 'profile_link': '演奏者プロフィールを見る →',
+            'profile_href': '/#performer-profile', 'footer': '© しーちゃんピアノ',
+        }
+        category_text = row['category']
+        series_text = f'{series["ja"]}（{SERIES_RELEASE.get(row["seriesKey"], "")}年）'
+        play_label = f'{video_title}を再生'
+    else:
+        song_title = row['songTitleEn']
+        song_subtitle = row['songTitle']
+        video_title = f'{song_title} ({series["en"]}) Piano Performance'
+        title = f'{song_title} Piano | {series["en"]} | {EN_LIBRARY_NAME}'
+        desc = (f'A piano performance of "{song_title}" from {series["en"]}, '
+                f'with score references and links to related pieces from the same game and category.')
+        crumbs = [('Home', '/en/'), (series['en'], f'/en/{series["slug"]}/'), (song_title, page)]
+        tags = (f'<li class="sr-tag">{esc(series["en"])}</li>'
+                f'<li class="sr-tag is-cat">{esc(row["categoryEn"])}</li>')
+        labels = {
+            'composer': 'Composer', 'arranger': 'Piano arrangement', 'category': 'Category', 'difficulty': 'Difficulty',
+            'series': 'Series', 'info': 'Song Information', 'score': 'Reference Score', 'amazon': 'View on Amazon',
+            'rakuten': 'View on Rakuten Books', 'same': 'Previous / Next in Series', 'medleys': 'Medleys and Related Videos',
+            'takes': 'Other Takes', 'related': f'Related Pieces ({row["categoryEn"]})',
+            'related_foot': f'Browse {row["categoryEn"]} pieces →', 'performer_head': 'Performer',
+            'performed_by': 'Performed by C-chan', 'profile_link': 'View performer profile →',
+            'profile_href': '/en/#performer-profile', 'footer': '© C-chan Piano',
+        }
+        category_text = row['categoryEn']
+        series_text = f'{series["en"]} ({SERIES_RELEASE.get(row["seriesKey"], "")})'
+        play_label = f'Play {video_title}'
+
+    video_json = {
+        '@type': 'VideoObject', 'name': video_title, 'description': desc,
+        'thumbnailUrl': [thumb], 'contentUrl': row['videoUrl'],
+        'embedUrl': f'https://www.youtube.com/embed/{vid}' + (f'?start={start}' if start > 0 else ''),
+    }
+    if meta.get('uploadDate'):
+        video_json['uploadDate'] = meta['uploadDate']
+    graph = [website_json(lang), breadcrumb_json(crumbs), video_json]
+
+    head = make_head(lang, title, desc, canon, BASE + ja_page, BASE + en_page, graph)
+    head = head.replace('<meta property="og:type" content="website">',
+                        '<meta property="og:type" content="video.other">')
+    og_image = (f'<meta property="og:image" content="{thumb}">'
+                '<meta property="og:image:width" content="480"><meta property="og:image:height" content="360">'
+                f'<meta property="og:image:alt" content="{esc(video_title)} thumbnail">'
+                f'<meta name="twitter:image" content="{thumb}">')
+    head = head.replace('<meta name="twitter:card"', og_image + '<meta name="twitter:card"')
+    head = head.replace('</head>',
+        '<link rel="stylesheet" href="/assets/lite-yt-embed.css">'
+        '<link rel="stylesheet" href="/assets/song-page.css">'
+        '<script src="/assets/lite-yt-embed.js" defer></script></head>')
+
+    params = f'start={start}' if start > 0 else ''
+    embed = (f'<lite-youtube videoid="{vid}" playlabel="{esc(play_label)}"'
+             + (f' params="{params}"' if params else '') + '></lite-youtube>')
+
+    rows_info = ''.join([
+        f'<tr><th scope="row">{esc(labels["composer"])}</th><td>{esc(SONG_COMPOSER if lang == "ja" else "Koichi Sugiyama")}</td></tr>',
+        f'<tr><th scope="row">{esc(labels["arranger"])}</th><td>{esc(score_arranger(meta, lang))}</td></tr>',
+        f'<tr><th scope="row">{esc(labels["category"])}</th><td>{esc(category_text)}</td></tr>',
+        f'<tr><th scope="row">{esc(labels["difficulty"])}</th><td>{stars_html(row.get("difficultyStars"), lang)}</td></tr>',
+        f'<tr><th scope="row">{esc(labels["series"])}</th><td>{esc(series_text)}</td></tr>',
+    ])
+    info = (f'<details class="sr-info" open><summary>{esc(labels["info"])}</summary>'
+            f'<p class="sr-info-title">{esc(labels["info"])}</p>'
+            f'<table class="sr-info-table"><tbody>{rows_info}</tbody></table></details>')
+
+    score_html = ''
+    sb = meta.get('scorebook')
+    if sb:
+        buttons = ''
+        if sb.get('amazon'):
+            buttons += f'<a class="sr-buy is-amazon" href="{sb["amazon"]}" target="_blank" rel="noreferrer sponsored">{esc(labels["amazon"])}</a>'
+        if sb.get('rakuten'):
+            buttons += f'<a class="sr-buy is-rakuten" href="{sb["rakuten"]}" target="_blank" rel="noreferrer sponsored">{esc(labels["rakuten"])}</a>'
+        cover = sb.get('cover')
+        cover_html = f'<img class="sr-score-cover" src="{cover}" alt="{esc(sb.get("name", ""))}" loading="lazy">' if cover else ''
+        nocover = '' if cover else ' sr-score-nocover'
+        meta_line = f'<p class="sr-score-meta">{esc(sb.get("publisher", ""))}</p>' if sb.get('publisher') else ''
+        score_html = (f'<aside class="sr-score{nocover}" aria-label="{esc(labels["score"])}">{cover_html}'
+                      f'<div><p class="sr-score-label">{esc(labels["score"])}</p>'
+                      f'<p class="sr-score-name">{esc(sb.get("name", ""))}</p>{meta_line}'
+                      f'<div class="sr-score-buttons">{buttons}</div></div></aside>')
+
+    info_stack = f'<div class="sr-info-stack">{info}{score_html}</div>'
+    body_sections = []
+
+    neigh = [sr_video_card(r, lang) for r in (prev_row, next_row) if r and r.get('videoUrl')]
+    if neigh:
+        body_sections.append(sr_section('Same Series', labels['same'], f'<div class="sr-cards">{"".join(neigh)}</div>'))
+
+    medleys = meta.get('medleys') or []
+    if medleys:
+        cards = ''.join(
+            f'<a class="sr-card" href="https://www.youtube.com/watch?v={esc(m["youtube"])}" target="_blank" rel="noreferrer">'
+            f'<img class="sr-card-thumb" src="https://i.ytimg.com/vi/{esc(m["youtube"])}/hqdefault.jpg" alt="" loading="lazy" width="480" height="270">'
+            f'<span class="sr-card-body"><span class="sr-card-title">{esc(m["title"] or "")}</span>'
+            f'<span class="sr-card-sub">{esc(m.get("time", ""))}</span></span></a>'
+            for m in medleys)
+        body_sections.append(sr_section('Medleys', labels['medleys'], f'<div class="sr-cards">{cards}</div>'))
+
+    takes = meta.get('takes') or []
+    if takes:
+        items = ''.join(
+            f'<a class="sr-take" href="https://www.youtube.com/watch?v={esc(t["youtube"])}" target="_blank" rel="noreferrer">'
+            f'<span class="sr-take-time">{esc(t.get("time", ""))}</span><span>{esc(t["label"])}</span></a>'
+            for t in takes)
+        body_sections.append(sr_section('Other Takes', labels['takes'], f'<div class="sr-takes">{items}</div>'))
+
+    same_cat = [r for r in rows_by_id.values()
+                if r['category'] == row['category'] and r['id'] != row['id'] and r.get('videoUrl')]
+    same_cat.sort(key=lambda r: (r['seriesKey'] != row['seriesKey'], SERIES_ORDER.index(r['seriesKey']), r['sortNumber']))
+    rel = [sr_video_card(r, lang) for r in same_cat[:6]]
+    if rel:
+        cat_slug = next((s for s, info2 in CATS.items() if row['category'] in info2['match']), '')
+        href = f'/category/{cat_slug}/' if lang == 'ja' else f'/en/category/{cat_slug}/'
+        foot = f'<a class="sr-textlink" href="{href}">{esc(labels["related_foot"])}</a>' if cat_slug else ''
+        body_sections.append(sr_section('Related', labels['related'], f'<div class="sr-cards">{"".join(rel)}</div>', foot))
+
+    p = SONG_PROFILE
+    body_sections.append(sr_section('Performer', labels['performer_head'],
+        f'<div class="sr-profile sr-profile-compact"><img class="sr-profile-avatar" src="{p["avatar"]}" alt="{esc(p["name"])}" loading="lazy">'
+        f'<div><p class="sr-profile-name">{esc(labels["performed_by"])}</p>'
+        f'<a class="sr-textlink" href="{labels["profile_href"]}">{esc(labels["profile_link"])}</a></div></div>'))
+
+    main = (
+        '<div class="song-rich"><div class="sr-wrap">'
+        f'{breadcrumbs(crumbs)}'
+        f'<h1 class="sr-title">{esc(song_title)}</h1>'
+        f'<p class="sr-subtitle">{esc(song_subtitle)}</p>'
+        f'<ul class="sr-tags">{tags}</ul>'
+        '<div class="sr-lead-grid">'
+        f'<div>{embed}<p class="sr-embed-cap">{esc(video_title)}</p></div>'
+        f'{info_stack}</div>'
+        f'{"".join(body_sections)}'
+        '</div></div>'
+    )
+
+    html = (head +
+        '<body><div class="site-bg" aria-hidden="true"></div>'
+        f'<header class="hero hero-simple">{topbar(lang, page, alt)}</header>'
+        f'<main class="page">{main}</main>'
+        f'<footer class="seo-footer"><p>{esc(labels["footer"])}</p></footer></body></html>')
+    write(Path(page[1:]) / 'index.html', html)
+
+    SONG_VIDEO_ENTRIES[canon] = {
+        'thumbnail': thumb, 'title': video_title, 'description': desc,
+        'player_loc': f'https://www.youtube.com/embed/{vid}' + (f'?start={start}' if start > 0 else ''),
+        'publication_date': meta.get('uploadDate', ''),
+    }
+
+
 def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, meta: dict, lang: str) -> None:
     series = SERIES_MAP[row['seriesKey']]
     ja_page = SONG_PAGE_PATHS[row['id']]
@@ -951,6 +1194,74 @@ def build() -> None:
         by_series[skey] = cooked
 
     song_content = load_js('song-page-content.js', 'window.songPageContent = ')
+    scorebook_by_series = {
+        'I': {
+            'name': 'ピアノ曲集 ドラゴンクエスト I・II・III オフィシャル・スコア・ブック',
+            'publisher': 'KMP / すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/4pOvadt',
+            'rakuten': 'https://a.r10.to/hkH1j5',
+        },
+        'II': {
+            'name': 'ピアノ曲集 ドラゴンクエスト I・II・III オフィシャル・スコア・ブック',
+            'publisher': 'KMP / すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/4pOvadt',
+            'rakuten': 'https://a.r10.to/hkH1j5',
+        },
+        'III': {
+            'name': 'ピアノ曲集 ドラゴンクエスト I・II・III オフィシャル・スコア・ブック',
+            'publisher': 'KMP / すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/4pOvadt',
+            'rakuten': 'https://a.r10.to/hkH1j5',
+        },
+        'IV': {
+            'name': 'ピアノ曲集 ドラゴンクエストIV 導かれし者たち オフィシャルスコアブック',
+            'publisher': 'KMP / すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/3O84bJ1',
+            'rakuten': 'https://a.r10.to/hNSett',
+        },
+        'V': {
+            'name': 'ピアノ曲集 「ドラゴンクエストV」 天空の花嫁 オフィシャル・スコア・ブック',
+            'publisher': 'KMP / すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/4qrEMLf',
+            'rakuten': 'https://a.r10.to/hkDh76',
+        },
+        'VI': {
+            'name': 'ピアノ曲集 「ドラゴンクエストVI」幻の大地 オフィシャルスコアブック',
+            'publisher': 'KMP',
+            'amazon': 'https://amzn.to/3PUNSRB',
+        },
+        'VII': {
+            'name': 'ピアノ曲集 「ドラゴンクエストVII」エデンの戦士たち オフィシャル・スコア・ブック',
+            'publisher': 'KMP / すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/3WBggKa',
+            'rakuten': 'https://a.r10.to/h5OMp9',
+        },
+        'VIII': {
+            'name': 'ピアノ曲集 ドラゴンクエストVIII 空と海と大地と呪われし姫君 オフィシャルスコアブック',
+            'publisher': 'KMP',
+            'amazon': 'https://amzn.to/4eRm7lv',
+        },
+        'IX': {
+            'name': 'ピアノ曲集 「ドラゴンクエストIX」 オフィシャル・スコア・ブック',
+            'publisher': 'KMP / すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/48SuKwF',
+            'rakuten': 'https://a.r10.to/h51OhG',
+        },
+        'X': {
+            'name': 'ピアノ曲集 ドラゴンクエストX 目覚めし五つの種族 オフィシャルスコアブック',
+            'publisher': 'すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/45bWh93',
+        },
+        'XI': {
+            'name': 'ピアノ曲集 「ドラゴンクエストXI」 過ぎ去りし時を求めて オフィシャル・スコア・ブック',
+            'publisher': 'すぎやまこういち 監修',
+            'amazon': 'https://amzn.to/3IM5yNP',
+        },
+    }
+    for song_id, meta in song_content.items():
+        series_key = song_id.split('-')[0]
+        if series_key in scorebook_by_series:
+            meta.setdefault('scorebook', dict(scorebook_by_series[series_key]))
     SONG_PAGE_PATHS.clear()
     for song_id, meta in song_content.items():
         skey = song_id.split('-')[0]
@@ -1042,7 +1353,7 @@ def build() -> None:
             prev_row = rows[i - 1] if i > 0 else None
             next_row = rows[i + 1] if i + 1 < len(rows) else None
             for song_lang in ('ja', 'en'):
-                write_song_page(row, prev_row, next_row, song_content[row['id']], song_lang)
+                write_song_page_rich(row, prev_row, next_row, song_content[row['id']], rows_by_id, song_lang)
             urls.extend([BASE + SONG_PAGE_PATHS[row['id']], BASE + '/en' + SONG_PAGE_PATHS[row['id']]])
 
     for slug, info in CATS.items():
