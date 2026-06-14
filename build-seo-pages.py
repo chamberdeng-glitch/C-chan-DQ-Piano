@@ -635,6 +635,10 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     text = text.replace('href="/en/series-index.html"', 'href="/en/series-index/"')
     text = text.replace('href="/en/category-index.html"', 'href="/en/category-index/"')
     text = text.replace('href="/en.html"', 'href="/en/"')
+    text = text.replace(
+        '<section class="section performer-profile" aria-labelledby="performer-profile-title">',
+        '<section class="section performer-profile" id="performer-profile" aria-labelledby="performer-profile-title">'
+    )
     series_cards = []
     for index, (key, meta) in enumerate(SERIES_MAP.items()):
         href = f'/{meta["slug"]}/' if lang == 'ja' else f'/en/{meta["slug"]}/'
