@@ -1335,6 +1335,12 @@ window.songPageContent = {
     "description": "",
     "timestamps": []
   },
+  "IX-5": {
+    "slug": "beckoning",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
   "IX-6": {
     "slug": "healing-power-of-the-psalms-viii",
     "uploadDate": "2026-03-07T03:00:00-08:00",
@@ -1342,9 +1348,27 @@ window.songPageContent = {
     "description": "",
     "timestamps": []
   },
+  "IX-7": {
+    "slug": "dream-vision-of-our-town",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
   "IX-9": {
     "slug": "alchemy-pot",
     "uploadDate": "2026-05-27T01:30:00-07:00",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
+  "IX-10": {
+    "slug": "village-bathed-in-light",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
+  "IX-11": {
+    "slug": "village-in-darkness",
     "lead": "",
     "description": "",
     "timestamps": []
@@ -1384,9 +1408,27 @@ window.songPageContent = {
     "description": "",
     "timestamps": []
   },
+  "X-5": {
+    "slug": "lively-town",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
+  "X-6": {
+    "slug": "slumbering-town",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
   "X-7": {
     "slug": "my-dream-room",
     "uploadDate": "2025-08-01T20:00:03-07:00",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
+  "X-8": {
+    "slug": "gossiping-villagers",
     "lead": "",
     "description": "",
     "timestamps": []
@@ -1426,6 +1468,12 @@ window.songPageContent = {
     "description": "",
     "timestamps": []
   },
+  "X-19": {
+    "slug": "elegant-ancient-palace",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
   "X-21": {
     "slug": "weddie",
     "uploadDate": "2026-03-20T03:30:00-07:00",
@@ -1454,9 +1502,33 @@ window.songPageContent = {
     "description": "",
     "timestamps": []
   },
+  "XI-3": {
+    "slug": "bustling-town",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
   "XI-4": {
     "slug": "the-hero-goes-forth-with-determination",
     "uploadDate": "2026-03-20T03:30:00-07:00",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
+  "XI-5": {
+    "slug": "quiet-village",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
+  "XI-6": {
+    "slug": "sleepy-village",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
+  "XI-8": {
+    "slug": "village-hidden-in-a-mountain",
     "lead": "",
     "description": "",
     "timestamps": []

@@ -1749,7 +1749,7 @@ window.songReferenceData = {
       "sortNumber": 5,
       "songTitle": "来たれわが街へ",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=773s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1767,7 +1767,7 @@ window.songReferenceData = {
       "sortNumber": 7,
       "songTitle": "夢見るわが街",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=3584s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1794,7 +1794,7 @@ window.songReferenceData = {
       "sortNumber": 10,
       "songTitle": "陽だまりの村",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=966s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1803,7 +1803,7 @@ window.songReferenceData = {
       "sortNumber": 11,
       "songTitle": "村の夕べ",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=4328s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2039,7 +2039,7 @@ window.songReferenceData = {
       "sortNumber": 5,
       "songTitle": "街の息吹",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=1334s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2048,7 +2048,7 @@ window.songReferenceData = {
       "sortNumber": 6,
       "songTitle": "まどろむ街並",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=4105s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2066,7 +2066,7 @@ window.songReferenceData = {
       "sortNumber": 8,
       "songTitle": "村人たちのおしゃべり",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=2472s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2165,7 +2165,7 @@ window.songReferenceData = {
       "sortNumber": 19,
       "songTitle": "風雅の都",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=2770s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2293,7 +2293,7 @@ window.songReferenceData = {
       "sortNumber": 3,
       "songTitle": "にぎわいの街並",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=2195s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2311,7 +2311,7 @@ window.songReferenceData = {
       "sortNumber": 5,
       "songTitle": "穏やかな村",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=3057s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2320,7 +2320,7 @@ window.songReferenceData = {
       "sortNumber": 6,
       "songTitle": "穏やかな村の夜",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=3327s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2338,7 +2338,7 @@ window.songReferenceData = {
       "sortNumber": 8,
       "songTitle": "山奥の隠れ里",
       "category": "街・村",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=5193s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
