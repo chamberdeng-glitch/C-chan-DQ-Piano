@@ -1212,6 +1212,7 @@ window.songPageContent = {
   "VIII-21": {
     "slug": "majestic-castle",
     "uploadDate": "2026-05-27T01:30:00-07:00",
+    "performanceDuration": "0:37",
     "lead": "",
     "description": "",
     "timestamps": []

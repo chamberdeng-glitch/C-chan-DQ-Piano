@@ -894,7 +894,7 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
                 f'<li class="sr-tag is-cat">{esc(row["category"])}曲</li>')
         labels = {
             'composer': '作曲', 'arranger': 'ピアノ編曲', 'category': 'カテゴリ', 'difficulty': '難易度',
-            'series': '収録作品', 'info': '曲の基本情報', 'score': '参考楽譜', 'amazon': 'Amazonで見る',
+            'duration': '演奏時間', 'series': '収録作品', 'info': '曲の基本情報', 'score': '参考楽譜', 'amazon': 'Amazonで見る',
             'rakuten': '楽天ブックスで見る', 'same': '同シリーズの前後の曲', 'medleys': 'この曲を含むメドレー・関連動画',
             'takes': '別テイク・バージョン', 'related': f'関連する楽曲（{row["category"]}）',
             'related_foot': f'{row["category"]}曲一覧を見る →', 'performer_head': '演奏者',
@@ -916,7 +916,7 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
                 f'<li class="sr-tag is-cat">{esc(row["categoryEn"])}</li>')
         labels = {
             'composer': 'Composer', 'arranger': 'Piano arrangement', 'category': 'Category', 'difficulty': 'Difficulty',
-            'series': 'Series', 'info': 'Song Information', 'score': 'Reference Score', 'amazon': 'View on Amazon',
+            'duration': 'Performance duration', 'series': 'Series', 'info': 'Song Information', 'score': 'Reference Score', 'amazon': 'View on Amazon',
             'rakuten': 'View on Rakuten Books', 'same': 'Previous / Next in Series', 'medleys': 'Medleys and Related Videos',
             'takes': 'Other Takes', 'related': f'Related Pieces ({row["categoryEn"]})',
             'related_foot': f'Browse {row["categoryEn"]} pieces →', 'performer_head': 'Performer',
@@ -956,6 +956,7 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
     rows_info = ''.join([
         f'<tr><th scope="row">{esc(labels["composer"])}</th><td>{esc(SONG_COMPOSER if lang == "ja" else "Koichi Sugiyama")}</td></tr>',
         f'<tr><th scope="row">{esc(labels["arranger"])}</th><td>{esc(score_arranger(meta, lang))}</td></tr>',
+        f'<tr><th scope="row">{esc(labels["duration"])}</th><td>{esc(meta.get("performanceDuration", ""))}</td></tr>' if meta.get('performanceDuration') else '',
         f'<tr><th scope="row">{esc(labels["category"])}</th><td>{esc(category_text)}</td></tr>',
         f'<tr><th scope="row">{esc(labels["difficulty"])}</th><td>{stars_html(row.get("difficultyStars"), lang)}</td></tr>',
         f'<tr><th scope="row">{esc(labels["series"])}</th><td>{esc(series_text)}</td></tr>',
