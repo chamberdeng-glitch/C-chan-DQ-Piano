@@ -275,7 +275,7 @@ def make_head(lang: str, title: str, desc: str, canon: str, ja_href: str, en_hre
         '<meta name="twitter:card" content="summary_large_image">'
         f'<meta name="twitter:title" content="{esc(title)}">'
         f'<meta name="twitter:description" content="{esc(desc)}">'
-        '<link rel="stylesheet" href="/styles.css">'
+        '<link rel="stylesheet" href="/styles.css?v=20260625-2">'
         f'{LOCAL_PREVIEW}'
         f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)}</script>'
         '</head>'
@@ -505,7 +505,12 @@ def render_difficulty_html(label: str, stars: int | None, duration: str = '', la
     extra_class = ' is-empty' if filled == 0 else ''
     aria = f'{label} {filled}/5' if filled else label
     duration_label = '演奏時間' if lang == 'ja' else 'Duration'
-    duration_html = f'<span class="performance-duration">{esc(duration_label)}：{esc(duration)}</span>' if duration else ''
+    duration_html = (
+        '<span class="performance-duration">'
+        f'<span class="performance-duration-label">{esc(duration_label)}</span>'
+        f'<span class="performance-duration-value">{esc(duration)}</span>'
+        '</span>'
+    ) if duration else ''
     return (
         '<span class="difficulty-cell">'
         '<span class="difficulty-main">'

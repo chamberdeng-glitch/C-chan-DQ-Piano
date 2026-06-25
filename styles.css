@@ -1016,6 +1016,8 @@ h1 {
 }
 
 .performance-duration {
+  display: inline-flex;
+  gap: 0.2em;
   color: rgba(244, 211, 124, 0.76);
   font-size: 0.78rem;
   white-space: nowrap;
@@ -1387,24 +1389,27 @@ h1 {
   }
 
   .song-table td:nth-child(2) {
-    display: block;
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 12px;
     margin-top: 8px;
   }
 
   .song-table td:nth-child(2)::before {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 0;
   }
 
   .song-table td:nth-child(2) .song-link,
   .song-table td:nth-child(2) {
-    font-size: 0.98rem;
+    font-size: 0.96rem;
     line-height: 1.45;
   }
 
   .song-table td:nth-child(2) .song-link {
     display: block;
     max-width: 100%;
+    min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1417,6 +1422,27 @@ h1 {
 
   .difficulty-cell {
     gap: 1px;
+    width: 100%;
+  }
+
+  .performance-duration {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 12px;
+    width: calc(100% + 88px);
+    margin-left: -88px;
+    margin-top: 4px;
+    font-size: 0.8rem;
+  }
+
+  .performance-duration-label {
+    color: rgba(244, 211, 124, 0.72);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .performance-duration-value {
+    color: rgba(244, 211, 124, 0.82);
   }
 }
 
