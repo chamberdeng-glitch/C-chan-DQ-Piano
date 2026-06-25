@@ -1425,6 +1425,15 @@ h1 {
     width: 100%;
   }
 
+  .difficulty-main {
+    flex-wrap: nowrap;
+    gap: 10px;
+  }
+
+  .difficulty-stars {
+    letter-spacing: 0.04em;
+  }
+
   .performance-duration {
     display: grid;
     grid-template-columns: 76px minmax(0, 1fr);

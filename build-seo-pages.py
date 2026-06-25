@@ -275,7 +275,7 @@ def make_head(lang: str, title: str, desc: str, canon: str, ja_href: str, en_hre
         '<meta name="twitter:card" content="summary_large_image">'
         f'<meta name="twitter:title" content="{esc(title)}">'
         f'<meta name="twitter:description" content="{esc(desc)}">'
-        '<link rel="stylesheet" href="/styles.css?v=20260625-2">'
+        '<link rel="stylesheet" href="/styles.css?v=20260626-1">'
         f'{LOCAL_PREVIEW}'
         f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)}</script>'
         '</head>'
