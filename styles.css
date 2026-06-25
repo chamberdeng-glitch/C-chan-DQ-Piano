@@ -991,6 +991,13 @@ h1 {
   align-items: flex-start;
 }
 
+.difficulty-main {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .difficulty-text {
   color: #f4dfad;
   white-space: nowrap;
@@ -1006,6 +1013,12 @@ h1 {
 
 .difficulty-stars.is-empty {
   color: rgba(184, 199, 207, 0.52);
+}
+
+.performance-duration {
+  color: rgba(244, 211, 124, 0.76);
+  font-size: 0.78rem;
+  white-space: nowrap;
 }
 
 .video-card h3,

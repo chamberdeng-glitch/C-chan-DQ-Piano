@@ -460,7 +460,7 @@ def hero_playlist_thumb(playlist: dict, lang: str) -> str:
     )
 
 
-def song_table(rows: list[dict], lang: str) -> str:
+def song_table(rows: list[dict], lang: str, song_content: dict | None = None) -> str:
     headers = ('曲番号', '曲名', 'カテゴリ', '難易度') if lang == 'ja' else ('No.', 'Title', 'Category', 'Difficulty')
     body = []
     for row in rows:
@@ -468,6 +468,8 @@ def song_table(rows: list[dict], lang: str) -> str:
         category = row['category'] if lang == 'ja' else row['categoryEn']
         difficulty = (row.get('difficultyLabel') or '未設定') if lang == 'ja' else (row.get('difficultyEn') or 'Not set')
         difficulty_stars = row.get('difficultyStars')
+        meta = (song_content or {}).get(row['id'], {})
+        duration = meta.get('performanceDuration', '')
         page_path = SONG_PAGE_PATHS.get(row['id'])
         if page_path and lang == 'en':
             page_path = '/en' + page_path
@@ -485,7 +487,7 @@ def song_table(rows: list[dict], lang: str) -> str:
             f'<td data-label="{esc(headers[0])}">{number_html}</td>'
             f'<td data-label="{esc(headers[1])}">{title_html}</td>'
             f'<td data-label="{esc(headers[2])}">{esc(category)}</td>'
-            f'<td data-label="{esc(headers[3])}">{render_difficulty_html(difficulty, difficulty_stars)}</td>'
+            f'<td data-label="{esc(headers[3])}">{render_difficulty_html(difficulty, difficulty_stars, duration, lang)}</td>'
             '</tr>'
         )
     return (
@@ -496,16 +498,21 @@ def song_table(rows: list[dict], lang: str) -> str:
     )
 
 
-def render_difficulty_html(label: str, stars: int | None) -> str:
+def render_difficulty_html(label: str, stars: int | None, duration: str = '', lang: str = 'ja') -> str:
     filled = max(0, min(5, stars)) if isinstance(stars, int) else 0
     empty = 5 - filled
     star_text = ('★' * filled) + ('☆' * empty)
     extra_class = ' is-empty' if filled == 0 else ''
     aria = f'{label} {filled}/5' if filled else label
+    duration_label = '演奏時間' if lang == 'ja' else 'Duration'
+    duration_html = f'<span class="performance-duration">{esc(duration_label)}：{esc(duration)}</span>' if duration else ''
     return (
         '<span class="difficulty-cell">'
+        '<span class="difficulty-main">'
         f'<span class="difficulty-text">{esc(label)}</span>'
         f'<span class="difficulty-stars{extra_class}" aria-label="{esc(aria)}">{star_text}</span>'
+        '</span>'
+        f'{duration_html}'
         '</span>'
     )
 
@@ -1348,12 +1355,12 @@ def build() -> None:
             actions.append(action('https://www.youtube.com/@chamberd_piano', 'YouTubeチャンネルを見る' if lang == 'ja' else 'Visit YouTube', external=True))
             feature = playlist_cards(playlist_items, lang, hero=True) if playlist_items else ''
             main = ''
-            main += section('Songs', '収録曲一覧' if lang == 'ja' else 'Song List', song_table(rows, lang), '曲番号順でたどれる一覧です。' if lang == 'ja' else 'Song list ordered by catalog number.')
+            main += section('Songs', '収録曲一覧' if lang == 'ja' else 'Song List', song_table(rows, lang, song_content), '曲番号順でたどれる一覧です。' if lang == 'ja' else 'Song list ordered by catalog number.')
             if special_rows:
                 main += section(
                     'Special',
                     '特別収録' if lang == 'ja' else 'Special Selections',
-                    song_table(special_rows, lang),
+                    song_table(special_rows, lang, song_content),
                     '過去シリーズ楽譜からの特別収録曲です。曲番号・リンクは出典元シリーズに合わせています。' if lang == 'ja' else 'Special selections from earlier series. Numbers and links follow the original source series.',
                 )
             main += section('Related', '関連カテゴリ' if lang == 'ja' else 'Related Categories', related_category_cards(lang), 'フィールド曲・戦闘曲・メドレーなど、曲の種類からも探せます。' if lang == 'ja' else 'Browse field themes, battle music, medleys, and more by category.')
@@ -1439,7 +1446,7 @@ def build() -> None:
                 section_title = 'メドレー動画' if lang == 'ja' else 'Medley Videos'
                 section_copy = '作業用BGMや場面別に聴けるメドレー動画をまとめています。' if lang == 'ja' else 'Medley videos for background listening and themed browsing.'
             else:
-                table_or_cards = song_table(rows, lang)
+                table_or_cards = song_table(rows, lang, song_content)
                 section_title = label
                 section_copy = 'シリーズ横断で曲を一覧できるカテゴリページです。' if lang == 'ja' else 'A cross-series category page.'
             related_cards = []
