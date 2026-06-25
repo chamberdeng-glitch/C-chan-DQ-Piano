@@ -1398,8 +1398,17 @@ h1 {
 
   .song-table td:nth-child(2) .song-link,
   .song-table td:nth-child(2) {
-    font-size: 1.03rem;
-    line-height: 1.55;
+    font-size: 0.98rem;
+    line-height: 1.45;
+  }
+
+  .song-table td:nth-child(2) .song-link {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: keep-all;
   }
 
   .song-number-link {
