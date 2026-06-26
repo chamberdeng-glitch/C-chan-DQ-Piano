@@ -177,7 +177,7 @@ window.songReferenceData = {
       "id": "II-12",
       "sortNumber": 12,
       "songTitle": "聖なるほこら",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=y94BYeWe9fY",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -350,7 +350,7 @@ window.songReferenceData = {
       "id": "III-15",
       "sortNumber": 15,
       "songTitle": "ほこら",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=VEuyuGRy9dQ",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -586,7 +586,7 @@ window.songReferenceData = {
       "id": "IV-18",
       "sortNumber": 18,
       "songTitle": "不思議のほこら",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=_bS7oeH3QT8",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -867,7 +867,7 @@ window.songReferenceData = {
       "id": "V-22",
       "sortNumber": 22,
       "songTitle": "聖（ひじり）",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=g949lcK93wg",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -1085,7 +1085,7 @@ window.songReferenceData = {
       "id": "VI-21",
       "sortNumber": 21,
       "songTitle": "奇蹟のオカリナ〜神に祈りを",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=r0OHWWTOy2I",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -1195,7 +1195,7 @@ window.songReferenceData = {
       "id": "VII-7",
       "sortNumber": 7,
       "songTitle": "時の眠る園",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=SnXBIo4dEow",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -1285,7 +1285,7 @@ window.songReferenceData = {
       "id": "VII-17",
       "sortNumber": 17,
       "songTitle": "大神殿",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=3yGIE3fihp4",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -1348,7 +1348,7 @@ window.songReferenceData = {
       "id": "VII-24",
       "sortNumber": 24,
       "songTitle": "やすらぎの地",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=3C4LNEXQfxk",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1494,7 +1494,7 @@ window.songReferenceData = {
       "id": "VIII-12",
       "sortNumber": 12,
       "songTitle": "讃美歌に癒されて",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=yy5gRhKAR8Q",
       "difficultyLabel": "初級",
       "difficultyStars": 1
@@ -1539,7 +1539,7 @@ window.songReferenceData = {
       "id": "VIII-17",
       "sortNumber": 17,
       "songTitle": "修道僧の決意",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=TQ9iJqhmQmQ",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -1593,7 +1593,7 @@ window.songReferenceData = {
       "id": "VIII-23",
       "sortNumber": 23,
       "songTitle": "詩人の世界",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=Xy1XJuzwckU",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1656,7 +1656,7 @@ window.songReferenceData = {
       "id": "VIII-30",
       "sortNumber": 30,
       "songTitle": "大聖堂のある街",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=gi1i_gHw_Bo&t=0s",
       "difficultyLabel": "中級",
       "difficultyStars": 3
@@ -1730,7 +1730,7 @@ window.songReferenceData = {
       "id": "IX-3",
       "sortNumber": 3,
       "songTitle": "天の祈り",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=r14bBp7_nIY",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1757,7 +1757,7 @@ window.songReferenceData = {
       "id": "IX-6",
       "sortNumber": 6,
       "songTitle": "讃美歌に癒されて",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=yy5gRhKAR8Q",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -1946,7 +1946,7 @@ window.songReferenceData = {
       "id": "IX-27",
       "sortNumber": 27,
       "songTitle": "集え、者たち",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2445,7 +2445,7 @@ window.songReferenceData = {
       "id": "XI-20",
       "sortNumber": 20,
       "songTitle": "神秘へのいざない",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2499,7 +2499,7 @@ window.songReferenceData = {
       "id": "XI-26",
       "sortNumber": 26,
       "songTitle": "時の祭壇",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
@@ -2508,7 +2508,7 @@ window.songReferenceData = {
       "id": "XI-27",
       "sortNumber": 27,
       "songTitle": "神話の里",
-      "category": "教会・ほこら",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
