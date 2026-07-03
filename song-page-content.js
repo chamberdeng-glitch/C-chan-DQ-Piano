@@ -1530,7 +1530,7 @@ window.songPageContent = {
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "3:13"
+    "performanceDuration": "3:14"
   },
   "IX-6": {
     "slug": "healing-power-of-the-psalms-viii",

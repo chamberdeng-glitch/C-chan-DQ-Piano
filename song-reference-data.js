@@ -1749,9 +1749,9 @@ window.songReferenceData = {
       "sortNumber": 5,
       "songTitle": "来たれわが街へ",
       "category": "街・村",
-      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=773s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=3LrNR5Iv8vo",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "IX-6",
