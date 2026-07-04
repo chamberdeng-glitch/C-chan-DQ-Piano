@@ -1794,9 +1794,9 @@ window.songReferenceData = {
       "sortNumber": 10,
       "songTitle": "陽だまりの村",
       "category": "街・村",
-      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=966s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=5O3NmmXV8Xc",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "IX-11",

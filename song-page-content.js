@@ -1557,10 +1557,11 @@ window.songPageContent = {
   },
   "IX-10": {
     "slug": "village-bathed-in-light",
+    "uploadDate": "2026-07-04T04:00:06-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "3:07"
+    "performanceDuration": "3:08"
   },
   "IX-11": {
     "slug": "village-in-darkness",
