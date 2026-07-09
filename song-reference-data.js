@@ -1485,7 +1485,7 @@ window.songReferenceData = {
       "id": "VIII-11",
       "sortNumber": 11,
       "songTitle": "それ行けトーポ",
-      "category": "カジノ",
+      "category": "キャラクターテーマ",
       "videoUrl": "https://www.youtube.com/watch?v=eIl4OajLEw8",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
