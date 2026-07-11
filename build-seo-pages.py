@@ -95,7 +95,7 @@ CATS = {
     'town-village': {'ja': '\u8857\u30fb\u6751', 'en': 'Towns & Villages', 'match': ['\u8857\u30fb\u6751']},
     'castle': {'ja': '\u57ce', 'en': 'Castle', 'match': ['\u57ce']},
     'church-shrine': {'ja': '\u6559\u4f1a\u30fb\u307b\u3053\u3089\u30fb\u795e\u6bbf', 'en': 'Churches, Shrines & Temples', 'match': ['\u6559\u4f1a\u30fb\u307b\u3053\u3089', '\u6559\u4f1a\u30fb\u307b\u3053\u3089\u30fb\u795e\u6bbf']},
-    'casino': {'ja': '\u30ab\u30b8\u30ce', 'en': 'Casino', 'match': ['\u30ab\u30b8\u30ce']},
+    'casino': {'ja': '\u30ab\u30b8\u30ce\u30fb\u9152\u5834\u30fb\u5a2f\u697d', 'en': 'Casino, Tavern & Entertainment', 'match': ['\u30ab\u30b8\u30ce']},
     'dungeon': {'ja': '\u30c0\u30f3\u30b8\u30e7\u30f3', 'en': 'Dungeon', 'match': ['\u30c0\u30f3\u30b8\u30e7\u30f3']},
     'tower': {'ja': '\u5854', 'en': 'Tower', 'match': ['\u5854']},
     'event': {'ja': '\u30a4\u30d9\u30f3\u30c8', 'en': 'Event', 'match': ['\u30a4\u30d9\u30f3\u30c8']},
@@ -111,7 +111,7 @@ CAT_EN = {
     'イベント': 'Event',
     'エンディング': 'Ending',
     'オープニング': 'Opening',
-    'カジノ': 'Casino',
+    'カジノ': 'Casino, Tavern & Entertainment',
     'キャラクターテーマ': 'Character Theme',
     'ダンジョン': 'Dungeon',
     'フィールド': 'Field',
@@ -128,6 +128,21 @@ CAT_EN = {
     '街・村': 'Towns & Villages',
     '通常戦闘': 'Normal Battle',
 }
+
+
+def category_label_ja(category: str) -> str:
+    for info in CATS.values():
+        if category in info['match']:
+            return info['ja']
+    return category
+
+
+def category_label_en(category: str) -> str:
+    return CAT_EN.get(category, category)
+
+
+def category_label(row: dict, lang: str) -> str:
+    return category_label_ja(row['category']) if lang == 'ja' else row['categoryEn']
 
 DIFF_EN = {
     '初級': 'Beginner',
@@ -466,7 +481,7 @@ def song_table(rows: list[dict], lang: str, song_content: dict | None = None) ->
     body = []
     for row in rows:
         title = row['songTitle'] if lang == 'ja' else row['songTitleEn']
-        category = row['category'] if lang == 'ja' else row['categoryEn']
+        category = category_label(row, lang)
         difficulty = (row.get('difficultyLabel') or '未設定') if lang == 'ja' else (row.get('difficultyEn') or 'Not set')
         difficulty_stars = row.get('difficultyStars')
         meta = (song_content or {}).get(row['id'], {})
@@ -613,7 +628,7 @@ CATEGORY_LIBRARY = [
     ('town-village', '街・村', 'Town & Village', '⌂'),
     ('castle', '城', 'Castle', '⌂'),
     ('church-shrine', '教会・ほこら', 'Church & Shrine', '◇'),
-    ('casino', 'カジノ', 'Casino', '♬'),
+    ('casino', 'カジノ・酒場・娯楽', 'Casino, Tavern & Entertainment', '♬'),
     ('dungeon', 'ダンジョン', 'Dungeon', '◇'),
     ('tower', '塔', 'Tower', '⌂'),
     ('event', 'イベント', 'Event', '◇'),
@@ -804,7 +819,7 @@ def song_neighbor_card(neighbor: dict | None, label: str, lang: str) -> str:
     if not neighbor:
         return ''
     title = neighbor['songTitle'] if lang == 'ja' else neighbor['songTitleEn']
-    category = neighbor['category'] if lang == 'ja' else neighbor['categoryEn']
+    category = category_label(neighbor, lang)
     page_path = SONG_PAGE_PATHS.get(neighbor['id'])
     if page_path:
         href = page_path if lang == 'ja' else '/en' + page_path
@@ -862,7 +877,7 @@ def sr_video_card(row: dict, lang: str = 'ja') -> str:
     href = (page if lang == 'ja' else '/en' + page) if page else (row.get('videoUrl') or '#')
     ext = '' if page else ' target="_blank" rel="noreferrer"'
     title = row['songTitle'] if lang == 'ja' else row['songTitleEn']
-    category = row['category'] if lang == 'ja' else row['categoryEn']
+    category = category_label(row, lang)
     thumb_html = f'<img class="sr-card-thumb" src="{thumb}" alt="" loading="lazy" width="480" height="270">' if thumb else ''
     return (
         f'<a class="sr-card" href="{href}"{ext}>{thumb_html}'
@@ -904,17 +919,17 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
                 f'演奏動画と曲の情報、参考楽譜、同シリーズや同カテゴリの曲への入口をまとめています。')
         crumbs = [('ホーム', '/'), (series['ja'], f'/{series["slug"]}/'), (song_title, page)]
         tags = (f'<li class="sr-tag">{esc(series["ja"])}</li>'
-                f'<li class="sr-tag is-cat">{esc(row["category"])}曲</li>')
+                f'<li class="sr-tag is-cat">{esc(category_label_ja(row["category"]))}曲</li>')
         labels = {
             'composer': '作曲', 'arranger': 'ピアノ編曲', 'category': 'カテゴリ', 'difficulty': '難易度',
             'duration': '演奏時間', 'series': '収録作品', 'info': '曲の基本情報', 'score': '参考楽譜', 'amazon': 'Amazonで見る',
             'rakuten': '楽天ブックスで見る', 'same': '同シリーズの前後の曲', 'medleys': 'この曲を含むメドレー・関連動画',
-            'takes': '別テイク・バージョン', 'related': f'関連する楽曲（{row["category"]}）',
-            'related_foot': f'{row["category"]}曲一覧を見る →', 'performer_head': '演奏者',
+            'takes': '別テイク・バージョン', 'related': f'関連する楽曲（{category_label_ja(row["category"])}）',
+            'related_foot': f'{category_label_ja(row["category"])}曲一覧を見る →', 'performer_head': '演奏者',
             'performed_by': '演奏：しーちゃん', 'profile_link': '演奏者プロフィールを見る →',
             'profile_href': '/#performer-profile', 'footer': '© しーちゃんピアノ',
         }
-        category_text = row['category']
+        category_text = category_label_ja(row['category'])
         series_text = f'{series["ja"]}（{SERIES_RELEASE.get(row["seriesKey"], "")}年）'
         play_label = f'{video_title}を再生'
     else:
@@ -1081,7 +1096,7 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
             f'{series["ja"]}の「{song_title}」のピアノ演奏ページです。'
             f'演奏動画と曲の情報、同シリーズや同カテゴリの曲への入口をまとめています。'
         )
-        lead = meta.get('lead') or f'{series["ja"]}の{row["category"]}曲「{song_title}」のピアノ演奏です。'
+        lead = meta.get('lead') or f'{series["ja"]}の{category_label_ja(row["category"])}曲「{song_title}」のピアノ演奏です。'
         crumbs = [('ホーム', '/'), (series['code'], f'/{series["slug"]}/'), (song_title, page)]
         play_label = f'{video_title}を再生'
         image_alt = f'{video_title}のサムネイル'
@@ -1129,7 +1144,7 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
 
     if lang == 'ja':
         metrics = ''.join([
-            metric('カテゴリ', row['category']),
+            metric('カテゴリ', category_label_ja(row['category'])),
             metric('難易度', song_difficulty_text(row, lang)),
             metric('収録作品', series['ja']),
         ])
@@ -1171,7 +1186,7 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
     cat_slug = next((slug for slug, info in CATS.items() if row['category'] in info['match']), '')
     if cat_slug:
         if lang == 'ja':
-            related.append(entry_card(f'/category/{cat_slug}/', f'{row["category"]}の曲', 'カテゴリ別ページへ'))
+            related.append(entry_card(f'/category/{cat_slug}/', f'{category_label_ja(row["category"])}の曲', 'カテゴリ別ページへ'))
         else:
             related.append(entry_card(f'/en/category/{cat_slug}/', f'{row["categoryEn"]} pieces', 'Category page'))
     main += section(
@@ -1214,7 +1229,7 @@ def build() -> None:
             item = dict(row)
             item['seriesKey'] = skey
             item['songTitleEn'] = en_titles['by_id'].get(row['id']) or en_titles['by_title'].get(row['songTitle'], row['songTitle'])
-            item['categoryEn'] = CAT_EN.get(row['category'], row['category'])
+            item['categoryEn'] = category_label_en(row['category'])
             item['difficultyEn'] = DIFF_EN.get(row.get('difficultyLabel', ''), row.get('difficultyLabel', ''))
             cooked.append(item)
             all_rows.append(item)
