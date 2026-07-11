@@ -1572,11 +1572,11 @@ window.songPageContent = {
   },
   "IX-13": {
     "slug": "hills-and-meadows",
-    "uploadDate": "2026-03-20T03:30:00-07:00",
+    "uploadDate": "2026-07-11T04:00:23-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "2:50"
+    "performanceDuration": "2:52"
   },
   "IX-14": {
     "slug": "sea-breeze-iv",

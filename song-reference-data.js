@@ -1821,9 +1821,9 @@ window.songReferenceData = {
       "sortNumber": 13,
       "songTitle": "野を越え山を越え",
       "category": "フィールド",
-      "videoUrl": "https://www.youtube.com/watch?v=Pu9o2vfflx4&t=693s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=1iuGCmH7wdc",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IX-14",
