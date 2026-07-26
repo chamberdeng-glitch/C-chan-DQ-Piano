@@ -1804,8 +1804,8 @@ window.songReferenceData = {
       "songTitle": "村の夕べ",
       "category": "街・村",
       "videoUrl": "https://www.youtube.com/watch?v=xmsqV0aNCaA",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IX-12",
