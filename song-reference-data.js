@@ -1803,7 +1803,7 @@ window.songReferenceData = {
       "sortNumber": 11,
       "songTitle": "村の夕べ",
       "category": "街・村",
-      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=4328s",
+      "videoUrl": "https://www.youtube.com/watch?v=xmsqV0aNCaA",
       "difficultyLabel": "",
       "difficultyStars": null
     },
