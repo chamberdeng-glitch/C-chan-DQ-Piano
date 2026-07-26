@@ -312,7 +312,7 @@ window.playlistData = [
     "title": "ドラクエ　場面別　ピアノメドレー",
     "description": "更新: 7 日前 / すべてのポッドキャストを表示",
     "thumbnail": "./covers/PLysHcBQKj6zThxetjTiWNUV1L2d7U-_xV.jpg",
-    "itemCountText": "7 件のエピソード",
+    "itemCountText": "8 件のエピソード",
     "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zThxetjTiWNUV1L2d7U-_xV",
     "tracks": [
       {
@@ -335,6 +335,14 @@ window.playlistData = [
         "title": "歴代ドラクエ 街・村ピアノメドレー｜全34曲",
         "rawTitle": "歴代ドラクエ 街・村ピアノメドレー｜全34曲",
         "url": "https://www.youtube.com/watch?v=T8FJPYoGva0",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "歴代ドラクエ 城ピアノメドレー｜全15曲",
+        "rawTitle": "歴代ドラクエ 城ピアノメドレー｜全15曲",
+        "url": "https://www.youtube.com/watch?v=aPh-4XiM1Ow",
         "difficultyLabel": "未設定",
         "difficultyStars": null,
         "difficultyDetail": ""
