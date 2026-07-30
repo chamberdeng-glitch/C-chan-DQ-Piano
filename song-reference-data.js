@@ -2293,9 +2293,9 @@ window.songReferenceData = {
       "sortNumber": 3,
       "songTitle": "にぎわいの街並",
       "category": "街・村",
-      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=2195s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=Ku5RH38CkQA",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "XI-4",
