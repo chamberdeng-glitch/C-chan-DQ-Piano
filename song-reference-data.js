@@ -2030,9 +2030,9 @@ window.songReferenceData = {
       "sortNumber": 4,
       "songTitle": "王宮への招待",
       "category": "城",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=HbhDfEcUG_I",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "X-5",
