@@ -637,8 +637,6 @@ CATEGORY_LIBRARY = [
     ('boss-battle', 'ボス戦闘', 'Boss Battle', '♭'),
     ('ending', 'エンディング', 'Ending', '♩'),
     ('game-over', '全滅', 'Defeat', '◇'),
-    ('medley', 'メドレー', 'Medley', '♫'),
-    ('medley', '作業用BGM', 'Work & Study BGM', '♨'),
 ]
 
 
