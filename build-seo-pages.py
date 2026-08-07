@@ -7,6 +7,7 @@ BASE = 'https://dqpiano.com'
 ROOT = Path(__file__).resolve().parent
 JA_LIBRARY_NAME = 'ドラゴンクエスト ピアノ演奏・BGMライブラリー'
 EN_LIBRARY_NAME = 'Dragon Quest Piano Music Library'
+EXCLUDED_MEDLEY_VIDEO_IDS = {'3mng8haBuGo', 'gHTLe2lg6ek'}
 
 SERIES = [
     ('I', 'dq1', 'ドラゴンクエストI', 'Dragon Quest I', 'DQ1'),
@@ -1465,6 +1466,9 @@ def build() -> None:
         for track in playlist.get('tracks', []):
             url = track.get('url')
             if not url or url in seen_medley_urls:
+                continue
+            video_match = re.search(r'(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})', url)
+            if video_match and video_match.group(1) in EXCLUDED_MEDLEY_VIDEO_IDS:
                 continue
             seen_medley_urls.add(url)
             medley_tracks.append({
