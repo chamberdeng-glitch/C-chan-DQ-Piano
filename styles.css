@@ -2470,12 +2470,47 @@ h1 {
   }
 
   .featured-medleys-track {
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
   }
 
   .featured-medley-card {
-    min-height: 258px;
+    min-height: 238px;
+  }
+
+  .featured-medley-body {
+    gap: 7px;
+    padding: 9px;
+  }
+
+  .featured-medley-title {
+    font-size: 0.8rem;
+  }
+
+  .featured-medley-meta {
+    gap: 4px 7px;
+    font-size: 0.72rem;
+  }
+
+  .featured-medley-footer {
+    gap: 4px;
+  }
+
+  .featured-medley-category {
+    padding-inline: 6px;
+    font-size: 0.61rem;
+  }
+
+  .featured-medley-views {
+    font-size: 0.7rem;
+  }
+
+  .featured-medley-rank {
+    top: 6px;
+    left: 6px;
+    width: 27px;
+    height: 27px;
+    font-size: 0.8rem;
   }
 
   .bookcase-library {

@@ -22,6 +22,10 @@ SERIES_PATTERN = re.compile(
     re.IGNORECASE,
 )
 PURPOSE_PATTERN = re.compile(r"作業用BGM|睡眠用BGM", re.IGNORECASE)
+EXCLUDED_VIDEO_IDS = {
+    "3mng8haBuGo",  # 7:58 field medley
+    "gHTLe2lg6ek",  # 17:15 sea-theme medley
+}
 
 TRACK_COUNT_OVERRIDES = {
     "yj95f0WFc-0": 8,
@@ -33,20 +37,6 @@ TRACK_COUNT_OVERRIDES = {
     "EofaXaPTK-8": 28,
     "aMaaqQwvwsM": 35,
 }
-
-EN_TITLE_OVERRIDES = {
-    "T8FJPYoGva0": "Dragon Quest Town & Village Piano Medley",
-    "Pu9o2vfflx4": "Dragon Quest Field Piano Medley",
-    "yj95f0WFc-0": "Dragon Quest I Complete Piano Medley",
-    "IlH4hTSrmUk": "Dragon Quest II Complete Piano Medley",
-    "Qnpxjoa6Eyw": "Dragon Quest III Complete Piano Medley",
-    "62ch8sY8DaA": "Dragon Quest IV Complete Piano Medley",
-    "kSOvI-RcJac": "Dragon Quest V Complete Piano Medley",
-    "daTrvg7jg9k": "Dragon Quest VI Complete Piano Medley",
-    "EofaXaPTK-8": "Dragon Quest VII Complete Piano Medley",
-    "aMaaqQwvwsM": "Dragon Quest VIII Complete Piano Medley",
-}
-
 
 def load_env() -> None:
     if not ENV_FILE.exists():
@@ -84,7 +74,7 @@ def load_medley_page_tracks() -> list[dict]:
             continue
         for track in playlist.get("tracks", []):
             match = re.search(r"(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})", track.get("url", ""))
-            if not match or match.group(1) in seen_video_ids:
+            if not match or match.group(1) in seen_video_ids or match.group(1) in EXCLUDED_VIDEO_IDS:
                 continue
             video_id = match.group(1)
             seen_video_ids.add(video_id)
@@ -162,14 +152,14 @@ def build_catalog(api_key: str) -> dict:
         if not detail:
             continue
         snippet = detail.get("snippet", {})
-        title = source_track.get("title") or snippet.get("title", "").strip()
+        title = snippet.get("title", "").strip() or source_track.get("title", "")
         seconds = duration_seconds(detail.get("contentDetails", {}).get("duration", ""))
         items.append(
             {
                 "videoId": video_id,
                 "url": f"https://www.youtube.com/watch?v={video_id}",
                 "title": title,
-                "titleEn": EN_TITLE_OVERRIDES.get(video_id, title),
+                "titleEn": title,
                 "category": category_for(title, source_track.get("playlistTitle", "")),
                 "trackCount": track_count(video_id, title),
                 "duration": duration_label(seconds),
