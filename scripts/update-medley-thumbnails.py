@@ -38,30 +38,32 @@ def walk(value):
             yield from walk(child)
 
 
-def localized_thumbnail_url(video_id: str) -> str:
-    query = urllib.parse.urlencode({"search_query": video_id, "hl": "en", "gl": "US"})
-    request = urllib.request.Request(
-        f"https://www.youtube.com/results?{query}",
-        headers={"User-Agent": USER_AGENT, "Accept-Language": "en-US,en;q=0.9"},
-    )
-    with urllib.request.urlopen(request, timeout=45) as response:
-        data = find_initial_data(response.read().decode("utf-8", errors="replace"))
+def localized_thumbnail_url(video_id: str, title_en: str) -> str:
+    search_terms = [term for term in (title_en, video_id) if term]
+    for search_term in dict.fromkeys(search_terms):
+        query = urllib.parse.urlencode({"search_query": search_term, "hl": "en", "gl": "US"})
+        request = urllib.request.Request(
+            f"https://www.youtube.com/results?{query}",
+            headers={"User-Agent": USER_AGENT, "Accept-Language": "en-US,en;q=0.9"},
+        )
+        with urllib.request.urlopen(request, timeout=45) as response:
+            data = find_initial_data(response.read().decode("utf-8", errors="replace"))
 
-    candidates = []
-    for node in walk(data):
-        if node.get("videoId") != video_id:
-            continue
-        for thumbnail in node.get("thumbnail", {}).get("thumbnails", []):
-            url = thumbnail.get("url", "").replace(r"\u0026", "&")
-            if f"/vi_lc/{video_id}/" in url and "_en." in url:
-                candidates.append((int(thumbnail.get("width", 0)), url))
-    if not candidates:
-        raise LocalizedThumbnailUnavailable("not registered on YouTube")
-    return max(candidates)[1]
+        candidates = []
+        for node in walk(data):
+            if node.get("videoId") != video_id:
+                continue
+            for thumbnail in node.get("thumbnail", {}).get("thumbnails", []):
+                url = thumbnail.get("url", "").replace(r"\u0026", "&")
+                if f"/vi_lc/{video_id}/" in url and "_en." in url:
+                    candidates.append((int(thumbnail.get("width", 0)), url))
+        if candidates:
+            return max(candidates)[1]
+    raise LocalizedThumbnailUnavailable("not available in YouTube's English results")
 
 
-def download_one(video_id: str) -> tuple[str, int]:
-    url = localized_thumbnail_url(video_id)
+def download_one(video_id: str, title_en: str) -> tuple[str, int]:
+    url = localized_thumbnail_url(video_id, title_en)
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request, timeout=45) as response:
         image = response.read()
@@ -74,13 +76,16 @@ def download_one(video_id: str) -> tuple[str, int]:
 
 def main() -> None:
     catalogue = json.loads(DATA_FILE.read_text(encoding="utf-8"))
-    video_ids = [item["videoId"] for item in catalogue.get("items", [])]
+    videos = [(item["videoId"], item.get("titleEn", "")) for item in catalogue.get("items", [])]
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     failures = []
     unavailable = []
     downloaded = 0
     with ThreadPoolExecutor(max_workers=4) as executor:
-        futures = {executor.submit(download_one, video_id): video_id for video_id in video_ids}
+        futures = {
+            executor.submit(download_one, video_id, title_en): video_id
+            for video_id, title_en in videos
+        }
         for future in as_completed(futures):
             video_id = futures[future]
             try:
