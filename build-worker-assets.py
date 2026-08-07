@@ -10,6 +10,7 @@ ROOT_FILES = [
     "app.js",
     "category-index.html",
     "en.html",
+    "featured-medleys.js",
     "index.html",
     "playlist-data.js",
     "robots.txt",
