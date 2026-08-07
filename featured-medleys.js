@@ -8,6 +8,33 @@
   const cards = [...section.querySelectorAll("[data-medley-card]")];
   const state = { filter: "all", sort: "popular" };
 
+  function preferredYouTubeUrl(rawUrl) {
+    try {
+      const url = new URL(rawUrl, window.location.href);
+      const host = url.hostname.replace(/^www\./, "");
+      let videoId = "";
+
+      if (host === "youtu.be") {
+        videoId = url.pathname.split("/").filter(Boolean)[0] || "";
+      } else if (host === "youtube.com" || host === "m.youtube.com") {
+        videoId = url.searchParams.get("v") || "";
+        if (!videoId) {
+          const parts = url.pathname.split("/").filter(Boolean);
+          if (["shorts", "embed", "live"].includes(parts[0])) videoId = parts[1] || "";
+        }
+      }
+
+      return videoId ? `https://youtu.be/${videoId}` : rawUrl;
+    } catch {
+      return rawUrl;
+    }
+  }
+
+  cards.forEach((card) => {
+    card.href = preferredYouTubeUrl(card.href);
+    card.removeAttribute("target");
+  });
+
   const number = (card, key) => Number(card.dataset[key] || 0);
 
   function sortedVisibleCards() {

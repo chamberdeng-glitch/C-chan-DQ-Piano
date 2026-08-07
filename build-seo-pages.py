@@ -781,7 +781,12 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     text = text.replace('href="/en/series-index.html"', 'href="/en/series-index/"')
     text = text.replace('href="/en/category-index.html"', 'href="/en/category-index/"')
     text = text.replace('href="/en.html"', 'href="/en/"')
-    script_src = './featured-medleys.js' if lang == 'ja' else '/featured-medleys.js'
+    script_src = './featured-medleys.js?v=20260807-app-links' if lang == 'ja' else '/featured-medleys.js?v=20260807-app-links'
+    text = re.sub(
+        r'<script src="(?:\./|/)featured-medleys\.js(?:\?[^\"]*)?" defer></script>',
+        f'<script src="{script_src}" defer></script>',
+        text,
+    )
     if 'featured-medleys.js' not in text:
         scroll_src = './scroll-hint.js' if lang == 'ja' else '/scroll-hint.js'
         text = text.replace(
