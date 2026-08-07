@@ -668,6 +668,7 @@ def featured_medley_card(item: dict, lang: str, rank: int) -> str:
     track_count = item.get('trackCount')
     views = int(item.get('views', 0))
     category = item.get('category', 'scene')
+    video_url = f'https://youtu.be/{item["videoId"]}'
     category_labels = {
         'series': ('シリーズ別全曲', 'Complete Series'),
         'scene': ('場面別', 'By Scene'),
@@ -683,7 +684,7 @@ def featured_medley_card(item: dict, lang: str, rank: int) -> str:
     meta = ''.join(f'<span>{esc(value)}</span>' for value in (track_label, duration) if value)
     duration_html = f'<span class="featured-medley-duration">{esc(duration)}</span>' if duration else ''
     return (
-        f'<a class="featured-medley-card" href="{esc(item["url"])}" target="_blank" rel="noreferrer" '
+        f'<a class="featured-medley-card" href="{esc(video_url)}" rel="noreferrer" '
         f'aria-label="{esc(title)}" data-medley-card data-category="{esc(category)}" '
         f'data-views="{views}" data-duration="{int(item.get("durationSeconds", 0))}" '
         f'data-published="{esc(item.get("publishedAt", ""))}">'
