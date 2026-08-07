@@ -642,6 +642,66 @@ CATEGORY_LIBRARY = [
 ]
 
 
+FEATURED_MEDLEYS = [
+    {
+        'videoId': 'aMaaqQwvwsM',
+        'url': 'https://www.youtube.com/watch?v=aMaaqQwvwsM',
+        'jaTitle': 'ドラゴンクエストVIII 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest VIII Full Piano Medley',
+        'jaLabel': 'ドラクエ8 全35曲＋ME集',
+        'enLabel': 'DQ8 complete collection with music effects',
+        'tracks': 35,
+        'minutes': 112,
+        'thumbnail': 'https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg',
+        'thumbnailEn': 'https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg',
+    },
+    {
+        'videoId': 'T8FJPYoGva0',
+        'url': 'https://www.youtube.com/watch?v=T8FJPYoGva0',
+        'jaTitle': '歴代ドラクエ 街・村ピアノメドレー',
+        'enTitle': 'Town & Village Piano Medley',
+        'jaLabel': '街・村テーマ 全34曲',
+        'enLabel': 'Town and village themes',
+        'tracks': 34,
+        'minutes': 91,
+        'thumbnail': 'https://i.ytimg.com/vi/T8FJPYoGva0/maxresdefault.jpg',
+    },
+    {
+        'videoId': 'Pu9o2vfflx4',
+        'url': 'https://www.youtube.com/watch?v=Pu9o2vfflx4',
+        'jaTitle': '歴代ドラクエ フィールドメドレー',
+        'enTitle': 'Field Piano Medley',
+        'jaLabel': 'フィールドテーマ 全33曲',
+        'enLabel': 'Field themes across the series',
+        'tracks': 33,
+        'minutes': 82,
+        'thumbnail': 'https://i.ytimg.com/vi/Pu9o2vfflx4/maxresdefault.jpg',
+    },
+    {
+        'videoId': '6Rp2lOYCABE',
+        'url': 'https://www.youtube.com/watch?v=6Rp2lOYCABE',
+        'jaTitle': '歴代ドラクエ 海・空ピアノメドレー',
+        'enTitle': 'Sea & Sky Piano Medley',
+        'jaLabel': '海・空テーマ 全23曲',
+        'enLabel': 'Sea and sky themes',
+        'tracks': 23,
+        'minutes': 62,
+        'thumbnail': 'https://i.ytimg.com/vi/6Rp2lOYCABE/maxresdefault.jpg',
+    },
+    {
+        'videoId': 'aPh-4XiM1Ow',
+        'url': 'https://www.youtube.com/watch?v=aPh-4XiM1Ow',
+        'jaTitle': '歴代ドラクエ 城ピアノメドレー',
+        'enTitle': 'Castle Piano Medley',
+        'jaLabel': '城テーマ 全15曲',
+        'enLabel': 'Castle themes across the series',
+        'tracks': 15,
+        'minutes': 39,
+        'thumbnail': 'https://i.ytimg.com/vi/aPh-4XiM1Ow/maxresdefault.jpg',
+    },
+]
+
+
 def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[str]:
     cards = []
     for index, (slug, ja_label, en_label, icon) in enumerate(items):
@@ -650,6 +710,61 @@ def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[st
         body = 'カテゴリ別ページ' if lang == 'ja' else 'Category page'
         cards.append(book_spine_card(href, title, body, index, icon=icon, variant='category'))
     return cards
+
+
+def featured_medley_card(item: dict, lang: str) -> str:
+    title = item['jaTitle'] if lang == 'ja' else item['enTitle']
+    label = item['jaLabel'] if lang == 'ja' else item['enLabel']
+    thumb = item.get('thumbnailEn') if lang == 'en' and item.get('thumbnailEn') else item['thumbnail']
+    tracks = f'{item["tracks"]}曲' if lang == 'ja' else f'{item["tracks"]} tracks'
+    minutes = f'{item["minutes"]}分' if lang == 'ja' else f'{item["minutes"]} min'
+    return (
+        f'<a class="featured-medley-card" href="{esc(item["url"])}" target="_blank" rel="noreferrer" aria-label="{esc(title)}">'
+        '<span class="featured-medley-thumb-wrap">'
+        f'<img class="featured-medley-thumb" src="{esc(thumb)}" alt="{esc(title)}" loading="lazy" width="1280" height="720">'
+        f'<span class="featured-medley-duration">{esc(minutes)}</span>'
+        '</span>'
+        '<span class="featured-medley-body">'
+        f'<span class="featured-medley-title">{esc(title)}</span>'
+        f'<span class="featured-medley-label">{esc(label)}</span>'
+        '<span class="featured-medley-meta">'
+        f'<span>{esc(tracks)}</span>'
+        f'<span>{esc(minutes)}</span>'
+        '</span>'
+        '</span>'
+        '</a>'
+    )
+
+
+def featured_medley_showcase(lang: str) -> str:
+    if lang == 'ja':
+        heading = 'ピアノメドレー'
+        sub = 'シリーズ全曲から、テーマ別まで。長時間のピアノメドレーをお楽しみください。'
+        cta = 'すべてのメドレーを見る'
+        href = '/category/medley/'
+        label = '主力メドレー作品'
+    else:
+        heading = 'Piano Medleys'
+        sub = 'From full-series collections to themed selections, enjoy long-form Dragon Quest piano medleys.'
+        cta = 'View all medleys'
+        href = '/en/category/medley/'
+        label = 'Featured piano medleys'
+    cards = ''.join(featured_medley_card(item, lang) for item in FEATURED_MEDLEYS)
+    return (
+        '<section class="section featured-medleys" id="featured-medleys" aria-labelledby="featured-medleys-title">'
+        '<div class="featured-medleys-head">'
+        '<div>'
+        f'<p class="section-kicker">{esc(label)}</p>'
+        f'<h2 id="featured-medleys-title">{esc(heading)}</h2>'
+        f'<p>{esc(sub)}</p>'
+        '</div>'
+        f'<a class="featured-medleys-link" href="{esc(href)}">{esc(cta)}</a>'
+        '</div>'
+        f'<div class="featured-medleys-scroll" aria-label="{esc(label)}">'
+        f'<div class="featured-medleys-track">{cards}</div>'
+        '</div>'
+        '</section>'
+    )
 
 
 def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> None:
@@ -700,10 +815,12 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
         f'<div class="seo-hub-block bookcase-block"><div class="section-heading compact-heading shelf-heading"><p class="section-kicker">Scores</p><h3>{esc(score_title)}</h3></div>{book_shelf(score_cards(lang), score_title, "score-en" if lang == "en" else "score")}</div>'
         '</section>'
     )
+    showcase = featured_medley_showcase(lang)
+    text = re.sub(r'\s*<section class="section featured-medleys" id="featured-medleys".*?</section>', '', text, count=1, flags=re.S)
     if 'seo-hub-links' in text:
-        text = re.sub(r'<section class="section seo-hub-links[^"]*" id="seo-links">.*?</section>', hub, text, count=1, flags=re.S)
+        text = re.sub(r'<section class="section seo-hub-links[^"]*" id="seo-links">.*?</section>', showcase + hub, text, count=1, flags=re.S)
     else:
-        text = text.replace('<main class="page">', '<main class="page">\n    ' + hub, 1)
+        text = text.replace('<main class="page">', '<main class="page">\n    ' + showcase + hub, 1)
     path.write_text(text, encoding='utf-8')
 
 
