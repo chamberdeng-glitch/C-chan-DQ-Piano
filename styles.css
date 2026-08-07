@@ -1666,20 +1666,19 @@ h1 {
 }
 
 .featured-medleys-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(236px, 1fr);
-  gap: 14px;
-  min-width: min-content;
+  display: flex;
+  width: max-content;
+  gap: 12px;
   padding: 0 0 4px;
 }
 
 .featured-medley-card {
+  flex: 0 0 214px;
   display: grid;
   grid-template-rows: auto 1fr;
-  width: min(25vw, 260px);
-  min-width: 236px;
-  min-height: 312px;
+  width: 214px;
+  min-width: 0;
+  min-height: 238px;
   border: 1px solid rgba(244, 211, 124, 0.18);
   border-radius: 8px;
   overflow: hidden;
@@ -1726,27 +1725,23 @@ h1 {
 
 .featured-medley-body {
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: 10px;
-  padding: 14px;
+  grid-template-rows: 1fr auto;
+  gap: 9px;
+  padding: 12px;
 }
 
 .featured-medley-title {
   color: #f1d184;
   font-weight: 900;
   line-height: 1.35;
-}
-
-.featured-medley-label {
-  color: rgba(245, 239, 220, 0.68);
-  font-size: 0.84rem;
-  line-height: 1.5;
+  font-size: 0.92rem;
 }
 
 .featured-medley-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 6px 10px;
   color: rgba(244, 211, 124, 0.76);
   font-size: 0.82rem;
   font-weight: 800;
@@ -2315,13 +2310,13 @@ h1 {
   }
 
   .featured-medleys-track {
-    grid-auto-columns: minmax(228px, 78vw);
+    gap: 10px;
   }
 
   .featured-medley-card {
-    width: 78vw;
-    min-width: 228px;
-    min-height: 300px;
+    flex-basis: 186px;
+    width: 186px;
+    min-height: 220px;
   }
 
   .bookcase-library {

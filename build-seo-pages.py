@@ -642,62 +642,138 @@ CATEGORY_LIBRARY = [
 ]
 
 
+# YouTube Data API totals checked 2026-08-07; cards are sorted by these values at build time.
 FEATURED_MEDLEYS = [
-    {
-        'videoId': 'aMaaqQwvwsM',
-        'url': 'https://www.youtube.com/watch?v=aMaaqQwvwsM',
-        'jaTitle': 'ドラゴンクエストVIII 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest VIII Full Piano Medley',
-        'jaLabel': 'ドラクエ8 全35曲＋ME集',
-        'enLabel': 'DQ8 complete collection with music effects',
-        'tracks': 35,
-        'minutes': 112,
-        'thumbnail': 'https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg',
-        'thumbnailEn': 'https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg',
-    },
     {
         'videoId': 'T8FJPYoGva0',
         'url': 'https://www.youtube.com/watch?v=T8FJPYoGva0',
         'jaTitle': '歴代ドラクエ 街・村ピアノメドレー',
-        'enTitle': 'Town & Village Piano Medley',
-        'jaLabel': '街・村テーマ 全34曲',
-        'enLabel': 'Town and village themes',
-        'tracks': 34,
-        'minutes': 91,
+        'enTitle': 'Dragon Quest Town & Village Piano Medley',
+        'jaTracks': '34曲',
+        'enTracks': '34 tracks',
+        'duration': '1:31:11',
+        'jaDuration': '1時間31分11秒',
+        'enDuration': '1 hr 31 min 11 sec',
+        'views': 61951,
         'thumbnail': 'https://i.ytimg.com/vi/T8FJPYoGva0/maxresdefault.jpg',
+    },
+    {
+        'videoId': 'daTrvg7jg9k',
+        'url': 'https://www.youtube.com/watch?v=daTrvg7jg9k',
+        'jaTitle': 'ドラクエVI 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest VI Piano Complete Collection',
+        'jaTracks': '26曲',
+        'enTracks': '26 tracks',
+        'duration': '1:21:25',
+        'jaDuration': '1時間21分25秒',
+        'enDuration': '1 hr 21 min 25 sec',
+        'views': 54022,
+        'thumbnail': 'https://i.ytimg.com/vi/daTrvg7jg9k/maxresdefault.jpg',
+    },
+    {
+        'videoId': '62ch8sY8DaA',
+        'url': 'https://www.youtube.com/watch?v=62ch8sY8DaA',
+        'jaTitle': 'ドラクエIV 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest IV Complete Piano Medley',
+        'jaTracks': '28曲',
+        'enTracks': '28 tracks',
+        'duration': '1:08:08',
+        'jaDuration': '1時間8分8秒',
+        'enDuration': '1 hr 8 min 8 sec',
+        'views': 46383,
+        'thumbnail': 'https://i.ytimg.com/vi/62ch8sY8DaA/maxresdefault.jpg',
+    },
+    {
+        'videoId': 'EofaXaPTK-8',
+        'url': 'https://www.youtube.com/watch?v=EofaXaPTK-8',
+        'jaTitle': 'ドラクエVII 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest VII Piano Complete Collection',
+        'jaTracks': '28曲',
+        'enTracks': '28 tracks',
+        'duration': '1:18:42',
+        'jaDuration': '1時間18分42秒',
+        'enDuration': '1 hr 18 min 42 sec',
+        'views': 39900,
+        'thumbnail': 'https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg',
+    },
+    {
+        'videoId': 'Qnpxjoa6Eyw',
+        'url': 'https://www.youtube.com/watch?v=Qnpxjoa6Eyw',
+        'jaTitle': 'ドラクエIII 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest III Complete Piano Medley',
+        'jaTracks': '23曲',
+        'enTracks': '23 tracks',
+        'duration': '50:05',
+        'jaDuration': '50分5秒',
+        'enDuration': '50 min 5 sec',
+        'views': 29221,
+        'thumbnail': 'https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg',
+    },
+    {
+        'videoId': 'kSOvI-RcJac',
+        'url': 'https://www.youtube.com/watch?v=kSOvI-RcJac',
+        'jaTitle': 'ドラクエV 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest V Piano Complete Collection',
+        'jaTracks': '25曲',
+        'enTracks': '25 tracks',
+        'duration': '56:35',
+        'jaDuration': '56分35秒',
+        'enDuration': '56 min 35 sec',
+        'views': 28644,
+        'thumbnail': 'https://i.ytimg.com/vi/kSOvI-RcJac/maxresdefault.jpg',
     },
     {
         'videoId': 'Pu9o2vfflx4',
         'url': 'https://www.youtube.com/watch?v=Pu9o2vfflx4',
-        'jaTitle': '歴代ドラクエ フィールドメドレー',
-        'enTitle': 'Field Piano Medley',
-        'jaLabel': 'フィールドテーマ 全33曲',
-        'enLabel': 'Field themes across the series',
-        'tracks': 33,
-        'minutes': 82,
+        'jaTitle': '歴代ドラクエ フィールドピアノメドレー',
+        'enTitle': 'Dragon Quest Field Piano Medley',
+        'jaTracks': '33曲',
+        'enTracks': '33 tracks',
+        'duration': '1:22:02',
+        'jaDuration': '1時間22分2秒',
+        'enDuration': '1 hr 22 min 2 sec',
+        'views': 25400,
         'thumbnail': 'https://i.ytimg.com/vi/Pu9o2vfflx4/maxresdefault.jpg',
     },
     {
-        'videoId': '6Rp2lOYCABE',
-        'url': 'https://www.youtube.com/watch?v=6Rp2lOYCABE',
-        'jaTitle': '歴代ドラクエ 海・空ピアノメドレー',
-        'enTitle': 'Sea & Sky Piano Medley',
-        'jaLabel': '海・空テーマ 全23曲',
-        'enLabel': 'Sea and sky themes',
-        'tracks': 23,
-        'minutes': 62,
-        'thumbnail': 'https://i.ytimg.com/vi/6Rp2lOYCABE/maxresdefault.jpg',
+        'videoId': 'IlH4hTSrmUk',
+        'url': 'https://www.youtube.com/watch?v=IlH4hTSrmUk',
+        'jaTitle': 'ドラクエII 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest II Complete Piano Medley',
+        'jaTracks': '17曲',
+        'enTracks': '17 tracks',
+        'duration': '35:59',
+        'jaDuration': '35分59秒',
+        'enDuration': '35 min 59 sec',
+        'views': 18820,
+        'thumbnail': 'https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg',
     },
     {
-        'videoId': 'aPh-4XiM1Ow',
-        'url': 'https://www.youtube.com/watch?v=aPh-4XiM1Ow',
-        'jaTitle': '歴代ドラクエ 城ピアノメドレー',
-        'enTitle': 'Castle Piano Medley',
-        'jaLabel': '城テーマ 全15曲',
-        'enLabel': 'Castle themes across the series',
-        'tracks': 15,
-        'minutes': 39,
-        'thumbnail': 'https://i.ytimg.com/vi/aPh-4XiM1Ow/maxresdefault.jpg',
+        'videoId': 'yj95f0WFc-0',
+        'url': 'https://www.youtube.com/watch?v=yj95f0WFc-0',
+        'jaTitle': 'ドラクエI 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest I Complete Piano Medley',
+        'jaTracks': '8曲',
+        'enTracks': '8 tracks',
+        'duration': '23:20',
+        'jaDuration': '23分20秒',
+        'enDuration': '23 min 20 sec',
+        'views': 18545,
+        'thumbnail': 'https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg',
+    },
+    {
+        'videoId': 'aMaaqQwvwsM',
+        'url': 'https://www.youtube.com/watch?v=aMaaqQwvwsM',
+        'jaTitle': 'ドラクエVIII 全曲ピアノメドレー',
+        'enTitle': 'Dragon Quest VIII Piano Complete Collection',
+        'jaTracks': '35曲＋ME集',
+        'enTracks': '35 tracks + ME collection',
+        'duration': '1:52:18',
+        'jaDuration': '1時間52分18秒',
+        'enDuration': '1 hr 52 min 18 sec',
+        'views': 15059,
+        'thumbnail': 'https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg',
+        'thumbnailEn': 'https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg',
     },
 ]
 
@@ -714,23 +790,21 @@ def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[st
 
 def featured_medley_card(item: dict, lang: str) -> str:
     title = item['jaTitle'] if lang == 'ja' else item['enTitle']
-    label = item['jaLabel'] if lang == 'ja' else item['enLabel']
     thumb = item.get('thumbnailEn') if lang == 'en' and item.get('thumbnailEn') else item['thumbnail']
-    tracks = f'{item["tracks"]}曲' if lang == 'ja' else f'{item["tracks"]} tracks'
-    minutes = f'{item["minutes"]}分' if lang == 'ja' else f'{item["minutes"]} min'
+    tracks = item.get('jaTracks') if lang == 'ja' else item.get('enTracks')
+    duration_label = item.get('jaDuration') if lang == 'ja' else item.get('enDuration')
+    duration_badge = item.get('duration')
+    meta = ''.join(f'<span>{esc(value)}</span>' for value in (tracks, duration_label) if value)
+    duration_html = f'<span class="featured-medley-duration">{esc(duration_badge)}</span>' if duration_badge else ''
     return (
         f'<a class="featured-medley-card" href="{esc(item["url"])}" target="_blank" rel="noreferrer" aria-label="{esc(title)}">'
         '<span class="featured-medley-thumb-wrap">'
         f'<img class="featured-medley-thumb" src="{esc(thumb)}" alt="{esc(title)}" loading="lazy" width="1280" height="720">'
-        f'<span class="featured-medley-duration">{esc(minutes)}</span>'
+        f'{duration_html}'
         '</span>'
         '<span class="featured-medley-body">'
         f'<span class="featured-medley-title">{esc(title)}</span>'
-        f'<span class="featured-medley-label">{esc(label)}</span>'
-        '<span class="featured-medley-meta">'
-        f'<span>{esc(tracks)}</span>'
-        f'<span>{esc(minutes)}</span>'
-        '</span>'
+        f'<span class="featured-medley-meta">{meta}</span>'
         '</span>'
         '</a>'
     )
@@ -742,19 +816,19 @@ def featured_medley_showcase(lang: str) -> str:
         sub = 'シリーズ全曲から、テーマ別まで。長時間のピアノメドレーをお楽しみください。'
         cta = 'すべてのメドレーを見る'
         href = '/category/medley/'
-        label = '主力メドレー作品'
+        label = heading
     else:
         heading = 'Piano Medleys'
         sub = 'From full-series collections to themed selections, enjoy long-form Dragon Quest piano medleys.'
         cta = 'View all medleys'
         href = '/en/category/medley/'
-        label = 'Featured piano medleys'
-    cards = ''.join(featured_medley_card(item, lang) for item in FEATURED_MEDLEYS)
+        label = heading
+    medleys = sorted(FEATURED_MEDLEYS, key=lambda item: item.get('views', 0), reverse=True)[:10]
+    cards = ''.join(featured_medley_card(item, lang) for item in medleys)
     return (
         '<section class="section featured-medleys" id="featured-medleys" aria-labelledby="featured-medleys-title">'
         '<div class="featured-medleys-head">'
         '<div>'
-        f'<p class="section-kicker">{esc(label)}</p>'
         f'<h2 id="featured-medleys-title">{esc(heading)}</h2>'
         f'<p>{esc(sub)}</p>'
         '</div>'
