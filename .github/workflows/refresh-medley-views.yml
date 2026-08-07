@@ -1,0 +1,72 @@
+name: Refresh Medley Views
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 3 */3 * *"
+
+concurrency:
+  group: refresh-medley-views
+  cancel-in-progress: true
+
+jobs:
+  refresh-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      deployments: write
+
+    steps:
+      - name: Checkout deployment branch
+        uses: actions/checkout@v6
+        with:
+          ref: cloudflare/workers-autoconfig
+
+      - name: Refresh medley view counts
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          test -n "$YOUTUBE_API_KEY" || { echo "Missing GitHub secret: YOUTUBE_API_KEY"; exit 1; }
+          python3 scripts/update-medley-data.py
+
+      - name: Regenerate static pages
+        run: python3 build-seo-pages.py
+
+      - name: Validate JavaScript
+        run: |
+          node --check analytics.js
+          node --check featured-medleys.js
+          node --check site.js
+
+      - name: Save refreshed medley data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add medley-data.json index.html en/index.html
+          if git diff --cached --quiet; then
+            echo "No medley changes to save"
+          else
+            git commit -m "Refresh medley view counts"
+            git push origin HEAD:cloudflare/workers-autoconfig
+          fi
+
+      - name: Build deploy assets
+        run: python3 build-worker-assets.py
+
+      - name: Check Cloudflare secrets
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo "Missing GitHub secret: CLOUDFLARE_API_TOKEN"; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "Missing GitHub secret: CLOUDFLARE_ACCOUNT_ID"; exit 1; }
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+          wranglerVersion: "4"
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
