@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-08-07T09:03:58Z",
+  "updatedAt": "2026-08-07T11:19:10Z",
   "source": "current medley page playlists",
-  "count": 14,
+  "count": 15,
   "items": [
     {
       "videoId": "T8FJPYoGva0",
@@ -12,7 +12,7 @@
       "trackCount": 34,
       "duration": "1:31:11",
       "durationSeconds": 5471,
-      "views": 62351,
+      "views": 62487,
       "publishedAt": "2026-06-19T11:06:56Z",
       "thumbnail": "https://i.ytimg.com/vi/T8FJPYoGva0/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/T8FJPYoGva0-en.jpg"
@@ -26,7 +26,7 @@
       "trackCount": 26,
       "duration": "1:21:25",
       "durationSeconds": 4885,
-      "views": 54032,
+      "views": 54037,
       "publishedAt": "2024-12-08T15:00:44Z",
       "thumbnail": "https://i.ytimg.com/vi/daTrvg7jg9k/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/daTrvg7jg9k-en.jpg"
@@ -54,7 +54,7 @@
       "trackCount": 28,
       "duration": "1:18:42",
       "durationSeconds": 4722,
-      "views": 39916,
+      "views": 39928,
       "publishedAt": "2025-08-25T15:00:21Z",
       "thumbnail": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg"
@@ -96,7 +96,7 @@
       "trackCount": 33,
       "duration": "1:22:02",
       "durationSeconds": 4922,
-      "views": 25437,
+      "views": 25464,
       "publishedAt": "2026-03-20T10:30:00Z",
       "thumbnail": "https://i.ytimg.com/vi/Pu9o2vfflx4/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/Pu9o2vfflx4-en.jpg"
@@ -110,7 +110,7 @@
       "trackCount": 17,
       "duration": "35:59",
       "durationSeconds": 2159,
-      "views": 18830,
+      "views": 18833,
       "publishedAt": "2024-01-05T03:00:13Z",
       "thumbnail": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg"
@@ -138,7 +138,7 @@
       "trackCount": null,
       "duration": "25:30",
       "durationSeconds": 1530,
-      "views": 16978,
+      "views": 16983,
       "publishedAt": "2025-12-25T03:00:38Z",
       "thumbnail": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg"
@@ -152,7 +152,7 @@
       "trackCount": 35,
       "duration": "1:52:18",
       "durationSeconds": 6738,
-      "views": 15090,
+      "views": 15105,
       "publishedAt": "2026-05-27T08:30:00Z",
       "thumbnail": "https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/aMaaqQwvwsM-en.jpg"
@@ -180,7 +180,7 @@
       "trackCount": 15,
       "duration": "42:10",
       "durationSeconds": 2530,
-      "views": 8519,
+      "views": 8562,
       "publishedAt": "2026-07-16T11:00:37Z",
       "thumbnail": "https://i.ytimg.com/vi/aPh-4XiM1Ow/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/aPh-4XiM1Ow-en.jpg"
@@ -198,6 +198,20 @@
       "publishedAt": "2025-08-15T10:30:06Z",
       "thumbnail": "https://i.ytimg.com/vi/UOwrLr_pbbs/sddefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/UOwrLr_pbbs/sddefault.jpg"
+    },
+    {
+      "videoId": "VIh5Sv3OoQE",
+      "url": "https://www.youtube.com/watch?v=VIh5Sv3OoQE",
+      "title": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.1 ～時の子守唄～",
+      "titleEn": "Dragon Quest Piano Medley for Sleep | Vol.1",
+      "category": "purpose",
+      "trackCount": 15,
+      "duration": "49:08",
+      "durationSeconds": 2948,
+      "views": 20,
+      "publishedAt": "2026-08-07T11:00:14Z",
+      "thumbnail": "https://i.ytimg.com/vi/VIh5Sv3OoQE/maxresdefault.jpg",
+      "thumbnailEn": "/assets/medley-thumbnails/VIh5Sv3OoQE-en.jpg"
     }
   ]
 }

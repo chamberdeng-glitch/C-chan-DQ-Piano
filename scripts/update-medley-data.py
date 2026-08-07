@@ -29,6 +29,7 @@ EXCLUDED_VIDEO_IDS = {
 }
 
 TRACK_COUNT_OVERRIDES = {
+    "VIh5Sv3OoQE": 15,
     "yj95f0WFc-0": 8,
     "IlH4hTSrmUk": 17,
     "Qnpxjoa6Eyw": 23,
@@ -59,7 +60,7 @@ def api_get(path: str, api_key: str, **params: object) -> dict:
 
 
 def is_medley_playlist(title: str) -> bool:
-    return "medley" in title.lower() or "メドレー" in title
+    return "medley" in title.lower() or "メドレー" in title or bool(PURPOSE_PATTERN.search(title))
 
 
 def load_medley_page_tracks() -> list[dict]:

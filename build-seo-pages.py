@@ -215,7 +215,13 @@ def infer_series(title: str) -> str:
 
 def is_medley(title: str) -> bool:
     lowered = title.lower()
-    return 'medley' in lowered or 'メドレー' in title
+    return (
+        'medley' in lowered
+        or 'メドレー' in title
+        or '睡眠用bgm' in lowered
+        or '作業用bgm' in lowered
+        or 'for sleep' in lowered
+    )
 
 
 def normalize_thumb(src: str | None) -> str:

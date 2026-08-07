@@ -382,6 +382,24 @@ window.playlistData = [
     ]
   },
   {
+    "id": "PLE8-zMt0hePc",
+    "title": "睡眠用BGM / For SLEEP",
+    "description": "眠りのための長時間ピアノメドレー",
+    "thumbnail": "https://i.ytimg.com/vi/VIh5Sv3OoQE/maxresdefault.jpg",
+    "itemCountText": "1 件の動画",
+    "url": "https://www.youtube.com/playlist?list=PLE8-zMt0hePc",
+    "tracks": [
+      {
+        "title": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.1 ～時の子守唄～",
+        "rawTitle": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.1 ～時の子守唄～",
+        "url": "https://www.youtube.com/watch?v=VIh5Sv3OoQE",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      }
+    ]
+  },
+  {
     "id": "PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP",
     "title": "Dragon Quest XI 過ぎ去りし時を求めて",
     "description": "すべてのポッドキャストを表示",
