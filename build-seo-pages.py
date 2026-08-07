@@ -640,140 +640,14 @@ CATEGORY_LIBRARY = [
 ]
 
 
-# YouTube Data API totals checked 2026-08-07; cards are sorted by these values at build time.
-FEATURED_MEDLEYS = [
-    {
-        'videoId': 'T8FJPYoGva0',
-        'url': 'https://www.youtube.com/watch?v=T8FJPYoGva0',
-        'jaTitle': '歴代ドラクエ 街・村ピアノメドレー',
-        'enTitle': 'Dragon Quest Town & Village Piano Medley',
-        'jaTracks': '34曲',
-        'enTracks': '34 tracks',
-        'duration': '1:31:11',
-        'jaDuration': '1時間31分11秒',
-        'enDuration': '1 hr 31 min 11 sec',
-        'views': 61951,
-        'thumbnail': 'https://i.ytimg.com/vi/T8FJPYoGva0/maxresdefault.jpg',
-    },
-    {
-        'videoId': 'daTrvg7jg9k',
-        'url': 'https://www.youtube.com/watch?v=daTrvg7jg9k',
-        'jaTitle': 'ドラクエVI 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest VI Piano Complete Collection',
-        'jaTracks': '26曲',
-        'enTracks': '26 tracks',
-        'duration': '1:21:25',
-        'jaDuration': '1時間21分25秒',
-        'enDuration': '1 hr 21 min 25 sec',
-        'views': 54022,
-        'thumbnail': 'https://i.ytimg.com/vi/daTrvg7jg9k/maxresdefault.jpg',
-    },
-    {
-        'videoId': '62ch8sY8DaA',
-        'url': 'https://www.youtube.com/watch?v=62ch8sY8DaA',
-        'jaTitle': 'ドラクエIV 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest IV Complete Piano Medley',
-        'jaTracks': '28曲',
-        'enTracks': '28 tracks',
-        'duration': '1:08:08',
-        'jaDuration': '1時間8分8秒',
-        'enDuration': '1 hr 8 min 8 sec',
-        'views': 46383,
-        'thumbnail': 'https://i.ytimg.com/vi/62ch8sY8DaA/maxresdefault.jpg',
-    },
-    {
-        'videoId': 'EofaXaPTK-8',
-        'url': 'https://www.youtube.com/watch?v=EofaXaPTK-8',
-        'jaTitle': 'ドラクエVII 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest VII Piano Complete Collection',
-        'jaTracks': '28曲',
-        'enTracks': '28 tracks',
-        'duration': '1:18:42',
-        'jaDuration': '1時間18分42秒',
-        'enDuration': '1 hr 18 min 42 sec',
-        'views': 39900,
-        'thumbnail': 'https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg',
-    },
-    {
-        'videoId': 'Qnpxjoa6Eyw',
-        'url': 'https://www.youtube.com/watch?v=Qnpxjoa6Eyw',
-        'jaTitle': 'ドラクエIII 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest III Complete Piano Medley',
-        'jaTracks': '23曲',
-        'enTracks': '23 tracks',
-        'duration': '50:05',
-        'jaDuration': '50分5秒',
-        'enDuration': '50 min 5 sec',
-        'views': 29221,
-        'thumbnail': 'https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg',
-    },
-    {
-        'videoId': 'kSOvI-RcJac',
-        'url': 'https://www.youtube.com/watch?v=kSOvI-RcJac',
-        'jaTitle': 'ドラクエV 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest V Piano Complete Collection',
-        'jaTracks': '25曲',
-        'enTracks': '25 tracks',
-        'duration': '56:35',
-        'jaDuration': '56分35秒',
-        'enDuration': '56 min 35 sec',
-        'views': 28644,
-        'thumbnail': 'https://i.ytimg.com/vi/kSOvI-RcJac/maxresdefault.jpg',
-    },
-    {
-        'videoId': 'Pu9o2vfflx4',
-        'url': 'https://www.youtube.com/watch?v=Pu9o2vfflx4',
-        'jaTitle': '歴代ドラクエ フィールドピアノメドレー',
-        'enTitle': 'Dragon Quest Field Piano Medley',
-        'jaTracks': '33曲',
-        'enTracks': '33 tracks',
-        'duration': '1:22:02',
-        'jaDuration': '1時間22分2秒',
-        'enDuration': '1 hr 22 min 2 sec',
-        'views': 25400,
-        'thumbnail': 'https://i.ytimg.com/vi/Pu9o2vfflx4/maxresdefault.jpg',
-    },
-    {
-        'videoId': 'IlH4hTSrmUk',
-        'url': 'https://www.youtube.com/watch?v=IlH4hTSrmUk',
-        'jaTitle': 'ドラクエII 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest II Complete Piano Medley',
-        'jaTracks': '17曲',
-        'enTracks': '17 tracks',
-        'duration': '35:59',
-        'jaDuration': '35分59秒',
-        'enDuration': '35 min 59 sec',
-        'views': 18820,
-        'thumbnail': 'https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg',
-    },
-    {
-        'videoId': 'yj95f0WFc-0',
-        'url': 'https://www.youtube.com/watch?v=yj95f0WFc-0',
-        'jaTitle': 'ドラクエI 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest I Complete Piano Medley',
-        'jaTracks': '8曲',
-        'enTracks': '8 tracks',
-        'duration': '23:20',
-        'jaDuration': '23分20秒',
-        'enDuration': '23 min 20 sec',
-        'views': 18545,
-        'thumbnail': 'https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg',
-    },
-    {
-        'videoId': 'aMaaqQwvwsM',
-        'url': 'https://www.youtube.com/watch?v=aMaaqQwvwsM',
-        'jaTitle': 'ドラクエVIII 全曲ピアノメドレー',
-        'enTitle': 'Dragon Quest VIII Piano Complete Collection',
-        'jaTracks': '35曲＋ME集',
-        'enTracks': '35 tracks + ME collection',
-        'duration': '1:52:18',
-        'jaDuration': '1時間52分18秒',
-        'enDuration': '1 hr 52 min 18 sec',
-        'views': 15059,
-        'thumbnail': 'https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg',
-        'thumbnailEn': 'https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg',
-    },
-]
+def load_medley_catalog() -> dict:
+    path = ROOT / 'medley-data.json'
+    if not path.exists():
+        return {'updatedAt': '', 'count': 0, 'items': []}
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+MEDLEY_CATALOG = load_medley_catalog()
 
 
 def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[str]:
@@ -786,55 +660,110 @@ def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[st
     return cards
 
 
-def featured_medley_card(item: dict, lang: str) -> str:
-    title = item['jaTitle'] if lang == 'ja' else item['enTitle']
-    thumb = item.get('thumbnailEn') if lang == 'en' and item.get('thumbnailEn') else item['thumbnail']
-    tracks = item.get('jaTracks') if lang == 'ja' else item.get('enTracks')
-    duration_label = item.get('jaDuration') if lang == 'ja' else item.get('enDuration')
-    duration_badge = item.get('duration')
-    meta = ''.join(f'<span>{esc(value)}</span>' for value in (tracks, duration_label) if value)
-    duration_html = f'<span class="featured-medley-duration">{esc(duration_badge)}</span>' if duration_badge else ''
+def featured_medley_card(item: dict, lang: str, rank: int) -> str:
+    title = item.get('title', '') if lang == 'ja' else item.get('titleEn', item.get('title', ''))
+    thumb = item.get('thumbnail', '')
+    duration = item.get('duration', '')
+    track_count = item.get('trackCount')
+    views = int(item.get('views', 0))
+    category = item.get('category', 'scene')
+    category_labels = {
+        'series': ('シリーズ別全曲', 'Complete Series'),
+        'scene': ('場面別', 'By Scene'),
+        'purpose': ('目的別', 'By Purpose'),
+    }
+    category_label = category_labels.get(category, category_labels['scene'])[0 if lang == 'ja' else 1]
+    if lang == 'ja':
+        view_label = f'{views / 10000:.1f}万回再生'
+        track_label = f'{track_count}曲' if track_count else ''
+    else:
+        view_label = f'{views / 1000:.1f}K views'
+        track_label = f'{track_count} tracks' if track_count else ''
+    meta = ''.join(f'<span>{esc(value)}</span>' for value in (track_label, duration) if value)
+    duration_html = f'<span class="featured-medley-duration">{esc(duration)}</span>' if duration else ''
     return (
-        f'<a class="featured-medley-card" href="{esc(item["url"])}" target="_blank" rel="noreferrer" aria-label="{esc(title)}">'
+        f'<a class="featured-medley-card" href="{esc(item["url"])}" target="_blank" rel="noreferrer" '
+        f'aria-label="{esc(title)}" data-medley-card data-category="{esc(category)}" '
+        f'data-views="{views}" data-duration="{int(item.get("durationSeconds", 0))}" '
+        f'data-published="{esc(item.get("publishedAt", ""))}">'
         '<span class="featured-medley-thumb-wrap">'
         f'<img class="featured-medley-thumb" src="{esc(thumb)}" alt="{esc(title)}" loading="lazy" width="1280" height="720">'
+        f'<span class="featured-medley-rank" data-medley-rank>{rank}</span>'
         f'{duration_html}'
         '</span>'
         '<span class="featured-medley-body">'
         f'<span class="featured-medley-title">{esc(title)}</span>'
         f'<span class="featured-medley-meta">{meta}</span>'
+        '<span class="featured-medley-footer">'
+        f'<span class="featured-medley-category">{esc(category_label)}</span>'
+        f'<span class="featured-medley-views">{esc(view_label)}</span>'
+        '</span>'
         '</span>'
         '</a>'
     )
 
 
 def featured_medley_showcase(lang: str) -> str:
+    medleys = sorted(MEDLEY_CATALOG.get('items', []), key=lambda item: item.get('views', 0), reverse=True)
+    updated_at = MEDLEY_CATALOG.get('updatedAt', '')
+    updated_date = updated_at[:10]
     if lang == 'ja':
-        heading = 'ピアノメドレー'
-        sub = 'シリーズ全曲から、テーマ別まで。長時間のピアノメドレーをお楽しみください。'
+        heading = 'ピアノメドレーを探す'
+        sub = '現在メドレーページに掲載中の作品を、種類や人気順から探せます。'
         cta = 'すべてのメドレーを見る'
         href = '/category/medley/'
-        label = heading
+        count_suffix = '件のメドレー'
+        updated_label = f'再生回数 {updated_date.replace("-", ".")} 更新' if updated_date else ''
+        empty_label = '該当するメドレーはありません。'
+        filter_label = '絞り込み'
+        sort_label = '並べ替え'
+        filters = [('all', 'すべて'), ('series', 'シリーズ別全曲'), ('scene', '場面別'), ('purpose', '目的別')]
+        sorts = [('popular', '人気'), ('duration', '時間')]
     else:
-        heading = 'Piano Medleys'
-        sub = 'From full-series collections to themed selections, enjoy long-form Dragon Quest piano medleys.'
+        heading = 'Explore Piano Medleys'
+        sub = 'Browse every work currently featured on the medley page by type, popularity, or length.'
         cta = 'View all medleys'
         href = '/en/category/medley/'
-        label = heading
-    medleys = sorted(FEATURED_MEDLEYS, key=lambda item: item.get('views', 0), reverse=True)[:10]
-    cards = ''.join(featured_medley_card(item, lang) for item in medleys)
+        count_suffix = 'medleys'
+        updated_label = f'Views updated {updated_date}' if updated_date else ''
+        empty_label = 'No medleys match this filter.'
+        filter_label = 'Filter'
+        sort_label = 'Sort'
+        filters = [('all', 'All'), ('series', 'Complete Series'), ('scene', 'By Scene'), ('purpose', 'By Purpose')]
+        sorts = [('popular', 'Popular'), ('duration', 'Length')]
+    cards = ''.join(featured_medley_card(item, lang, index) for index, item in enumerate(medleys, 1))
+    filter_buttons = ''.join(
+        f'<button class="featured-medley-control{(" is-active" if key == "all" else "")}" type="button" '
+        f'data-medley-filter="{key}" aria-pressed="{str(key == "all").lower()}">{esc(label)}</button>'
+        for key, label in filters
+    )
+    sort_buttons = ''.join(
+        f'<button class="featured-medley-control{(" is-active" if key == "popular" else "")}" type="button" '
+        f'data-medley-sort="{key}" aria-pressed="{str(key == "popular").lower()}">{esc(label)}</button>'
+        for key, label in sorts
+    )
     return (
-        '<section class="section featured-medleys" id="featured-medleys" aria-labelledby="featured-medleys-title">'
+        '<section class="section featured-medleys" id="featured-medleys" aria-labelledby="featured-medleys-title" data-medley-browser>'
         '<div class="featured-medleys-head">'
         '<div>'
+        '<p class="section-kicker">Medley Library</p>'
         f'<h2 id="featured-medleys-title">{esc(heading)}</h2>'
         f'<p>{esc(sub)}</p>'
         '</div>'
         f'<a class="featured-medleys-link" href="{esc(href)}">{esc(cta)}</a>'
         '</div>'
-        f'<div class="featured-medleys-scroll" aria-label="{esc(label)}">'
-        f'<div class="featured-medleys-track">{cards}</div>'
+        '<div class="featured-medley-controls">'
+        '<div class="featured-medley-control-group featured-medley-filters" role="group" '
+        f'aria-label="{esc(filter_label)}"><span class="featured-medley-control-label">⌄ {esc(filter_label)}</span>{filter_buttons}</div>'
+        '<div class="featured-medley-control-group featured-medley-sorts" role="group" '
+        f'aria-label="{esc(sort_label)}"><span class="featured-medley-control-label">↕ {esc(sort_label)}</span>{sort_buttons}</div>'
         '</div>'
+        '<div class="featured-medley-result-line">'
+        f'<span><strong data-medley-count>{len(medleys)}</strong> {esc(count_suffix)}</span>'
+        f'<span>{esc(updated_label)}</span>'
+        '</div>'
+        f'<div class="featured-medleys-track" data-medley-grid>{cards}</div>'
+        f'<p class="featured-medley-empty" data-medley-empty hidden>{esc(empty_label)}</p>'
         '</section>'
     )
 
@@ -850,6 +779,13 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     text = text.replace('href="/en/series-index.html"', 'href="/en/series-index/"')
     text = text.replace('href="/en/category-index.html"', 'href="/en/category-index/"')
     text = text.replace('href="/en.html"', 'href="/en/"')
+    script_src = './featured-medleys.js' if lang == 'ja' else '/featured-medleys.js'
+    if 'featured-medleys.js' not in text:
+        scroll_src = './scroll-hint.js' if lang == 'ja' else '/scroll-hint.js'
+        text = text.replace(
+            f'<script src="{scroll_src}" defer></script>',
+            f'<script src="{script_src}" defer></script>\n  <script src="{scroll_src}" defer></script>',
+        )
     text = text.replace(
         '<section class="section performer-profile" aria-labelledby="performer-profile-title">',
         '<section class="section performer-profile" id="performer-profile" aria-labelledby="performer-profile-title">'

@@ -5,6 +5,8 @@ on:
     branches:
       - cloudflare/workers-autoconfig
   workflow_dispatch:
+  schedule:
+    - cron: "23 3 */3 * *"
 
 concurrency:
   group: deploy-worker
@@ -15,12 +17,22 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
-      contents: read
+      contents: write
       deployments: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          ref: cloudflare/workers-autoconfig
+
+      - name: Refresh medley view counts
+        if: github.event_name == 'schedule'
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          test -n "$YOUTUBE_API_KEY" || { echo "Missing GitHub secret: YOUTUBE_API_KEY"; exit 1; }
+          python3 scripts/update-medley-data.py
 
       - name: Regenerate static pages
         run: python3 build-seo-pages.py
@@ -28,7 +40,21 @@ jobs:
       - name: Validate JavaScript
         run: |
           node --check analytics.js
+          node --check featured-medleys.js
           node --check site.js
+
+      - name: Save refreshed medley data
+        if: github.event_name == 'schedule'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add medley-data.json index.html en/index.html
+          if git diff --cached --quiet; then
+            echo "No medley changes to save"
+          else
+            git commit -m "Refresh medley view counts"
+            git push origin HEAD:cloudflare/workers-autoconfig
+          fi
 
       - name: Build deploy assets
         run: python3 build-worker-assets.py
