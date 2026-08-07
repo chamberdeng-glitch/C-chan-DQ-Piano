@@ -97,6 +97,7 @@ def fetch_video_details(api_key: str, video_ids: list[str]) -> dict[str, dict]:
             api_key,
             part="snippet,statistics,contentDetails",
             id=",".join(batch),
+            hl="en",
             maxResults=50,
         )
         details.update({item["id"]: item for item in data.get("items", [])})
@@ -153,13 +154,14 @@ def build_catalog(api_key: str) -> dict:
             continue
         snippet = detail.get("snippet", {})
         title = snippet.get("title", "").strip() or source_track.get("title", "")
+        title_en = snippet.get("localized", {}).get("title", "").strip() or title
         seconds = duration_seconds(detail.get("contentDetails", {}).get("duration", ""))
         items.append(
             {
                 "videoId": video_id,
                 "url": f"https://www.youtube.com/watch?v={video_id}",
                 "title": title,
-                "titleEn": title,
+                "titleEn": title_en,
                 "category": category_for(title, source_track.get("playlistTitle", "")),
                 "trackCount": track_count(video_id, title),
                 "duration": duration_label(seconds),
