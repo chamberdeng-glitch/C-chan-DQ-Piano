@@ -17,6 +17,7 @@ ENV_FILE = ROOT / ".env"
 OUTPUT_FILE = ROOT / "medley-data.json"
 API_BASE = "https://www.googleapis.com/youtube/v3"
 PLAYLIST_DATA_FILE = ROOT / "playlist-data.js"
+EN_THUMBNAIL_DIR = ROOT / "assets" / "medley-thumbnails"
 SERIES_PATTERN = re.compile(
     r"(?:ドラクエ|ドラゴンクエスト|DQ|Dragon Quest).{0,20}全曲|全曲.{0,20}(?:ドラクエ|ドラゴンクエスト|DQ|Dragon Quest)|Complete Piano",
     re.IGNORECASE,
@@ -169,6 +170,11 @@ def build_catalog(api_key: str) -> dict:
                 "views": int(detail.get("statistics", {}).get("viewCount", 0)),
                 "publishedAt": snippet.get("publishedAt", ""),
                 "thumbnail": best_thumbnail(snippet, video_id),
+                "thumbnailEn": (
+                    f"/assets/medley-thumbnails/{video_id}-en.jpg"
+                    if (EN_THUMBNAIL_DIR / f"{video_id}-en.jpg").is_file()
+                    else best_thumbnail(snippet, video_id)
+                ),
             }
         )
 

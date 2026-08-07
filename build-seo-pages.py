@@ -662,7 +662,8 @@ def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[st
 
 def featured_medley_card(item: dict, lang: str, rank: int) -> str:
     title = item.get('title', '') if lang == 'ja' else item.get('titleEn', item.get('title', ''))
-    thumb = item.get('thumbnail', '')
+    default_thumb = item.get('thumbnail', '')
+    thumb = item.get('thumbnailEn', default_thumb) if lang == 'en' else default_thumb
     duration = item.get('duration', '')
     track_count = item.get('trackCount')
     views = int(item.get('views', 0))
