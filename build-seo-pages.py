@@ -242,6 +242,13 @@ def youtube_video_thumb(url: str | None) -> str:
     return f'https://i.ytimg.com/vi/{match.group(1)}/hqdefault.jpg'
 
 
+def localized_video_thumb(video_id: str, lang: str) -> str:
+    localized = ROOT / 'assets' / 'song-thumbnails' / f'{video_id}-en.jpg'
+    if lang == 'en' and localized.is_file():
+        return f'{BASE}/assets/song-thumbnails/{video_id}-en.jpg'
+    return f'https://i.ytimg.com/vi/{video_id}/hqdefault.jpg'
+
+
 def youtube_video_id(url: str | None) -> str:
     match = re.search(r'(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})', url or '')
     return match.group(1) if match else ''
@@ -1011,7 +1018,7 @@ def sr_video_card(row: dict, lang: str = 'ja') -> str:
     """関連/前後の曲カード。曲ページが有れば内部リンク、無ければYouTube直リンク。"""
     series = SERIES_MAP[row['seriesKey']]
     vid = youtube_video_id(row.get('videoUrl', ''))
-    thumb = f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg' if vid else ''
+    thumb = localized_video_thumb(vid, lang) if vid else ''
     page = SONG_PAGE_PATHS.get(row['id'])
     href = (page if lang == 'ja' else '/en' + page) if page else (row.get('videoUrl') or '#')
     ext = '' if page else ' target="_blank" rel="noreferrer"'
@@ -1047,7 +1054,7 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
     canon = BASE + page
     vid = youtube_video_id(row['videoUrl'])
     start = youtube_start_seconds(row['videoUrl'])
-    thumb = f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'
+    thumb = localized_video_thumb(vid, lang)
 
     if lang == 'ja':
         song_title = row['songTitle']
@@ -1117,7 +1124,8 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
         '<script src="/assets/lite-yt-embed.js" defer></script></head>')
 
     params = f'start={start}' if start > 0 else ''
-    embed = (f'<lite-youtube videoid="{vid}" playlabel="{esc(play_label)}"'
+    localized_poster = f' style="background-image:url({thumb})"' if lang == 'en' and '/assets/song-thumbnails/' in thumb else ''
+    embed = (f'<lite-youtube videoid="{vid}" playlabel="{esc(play_label)}"{localized_poster}'
              + (f' params="{params}"' if params else '') + '></lite-youtube>')
 
     rows_info = ''.join([
@@ -1225,7 +1233,7 @@ def write_song_page(row: dict, prev_row: dict | None, next_row: dict | None, met
     canon = BASE + page
     vid = youtube_video_id(row['videoUrl'])
     start = youtube_start_seconds(row['videoUrl'])
-    thumb = f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg'
+    thumb = localized_video_thumb(vid, lang)
 
     if lang == 'ja':
         song_title = row['songTitle']
