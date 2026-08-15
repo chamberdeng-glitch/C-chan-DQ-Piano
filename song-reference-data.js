@@ -605,9 +605,9 @@ window.songReferenceData = {
       "sortNumber": 20,
       "songTitle": "海図を広げて",
       "category": "海",
-      "videoUrl": "https://www.youtube.com/watch?v=6FyUArpRMg0",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=DdvJj8OBhco",
+      "difficultyLabel": "中上級",
+      "difficultyStars": 4
     },
     {
       "id": "IV-21",
@@ -1830,9 +1830,9 @@ window.songReferenceData = {
       "sortNumber": 14,
       "songTitle": "海図を広げて",
       "category": "海",
-      "videoUrl": "https://www.youtube.com/watch?v=6Rp2lOYCABE&t=489s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=DdvJj8OBhco",
+      "difficultyLabel": "中上級",
+      "difficultyStars": 4
     },
     {
       "id": "IX-15",

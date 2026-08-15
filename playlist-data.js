@@ -709,10 +709,10 @@ window.playlistData = [
       },
       {
         "title": "【ピアノ】海図を広げて",
-        "rawTitle": "【ピアノ】海図を広げて / ドラクエIV / 船BGM / Sea Breeze / DQ4 [Piano]",
-        "url": "https://www.youtube.com/watch?v=6FyUArpRMg0",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "rawTitle": "【ドラクエ4 , 9, 11】海図を広げて｜ピアノ演奏",
+        "url": "https://www.youtube.com/watch?v=DdvJj8OBhco",
+        "difficultyLabel": "中上級",
+        "difficultyStars": 4,
         "difficultyDetail": ""
       },
       {

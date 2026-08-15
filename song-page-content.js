@@ -527,11 +527,11 @@ window.songPageContent = {
   },
   "IV-20": {
     "slug": "sea-breeze",
-    "uploadDate": "2023-07-11T14:53:11-07:00",
+    "uploadDate": "2026-08-15T11:00:18Z",
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "4:09"
+    "performanceDuration": "4:05"
   },
   "IV-21": {
     "slug": "pissarro",
@@ -1580,11 +1580,11 @@ window.songPageContent = {
   },
   "IX-14": {
     "slug": "sea-breeze-iv",
-    "uploadDate": "2026-05-01T04:00:00-07:00",
+    "uploadDate": "2026-08-15T11:00:18Z",
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "4:02"
+    "performanceDuration": "4:05"
   },
   "IX-21": {
     "slug": "soaring-in-the-sky",
