@@ -43,7 +43,7 @@ def main() -> None:
     for rows in songs.values():
         for row in rows:
             vid = video_id(row.get('videoUrl', ''))
-            if vid and row['id'] not in dates:
+            if vid and not dates.get(row['id']):
                 todo.append((row['id'], vid))
     print(f'{len(todo)} videos to fetch ({len(dates)} cached)')
     for i, (song_id, vid) in enumerate(todo, 1):

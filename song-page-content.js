@@ -1527,6 +1527,7 @@ window.songPageContent = {
   },
   "IX-5": {
     "slug": "beckoning",
+    "uploadDate": "2026-06-27T04:00:37-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1542,6 +1543,7 @@ window.songPageContent = {
   },
   "IX-7": {
     "slug": "dream-vision-of-our-town",
+    "uploadDate": "2026-06-19T04:06:56-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1565,6 +1567,7 @@ window.songPageContent = {
   },
   "IX-11": {
     "slug": "village-in-darkness",
+    "uploadDate": "2026-07-25T04:00:06-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1612,6 +1615,7 @@ window.songPageContent = {
   },
   "X-5": {
     "slug": "lively-town",
+    "uploadDate": "2026-06-19T04:06:56-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1619,6 +1623,7 @@ window.songPageContent = {
   },
   "X-6": {
     "slug": "slumbering-town",
+    "uploadDate": "2026-06-19T04:06:56-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1634,6 +1639,7 @@ window.songPageContent = {
   },
   "X-8": {
     "slug": "gossiping-villagers",
+    "uploadDate": "2026-06-19T04:06:56-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1681,6 +1687,7 @@ window.songPageContent = {
   },
   "X-19": {
     "slug": "elegant-ancient-palace",
+    "uploadDate": "2026-06-19T04:06:56-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1720,6 +1727,7 @@ window.songPageContent = {
   },
   "XI-3": {
     "slug": "bustling-town",
+    "uploadDate": "2026-07-29T04:00:31-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1735,6 +1743,7 @@ window.songPageContent = {
   },
   "XI-5": {
     "slug": "quiet-village",
+    "uploadDate": "2026-06-19T04:06:56-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1742,6 +1751,7 @@ window.songPageContent = {
   },
   "XI-6": {
     "slug": "sleepy-village",
+    "uploadDate": "2026-06-19T04:06:56-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1749,6 +1759,7 @@ window.songPageContent = {
   },
   "XI-8": {
     "slug": "village-hidden-in-a-mountain",
+    "uploadDate": "2026-06-19T04:06:56-07:00",
     "lead": "",
     "description": "",
     "timestamps": [],
