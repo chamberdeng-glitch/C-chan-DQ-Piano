@@ -243,9 +243,9 @@ window.songReferenceData = {
       "sortNumber": 3,
       "songTitle": "王宮のロンド",
       "category": "城",
-      "videoUrl": "https://www.youtube.com/watch?v=9x0cj5b_b3E",
-      "difficultyLabel": "未設定",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=qQ01I4cWaPc",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "III-4",

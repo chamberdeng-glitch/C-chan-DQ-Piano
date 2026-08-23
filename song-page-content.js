@@ -207,11 +207,11 @@ window.songPageContent = {
   },
   "III-3": {
     "slug": "royal-palace-rondo",
-    "uploadDate": "2023-06-07T03:54:21-07:00",
+    "uploadDate": "2026-08-22T11:00:40Z",
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "2:13"
+    "performanceDuration": "2:11"
   },
   "III-4": {
     "slug": "city",

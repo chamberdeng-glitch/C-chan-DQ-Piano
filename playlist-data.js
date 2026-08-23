@@ -1294,11 +1294,11 @@ window.playlistData = [
         "difficultyDetail": "普通"
       },
       {
-        "title": "【ピアノ】王宮のロンド ドラゴンクエスト3    Rondo",
-        "rawTitle": "【ピアノ】王宮のロンド ドラゴンクエスト3    Rondo  Dragon Quest III [Piano]",
-        "url": "https://www.youtube.com/watch?v=9x0cj5b_b3E",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "title": "【ドラクエ3】王宮のロンド｜ピアノ演奏",
+        "rawTitle": "【ドラクエ3】王宮のロンド｜ピアノ演奏",
+        "url": "https://www.youtube.com/watch?v=qQ01I4cWaPc",
+        "difficultyLabel": "中級",
+        "difficultyStars": 3,
         "difficultyDetail": ""
       },
       {
