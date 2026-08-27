@@ -2445,7 +2445,7 @@ window.songReferenceData = {
       "id": "XI-20",
       "sortNumber": 20,
       "songTitle": "神秘へのいざない",
-      "category": "教会・ほこら・神殿",
+      "category": "ダンジョン",
       "videoUrl": "",
       "difficultyLabel": "",
       "difficultyStars": null
