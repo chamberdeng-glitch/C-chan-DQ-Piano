@@ -1525,6 +1525,14 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "6:03"
   },
+  "IX-4": {
+    "slug": "oboe-melody-in-the-castle",
+    "uploadDate": "2026-08-28T11:00:06Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "3:29"
+  },
   "IX-5": {
     "slug": "beckoning",
     "uploadDate": "2026-06-27T04:00:37-07:00",

@@ -1740,9 +1740,9 @@ window.songReferenceData = {
       "sortNumber": 4,
       "songTitle": "王宮のオーボエ",
       "category": "城",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=MHmH_4rIuDk",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "IX-5",
