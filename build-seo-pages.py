@@ -1,6 +1,7 @@
 ﻿from __future__ import annotations
 import json
 import re
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 BASE = 'https://dqpiano.com'
@@ -664,6 +665,16 @@ def load_medley_catalog() -> dict:
 MEDLEY_CATALOG = load_medley_catalog()
 
 
+def medley_updated_date(value: str) -> str:
+    if not value:
+        return ''
+    try:
+        parsed = datetime.fromisoformat(value.replace('Z', '+00:00'))
+        return parsed.astimezone(timezone(timedelta(hours=9))).date().isoformat()
+    except ValueError:
+        return value[:10]
+
+
 def category_cards(items: list[tuple[str, str, str, str]], lang: str) -> list[str]:
     cards = []
     for index, (slug, ja_label, en_label, icon) in enumerate(items):
@@ -722,7 +733,7 @@ def featured_medley_card(item: dict, lang: str, rank: int) -> str:
 def featured_medley_showcase(lang: str) -> str:
     medleys = sorted(MEDLEY_CATALOG.get('items', []), key=lambda item: item.get('views', 0), reverse=True)
     updated_at = MEDLEY_CATALOG.get('updatedAt', '')
-    updated_date = updated_at[:10]
+    updated_date = medley_updated_date(updated_at)
     if lang == 'ja':
         heading = 'ピアノメドレーを探す'
         sub = '現在メドレーページに掲載中の作品を、種類や人気順から探せます。'

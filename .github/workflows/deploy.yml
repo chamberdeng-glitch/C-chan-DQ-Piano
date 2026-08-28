@@ -27,12 +27,7 @@ jobs:
           ref: cloudflare/workers-autoconfig
 
       - name: Refresh medley view counts
-        if: github.event_name == 'schedule'
-        env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-        run: |
-          test -n "$YOUTUBE_API_KEY" || { echo "Missing GitHub secret: YOUTUBE_API_KEY"; exit 1; }
-          python3 scripts/update-medley-data.py
+        run: python3 scripts/update-medley-view-counts.py
 
       - name: Regenerate static pages
         run: python3 build-seo-pages.py
