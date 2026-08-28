@@ -27,7 +27,14 @@ jobs:
           ref: cloudflare/workers-autoconfig
 
       - name: Refresh medley view counts
-        run: python3 scripts/update-medley-view-counts.py
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          if test -z "$YOUTUBE_API_KEY"; then
+            echo "::warning::YOUTUBE_API_KEY is not configured; using the committed medley counts"
+          else
+            python3 scripts/update-medley-data.py
+          fi
 
       - name: Regenerate static pages
         run: python3 build-seo-pages.py
