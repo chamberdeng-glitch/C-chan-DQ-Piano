@@ -30,11 +30,8 @@ jobs:
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
-          if test -z "$YOUTUBE_API_KEY"; then
-            echo "::warning::YOUTUBE_API_KEY is not configured; using the committed medley counts"
-          else
-            python3 scripts/update-medley-data.py
-          fi
+          test -n "$YOUTUBE_API_KEY" || { echo "Missing GitHub secret: YOUTUBE_API_KEY"; exit 1; }
+          python3 scripts/update-medley-data.py
 
       - name: Regenerate static pages
         run: python3 build-seo-pages.py
