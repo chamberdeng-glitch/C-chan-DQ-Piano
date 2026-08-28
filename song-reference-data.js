@@ -225,7 +225,7 @@ window.songReferenceData = {
       "sortNumber": 1,
       "songTitle": "ロトのテーマ",
       "category": "オープニング",
-      "videoUrl": "",
+      "videoUrl": "https://youtu.be/RXEvjVzl9wY?t=639",
       "difficultyLabel": "",
       "difficultyStars": null
     },
