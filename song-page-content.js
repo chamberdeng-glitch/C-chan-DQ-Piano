@@ -1599,11 +1599,11 @@ window.songPageContent = {
   },
   "IX-21": {
     "slug": "soaring-in-the-sky",
-    "uploadDate": "2026-05-01T04:00:00-07:00",
+    "uploadDate": "2026-09-01T11:00:04Z",
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "2:45"
+    "performanceDuration": "2:44"
   },
   "IX-25": {
     "slug": "together-in-the-fields",

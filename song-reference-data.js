@@ -1893,9 +1893,9 @@ window.songReferenceData = {
       "sortNumber": 21,
       "songTitle": "箱舟に乗って",
       "category": "空",
-      "videoUrl": "https://www.youtube.com/watch?v=6Rp2lOYCABE&t=2517s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=87_9hA_I8v4",
+      "difficultyLabel": "中上級",
+      "difficultyStars": 4
     },
     {
       "id": "IX-22",
