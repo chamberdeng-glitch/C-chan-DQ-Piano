@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-31T09:56:08Z",
+  "updatedAt": "2026-09-01T08:46:58Z",
   "source": "current medley page playlists",
   "count": 15,
   "items": [
@@ -12,7 +12,7 @@
       "trackCount": 34,
       "duration": "1:31:11",
       "durationSeconds": 5471,
-      "views": 87110,
+      "views": 88931,
       "publishedAt": "2026-06-19T11:06:56Z",
       "thumbnail": "https://i.ytimg.com/vi/T8FJPYoGva0/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/T8FJPYoGva0-en.jpg"
@@ -26,7 +26,7 @@
       "trackCount": 26,
       "duration": "1:21:25",
       "durationSeconds": 4885,
-      "views": 56572,
+      "views": 56837,
       "publishedAt": "2024-12-08T15:00:44Z",
       "thumbnail": "https://i.ytimg.com/vi/daTrvg7jg9k/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/daTrvg7jg9k-en.jpg"
@@ -40,24 +40,10 @@
       "trackCount": 28,
       "duration": "1:08:08",
       "durationSeconds": 4088,
-      "views": 48776,
+      "views": 48981,
       "publishedAt": "2024-05-26T15:00:04Z",
       "thumbnail": "https://i.ytimg.com/vi/62ch8sY8DaA/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/62ch8sY8DaA/maxresdefault.jpg"
-    },
-    {
-      "videoId": "EofaXaPTK-8",
-      "url": "https://www.youtube.com/watch?v=EofaXaPTK-8",
-      "title": "【ドラクエ7】ピアノ全曲集｜全28曲メドレー（ドラゴンクエストVII・公式楽譜）",
-      "titleEn": "Dragon Quest VII Piano Complete Collection | All 28 Tracks (Official Piano Score)",
-      "category": "series",
-      "trackCount": 28,
-      "duration": "1:18:42",
-      "durationSeconds": 4722,
-      "views": 41701,
-      "publishedAt": "2025-08-25T15:00:21Z",
-      "thumbnail": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg",
-      "thumbnailEn": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg"
     },
     {
       "videoId": "VIh5Sv3OoQE",
@@ -68,10 +54,24 @@
       "trackCount": 15,
       "duration": "49:08",
       "durationSeconds": 2948,
-      "views": 39670,
+      "views": 44493,
       "publishedAt": "2026-08-07T11:00:14Z",
       "thumbnail": "https://i.ytimg.com/vi/VIh5Sv3OoQE/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/VIh5Sv3OoQE-en.jpg"
+    },
+    {
+      "videoId": "EofaXaPTK-8",
+      "url": "https://www.youtube.com/watch?v=EofaXaPTK-8",
+      "title": "【ドラクエ7】ピアノ全曲集｜全28曲メドレー（ドラゴンクエストVII・公式楽譜）",
+      "titleEn": "Dragon Quest VII Piano Complete Collection | All 28 Tracks (Official Piano Score)",
+      "category": "series",
+      "trackCount": 28,
+      "duration": "1:18:42",
+      "durationSeconds": 4722,
+      "views": 41818,
+      "publishedAt": "2025-08-25T15:00:21Z",
+      "thumbnail": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg",
+      "thumbnailEn": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg"
     },
     {
       "videoId": "kSOvI-RcJac",
@@ -82,7 +82,7 @@
       "trackCount": 25,
       "duration": "56:35",
       "durationSeconds": 3395,
-      "views": 30700,
+      "views": 30826,
       "publishedAt": "2024-09-27T03:00:38Z",
       "thumbnail": "https://i.ytimg.com/vi/kSOvI-RcJac/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/kSOvI-RcJac-en.jpg"
@@ -96,7 +96,7 @@
       "trackCount": 23,
       "duration": "50:05",
       "durationSeconds": 3005,
-      "views": 30146,
+      "views": 30210,
       "publishedAt": "2024-01-08T03:00:19Z",
       "thumbnail": "https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg"
@@ -110,7 +110,7 @@
       "trackCount": 33,
       "duration": "1:22:02",
       "durationSeconds": 4922,
-      "views": 29478,
+      "views": 29811,
       "publishedAt": "2026-03-20T10:30:00Z",
       "thumbnail": "https://i.ytimg.com/vi/Pu9o2vfflx4/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/Pu9o2vfflx4-en.jpg"
@@ -124,7 +124,7 @@
       "trackCount": 17,
       "duration": "35:59",
       "durationSeconds": 2159,
-      "views": 19540,
+      "views": 19589,
       "publishedAt": "2024-01-05T03:00:13Z",
       "thumbnail": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg"
@@ -138,24 +138,10 @@
       "trackCount": 8,
       "duration": "23:20",
       "durationSeconds": 1400,
-      "views": 19136,
+      "views": 19172,
       "publishedAt": "2024-01-01T03:00:37Z",
       "thumbnail": "https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg"
-    },
-    {
-      "videoId": "RXEvjVzl9wY",
-      "url": "https://www.youtube.com/watch?v=RXEvjVzl9wY",
-      "title": "​【ドラクエ 序曲】楽譜12冊を5段階評価！難易度・アレンジ弾き比べ",
-      "titleEn": "Dragon Quest Overture: 12 Piano Scores Compared & Ranked by Difficulty",
-      "category": "scene",
-      "trackCount": null,
-      "duration": "25:30",
-      "durationSeconds": 1530,
-      "views": 18030,
-      "publishedAt": "2025-12-25T03:00:38Z",
-      "thumbnail": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg",
-      "thumbnailEn": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg"
     },
     {
       "videoId": "aPh-4XiM1Ow",
@@ -166,10 +152,24 @@
       "trackCount": 15,
       "duration": "42:10",
       "durationSeconds": 2530,
-      "views": 17979,
+      "views": 18584,
       "publishedAt": "2026-07-16T11:00:37Z",
       "thumbnail": "https://i.ytimg.com/vi/aPh-4XiM1Ow/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/aPh-4XiM1Ow-en.jpg"
+    },
+    {
+      "videoId": "RXEvjVzl9wY",
+      "url": "https://www.youtube.com/watch?v=RXEvjVzl9wY",
+      "title": "​【ドラクエ 序曲】楽譜12冊を5段階評価！難易度・アレンジ弾き比べ",
+      "titleEn": "Dragon Quest Overture: 12 Piano Scores Compared & Ranked by Difficulty",
+      "category": "scene",
+      "trackCount": null,
+      "duration": "25:30",
+      "durationSeconds": 1530,
+      "views": 18091,
+      "publishedAt": "2025-12-25T03:00:38Z",
+      "thumbnail": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg",
+      "thumbnailEn": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg"
     },
     {
       "videoId": "aMaaqQwvwsM",
@@ -180,7 +180,7 @@
       "trackCount": 35,
       "duration": "1:52:18",
       "durationSeconds": 6738,
-      "views": 17486,
+      "views": 17708,
       "publishedAt": "2026-05-27T08:30:00Z",
       "thumbnail": "https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/aMaaqQwvwsM-en.jpg"
@@ -194,7 +194,7 @@
       "trackCount": 18,
       "duration": "1:00:07",
       "durationSeconds": 3607,
-      "views": 16730,
+      "views": 17135,
       "publishedAt": "2026-05-01T11:00:00Z",
       "thumbnail": "https://i.ytimg.com/vi/6Rp2lOYCABE/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/6Rp2lOYCABE-en.jpg"
@@ -208,7 +208,7 @@
       "trackCount": null,
       "duration": "31:34",
       "durationSeconds": 1894,
-      "views": 1619,
+      "views": 1623,
       "publishedAt": "2025-08-15T10:30:06Z",
       "thumbnail": "https://i.ytimg.com/vi/UOwrLr_pbbs/sddefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/UOwrLr_pbbs/sddefault.jpg"
