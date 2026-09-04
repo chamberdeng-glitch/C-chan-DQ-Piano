@@ -1767,9 +1767,9 @@ window.songReferenceData = {
       "sortNumber": 7,
       "songTitle": "夢見るわが街",
       "category": "街・村",
-      "videoUrl": "https://www.youtube.com/watch?v=T8FJPYoGva0&t=3584s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=b1adM-IHjvI",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IX-8",

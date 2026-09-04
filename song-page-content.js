@@ -1551,11 +1551,11 @@ window.songPageContent = {
   },
   "IX-7": {
     "slug": "dream-vision-of-our-town",
-    "uploadDate": "2026-06-19T04:06:56-07:00",
+    "uploadDate": "2026-09-04T11:00:37Z",
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "2:51"
+    "performanceDuration": "2:52"
   },
   "IX-9": {
     "slug": "alchemy-pot",
