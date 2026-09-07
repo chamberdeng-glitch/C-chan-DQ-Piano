@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-04T08:05:06Z",
+  "updatedAt": "2026-09-07T08:29:36Z",
   "source": "current medley page playlists",
   "count": 15,
   "items": [
@@ -12,24 +12,10 @@
       "trackCount": 34,
       "duration": "1:31:11",
       "durationSeconds": 5471,
-      "views": 93717,
+      "views": 98282,
       "publishedAt": "2026-06-19T11:06:56Z",
       "thumbnail": "https://i.ytimg.com/vi/T8FJPYoGva0/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/T8FJPYoGva0-en.jpg"
-    },
-    {
-      "videoId": "daTrvg7jg9k",
-      "url": "https://www.youtube.com/watch?v=daTrvg7jg9k",
-      "title": "【ドラクエ6】ピアノ全曲集｜全26曲メドレー（ドラゴンクエストVI・公式楽譜）",
-      "titleEn": "Dragon Quest VI Piano Complete Collection | 26-Track Medley (Official Score)",
-      "category": "series",
-      "trackCount": 26,
-      "duration": "1:21:25",
-      "durationSeconds": 4885,
-      "views": 57579,
-      "publishedAt": "2024-12-08T15:00:44Z",
-      "thumbnail": "https://i.ytimg.com/vi/daTrvg7jg9k/maxresdefault.jpg",
-      "thumbnailEn": "/assets/medley-thumbnails/daTrvg7jg9k-en.jpg"
     },
     {
       "videoId": "VIh5Sv3OoQE",
@@ -40,10 +26,24 @@
       "trackCount": 15,
       "duration": "49:08",
       "durationSeconds": 2948,
-      "views": 56160,
+      "views": 63974,
       "publishedAt": "2026-08-07T11:00:14Z",
       "thumbnail": "https://i.ytimg.com/vi/VIh5Sv3OoQE/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/VIh5Sv3OoQE-en.jpg"
+    },
+    {
+      "videoId": "daTrvg7jg9k",
+      "url": "https://www.youtube.com/watch?v=daTrvg7jg9k",
+      "title": "【ドラクエ6】ピアノ全曲集｜全26曲メドレー（ドラゴンクエストVI・公式楽譜）",
+      "titleEn": "Dragon Quest VI Piano Complete Collection | 26-Track Medley (Official Score)",
+      "category": "series",
+      "trackCount": 26,
+      "duration": "1:21:25",
+      "durationSeconds": 4885,
+      "views": 58167,
+      "publishedAt": "2024-12-08T15:00:44Z",
+      "thumbnail": "https://i.ytimg.com/vi/daTrvg7jg9k/maxresdefault.jpg",
+      "thumbnailEn": "/assets/medley-thumbnails/daTrvg7jg9k-en.jpg"
     },
     {
       "videoId": "62ch8sY8DaA",
@@ -54,7 +54,7 @@
       "trackCount": 28,
       "duration": "1:08:08",
       "durationSeconds": 4088,
-      "views": 49484,
+      "views": 50068,
       "publishedAt": "2024-05-26T15:00:04Z",
       "thumbnail": "https://i.ytimg.com/vi/62ch8sY8DaA/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/62ch8sY8DaA/maxresdefault.jpg"
@@ -68,24 +68,10 @@
       "trackCount": 28,
       "duration": "1:18:42",
       "durationSeconds": 4722,
-      "views": 42135,
+      "views": 42500,
       "publishedAt": "2025-08-25T15:00:21Z",
       "thumbnail": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg"
-    },
-    {
-      "videoId": "kSOvI-RcJac",
-      "url": "https://www.youtube.com/watch?v=kSOvI-RcJac",
-      "title": "【ドラクエ5】ピアノ全曲集｜全25曲メドレー（公式楽譜）",
-      "titleEn": "Dragon Quest V Piano Complete Collection | 25-Track Medley (Official Score)",
-      "category": "series",
-      "trackCount": 25,
-      "duration": "56:35",
-      "durationSeconds": 3395,
-      "views": 31236,
-      "publishedAt": "2024-09-27T03:00:38Z",
-      "thumbnail": "https://i.ytimg.com/vi/kSOvI-RcJac/maxresdefault.jpg",
-      "thumbnailEn": "/assets/medley-thumbnails/kSOvI-RcJac-en.jpg"
     },
     {
       "videoId": "Pu9o2vfflx4",
@@ -96,10 +82,24 @@
       "trackCount": 33,
       "duration": "1:22:02",
       "durationSeconds": 4922,
-      "views": 30777,
+      "views": 31624,
       "publishedAt": "2026-03-20T10:30:00Z",
       "thumbnail": "https://i.ytimg.com/vi/Pu9o2vfflx4/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/Pu9o2vfflx4-en.jpg"
+    },
+    {
+      "videoId": "kSOvI-RcJac",
+      "url": "https://www.youtube.com/watch?v=kSOvI-RcJac",
+      "title": "【ドラクエ5】ピアノ全曲集｜全25曲メドレー（公式楽譜）",
+      "titleEn": "Dragon Quest V Piano Complete Collection | 25-Track Medley (Official Score)",
+      "category": "series",
+      "trackCount": 25,
+      "duration": "56:35",
+      "durationSeconds": 3395,
+      "views": 31549,
+      "publishedAt": "2024-09-27T03:00:38Z",
+      "thumbnail": "https://i.ytimg.com/vi/kSOvI-RcJac/maxresdefault.jpg",
+      "thumbnailEn": "/assets/medley-thumbnails/kSOvI-RcJac-en.jpg"
     },
     {
       "videoId": "Qnpxjoa6Eyw",
@@ -110,7 +110,7 @@
       "trackCount": 23,
       "duration": "50:05",
       "durationSeconds": 3005,
-      "views": 30427,
+      "views": 30714,
       "publishedAt": "2024-01-08T03:00:19Z",
       "thumbnail": "https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg"
@@ -124,7 +124,7 @@
       "trackCount": 15,
       "duration": "42:10",
       "durationSeconds": 2530,
-      "views": 20373,
+      "views": 21624,
       "publishedAt": "2026-07-16T11:00:37Z",
       "thumbnail": "https://i.ytimg.com/vi/aPh-4XiM1Ow/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/aPh-4XiM1Ow-en.jpg"
@@ -138,7 +138,7 @@
       "trackCount": 17,
       "duration": "35:59",
       "durationSeconds": 2159,
-      "views": 19736,
+      "views": 19897,
       "publishedAt": "2024-01-05T03:00:13Z",
       "thumbnail": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg"
@@ -152,7 +152,7 @@
       "trackCount": 8,
       "duration": "23:20",
       "durationSeconds": 1400,
-      "views": 19354,
+      "views": 19518,
       "publishedAt": "2024-01-01T03:00:37Z",
       "thumbnail": "https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg"
@@ -166,7 +166,7 @@
       "trackCount": 18,
       "duration": "1:00:07",
       "durationSeconds": 3607,
-      "views": 18409,
+      "views": 19488,
       "publishedAt": "2026-05-01T11:00:00Z",
       "thumbnail": "https://i.ytimg.com/vi/6Rp2lOYCABE/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/6Rp2lOYCABE-en.jpg"
@@ -180,7 +180,7 @@
       "trackCount": 35,
       "duration": "1:52:18",
       "durationSeconds": 6738,
-      "views": 18331,
+      "views": 18798,
       "publishedAt": "2026-05-27T08:30:00Z",
       "thumbnail": "https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/aMaaqQwvwsM-en.jpg"
@@ -194,7 +194,7 @@
       "trackCount": null,
       "duration": "25:30",
       "durationSeconds": 1530,
-      "views": 18329,
+      "views": 18646,
       "publishedAt": "2025-12-25T03:00:38Z",
       "thumbnail": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg"
@@ -208,7 +208,7 @@
       "trackCount": null,
       "duration": "31:34",
       "durationSeconds": 1894,
-      "views": 1642,
+      "views": 1666,
       "publishedAt": "2025-08-15T10:30:06Z",
       "thumbnail": "https://i.ytimg.com/vi/UOwrLr_pbbs/sddefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/UOwrLr_pbbs/sddefault.jpg"
