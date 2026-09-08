@@ -87,7 +87,7 @@ window.songReferenceData = {
       "id": "II-2",
       "sortNumber": 2,
       "songTitle": "Love Song 探して",
-      "category": "場面転換",
+      "category": "イベント",
       "videoUrl": "https://www.youtube.com/watch?v=2nLi_XK6hDQ",
       "difficultyLabel": "未設定",
       "difficultyStars": null
@@ -442,7 +442,7 @@ window.songReferenceData = {
       "id": "IV-2",
       "sortNumber": 2,
       "songTitle": "間奏曲",
-      "category": "場面転換",
+      "category": "プロローグ",
       "videoUrl": "https://www.youtube.com/watch?v=tygUBJrYrBw",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -687,7 +687,7 @@ window.songReferenceData = {
       "id": "V-2",
       "sortNumber": 2,
       "songTitle": "間奏曲",
-      "category": "場面転換",
+      "category": "プロローグ",
       "videoUrl": "https://www.youtube.com/watch?v=tygUBJrYrBw",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -914,7 +914,7 @@ window.songReferenceData = {
       "id": "VI-2",
       "sortNumber": 2,
       "songTitle": "間奏曲",
-      "category": "場面転換",
+      "category": "プロローグ",
       "videoUrl": "https://www.youtube.com/watch?v=tygUBJrYrBw",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1321,7 +1321,7 @@ window.songReferenceData = {
       "id": "VII-21",
       "sortNumber": 21,
       "songTitle": "復活のいのり",
-      "category": "イベント",
+      "category": "教会・ほこら・神殿",
       "videoUrl": "https://www.youtube.com/watch?v=pDaRtTVmKSU",
       "difficultyLabel": "中上級",
       "difficultyStars": 4
@@ -1404,7 +1404,7 @@ window.songReferenceData = {
       "id": "VIII-2",
       "sortNumber": 2,
       "songTitle": "インテルメッツォ",
-      "category": "場面転換",
+      "category": "プロローグ",
       "videoUrl": "https://www.youtube.com/watch?v=tygUBJrYrBw",
       "difficultyLabel": "初中級",
       "difficultyStars": 2
@@ -1721,7 +1721,7 @@ window.songReferenceData = {
       "id": "IX-2",
       "sortNumber": 2,
       "songTitle": "インテルメッツオ",
-      "category": "場面転換",
+      "category": "プロローグ",
       "videoUrl": "https://www.youtube.com/watch?v=tygUBJrYrBw",
       "difficultyLabel": "",
       "difficultyStars": null
