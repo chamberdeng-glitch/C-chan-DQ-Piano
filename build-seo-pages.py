@@ -636,7 +636,6 @@ def score_cards(lang: str) -> list[str]:
 CATEGORY_LIBRARY = [
     ('opening', 'オープニング', 'Opening', '◇'),
     ('prologue', 'プロローグ', 'Prologue', '♩'),
-    ('interlude', '場面転換', 'Transition', '↔'),
     ('field', 'フィールド', 'Field', '♪'),
     ('sea', '海', 'Ocean', '〜'),
     ('sky', '空', 'Sky', '◇'),
