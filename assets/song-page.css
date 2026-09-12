@@ -1,0 +1,204 @@
+/* 曲別ページ(リッチデザイン)専用スタイル。
+   既存 styles.css には手を入れず、曲ページの<head>でのみ読み込む。
+   ルート .song-rich 配下にスコープし、他ページへ影響させない。 */
+
+.song-rich {
+  /* 既存トークン(--bg/--brand/--accent 等)を styles.css から継承しつつ、
+     このデザイン固有の色だけ追加する。 */
+  --sr-panel: #0c1c2c;          /* カード地(濃紺) */
+  --sr-panel-2: #0a1622;        /* 一段沈めた地 */
+  --sr-line: rgba(214, 166, 61, .28);  /* ゴールドの細線 */
+  --sr-line-soft: rgba(184, 199, 207, .14);
+  --sr-emerald: #2f9e7d;        /* エメラルドのアクセント(タグ等) */
+  --sr-emerald-deep: #1f6f5c;
+  --sr-amazon: #e8911c;         /* Amazonボタン(オレンジ) */
+  --sr-rakuten: #bf0000;        /* 楽天ボタン(赤) */
+  --sr-radius: 16px;
+  --sr-gap: clamp(20px, 3vw, 34px);
+  color: var(--ink);
+}
+
+.song-rich .sr-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 32px);
+}
+
+/* --- ヒーロー: h1 + 英語サブ + タグ --- */
+.song-rich .sr-title {
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.1;
+  color: var(--brand-deep);
+  margin: .2em 0 .1em;
+  letter-spacing: .01em;
+}
+.song-rich .sr-subtitle {
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  color: var(--muted);
+  font-weight: 500;
+  margin: 0 0 .9em;
+  letter-spacing: .04em;
+}
+.song-rich .sr-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.song-rich .sr-tag {
+  display: inline-flex; align-items: center; gap: .4em;
+  padding: 6px 14px; border-radius: 999px;
+  font-size: .82rem; font-weight: 600; letter-spacing: .03em;
+  border: 1px solid var(--sr-line);
+  background: rgba(20, 50, 77, .35);
+  color: var(--ink);
+}
+.song-rich .sr-tag.is-cat { border-color: var(--sr-emerald); color: #bdeedd; }
+
+/* --- 2カラム: 埋め込み + 基本情報 --- */
+.song-rich .sr-lead-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(260px, 1fr);
+  gap: var(--sr-gap);
+  align-items: start;
+  margin-top: var(--sr-gap);
+}
+.song-rich lite-youtube {
+  border-radius: var(--sr-radius);
+  overflow: hidden;
+  border: 1px solid var(--sr-line);
+  box-shadow: 0 18px 50px rgba(0,0,0,.5);
+  background-color: #000;
+}
+.song-rich .sr-embed-cap {
+  margin: 10px 2px 0;
+  font-size: .82rem;
+  color: var(--muted);
+}
+
+/* 基本情報パネル(PC: 縦リスト / モバイル: アコーディオン) */
+.song-rich .sr-info-stack { display: grid; gap: 16px; }
+.song-rich .sr-info {
+  background: linear-gradient(180deg, var(--sr-panel), var(--sr-panel-2));
+  border: 1px solid var(--sr-line);
+  border-radius: var(--sr-radius);
+  padding: 4px 0;
+}
+.song-rich .sr-info summary {
+  display: none;  /* PCでは常時展開。モバイルでボタン化 */
+}
+.song-rich .sr-info-title {
+  padding: 16px 20px 6px;
+  font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--brand);
+}
+.song-rich .sr-info-table {
+  width: calc(100% - 40px);
+  margin: 4px 20px 16px;
+  border-collapse: collapse;
+}
+.song-rich .sr-info-table th,
+.song-rich .sr-info-table td {
+  padding: 11px 0;
+  border-bottom: 1px solid var(--sr-line-soft);
+  vertical-align: middle;
+}
+.song-rich .sr-info-table tr:last-child th,
+.song-rich .sr-info-table tr:last-child td { border-bottom: 0; }
+.song-rich .sr-info-table th {
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 500;
+  text-align: left;
+  white-space: nowrap;
+  padding-right: 16px;
+}
+.song-rich .sr-info-table td {
+  font-weight: 600;
+  text-align: right;
+}
+.song-rich .sr-stars { color: var(--brand-deep); letter-spacing: 2px; }
+.song-rich .sr-stars .is-empty { color: rgba(184,199,207,.3); }
+
+/* --- セクション共通 --- */
+.song-rich .sr-section { margin-top: clamp(34px, 6vw, 58px); }
+.song-rich .sr-section-head { margin-bottom: 16px; }
+.song-rich .sr-kicker { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; color: var(--brand); margin: 0 0 4px; }
+.song-rich .sr-section h2 { font-size: clamp(1.2rem, 3vw, 1.55rem); color: var(--ink); margin: 0; }
+
+/* カードグリッド(前後の曲 / メドレー / 関連楽曲) */
+.song-rich .sr-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; align-items: stretch; }
+.song-rich .sr-card {
+  display: flex; flex-direction: column; min-height: 100%;
+  background: var(--sr-panel); border: 1px solid var(--sr-line-soft);
+  border-radius: 14px; overflow: hidden; text-decoration: none; color: var(--ink);
+  transition: border-color .2s ease, transform .2s ease;
+}
+.song-rich .sr-card:hover { border-color: var(--sr-line); transform: translateY(-2px); }
+.song-rich .sr-card-thumb { aspect-ratio: 16/9; width: 100%; height: auto; object-fit: cover; display: block; background: #000; flex: 0 0 auto; }
+.song-rich .sr-card-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-height: 88px; }
+.song-rich .sr-card-eyebrow { font-size: .72rem; color: var(--brand); letter-spacing: .04em; }
+.song-rich .sr-card-title { display: block; font-weight: 600; margin: 2px 0; }
+.song-rich .sr-card-sub { font-size: .82rem; color: var(--muted); }
+
+/* --- 参考楽譜 --- */
+.song-rich .sr-score {
+  display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center;
+  background: linear-gradient(180deg, var(--sr-panel), var(--sr-panel-2));
+  border: 1px solid var(--sr-line); border-radius: var(--sr-radius); padding: 22px;
+}
+.song-rich .sr-score.sr-score-nocover { grid-template-columns: 1fr; }
+.song-rich .sr-score-cover { width: 120px; border-radius: 8px; box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+.song-rich .sr-score-label { margin: 0 0 8px; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); }
+.song-rich .sr-score-name { font-weight: 600; margin: 0 0 4px; }
+.song-rich .sr-score-meta { font-size: .85rem; color: var(--muted); margin: 0 0 14px; }
+.song-rich .sr-score-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+.song-rich .sr-buy {
+  display: inline-flex; align-items: center; gap: .5em;
+  padding: 11px 20px; border-radius: 10px; font-weight: 700;
+  text-decoration: none; color: #fff;
+}
+.song-rich .sr-buy.is-amazon { background: var(--sr-amazon); color: #1a1206; }
+.song-rich .sr-buy.is-rakuten { background: var(--sr-rakuten); }
+.song-rich .sr-buy:hover { filter: brightness(1.08); }
+.song-rich .sr-info-stack .sr-score { padding: 18px; }
+.song-rich .sr-info-stack .sr-score-buttons { gap: 8px; }
+.song-rich .sr-info-stack .sr-buy { padding: 10px 14px; font-size: .88rem; }
+
+/* --- 別テイク・バージョン --- */
+.song-rich .sr-takes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.song-rich .sr-take {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--sr-panel); border: 1px solid var(--sr-line-soft);
+  border-radius: 12px; padding: 12px 16px; text-decoration: none; color: var(--ink);
+}
+.song-rich .sr-take:hover { border-color: var(--sr-line); }
+.song-rich .sr-take-time { font-variant-numeric: tabular-nums; color: var(--brand-deep); font-weight: 600; }
+
+/* --- 演奏者プロフィール --- */
+.song-rich .sr-profile {
+  display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center;
+  background: linear-gradient(180deg, var(--sr-panel), var(--sr-panel-2));
+  border: 1px solid var(--sr-line); border-radius: var(--sr-radius); padding: 24px;
+}
+.song-rich .sr-profile-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 2px solid var(--sr-line); }
+.song-rich .sr-profile-name { font-weight: 700; color: var(--brand-deep); margin: 0 0 6px; font-size: 1.1rem; }
+.song-rich .sr-profile-compact { padding: 18px; }
+.song-rich .sr-profile-compact .sr-profile-name { margin-bottom: 4px; }
+.song-rich .sr-profile-body { margin: 0 0 12px; color: var(--muted); line-height: 1.7; }
+.song-rich .sr-textlink { color: var(--brand-deep); text-decoration: none; font-weight: 600; }
+.song-rich .sr-textlink:hover { text-decoration: underline; }
+
+/* セクション末尾の「一覧を見る」リンク */
+.song-rich .sr-section-foot { margin-top: 16px; }
+
+/* --- レスポンシブ --- */
+@media (max-width: 860px) {
+  .song-rich .sr-lead-grid { grid-template-columns: 1fr; }
+  .song-rich .sr-info summary {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 20px; cursor: pointer; color: var(--brand); font-weight: 600;
+    list-style: none;
+  }
+  .song-rich .sr-info summary::-webkit-details-marker { display: none; }
+  .song-rich .sr-info summary::after { content: "＋"; color: var(--muted); }
+  .song-rich .sr-info[open] summary::after { content: "−"; }
+  .song-rich .sr-info-title { display: none; }   /* モバイルはsummaryが見出し代わり */
+  .song-rich .sr-score { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .song-rich .sr-profile { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+}
