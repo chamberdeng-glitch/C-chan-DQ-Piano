@@ -1947,7 +1947,7 @@ window.songReferenceData = {
       "sortNumber": 27,
       "songTitle": "集え、者たち",
       "category": "教会・ほこら・神殿",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=bLefZ0kqZVE&t=1025s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2500,7 +2500,7 @@ window.songReferenceData = {
       "sortNumber": 26,
       "songTitle": "時の祭壇",
       "category": "教会・ほこら・神殿",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=bLefZ0kqZVE&t=354s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2509,7 +2509,7 @@ window.songReferenceData = {
       "sortNumber": 27,
       "songTitle": "神話の里",
       "category": "教会・ほこら・神殿",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=bLefZ0kqZVE&t=546s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
