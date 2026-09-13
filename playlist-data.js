@@ -2,9 +2,9 @@ window.playlistData = [
   {
     "id": "PLysHcBQKj6zSBt3Jyo09jtK6S6IVaun8K",
     "title": "Dragon Quest VIII　空と海と大地と呪われし姫君 ドラクエ8 ピアノ",
-    "description": "本日更新 / すべてのポッドキャストを表示",
+    "description": "昨日更新 / すべてのポッドキャストを表示",
     "thumbnail": "./covers/PLysHcBQKj6zSBt3Jyo09jtK6S6IVaun8K.jpg",
-    "itemCountText": "29 件のエピソード",
+    "itemCountText": "28 件のエピソード",
     "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zSBt3Jyo09jtK6S6IVaun8K",
     "tracks": [
       {
@@ -59,8 +59,16 @@ window.playlistData = [
         "title": "【ドラクエ8】通常戦闘曲『雄叫びをあげて』 【クラシック勢が演奏】",
         "rawTitle": "【ドラクエ8】通常戦闘曲『雄叫びをあげて』 【クラシック勢が演奏】",
         "url": "https://www.youtube.com/watch?v=CcJ9m03N0w4",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ドラクエ8】静かな村｜ピアノ演奏",
+        "rawTitle": "【ドラクエ8】静かな村｜ピアノ演奏",
+        "url": "https://www.youtube.com/watch?v=GElg72TZ8_o",
+        "difficultyLabel": "初級",
+        "difficultyStars": 1,
         "difficultyDetail": ""
       },
       {
@@ -75,8 +83,8 @@ window.playlistData = [
         "title": "【ドラクエ8】讃美歌に癒されて｜ピアノ演奏",
         "rawTitle": "【ドラクエ8】讃美歌に癒されて｜ピアノ演奏",
         "url": "https://www.youtube.com/watch?v=yy5gRhKAR8Q",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "初級",
+        "difficultyStars": 1,
         "difficultyDetail": ""
       },
       {
@@ -99,24 +107,24 @@ window.playlistData = [
         "title": "【ドラクエ8】難関を突破せよ｜中ボス戦闘BGMをピアノで再現",
         "rawTitle": "【ドラクエ8】難関を突破せよ｜中ボス戦闘BGMをピアノで再現",
         "url": "https://www.youtube.com/watch?v=2BTLfqfatbE",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
         "title": "【ドラクエ8】海の記憶 | クラシック奏者のピアノ",
         "rawTitle": "【ドラクエ8】海の記憶 | クラシック奏者のピアノ",
         "url": "https://www.youtube.com/watch?v=dYGysLcgB6s",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "中級",
+        "difficultyStars": 3,
         "difficultyDetail": ""
       },
       {
         "title": "【ドラクエ8】対話｜軽快な街のBGMをピアノで再現",
         "rawTitle": "【ドラクエ8】対話｜軽快な街のBGMをピアノで再現",
         "url": "https://www.youtube.com/watch?v=O7At34-JxdA",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
@@ -131,8 +139,8 @@ window.playlistData = [
         "title": "【ドラクエ8】急げ！ピンチだ｜手に汗握る曲をクラシックピアノで",
         "rawTitle": "【ドラクエ8】急げ！ピンチだ｜手に汗握る曲をクラシックピアノで",
         "url": "https://www.youtube.com/watch?v=gNWdoEsQXSs",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
@@ -147,8 +155,8 @@ window.playlistData = [
         "title": "【ドラクエ8】つらい時を乗り越えて｜ピアノ演奏",
         "rawTitle": "【ドラクエ8】つらい時を乗り越えて｜ピアノ演奏",
         "url": "https://www.youtube.com/watch?v=rMojlffHSPY",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "初中級",
+        "difficultyStars": 2,
         "difficultyDetail": ""
       },
       {
@@ -203,30 +211,96 @@ window.playlistData = [
         "title": "【ドラクエ8】ラプソーン戦『おおぞらに戦う』｜クラシック奏者が本気で挑む",
         "rawTitle": "【ドラクエ8】ラプソーン戦『おおぞらに戦う』｜クラシック奏者が本気で挑む",
         "url": "https://www.youtube.com/watch?v=CQMKkbG4eEU",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
         "title": "【ドラクエ8 】大聖堂のある街〜空と海と大地【エンディング曲ピアノカバー】",
         "rawTitle": "【ドラクエ8 】大聖堂のある街〜空と海と大地【エンディング曲ピアノカバー】",
         "url": "https://www.youtube.com/watch?v=gi1i_gHw_Bo",
-        "difficultyLabel": "中級",
-        "difficultyStars": 3,
+        "difficultyLabel": "上級",
+        "difficultyStars": 5,
         "difficultyDetail": ""
       },
       {
-        "title": "Deleted video",
-        "rawTitle": "Deleted video",
-        "url": "https://www.youtube.com/watch?v=dM1x077cqWY",
+        "title": "【ドラクエ8】ひんやりと暗い道～暗い道の奥で｜ダンジョンメドレーピアノ演奏",
+        "rawTitle": "【ドラクエ8】ひんやりと暗い道～暗い道の奥で｜ダンジョンメドレーピアノ演奏",
+        "url": "https://www.youtube.com/watch?v=bnmmqHWh83k",
+        "difficultyLabel": "初中級",
+        "difficultyStars": 2,
+        "difficultyDetail": ""
+      }
+    ]
+  },
+  {
+    "id": "PLysHcBQKj6zQleRTdF6zAgpDexqtLhVl4",
+    "title": "Dragon Quest Piano medley ドラクエピアノメドレー（タイトル別）",
+    "description": "すべてのポッドキャストを表示",
+    "thumbnail": "./covers/PLysHcBQKj6zQleRTdF6zAgpDexqtLhVl4.jpg",
+    "itemCountText": "8 件のエピソード",
+    "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zQleRTdF6zAgpDexqtLhVl4",
+    "tracks": [
+      {
+        "title": "【完全再現】ドラクエ1 ピアノ全曲メドレー",
+        "rawTitle": "【完全再現】ドラクエ1 ピアノ全曲メドレー / 公式楽譜",
+        "url": "https://www.youtube.com/watch?v=yj95f0WFc-0",
         "difficultyLabel": "未設定",
         "difficultyStars": null,
         "difficultyDetail": ""
       },
       {
-        "title": "【ドラクエ8】静かな村｜ピアノ演奏",
-        "rawTitle": "【ドラクエ8】静かな村｜ピアノ演奏",
-        "url": "https://www.youtube.com/watch?v=GElg72TZ8_o",
+        "title": "【完全再現】ドラクエ2「悪霊の神々」ピアノ全曲メドレー",
+        "rawTitle": "【完全再現】ドラクエ2「悪霊の神々」ピアノ全曲メドレー / 公式楽譜",
+        "url": "https://www.youtube.com/watch?v=IlH4hTSrmUk",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【完全再現】ドラクエ3「そして伝説へ…」ピアノ全曲メドレー",
+        "rawTitle": "【完全再現】ドラクエ3「そして伝説へ…」ピアノ全曲メドレー / 公式楽譜",
+        "url": "https://www.youtube.com/watch?v=Qnpxjoa6Eyw",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【完全再現】ドラクエ4「導かれし者たち」ピアノ全曲メドレー",
+        "rawTitle": "【完全再現】ドラクエ4「導かれし者たち」ピアノ全曲メドレー / 公式楽譜",
+        "url": "https://www.youtube.com/watch?v=62ch8sY8DaA",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ドラクエ5】ピアノ全曲集｜全25曲メドレー（公式楽譜）",
+        "rawTitle": "【ドラクエ5】ピアノ全曲集｜全25曲メドレー（公式楽譜）",
+        "url": "https://www.youtube.com/watch?v=kSOvI-RcJac",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ドラクエ6】ピアノ全曲集｜全26曲メドレー（ドラゴンクエストVI・公式楽譜）",
+        "rawTitle": "【ドラクエ6】ピアノ全曲集｜全26曲メドレー（ドラゴンクエストVI・公式楽譜）",
+        "url": "https://www.youtube.com/watch?v=daTrvg7jg9k",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【完全再現】ドラクエ7 ピアノ全曲メドレー",
+        "rawTitle": "【完全再現】ドラクエ7 ピアノ全曲メドレー / 公式楽譜【祝リメイク発売！】",
+        "url": "https://www.youtube.com/watch?v=EofaXaPTK-8",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ドラクエの日 40th】ドラクエ8 全曲ピアノメドレー｜全35曲＋ME集",
+        "rawTitle": "【ドラクエの日 40th】ドラクエ8 全曲ピアノメドレー｜全35曲＋ME集",
+        "url": "https://www.youtube.com/watch?v=aMaaqQwvwsM",
         "difficultyLabel": "未設定",
         "difficultyStars": null,
         "difficultyDetail": ""
@@ -236,15 +310,39 @@ window.playlistData = [
   {
     "id": "PLysHcBQKj6zThxetjTiWNUV1L2d7U-_xV",
     "title": "ドラクエ　場面別　ピアノメドレー",
-    "description": "更新: 5 日前 / すべてのポッドキャストを表示",
+    "description": "更新: 7 日前 / すべてのポッドキャストを表示",
     "thumbnail": "./covers/PLysHcBQKj6zThxetjTiWNUV1L2d7U-_xV.jpg",
-    "itemCountText": "5 件のエピソード",
+    "itemCountText": "8 件のエピソード",
     "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zThxetjTiWNUV1L2d7U-_xV",
     "tracks": [
+      {
+        "title": "【全18曲】歴代ドラクエ 海・空メドレー｜ピアノBGM",
+        "rawTitle": "【全18曲】歴代ドラクエ 海・空メドレー｜ピアノBGM",
+        "url": "https://www.youtube.com/watch?v=6Rp2lOYCABE",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
       {
         "title": "【全33曲】歴代ドラクエ フィールドメドレー｜ピアノBGM",
         "rawTitle": "【全33曲】歴代ドラクエ フィールドメドレー｜ピアノBGM",
         "url": "https://www.youtube.com/watch?v=Pu9o2vfflx4",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "歴代ドラクエ 街・村ピアノメドレー｜全34曲",
+        "rawTitle": "歴代ドラクエ 街・村ピアノメドレー｜全34曲",
+        "url": "https://www.youtube.com/watch?v=T8FJPYoGva0",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "歴代ドラクエ 城ピアノメドレー｜全15曲",
+        "rawTitle": "歴代ドラクエ 城ピアノメドレー｜全15曲",
+        "url": "https://www.youtube.com/watch?v=aPh-4XiM1Ow",
         "difficultyLabel": "未設定",
         "difficultyStars": null,
         "difficultyDetail": ""
@@ -277,6 +375,180 @@ window.playlistData = [
         "title": "ピアノで聴くドラクエメドレー（ロト・天空シリーズ）　海のテーマ編　【作業用BGM】",
         "rawTitle": "ピアノで聴くドラクエメドレー（ロト・天空シリーズ）　海のテーマ編　【作業用BGM】",
         "url": "https://www.youtube.com/watch?v=gHTLe2lg6ek",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      }
+    ]
+  },
+  {
+    "id": "PLE8-zMt0hePc",
+    "title": "睡眠用BGM / For SLEEP",
+    "description": "眠りのための長時間ピアノメドレー",
+    "thumbnail": "https://i.ytimg.com/vi/VIh5Sv3OoQE/maxresdefault.jpg",
+    "itemCountText": "1 件の動画",
+    "url": "https://www.youtube.com/playlist?list=PLE8-zMt0hePc",
+    "tracks": [
+      {
+        "title": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.1 ～時の子守唄～",
+        "rawTitle": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.1 ～時の子守唄～",
+        "url": "https://www.youtube.com/watch?v=VIh5Sv3OoQE",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      }
+    ]
+  },
+  {
+    "id": "PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP",
+    "title": "Dragon Quest XI 過ぎ去りし時を求めて",
+    "description": "すべてのポッドキャストを表示",
+    "thumbnail": "./covers/PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP.jpg",
+    "itemCountText": "2 件のエピソード",
+    "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP",
+    "tracks": [
+      {
+        "title": "【ドラクエ11】空飛ぶ鯨｜ピアノ演奏",
+        "rawTitle": "【ドラクエ11】空飛ぶ鯨｜ピアノ演奏",
+        "url": "https://www.youtube.com/watch?v=aak-OzJVSTg",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ドラクエ11】愛のこもれび｜命の大樹とベロニカ（ピアノ演奏）",
+        "rawTitle": "【ドラクエ11】愛のこもれび｜命の大樹とベロニカ（ピアノ演奏）",
+        "url": "https://www.youtube.com/watch?v=yrRWs0t-hE0",
+        "difficultyLabel": "初級",
+        "difficultyStars": 1,
+        "difficultyDetail": ""
+      }
+    ]
+  },
+  {
+    "id": "PLysHcBQKj6zSHg5X4JCd8do3H0iJQwX_2",
+    "title": "Dragon Quest II  / ドラクエ2 悪霊の神々 Piano",
+    "description": "すべてのポッドキャストを表示",
+    "thumbnail": "./covers/PLysHcBQKj6zSHg5X4JCd8do3H0iJQwX_2.jpg",
+    "itemCountText": "15 件のエピソード",
+    "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zSHg5X4JCd8do3H0iJQwX_2",
+    "tracks": [
+      {
+        "title": "【ピアノ】Love Song 探して",
+        "rawTitle": "【ピアノ】Love Song 探して/ドラゴンクエスト2/Only Lonley Boy/Dragon Quest II [Piano]",
+        "url": "https://www.youtube.com/watch?v=2nLi_XK6hDQ",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "パストラール～カタストロフ",
+        "rawTitle": "パストラール～カタストロフ /ドラゴンクエスト2/Pastorale~catastrophe/Dragon Quest II 【ピアノ】",
+        "url": "https://www.youtube.com/watch?v=ZrLuyuofbmE",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】王城 ドラゴンクエスト2    Chateau",
+        "rawTitle": "【ピアノ】王城 ドラゴンクエスト2    Chateau Dragon Quest II [Piano]",
+        "url": "https://www.youtube.com/watch?v=2-6cYK5kKEI",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】街の賑わい",
+        "rawTitle": "【ピアノ】街の賑わい / ドラゴンクエスト2 / 街BGM / Town / Dragon Quest II [Piano]",
+        "url": "https://www.youtube.com/watch?v=uF2CYnLwsNQ",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】遥かなる旅路　ドラゴンクエスト2 フィールド曲　Endless World",
+        "rawTitle": "【ピアノ】遥かなる旅路　ドラゴンクエスト2 フィールド曲　Endless World Dragon Quest II [Piano]",
+        "url": "https://www.youtube.com/watch?v=yLsYRkDhOB4",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】広野を行く　ドラゴンクエスト2　Unknown World",
+        "rawTitle": "【ピアノ】広野を行く　ドラゴンクエスト2　Unknown World Dragon Quest II　[Piano]",
+        "url": "https://www.youtube.com/watch?v=lMsTHMx4gNg",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】果てしなき世界  ドラゴンクエスト2 フィールド曲　Endless World",
+        "rawTitle": "【ピアノ】果てしなき世界  ドラゴンクエスト2 フィールド曲　Endless World Dragon Quest II [Piano]",
+        "url": "https://www.youtube.com/watch?v=X_IQQSw1CzY",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】恐怖の地下洞～魔の塔",
+        "rawTitle": "【ピアノ】恐怖の地下洞～魔の塔/ ダンジョンBGM/ ドラクエ2/ Fright in Dungeon - Devil's Tower/ DQII [Piano]",
+        "url": "https://www.youtube.com/watch?v=Hi2-twKoBQI",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】レクイエム",
+        "rawTitle": "【ピアノ】レクイエム / ドラクエ２ / 全滅BGM / Requiem / DQII [Piano]",
+        "url": "https://www.youtube.com/watch?v=1AQB29W6FII",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】聖なるほこら",
+        "rawTitle": "【ピアノ】聖なるほこら/ドラクエ2/ Holy Shrine/ DQII [Piano]",
+        "url": "https://www.youtube.com/watch?v=y94BYeWe9fY",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】海原を行く",
+        "rawTitle": "【ピアノ】海原を行く / ドラクエ2 / 海BGM / Beyond the Waves / DQII [Piano]",
+        "url": "https://www.youtube.com/watch?v=7cJ45eWuBj8",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】戦い",
+        "rawTitle": "【ピアノ】戦い /ドラゴンクエスト2/ Fight / Dragon Quest II [Piano]",
+        "url": "https://www.youtube.com/watch?v=sUJYllokAnM",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ピアノ】死を賭して",
+        "rawTitle": "【ピアノ】死を賭して /ドラゴンクエスト2/ Dead or Alive / Dragon Quest II [Piano]",
+        "url": "https://www.youtube.com/watch?v=3bwCIVZQSRc",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【名曲演奏】この道わが旅 ドラクエ２&ダイの大冒険 エンディングテーマ【歌詞付き】",
+        "rawTitle": "【名曲演奏】この道わが旅 ドラクエ２&ダイの大冒険 エンディングテーマ【歌詞付き】/ My Road ,My Journey  DQ2 ED theme",
+        "url": "https://www.youtube.com/watch?v=4FqlMiUSutA",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【ドラクエ2】海原を行く｜弾き直しピアノ演奏",
+        "rawTitle": "【ドラクエ2】海原を行く｜弾き直しピアノ演奏",
+        "url": "https://www.youtube.com/watch?v=-AwXznU13CM",
         "difficultyLabel": "未設定",
         "difficultyStars": null,
         "difficultyDetail": ""
@@ -437,10 +709,10 @@ window.playlistData = [
       },
       {
         "title": "【ピアノ】海図を広げて",
-        "rawTitle": "【ピアノ】海図を広げて / ドラクエIV / 船BGM / Sea Breeze / DQ4 [Piano]",
-        "url": "https://www.youtube.com/watch?v=6FyUArpRMg0",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "rawTitle": "【ドラクエ4 , 9, 11】海図を広げて｜ピアノ演奏",
+        "url": "https://www.youtube.com/watch?v=DdvJj8OBhco",
+        "difficultyLabel": "中上級",
+        "difficultyStars": 4,
         "difficultyDetail": ""
       },
       {
@@ -503,196 +775,8 @@ window.playlistData = [
         "title": "【ドラクエ4】勇者の故郷｜哀愁あふれるフィールドBGMをクラシックピアノで",
         "rawTitle": "【ドラクエ4】勇者の故郷｜哀愁あふれるフィールドBGMをクラシックピアノで",
         "url": "https://www.youtube.com/watch?v=GOzVrDN6Ilc",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      }
-    ]
-  },
-  {
-    "id": "PLysHcBQKj6zSHg5X4JCd8do3H0iJQwX_2",
-    "title": "Dragon Quest II  / ドラクエ2 悪霊の神々 Piano",
-    "description": "すべてのポッドキャストを表示",
-    "thumbnail": "./covers/PLysHcBQKj6zSHg5X4JCd8do3H0iJQwX_2.jpg",
-    "itemCountText": "14 件のエピソード",
-    "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zSHg5X4JCd8do3H0iJQwX_2",
-    "tracks": [
-      {
-        "title": "【ピアノ】Love Song 探して",
-        "rawTitle": "【ピアノ】Love Song 探して/ドラゴンクエスト2/Only Lonley Boy/Dragon Quest II [Piano]",
-        "url": "https://www.youtube.com/watch?v=2nLi_XK6hDQ",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "パストラール～カタストロフ",
-        "rawTitle": "パストラール～カタストロフ /ドラゴンクエスト2/Pastorale~catastrophe/Dragon Quest II 【ピアノ】",
-        "url": "https://www.youtube.com/watch?v=ZrLuyuofbmE",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】王城 ドラゴンクエスト2    Chateau",
-        "rawTitle": "【ピアノ】王城 ドラゴンクエスト2    Chateau Dragon Quest II [Piano]",
-        "url": "https://www.youtube.com/watch?v=2-6cYK5kKEI",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】街の賑わい",
-        "rawTitle": "【ピアノ】街の賑わい / ドラゴンクエスト2 / 街BGM / Town / Dragon Quest II [Piano]",
-        "url": "https://www.youtube.com/watch?v=uF2CYnLwsNQ",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】遥かなる旅路　ドラゴンクエスト2 フィールド曲　Endless World",
-        "rawTitle": "【ピアノ】遥かなる旅路　ドラゴンクエスト2 フィールド曲　Endless World Dragon Quest II [Piano]",
-        "url": "https://www.youtube.com/watch?v=yLsYRkDhOB4",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】広野を行く　ドラゴンクエスト2　Unknown World",
-        "rawTitle": "【ピアノ】広野を行く　ドラゴンクエスト2　Unknown World Dragon Quest II　[Piano]",
-        "url": "https://www.youtube.com/watch?v=lMsTHMx4gNg",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】果てしなき世界  ドラゴンクエスト2 フィールド曲　Endless World",
-        "rawTitle": "【ピアノ】果てしなき世界  ドラゴンクエスト2 フィールド曲　Endless World Dragon Quest II [Piano]",
-        "url": "https://www.youtube.com/watch?v=X_IQQSw1CzY",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】恐怖の地下洞～魔の塔",
-        "rawTitle": "【ピアノ】恐怖の地下洞～魔の塔/ ダンジョンBGM/ ドラクエ2/ Fright in Dungeon - Devil's Tower/ DQII [Piano]",
-        "url": "https://www.youtube.com/watch?v=Hi2-twKoBQI",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】レクイエム",
-        "rawTitle": "【ピアノ】レクイエム / ドラクエ２ / 全滅BGM / Requiem / DQII [Piano]",
-        "url": "https://www.youtube.com/watch?v=1AQB29W6FII",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】聖なるほこら",
-        "rawTitle": "【ピアノ】聖なるほこら/ドラクエ2/ Holy Shrine/ DQII [Piano]",
-        "url": "https://www.youtube.com/watch?v=y94BYeWe9fY",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】海原を行く",
-        "rawTitle": "【ピアノ】海原を行く / ドラクエ2 / 海BGM / Beyond the Waves / DQII [Piano]",
-        "url": "https://www.youtube.com/watch?v=7cJ45eWuBj8",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】戦い",
-        "rawTitle": "【ピアノ】戦い /ドラゴンクエスト2/ Fight / Dragon Quest II [Piano]",
-        "url": "https://www.youtube.com/watch?v=sUJYllokAnM",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ピアノ】死を賭して",
-        "rawTitle": "【ピアノ】死を賭して /ドラゴンクエスト2/ Dead or Alive / Dragon Quest II [Piano]",
-        "url": "https://www.youtube.com/watch?v=3bwCIVZQSRc",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【名曲演奏】この道わが旅 ドラクエ２&ダイの大冒険 エンディングテーマ【歌詞付き】",
-        "rawTitle": "【名曲演奏】この道わが旅 ドラクエ２&ダイの大冒険 エンディングテーマ【歌詞付き】/ My Road ,My Journey  DQ2 ED theme",
-        "url": "https://www.youtube.com/watch?v=4FqlMiUSutA",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      }
-    ]
-  },
-  {
-    "id": "PLysHcBQKj6zQleRTdF6zAgpDexqtLhVl4",
-    "title": "Dragon Quest Piano medley ドラクエピアノメドレー（タイトル別）",
-    "description": "すべてのポッドキャストを表示",
-    "thumbnail": "./covers/PLysHcBQKj6zQleRTdF6zAgpDexqtLhVl4.jpg",
-    "itemCountText": "7 件のエピソード",
-    "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zQleRTdF6zAgpDexqtLhVl4",
-    "tracks": [
-      {
-        "title": "【完全再現】ドラクエ1 ピアノ全曲メドレー",
-        "rawTitle": "【完全再現】ドラクエ1 ピアノ全曲メドレー / 公式楽譜",
-        "url": "https://www.youtube.com/watch?v=yj95f0WFc-0",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【完全再現】ドラクエ2「悪霊の神々」ピアノ全曲メドレー",
-        "rawTitle": "【完全再現】ドラクエ2「悪霊の神々」ピアノ全曲メドレー / 公式楽譜",
-        "url": "https://www.youtube.com/watch?v=IlH4hTSrmUk",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【完全再現】ドラクエ3「そして伝説へ…」ピアノ全曲メドレー",
-        "rawTitle": "【完全再現】ドラクエ3「そして伝説へ…」ピアノ全曲メドレー / 公式楽譜",
-        "url": "https://www.youtube.com/watch?v=Qnpxjoa6Eyw",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【完全再現】ドラクエ4「導かれし者たち」ピアノ全曲メドレー",
-        "rawTitle": "【完全再現】ドラクエ4「導かれし者たち」ピアノ全曲メドレー / 公式楽譜",
-        "url": "https://www.youtube.com/watch?v=62ch8sY8DaA",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ドラクエ5】ピアノ全曲集｜全25曲メドレー（公式楽譜）",
-        "rawTitle": "【ドラクエ5】ピアノ全曲集｜全25曲メドレー（公式楽譜）",
-        "url": "https://www.youtube.com/watch?v=kSOvI-RcJac",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【ドラクエ6】ピアノ全曲集｜全26曲メドレー（ドラゴンクエストVI・公式楽譜）",
-        "rawTitle": "【ドラクエ6】ピアノ全曲集｜全26曲メドレー（ドラゴンクエストVI・公式楽譜）",
-        "url": "https://www.youtube.com/watch?v=daTrvg7jg9k",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
-        "difficultyDetail": ""
-      },
-      {
-        "title": "【完全再現】ドラクエ7 ピアノ全曲メドレー",
-        "rawTitle": "【完全再現】ドラクエ7 ピアノ全曲メドレー / 公式楽譜【祝リメイク発売！】",
-        "url": "https://www.youtube.com/watch?v=EofaXaPTK-8",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "difficultyLabel": "初中級",
+        "difficultyStars": 2,
         "difficultyDetail": ""
       }
     ]
@@ -711,24 +795,6 @@ window.playlistData = [
         "url": "https://www.youtube.com/watch?v=1mhRK7HifW8",
         "difficultyLabel": "初中級",
         "difficultyStars": 2,
-        "difficultyDetail": ""
-      }
-    ]
-  },
-  {
-    "id": "PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP",
-    "title": "Dragon Quest XI 過ぎ去りし時を求めて",
-    "description": "すべてのポッドキャストを表示",
-    "thumbnail": "./covers/PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP.jpg",
-    "itemCountText": "1 件のエピソード",
-    "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zRiOK_PKQDaVr32iSQnRwWP",
-    "tracks": [
-      {
-        "title": "【ドラクエ11】愛のこもれび｜命の大樹とベロニカ（ピアノ演奏）",
-        "rawTitle": "【ドラクエ11】愛のこもれび｜命の大樹とベロニカ（ピアノ演奏）",
-        "url": "https://www.youtube.com/watch?v=yrRWs0t-hE0",
-        "difficultyLabel": "初級",
-        "difficultyStars": 1,
         "difficultyDetail": ""
       }
     ]
@@ -1228,11 +1294,11 @@ window.playlistData = [
         "difficultyDetail": "普通"
       },
       {
-        "title": "【ピアノ】王宮のロンド ドラゴンクエスト3    Rondo",
-        "rawTitle": "【ピアノ】王宮のロンド ドラゴンクエスト3    Rondo  Dragon Quest III [Piano]",
-        "url": "https://www.youtube.com/watch?v=9x0cj5b_b3E",
-        "difficultyLabel": "未設定",
-        "difficultyStars": null,
+        "title": "【ドラクエ3】王宮のロンド｜ピアノ演奏",
+        "rawTitle": "【ドラクエ3】王宮のロンド｜ピアノ演奏",
+        "url": "https://www.youtube.com/watch?v=qQ01I4cWaPc",
+        "difficultyLabel": "中級",
+        "difficultyStars": 3,
         "difficultyDetail": ""
       },
       {
