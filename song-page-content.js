@@ -1613,6 +1613,14 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "2:56"
   },
+  "IX-27": {
+    "slug": "gathering-place",
+    "uploadDate": "2026-09-12T11:00:14Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "3:29"
+  },
   "X-1": {
     "slug": "overture-x",
     "uploadDate": "2025-12-24T19:00:38-08:00",
@@ -1788,6 +1796,22 @@ window.songPageContent = {
     "description": "",
     "timestamps": [],
     "performanceDuration": "4:10"
+  },
+  "XI-26": {
+    "slug": "the-tower-of-time",
+    "uploadDate": "2026-09-12T11:00:14Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "1:07"
+  },
+  "XI-27": {
+    "slug": "village-of-myths",
+    "uploadDate": "2026-09-12T11:00:14Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "1:46"
   },
   "XI-28": {
     "slug": "where-is-the-hope",
