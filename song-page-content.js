@@ -1623,11 +1623,11 @@ window.songPageContent = {
   },
   "IX-27": {
     "slug": "gathering-place",
-    "uploadDate": "2026-09-12T11:00:14Z",
+    "uploadDate": "2026-09-19T11:00:19Z",
     "lead": "",
     "description": "",
     "timestamps": [],
-    "performanceDuration": "3:29"
+    "performanceDuration": "3:28"
   },
   "X-1": {
     "slug": "overture-x",

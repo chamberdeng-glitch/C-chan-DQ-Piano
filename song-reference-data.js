@@ -1947,9 +1947,9 @@ window.songReferenceData = {
       "sortNumber": 27,
       "songTitle": "集え、者たち",
       "category": "教会・ほこら・神殿",
-      "videoUrl": "https://www.youtube.com/watch?v=bLefZ0kqZVE&t=1025s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=KA87Yzb6iYM",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "IX-28",
