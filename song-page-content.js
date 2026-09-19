@@ -197,6 +197,14 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "3:57"
   },
+  "III-1": {
+    "slug": "roto",
+    "uploadDate": "2025-12-25T03:00:38Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "1:37"
+  },
   "III-2": {
     "slug": "prologue",
     "uploadDate": "2023-12-17T19:00:27-08:00",
@@ -1628,6 +1636,14 @@ window.songPageContent = {
     "description": "",
     "timestamps": [],
     "performanceDuration": "2:05"
+  },
+  "X-4": {
+    "slug": "invitation-to-the-castle",
+    "uploadDate": "2026-08-02T11:00:15Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "5:05"
   },
   "X-5": {
     "slug": "lively-town",
