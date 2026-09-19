@@ -1190,7 +1190,7 @@ h1 {
     gap: 12px;
   }
 
-  .topbar .language-switch {
+  .hero:not(.hero-simple) .topbar .language-switch {
     display: none;
   }
 
