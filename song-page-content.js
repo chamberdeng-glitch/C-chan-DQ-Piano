@@ -1605,6 +1605,30 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "4:05"
   },
+  "IX-16": {
+    "slug": "gloomy-cavern",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "4:57"
+  },
+  "IX-17": {
+    "slug": "dungeon-waltz",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "1:53"
+  },
+  "IX-18": {
+    "slug": "atmosphere-of-death",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "3:41"
+  },
   "IX-21": {
     "slug": "soaring-in-the-sky",
     "uploadDate": "2026-09-01T11:00:04Z",
@@ -1628,6 +1652,22 @@ window.songPageContent = {
     "description": "",
     "timestamps": [],
     "performanceDuration": "3:28"
+  },
+  "IX-28": {
+    "slug": "pathway-to-good-fortune",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "3:39"
+  },
+  "IX-29": {
+    "slug": "cathedral-of-emptiness",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "4:14"
   },
   "X-1": {
     "slug": "overture-x",
@@ -1725,6 +1765,14 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "3:16"
   },
+  "X-20": {
+    "slug": "monsters-of-the-tiered-tower",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "5:49"
+  },
   "X-21": {
     "slug": "weddie",
     "uploadDate": "2026-03-20T03:30:00-07:00",
@@ -1748,6 +1796,22 @@ window.songPageContent = {
     "description": "",
     "timestamps": [],
     "performanceDuration": "2:44"
+  },
+  "X-24": {
+    "slug": "wandering-place-to-place-in-the-dark",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "3:24"
+  },
+  "X-25": {
+    "slug": "dungeon-of-no-escape",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "4:01"
   },
   "XI-1": {
     "slug": "overture",
@@ -1797,6 +1861,30 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "4:38"
   },
+  "XI-15": {
+    "slug": "supernatural-evil-castle",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "5:17"
+  },
+  "XI-19": {
+    "slug": "uncharted-cave",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "2:49"
+  },
+  "XI-20": {
+    "slug": "invitation-to-mystery",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "4:05"
+  },
   "XI-21": {
     "slug": "flying-whale",
     "uploadDate": "2026-04-25T04:00:00-07:00",
@@ -1844,5 +1932,13 @@ window.songPageContent = {
     "description": "",
     "timestamps": [],
     "performanceDuration": "3:20"
+  },
+  "XI-30": {
+    "slug": "corridors-of-darkness",
+    "uploadDate": "2026-10-03T11:00:27Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "2:06"
   }
 };

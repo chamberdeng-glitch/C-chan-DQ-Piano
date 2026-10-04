@@ -1848,7 +1848,7 @@ window.songReferenceData = {
       "sortNumber": 16,
       "songTitle": "暗闇の魔窟",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=1370s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1857,7 +1857,7 @@ window.songReferenceData = {
       "sortNumber": 17,
       "songTitle": "洞窟のワルツ",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=504s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1866,7 +1866,7 @@ window.songReferenceData = {
       "sortNumber": 18,
       "songTitle": "そびえ立つ死の気配",
       "category": "塔",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=3783s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1956,7 +1956,7 @@ window.songReferenceData = {
       "sortNumber": 28,
       "songTitle": "運命に導かれ",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=4578s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -1965,7 +1965,7 @@ window.songReferenceData = {
       "sortNumber": 29,
       "songTitle": "主なき神殿",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=4797s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2174,7 +2174,7 @@ window.songReferenceData = {
       "sortNumber": 20,
       "songTitle": "五重魔塔",
       "category": "塔",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=3434s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2210,7 +2210,7 @@ window.songReferenceData = {
       "sortNumber": 24,
       "songTitle": "暗闇をさまよう",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=2066s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2219,7 +2219,7 @@ window.songReferenceData = {
       "sortNumber": 25,
       "songTitle": "終焉の迷宮",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=6646s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2401,7 +2401,7 @@ window.songReferenceData = {
       "sortNumber": 15,
       "songTitle": "天空魔城",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=5412s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2437,7 +2437,7 @@ window.songReferenceData = {
       "sortNumber": 19,
       "songTitle": "未知なる洞窟",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=0s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2446,7 +2446,7 @@ window.songReferenceData = {
       "sortNumber": 20,
       "songTitle": "神秘へのいざない",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=617s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
@@ -2536,7 +2536,7 @@ window.songReferenceData = {
       "sortNumber": 30,
       "songTitle": "暗闇の回廊",
       "category": "ダンジョン",
-      "videoUrl": "",
+      "videoUrl": "https://www.youtube.com/watch?v=4RMFotTMhxs&t=6280s",
       "difficultyLabel": "",
       "difficultyStars": null
     },
