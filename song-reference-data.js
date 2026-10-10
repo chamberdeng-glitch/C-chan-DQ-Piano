@@ -1849,8 +1849,8 @@ window.songReferenceData = {
       "songTitle": "暗闇の魔窟",
       "category": "ダンジョン",
       "videoUrl": "https://www.youtube.com/watch?v=2rxMkN5t7ag&t=0s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IX-17",
@@ -1858,8 +1858,8 @@ window.songReferenceData = {
       "songTitle": "洞窟のワルツ",
       "category": "ダンジョン",
       "videoUrl": "https://www.youtube.com/watch?v=2rxMkN5t7ag&t=297s",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IX-18",
