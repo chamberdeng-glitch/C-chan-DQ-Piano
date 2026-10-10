@@ -1607,7 +1607,7 @@ window.songPageContent = {
   },
   "IX-16": {
     "slug": "gloomy-cavern",
-    "uploadDate": "2026-10-03T11:00:27Z",
+    "uploadDate": "2026-10-10T11:00:27Z",
     "lead": "",
     "description": "",
     "timestamps": [],
@@ -1615,7 +1615,7 @@ window.songPageContent = {
   },
   "IX-17": {
     "slug": "dungeon-waltz",
-    "uploadDate": "2026-10-03T11:00:27Z",
+    "uploadDate": "2026-10-10T11:00:27Z",
     "lead": "",
     "description": "",
     "timestamps": [],
