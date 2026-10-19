@@ -571,8 +571,11 @@ def section(kicker: str, title: str, inner: str, copy: str = '') -> str:
     )
 
 
-def shell(lang: str, current: str, alt: str, crumb_html: str, title: str, lead: str, metrics_html: str, actions_html: str, feature_html: str, main: str) -> str:
+def shell(lang: str, current: str, alt: str, crumb_html: str, title: str, lead: str, metrics_html: str, actions_html: str, feature_html: str, main: str, omit_empty_actions: bool = False) -> str:
     feature_block = f'<div class="page-hero-feature">{feature_html}</div>' if feature_html else ''
+    lead_block = f'<p class="lead">{esc(lead)}</p>' if lead else ''
+    metrics_block = f'<dl class="hero-metrics page-hero-metrics">{metrics_html}</dl>' if metrics_html else ''
+    actions_block = '' if omit_empty_actions and not actions_html else f'<div class="page-hero-actions">{actions_html}</div>'
     return (
         '<body><div class="site-bg" aria-hidden="true"></div>'
         f'<header class="hero hero-simple">{topbar(lang, current, alt)}'
@@ -581,9 +584,9 @@ def shell(lang: str, current: str, alt: str, crumb_html: str, title: str, lead: 
         f'{crumb_html}'
         f'<p class="eyebrow">{"Dragon Quest Piano Library" if lang == "ja" else "Dragon Quest Piano Library"}</p>'
         f'<h1>{esc(title)}</h1>'
-        f'<p class="lead">{esc(lead)}</p>'
-        f'<dl class="hero-metrics page-hero-metrics">{metrics_html}</dl>'
-        f'<div class="page-hero-actions">{actions_html}</div>'
+        f'{lead_block}'
+        f'{metrics_block}'
+        f'{actions_block}'
         '</div>'
         f'{feature_block}'
         '</section></header>'
@@ -633,7 +636,7 @@ def contact_page(lang: str) -> str:
         title = f'お問い合わせ | {JA_LIBRARY_NAME}'
         desc = '企業の方などからのご連絡や、サイト不具合などの業務報告を受け付けています。'
         hero_title = 'お問い合わせ'
-        lead = '企業の方などからのご連絡や、サイト不具合などの業務報告用の窓口です。'
+        lead = ''
         crumbs = [('ホーム', '/'), ('お問い合わせ', page)]
         before = (
             '<div class="contact-copy"><h2>お問い合わせの前に</h2>'
@@ -652,13 +655,13 @@ def contact_page(lang: str) -> str:
             'privacy': '送信内容は、お問い合わせへの対応のみに使用します。詳しくはプライバシーポリシーをご覧ください。',
             'noscript': 'フォームの送信にはJavaScriptが必要です。',
         }
-        metrics = metric('返信目安', '1〜2週間') + metric('対象', '業務・不具合') + metric('言語', '日本語')
+        metrics = ''
     else:
         page, alt = '/en/contact/', '/contact/'
         title = f'Contact | {EN_LIBRARY_NAME}'
         desc = 'Contact form for business inquiries and reports of website issues.'
         hero_title = 'Contact'
-        lead = 'A contact point for business inquiries and website issue reports.'
+        lead = ''
         crumbs = [('Home', '/en/'), ('Contact', page)]
         before = (
             '<div class="contact-copy"><h2>Before you contact me</h2>'
@@ -677,7 +680,7 @@ def contact_page(lang: str) -> str:
             'privacy': 'Your message is used only to respond to your inquiry. See the Privacy Policy for details.',
             'noscript': 'JavaScript is required to send this form.',
         }
-        metrics = metric('Reply time', '1–2 weeks') + metric('For', 'Business and site issues') + metric('Language', 'English')
+        metrics = ''
 
     privacy_href = '/privacy/' if lang == 'ja' else '/en/privacy/'
     form = (
@@ -719,7 +722,7 @@ def contact_page(lang: str) -> str:
         '<script src="/assets/contact.js" defer></script></head>',
     )
     main = f'<section class="contact-section">{before}{form}</section>'
-    return head + shell(lang, page, alt, breadcrumbs(crumbs), hero_title, lead, metrics, '', '', main)
+    return head + shell(lang, page, alt, breadcrumbs(crumbs), hero_title, lead, metrics, '', '', main, omit_empty_actions=True)
 
 
 def privacy_page(lang: str) -> str:
