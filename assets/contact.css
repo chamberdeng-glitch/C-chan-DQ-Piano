@@ -20,14 +20,14 @@
 .contact-copy h2,
 .privacy-copy h2 {
   margin-top: 0;
-  color: var(--brand-light);
+  color: var(--brand-deep);
   font-family: var(--serif);
 }
 
 .contact-copy h3,
 .privacy-copy h3 {
   margin-top: 28px;
-  color: var(--gold);
+  color: var(--brand-deep);
   font-family: var(--serif);
 }
 
@@ -50,7 +50,7 @@
 
 .contact-field label,
 .contact-consent label {
-  color: var(--text);
+  color: var(--ink);
   font-weight: 700;
 }
 
@@ -59,11 +59,18 @@
   width: 100%;
   box-sizing: border-box;
   padding: 12px 14px;
-  color: var(--text);
-  background: rgba(0, 0, 0, 0.34);
-  border: 1px solid var(--line);
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.66);
+  border: 2px solid rgba(244, 211, 124, 0.58);
   border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
   font: inherit;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.contact-field input:hover,
+.contact-field textarea:hover {
+  border-color: rgba(244, 211, 124, 0.82);
 }
 
 .contact-field textarea {
@@ -75,13 +82,20 @@
 .contact-field textarea:focus-visible,
 .contact-consent input:focus-visible,
 .contact-submit:focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--brand-deep);
   outline-offset: 3px;
+}
+
+.contact-field input:focus-visible,
+.contact-field textarea:focus-visible {
+  border-color: var(--brand-deep);
+  background: rgba(0, 0, 0, 0.82);
+  box-shadow: 0 0 0 4px rgba(244, 211, 124, 0.14);
 }
 
 .contact-help {
   margin: 0;
-  color: var(--text-soft);
+  color: var(--muted);
   font-size: 0.9rem;
 }
 
@@ -97,21 +111,41 @@
 }
 
 .contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   justify-self: start;
   min-width: 160px;
   padding: 12px 22px;
   border: 1px solid rgba(244, 211, 124, 0.65);
   border-radius: 999px;
   color: #171006;
-  background: var(--gold);
+  background: var(--brand-deep);
   font: inherit;
   font-weight: 800;
   cursor: pointer;
 }
 
 .contact-submit:disabled {
-  cursor: wait;
-  opacity: 0.6;
+  cursor: progress;
+  opacity: 1;
+}
+
+.contact-form[data-state="sending"] .contact-submit::before {
+  width: 16px;
+  height: 16px;
+  content: "";
+  border: 2px solid rgba(23, 16, 6, 0.35);
+  border-top-color: #171006;
+  border-radius: 50%;
+  animation: contact-submit-spin 0.75s linear infinite;
+}
+
+@keyframes contact-submit-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .contact-status {
@@ -122,6 +156,10 @@
 
 .contact-status[data-kind="success"] {
   color: #9de1ad;
+}
+
+.contact-status[data-kind="sending"] {
+  color: var(--brand-deep);
 }
 
 .contact-form[data-state="success"] > :not([data-contact-status]) {

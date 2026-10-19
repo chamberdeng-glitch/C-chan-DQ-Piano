@@ -4,15 +4,18 @@
 
   const status = form.querySelector("[data-contact-status]");
   const submit = form.querySelector('button[type="submit"]');
+  const submitLabel = submit.textContent;
   const lang = form.dataset.lang === "en" ? "en" : "ja";
   const messages = {
     ja: {
       success: "送信しました。内容を確認のうえ、必要な場合にご連絡します。",
+      sending: "送信中です…",
       error: "送信できませんでした。しばらくしてからもう一度お試しください。",
       turnstile: "送信前に認証を完了してください。",
     },
     en: {
       success: "Sent. I'll review your message and get back to you if needed.",
+      sending: "Sending…",
       error: "Could not send. Please try again later.",
       turnstile: "Please complete the verification before sending.",
     },
@@ -81,7 +84,11 @@
 
     sending = true;
     submit.disabled = true;
-    show("");
+    submit.textContent = messages.sending;
+    submit.setAttribute("aria-busy", "true");
+    form.dataset.state = "sending";
+    form.setAttribute("aria-busy", "true");
+    show(messages.sending, "sending");
     const data = new FormData(form);
     const payload = {
       name: String(data.get("name") || ""),
@@ -117,7 +124,13 @@
       show(messages.error, "error");
     } finally {
       sending = false;
-      if (!sent) submit.disabled = false;
+      form.removeAttribute("aria-busy");
+      submit.removeAttribute("aria-busy");
+      if (!sent) {
+        delete form.dataset.state;
+        submit.disabled = false;
+        submit.textContent = submitLabel;
+      }
     }
   });
 
