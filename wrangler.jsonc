@@ -11,6 +11,12 @@
     "binding": "ASSETS",
     "run_worker_first": true
   },
+  "kv_namespaces": [
+    {
+      "binding": "CONTACT_RATE_LIMITS",
+      "id": "22f915bc382f403abd03be91a084278e"
+    }
+  ],
   "send_email": [
     {
       "name": "CONTACT_EMAIL"
