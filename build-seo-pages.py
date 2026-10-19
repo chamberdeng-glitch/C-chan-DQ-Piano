@@ -645,7 +645,7 @@ def contact_page(lang: str) -> str:
             '<p>返信までに1〜2週間ほどかかる場合があります。内容によっては返信できないことがあります。</p>'
             '<p>演奏へのご感想は、YouTubeのコメント欄またはコミュニティ投稿へお願いいたします。こちらのフォームからいただいたご感想には、原則として個別の返信は行っておりません。</p>'
             '<p>次のご連絡には対応しません。</p>'
-            '<ul><li>広告掲載、SEO、被リンク、無関係な商品・サービスの営業や勧誘</li><li>レッスン、個別の演奏指導</li></ul>'
+            '<ul><li>広告掲載、SEO対策、有償のリンク掲載、無関係な商品・サービスの営業や勧誘</li><li>レッスン、個別の演奏指導</li></ul>'
             '<p>誹謗中傷、脅迫、差別的な内容、繰り返しの送信など、運営の妨げになる行為には対応せず、送信元の遮断などの措置をとる場合があります。</p></div>'
         )
         labels = {
@@ -669,7 +669,7 @@ def contact_page(lang: str) -> str:
             '<p>Replies may take 1–2 weeks, and I may not be able to reply to every message.</p>'
             '<p>For feedback on my performances, please use YouTube comments or community posts. I generally do not respond individually to performance feedback submitted through this form.</p>'
             '<p>I do not respond to:</p>'
-            '<ul><li>Advertising, SEO, backlink requests, or unrelated sales and solicitation</li><li>Lessons or personal coaching</li></ul>'
+            '<ul><li>Advertising, SEO services, paid link placement, or unrelated sales and solicitation</li><li>Lessons or personal coaching</li></ul>'
             '<p>Abusive, threatening or discriminatory messages, and repeated submissions that disrupt operation, will not be answered, and the sender may be blocked.</p></div>'
         )
         labels = {
