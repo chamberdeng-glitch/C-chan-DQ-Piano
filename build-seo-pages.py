@@ -635,13 +635,13 @@ def contact_page(lang: str) -> str:
     if lang == 'ja':
         page, alt = '/contact/', '/en/contact/'
         title = f'お問い合わせ | {JA_LIBRARY_NAME}'
-        desc = 'サイトの不具合や誤記のご報告、お仕事に関するご連絡など、ご連絡が必要な内容にご利用ください。'
+        desc = 'ご連絡が必要な内容にご利用ください。'
         hero_title = 'お問い合わせ'
         lead = ''
         crumbs = [('ホーム', '/'), ('お問い合わせ', page)]
         before = (
             '<div class="contact-copy"><h2>お問い合わせの前に</h2>'
-            '<p>サイトの不具合や誤記のご報告、お仕事に関するご連絡など、ご連絡が必要な内容にご利用ください。</p>'
+            '<p>ご連絡が必要な内容にご利用ください。</p>'
             '<p>返信までに1〜2週間ほどかかる場合があります。内容によっては返信できないことがあります。</p>'
             '<p>演奏へのご感想は、YouTubeのコメント欄またはコミュニティ投稿へお願いいたします。こちらのフォームからいただいたご感想には、原則として個別の返信は行っておりません。</p>'
             '<p>次のご連絡には対応しません。</p>'
@@ -659,13 +659,13 @@ def contact_page(lang: str) -> str:
     else:
         page, alt = '/en/contact/', '/contact/'
         title = f'Contact | {EN_LIBRARY_NAME}'
-        desc = 'Use this form to report website problems or errors, for work-related inquiries, or for other matters that require contact.'
+        desc = 'Please use this form when you need to contact me.'
         hero_title = 'Contact'
         lead = ''
         crumbs = [('Home', '/en/'), ('Contact', page)]
         before = (
             '<div class="contact-copy"><h2>Before you contact me</h2>'
-            '<p>Use this form to report website problems or errors, for work-related inquiries, or for other matters that require contact.</p>'
+            '<p>Please use this form when you need to contact me.</p>'
             '<p>Replies may take 1–2 weeks, and I may not be able to reply to every message.</p>'
             '<p>For feedback on my performances, please use YouTube comments or community posts. I generally do not respond individually to performance feedback submitted through this form.</p>'
             '<p>I do not respond to:</p>'
