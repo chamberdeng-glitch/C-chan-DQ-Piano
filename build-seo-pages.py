@@ -456,14 +456,16 @@ def playlist_cards(items: list[dict], lang: str, hero: bool = False) -> str:
 def medley_video_cards(items: list[dict], lang: str) -> str:
     body = []
     for item in items:
+        title = item.get('titleEn') if lang == 'en' else item.get('title')
+        title = title or item.get('title') or ''
         thumb = normalize_thumb(item.get('thumbnail'))
-        thumb_html = f'<img class="playlist-thumb" src="{thumb}" alt="{esc(item["title"])}" loading="lazy">' if thumb else ''
+        thumb_html = f'<img class="playlist-thumb" src="{thumb}" alt="{esc(title)}" loading="lazy">' if thumb else ''
         link_label = '動画を開く' if lang == 'ja' else 'Open video'
         body.append(
             '<article class="video-card video-card-grid seo-card">'
             f'{thumb_html}'
             f'<p class="video-meta">{esc(item["playlistTitle"])}</p>'
-            f'<h3>{esc(item["title"])}</h3>'
+            f'<h3>{esc(title)}</h3>'
             f'<a class="video-link" href="{item["url"]}" target="_blank" rel="noreferrer">{link_label}</a>'
             '</article>'
         )
@@ -1667,6 +1669,11 @@ def build() -> None:
             medley_playlists.append(playlist)
     medley_tracks = []
     seen_medley_urls = set()
+    current_medleys = {
+        item.get('videoId'): item
+        for item in MEDLEY_CATALOG.get('items', [])
+        if item.get('videoId')
+    }
     for playlist in medley_playlists:
         for track in playlist.get('tracks', []):
             url = track.get('url')
@@ -1675,9 +1682,12 @@ def build() -> None:
             video_match = re.search(r'(?:v=|youtu\.be/)([A-Za-z0-9_-]{11})', url)
             if video_match and video_match.group(1) in EXCLUDED_MEDLEY_VIDEO_IDS:
                 continue
+            video_id = video_match.group(1) if video_match else ''
+            current = current_medleys.get(video_id, {})
             seen_medley_urls.add(url)
             medley_tracks.append({
-                'title': track.get('title') or track.get('rawTitle') or playlist['title'],
+                'title': current.get('title') or track.get('rawTitle') or track.get('title') or playlist['title'],
+                'titleEn': current.get('titleEn') or current.get('title') or track.get('rawTitle') or track.get('title') or playlist['title'],
                 'url': url,
                 'playlistTitle': playlist['title'],
                 'thumbnail': track.get('thumbnail') or youtube_video_thumb(url) or playlist.get('thumbnail', ''),
@@ -1776,7 +1786,12 @@ def build() -> None:
             crumbs = [('ホーム', '/') if lang == 'ja' else ('Home', '/en/'), (label, page)]
             if slug == 'medley':
                 item_list = [
-                    {'@type': 'ListItem', 'position': i + 1, 'name': track['title'], 'url': track['url']}
+                    {
+                        '@type': 'ListItem',
+                        'position': i + 1,
+                        'name': (track.get('titleEn') if lang == 'en' else track.get('title')) or track.get('title') or '',
+                        'url': track['url'],
+                    }
                     for i, track in enumerate(medley_tracks)
                 ]
             else:
