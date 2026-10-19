@@ -638,7 +638,7 @@ def contact_page(lang: str) -> str:
             '<p>本お問い合わせフォームは、企業・団体の方からのご連絡、出演・演奏依頼、コラボレーションのご相談、権利に関するご連絡、およびサイトの不具合報告などを対象としています。</p>'
             '<p>本サイトとYouTubeチャンネルは、個人が運営する非公式のファンサイトです。ゲームの公式情報やサポートはご案内できません。</p>'
             '<p>返信までに1〜2週間ほどかかる場合があります。内容によっては返信できないことがあります。</p>'
-            '<p>演奏へのご感想や楽曲のリクエストは、YouTubeのコメント欄またはコミュニティ投稿へお願いいたします。こちらのフォームからいただいたご感想には、原則として個別の返信は行っておりません。</p>'
+            '<p>演奏へのご感想は、YouTubeのコメント欄またはコミュニティ投稿へお願いいたします。こちらのフォームからいただいたご感想には、原則として個別の返信は行っておりません。</p>'
             '<p>次のご連絡には対応しません。</p>'
             '<ul><li>広告掲載、SEO、被リンク、無関係な商品・サービスの営業や勧誘</li><li>レッスン、個別の演奏指導</li></ul>'
             '<p>誹謗中傷、脅迫、差別的な内容、繰り返しの送信など、運営の妨げになる行為には対応せず、送信元の遮断などの措置をとる場合があります。</p>'
@@ -667,7 +667,7 @@ def contact_page(lang: str) -> str:
             '<p>This contact form is intended for business and professional inquiries, performance requests, collaboration proposals, rights-related matters, and reports of website issues.</p>'
             '<p>This site and my YouTube channel are an unofficial fan project run by an individual. I can\'t provide official game information or support.</p>'
             '<p>Replies may take 1–2 weeks, and I may not be able to reply to every message.</p>'
-            '<p>For feedback on my performances or song requests, please use YouTube comments or community posts. I generally do not respond individually to performance feedback submitted through this form.</p>'
+            '<p>For feedback on my performances, please use YouTube comments or community posts. I generally do not respond individually to performance feedback submitted through this form.</p>'
             '<p>I do not respond to:</p>'
             '<ul><li>Advertising, SEO, backlink requests, or unrelated sales and solicitation</li><li>Lessons or personal coaching</li></ul>'
             '<p>Abusive, threatening or discriminatory messages, and repeated submissions that disrupt operation, will not be answered, and the sender may be blocked.</p>'
@@ -737,7 +737,7 @@ def privacy_page(lang: str) -> str:
         crumbs = [('ホーム', '/'), ('プライバシーポリシー', page)]
         content = '''
 <div class="privacy-copy">
-<section><h2>1. 運営者</h2><p>【要確認：活動名「しーちゃん」のみの表記でよいか】</p></section>
+<section><h2>1. 運営者</h2><p>しーちゃんピアノ（活動名）</p></section>
 <section><h2>2. 取得する情報</h2><p>お問い合わせフォームで入力されたお名前、メールアドレス、本文、選択言語を取得します。また、不正利用防止のため、Cloudflareが提供する国コード、Turnstileの検証結果、IPアドレスおよびメールアドレスから秘密ソルトを用いて生成したハッシュを処理します。</p></section>
 <section><h2>3. 利用目的</h2><p>取得した情報は、お問い合わせ内容の確認・返信と、フォームの安全な運用、不正利用・スパム・繰り返し送信の防止にのみ利用します。</p></section>
 <section><h2>4. 不正利用・スパム防止</h2><p>IPアドレスとメールアドレスはレート制限のためにハッシュ化して扱い、生の値をサイト独自の保存領域には保存しません。内容による分類は受信メールの件名にタグを付けるために使用し、分類だけを理由にメールを破棄しません。</p></section>
@@ -745,7 +745,7 @@ def privacy_page(lang: str) -> str:
 <section><h2>6. 外部サービスの利用</h2><p>本サイトはCloudflare WorkersおよびEmail Service、YouTube動画の埋め込み、Google Analyticsを利用しています。動画を再生した場合やサイトを閲覧した場合、各サービス提供者の規約・プライバシーポリシーに基づいて情報が処理されることがあります。</p></section>
 <section><h2>7. Turnstileによる検証</h2><p>お問い合わせフォームではCloudflare Turnstileを使用します。Turnstileは送信者が自動化されたプログラムでないことを確認するため、ブラウザや通信に関する情報をCloudflareへ送信して検証します。</p></section>
 <section><h2>8. メール配送・受信</h2><p>お問い合わせメールの配送にはCloudflare Email Serviceを、受信と返信にはGmailを使用します。返信時は、フォームに入力されたメールアドレスをReply-Toとして利用します。</p></section>
-<section><h2>9. 保存期間</h2><p>お問い合わせメールは【要確認：対応完了後◯か月で削除】。レート制限用ハッシュは最長24時間で自動的に削除します。</p></section>
+<section><h2>9. 保存期間</h2><p>お問い合わせメールは、対応に必要な期間のみ保管し、不要になった時点で削除します。レート制限用ハッシュは最長24時間で自動的に削除します。</p></section>
 <section><h2>10. 開示・訂正・削除</h2><p>お問い合わせ情報の開示・訂正・削除をご希望の場合は、<a href="/contact/">お問い合わせページ</a>からご連絡ください。本人確認が必要になる場合があります。</p></section>
 <section><h2>11. 改定</h2><p>サービス内容や法令の変更に応じて本ポリシーを改定する場合があります。重要な変更は本ページでお知らせします。</p></section>
 </div>'''
@@ -758,7 +758,7 @@ def privacy_page(lang: str) -> str:
         crumbs = [('Home', '/en/'), ('Privacy Policy', page)]
         content = '''
 <div class="privacy-copy">
-<section><h2>1. Operator</h2><p>[To confirm: whether the activity name “C-chan” alone is sufficient.]</p></section>
+<section><h2>1. Operator</h2><p>C-chan piano (creator name)</p></section>
 <section><h2>2. Information collected</h2><p>The contact form collects your name, email address, message, and selected language. To prevent abuse, it also processes a Cloudflare-provided country code, the Turnstile verification result, and salted hashes derived from the IP address and email address.</p></section>
 <section><h2>3. Purpose of use</h2><p>The information is used only to review and respond to inquiries and to operate the form safely, including preventing abuse, spam, and repeated submissions.</p></section>
 <section><h2>4. Abuse and spam prevention</h2><p>IP and email addresses are hashed for rate limiting; their raw values are not stored in the site's own storage. Content classification only adds tags to the received email subject. Messages are not discarded solely because of classification.</p></section>
@@ -766,7 +766,7 @@ def privacy_page(lang: str) -> str:
 <section><h2>6. External services</h2><p>This site uses Cloudflare Workers and Email Service, embedded YouTube videos, and Google Analytics. When you view the site or play a video, information may be processed under each provider's terms and privacy policy.</p></section>
 <section><h2>7. Turnstile verification</h2><p>The contact form uses Cloudflare Turnstile. To verify that a submission is not automated, Turnstile sends browser and connection-related information to Cloudflare for verification.</p></section>
 <section><h2>8. Email delivery and receipt</h2><p>Cloudflare Email Service is used to deliver contact messages. Gmail is used to receive and reply to them. The email address entered in the form is used as the Reply-To address.</p></section>
-<section><h2>9. Retention</h2><p>Contact email: [To confirm: delete ◯ months after the inquiry is resolved]. Rate-limit hashes are automatically deleted within 24 hours.</p></section>
+<section><h2>9. Retention</h2><p>Contact emails are retained only as long as needed to handle the inquiry and are deleted when they are no longer necessary. Rate-limit hashes are automatically deleted within 24 hours.</p></section>
 <section><h2>10. Access, correction, and deletion</h2><p>To request access, correction, or deletion of contact information, use the <a href="/en/contact/">Contact page</a>. Identity verification may be required.</p></section>
 <section><h2>11. Changes to this policy</h2><p>This policy may be updated in response to changes in services or applicable law. Material changes will be announced on this page.</p></section>
 </div>'''
