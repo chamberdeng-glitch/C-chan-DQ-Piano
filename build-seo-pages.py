@@ -1,4 +1,5 @@
 ﻿from __future__ import annotations
+import hashlib
 import json
 import re
 from datetime import datetime, timedelta, timezone
@@ -10,6 +11,7 @@ ROOT = Path(__file__).resolve().parent
 JA_LIBRARY_NAME = 'ドラゴンクエスト ピアノ演奏・BGMライブラリー'
 EN_LIBRARY_NAME = 'Dragon Quest Piano Music Library'
 EXCLUDED_MEDLEY_VIDEO_IDS = {'3mng8haBuGo', 'gHTLe2lg6ek'}
+SCENE_MEDLEY_PLAYLIST_ID = 'PLysHcBQKj6zThxetjTiWNUV1L2d7U-_xV'
 JA_FAN_NOTICE = '本サイトは個人が運営する非公式のファンサイトで、株式会社スクウェア・エニックスおよびその関係会社・関係者とは関係ありません。「ドラゴンクエスト」は株式会社スクウェア・エニックスの登録商標です。'
 EN_FAN_NOTICE = 'This is an unofficial fan site run by an individual and is not affiliated with Square Enix Co., Ltd. or its affiliates. "DRAGON QUEST" is a registered trademark of Square Enix Co., Ltd.'
 
@@ -237,6 +239,22 @@ def normalize_thumb(src: str | None) -> str:
     return '/' + src.lstrip('./').lstrip('/')
 
 
+def versioned_playlist_thumb(playlist: dict) -> str:
+    thumb = normalize_thumb(playlist.get('thumbnail'))
+    if playlist.get('id') != SCENE_MEDLEY_PLAYLIST_ID:
+        return thumb
+    if not thumb or thumb.startswith(('http://', 'https://')):
+        return thumb
+
+    asset_path = ROOT / thumb.split('?', 1)[0].lstrip('/')
+    if not asset_path.is_file():
+        return thumb
+
+    version = hashlib.sha256(asset_path.read_bytes()).hexdigest()[:12]
+    separator = '&' if '?' in thumb else '?'
+    return f'{thumb}{separator}v={version}'
+
+
 def youtube_video_thumb(url: str | None) -> str:
     if not url:
         return ''
@@ -437,7 +455,7 @@ def playlist_cards(items: list[dict], lang: str, hero: bool = False) -> str:
     wrap = 'seo-card-grid seo-card-grid-hero' if hero else 'seo-card-grid'
     body = []
     for playlist in items:
-        thumb = normalize_thumb(playlist.get('thumbnail'))
+        thumb = versioned_playlist_thumb(playlist)
         thumb_html = f'<img class="playlist-thumb" src="{thumb}" alt="{esc(playlist["title"])}" loading="lazy">' if thumb else ''
         count = playlist.get('itemCountText') or ''
         desc = playlist.get('description') or ''
@@ -476,7 +494,7 @@ def medley_video_cards(items: list[dict], lang: str) -> str:
 
 
 def hero_playlist_thumb(playlist: dict, lang: str) -> str:
-    thumb = normalize_thumb(playlist.get('thumbnail'))
+    thumb = versioned_playlist_thumb(playlist)
     if not thumb:
         return ''
     label = '\u4f5c\u54c1\u5225\u30dd\u30c3\u30c9\u30ad\u30e3\u30b9\u30c8' if lang == 'ja' else 'Series podcast'
