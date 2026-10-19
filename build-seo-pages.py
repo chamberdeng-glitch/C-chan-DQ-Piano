@@ -629,23 +629,19 @@ def contact_page(lang: str) -> str:
     if lang == 'ja':
         page, alt = '/contact/', '/en/contact/'
         title = f'お問い合わせ | {JA_LIBRARY_NAME}'
-        desc = '企業・団体、演奏・出演、コラボレーション、権利に関するご連絡、サイトの不具合報告を受け付けています。'
+        desc = '企業の方などからのご連絡や、サイト不具合などの業務報告を受け付けています。'
         hero_title = 'お問い合わせ'
-        lead = '企業・団体、音楽関係者、権利者の方からのご連絡窓口です。'
+        lead = '企業の方などからのご連絡や、サイト不具合などの業務報告用の窓口です。'
         crumbs = [('ホーム', '/'), ('お問い合わせ', page)]
         before = (
             '<div class="contact-copy"><h2>お問い合わせの前に</h2>'
-            '<p>本お問い合わせフォームは、企業・団体の方からのご連絡、出演・演奏依頼、コラボレーションのご相談、権利に関するご連絡、およびサイトの不具合報告などを対象としています。</p>'
+            '<p>企業の方などからのご連絡やサイト不具合などの業務報告用を対象としています。</p>'
             '<p>本サイトとYouTubeチャンネルは、個人が運営する非公式のファンサイトです。ゲームの公式情報やサポートはご案内できません。</p>'
             '<p>返信までに1〜2週間ほどかかる場合があります。内容によっては返信できないことがあります。</p>'
             '<p>演奏へのご感想は、YouTubeのコメント欄またはコミュニティ投稿へお願いいたします。こちらのフォームからいただいたご感想には、原則として個別の返信は行っておりません。</p>'
             '<p>次のご連絡には対応しません。</p>'
             '<ul><li>広告掲載、SEO、被リンク、無関係な商品・サービスの営業や勧誘</li><li>レッスン、個別の演奏指導</li></ul>'
-            '<p>誹謗中傷、脅迫、差別的な内容、繰り返しの送信など、運営の妨げになる行為には対応せず、送信元の遮断などの措置をとる場合があります。</p>'
-            '<h3>権利者の方へ</h3>'
-            '<p>本サイトは非公式の個人活動で、市販の公式楽譜を改変せずに演奏した動画を紹介しています。</p>'
-            '<p>権利に関するご連絡は、本文の冒頭に「権利に関するご連絡」とご記入のうえ、対象のページまたは動画のURLとご連絡の趣旨をお書きください。</p>'
-            '<p>内容を確認のうえ、必要な対応をいたします。</p></div>'
+            '<p>誹謗中傷、脅迫、差別的な内容、繰り返しの送信など、運営の妨げになる行為には対応せず、送信元の遮断などの措置をとる場合があります。</p></div>'
         )
         labels = {
             'name': 'お名前', 'email': 'メールアドレス', 'message': '本文',
@@ -654,27 +650,23 @@ def contact_page(lang: str) -> str:
             'privacy': '送信内容は、お問い合わせへの対応のみに使用します。詳しくはプライバシーポリシーをご覧ください。',
             'noscript': 'フォームの送信にはJavaScriptが必要です。',
         }
-        metrics = metric('返信目安', '1〜2週間') + metric('対象', '業務・権利・不具合') + metric('言語', '日本語')
+        metrics = metric('返信目安', '1〜2週間') + metric('対象', '業務・不具合') + metric('言語', '日本語')
     else:
         page, alt = '/en/contact/', '/contact/'
         title = f'Contact | {EN_LIBRARY_NAME}'
-        desc = 'Contact form for business, performance, collaboration, rights-related matters, and website issue reports.'
+        desc = 'Contact form for business inquiries and reports of website issues.'
         hero_title = 'Contact'
-        lead = 'A contact point for business, music professionals, collaborators, and rights holders.'
+        lead = 'A contact point for business inquiries and website issue reports.'
         crumbs = [('Home', '/en/'), ('Contact', page)]
         before = (
             '<div class="contact-copy"><h2>Before you contact me</h2>'
-            '<p>This contact form is intended for business and professional inquiries, performance requests, collaboration proposals, rights-related matters, and reports of website issues.</p>'
+            '<p>This contact form is intended for business inquiries and reports of website issues.</p>'
             '<p>This site and my YouTube channel are an unofficial fan project run by an individual. I can\'t provide official game information or support.</p>'
             '<p>Replies may take 1–2 weeks, and I may not be able to reply to every message.</p>'
             '<p>For feedback on my performances, please use YouTube comments or community posts. I generally do not respond individually to performance feedback submitted through this form.</p>'
             '<p>I do not respond to:</p>'
             '<ul><li>Advertising, SEO, backlink requests, or unrelated sales and solicitation</li><li>Lessons or personal coaching</li></ul>'
-            '<p>Abusive, threatening or discriminatory messages, and repeated submissions that disrupt operation, will not be answered, and the sender may be blocked.</p>'
-            '<h3>For rights holders</h3>'
-            '<p>This is an unofficial personal project. The videos featured here are performances of commercially published official scores, played as written without alterations.</p>'
-            '<p>For any rights-related matter, please begin your message with "Rights-related contact" and include the URL of the page or video concerned and the purpose of your message.</p>'
-            '<p>I will review it and take any necessary action.</p></div>'
+            '<p>Abusive, threatening or discriminatory messages, and repeated submissions that disrupt operation, will not be answered, and the sender may be blocked.</p></div>'
         )
         labels = {
             'name': 'Name', 'email': 'Email', 'message': 'Message',
@@ -683,7 +675,7 @@ def contact_page(lang: str) -> str:
             'privacy': 'Your message is used only to respond to your inquiry. See the Privacy Policy for details.',
             'noscript': 'JavaScript is required to send this form.',
         }
-        metrics = metric('Reply time', '1–2 weeks') + metric('For', 'Business, rights, issues') + metric('Language', 'English')
+        metrics = metric('Reply time', '1–2 weeks') + metric('For', 'Business and site issues') + metric('Language', 'English')
 
     privacy_href = '/privacy/' if lang == 'ja' else '/en/privacy/'
     form = (
