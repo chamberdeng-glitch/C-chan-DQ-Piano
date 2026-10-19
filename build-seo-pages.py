@@ -858,6 +858,8 @@ def medley_thumbnail_url(src: str | None) -> str:
     thumb = normalize_thumb(src)
     if not thumb:
         return ''
+    if thumb.startswith(('http://', 'https://')):
+        return thumb
     version = re.sub(r'[^0-9]', '', MEDLEY_CATALOG.get('updatedAt', ''))[:14]
     if not version:
         return thumb
