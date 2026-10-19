@@ -11,6 +11,10 @@
     "binding": "ASSETS",
     "run_worker_first": true
   },
+  "vars": {
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAFa4iWmSH8nMGC07",
+    "CONTACT_FROM_EMAIL": "contact-form@dqpiano.com"
+  },
   "kv_namespaces": [
     {
       "binding": "CONTACT_RATE_LIMITS",
