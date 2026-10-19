@@ -730,14 +730,14 @@ def privacy_page(lang: str) -> str:
         content = '''
 <div class="privacy-copy">
 <section><h2>1. 運営者</h2><p>しーちゃんピアノ（活動名）</p></section>
-<section><h2>2. 取得する情報</h2><p>お問い合わせフォームで入力されたお名前、メールアドレス、本文、選択言語を取得します。また、不正利用防止のため、Cloudflareが提供する国コード、Turnstileの検証結果、IPアドレスおよびメールアドレスから秘密ソルトを用いて生成したハッシュを処理します。</p></section>
+<section><h2>2. 取得する情報</h2><p>お問い合わせフォームで入力されたお名前、メールアドレス、本文、選択言語を取得します。また、不正利用防止と送信元確認のため、Cloudflareが提供する国コード、Turnstileの検証結果、送信元IPアドレス、およびIPアドレスとメールアドレスから秘密ソルトを用いて生成したハッシュを処理します。</p></section>
 <section><h2>3. 利用目的</h2><p>取得した情報は、お問い合わせ内容の確認・返信と、フォームの安全な運用、不正利用・スパム・繰り返し送信の防止にのみ利用します。</p></section>
-<section><h2>4. 不正利用・スパム防止</h2><p>IPアドレスとメールアドレスはレート制限のためにハッシュ化して扱い、生の値をサイト独自の保存領域には保存しません。内容による分類は受信メールの件名にタグを付けるために使用し、分類だけを理由にメールを破棄しません。</p></section>
+<section><h2>4. 不正利用・スパム防止</h2><p>IPアドレスとメールアドレスはレート制限のためにハッシュ化して扱い、生の値をサイトのKVやデータベースには保存しません。送信元IPアドレスは、不正利用時の確認のため受信メールの専用ヘッダーに記録します。内容による分類は受信メールの件名にタグを付けるために使用し、分類だけを理由にメールを破棄しません。</p></section>
 <section><h2>5. 第三者提供</h2><p>法令に基づく場合を除き、取得した個人情報を第三者へ提供しません。ただし、下記の外部サービスを利用したメール配送、受信、アクセス解析および不正利用防止に必要な範囲で、各サービス提供者が情報を処理する場合があります。</p></section>
 <section><h2>6. 外部サービスの利用</h2><p>本サイトはCloudflare WorkersおよびEmail Service、YouTube動画の埋め込み、Google Analyticsを利用しています。動画を再生した場合やサイトを閲覧した場合、各サービス提供者の規約・プライバシーポリシーに基づいて情報が処理されることがあります。</p></section>
 <section><h2>7. Turnstileによる検証</h2><p>お問い合わせフォームではCloudflare Turnstileを使用します。Turnstileは送信者が自動化されたプログラムでないことを確認するため、ブラウザや通信に関する情報をCloudflareへ送信して検証します。</p></section>
-<section><h2>8. メール配送・受信</h2><p>お問い合わせメールの配送にはCloudflare Email Serviceを、受信と返信にはGmailを使用します。返信時は、フォームに入力されたメールアドレスをReply-Toとして利用します。</p></section>
-<section><h2>9. 保存期間</h2><p>お問い合わせメールは、対応に必要な期間のみ保管し、不要になった時点で削除します。レート制限用ハッシュは最長24時間で自動的に削除します。</p></section>
+<section><h2>8. メール配送・受信</h2><p>お問い合わせメールの配送にはCloudflare Email Serviceを、受信と返信にはGmailを使用します。返信時は、フォームに入力されたメールアドレスをReply-Toとして利用します。送信元IPアドレスはX-Contact-IPヘッダーに含めます。</p></section>
+<section><h2>9. 保存期間</h2><p>送信元IPアドレスを含むお問い合わせメールは、対応に必要な期間のみ保管し、不要になった時点で削除します。レート制限用ハッシュは最長24時間で自動的に削除します。</p></section>
 <section><h2>10. 開示・訂正・削除</h2><p>お問い合わせ情報の開示・訂正・削除をご希望の場合は、<a href="/contact/">お問い合わせページ</a>からご連絡ください。本人確認が必要になる場合があります。</p></section>
 <section><h2>11. 改定</h2><p>サービス内容や法令の変更に応じて本ポリシーを改定する場合があります。重要な変更は本ページでお知らせします。</p></section>
 </div>'''
@@ -751,14 +751,14 @@ def privacy_page(lang: str) -> str:
         content = '''
 <div class="privacy-copy">
 <section><h2>1. Operator</h2><p>C-chan piano (creator name)</p></section>
-<section><h2>2. Information collected</h2><p>The contact form collects your name, email address, message, and selected language. To prevent abuse, it also processes a Cloudflare-provided country code, the Turnstile verification result, and salted hashes derived from the IP address and email address.</p></section>
+<section><h2>2. Information collected</h2><p>The contact form collects your name, email address, message, and selected language. To prevent abuse and identify the source of a submission, it also processes a Cloudflare-provided country code, the Turnstile verification result, the source IP address, and salted hashes derived from the IP address and email address.</p></section>
 <section><h2>3. Purpose of use</h2><p>The information is used only to review and respond to inquiries and to operate the form safely, including preventing abuse, spam, and repeated submissions.</p></section>
-<section><h2>4. Abuse and spam prevention</h2><p>IP and email addresses are hashed for rate limiting; their raw values are not stored in the site's own storage. Content classification only adds tags to the received email subject. Messages are not discarded solely because of classification.</p></section>
+<section><h2>4. Abuse and spam prevention</h2><p>IP and email addresses are hashed for rate limiting; their raw values are not stored in the site's KV or database. The source IP address is recorded in a dedicated header of the received email so that abusive submissions can be investigated. Content classification only adds tags to the received email subject. Messages are not discarded solely because of classification.</p></section>
 <section><h2>5. Disclosure to third parties</h2><p>Personal information is not disclosed to third parties except where required by law. Service providers may process information as necessary for email delivery and receipt, analytics, and abuse prevention through the external services described below.</p></section>
 <section><h2>6. External services</h2><p>This site uses Cloudflare Workers and Email Service, embedded YouTube videos, and Google Analytics. When you view the site or play a video, information may be processed under each provider's terms and privacy policy.</p></section>
 <section><h2>7. Turnstile verification</h2><p>The contact form uses Cloudflare Turnstile. To verify that a submission is not automated, Turnstile sends browser and connection-related information to Cloudflare for verification.</p></section>
-<section><h2>8. Email delivery and receipt</h2><p>Cloudflare Email Service is used to deliver contact messages. Gmail is used to receive and reply to them. The email address entered in the form is used as the Reply-To address.</p></section>
-<section><h2>9. Retention</h2><p>Contact emails are retained only as long as needed to handle the inquiry and are deleted when they are no longer necessary. Rate-limit hashes are automatically deleted within 24 hours.</p></section>
+<section><h2>8. Email delivery and receipt</h2><p>Cloudflare Email Service is used to deliver contact messages. Gmail is used to receive and reply to them. The email address entered in the form is used as the Reply-To address. The source IP address is included in the X-Contact-IP header.</p></section>
+<section><h2>9. Retention</h2><p>Contact emails, including the source IP address, are retained only as long as needed to handle the inquiry and are deleted when they are no longer necessary. Rate-limit hashes are automatically deleted within 24 hours.</p></section>
 <section><h2>10. Access, correction, and deletion</h2><p>To request access, correction, or deletion of contact information, use the <a href="/en/contact/">Contact page</a>. Identity verification may be required.</p></section>
 <section><h2>11. Changes to this policy</h2><p>This policy may be updated in response to changes in services or applicable law. Material changes will be announced on this page.</p></section>
 </div>'''

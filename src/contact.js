@@ -41,6 +41,14 @@ function stripControls(value) {
   return String(value || "").replace(CONTROL_RE, "");
 }
 
+function contactIpHeader(request) {
+  const ip = String(request.headers.get("CF-Connecting-IP") || "").trim();
+  if (!ip || ip.length > 45 || HEADER_BREAK_RE.test(ip) || !/^[0-9a-f:.]+$/iu.test(ip)) {
+    return "unknown";
+  }
+  return ip;
+}
+
 export function classifyMessage(message, config = classificationConfig) {
   const normalized = normalizeText(message);
   const rights = config.rightsKeywords.some((keyword) => normalized.includes(normalizeText(keyword)));
@@ -241,6 +249,9 @@ export function buildEmail(payload, request, env, now = Date.now()) {
     replyTo: payload.email,
     subject,
     text,
+    headers: {
+      "X-Contact-IP": contactIpHeader(request),
+    },
   };
 }
 

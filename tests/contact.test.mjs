@@ -124,6 +124,7 @@ test("normal submission sends a plain-text structured email with UTF-8 and Reply
   assert.equal(env.sent.length, 1);
   assert.equal(env.sent[0].replyTo, "person@example.com");
   assert.equal(env.sent[0].subject, "[dqpiano.com] お問い合わせ");
+  assert.equal(env.sent[0].headers["X-Contact-IP"], "203.0.113.10");
   assert.match(env.sent[0].text, /山田 花子/u);
   assert.match(env.sent[0].text, /日本語の本文を正しく送信します。/u);
   assert.equal("html" in env.sent[0], false);
@@ -282,9 +283,14 @@ test("client script contains double-submit and expired-token handling", async ()
   assert.match(script, /turnstile\.reset/u);
 });
 
-test("buildEmail never includes IP address or user-agent", () => {
+test("buildEmail adds a validated IP header without duplicating it in the body", () => {
   const request = requestFor();
   const email = buildEmail(validPayload(), request, makeEnv(), Date.UTC(2026, 9, 19));
+  assert.equal(email.headers["X-Contact-IP"], "203.0.113.10");
   assert.doesNotMatch(email.text, /203\.0\.113\.10/u);
   assert.doesNotMatch(email.text, /user-agent/iu);
+
+  const invalidIpRequest = requestFor(validPayload(), { ip: "not-an-ip" });
+  const invalidIpEmail = buildEmail(validPayload(), invalidIpRequest, makeEnv(), Date.UTC(2026, 9, 19));
+  assert.equal(invalidIpEmail.headers["X-Contact-IP"], "unknown");
 });

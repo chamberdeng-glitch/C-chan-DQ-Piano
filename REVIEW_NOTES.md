@@ -245,7 +245,7 @@ youtube_main/takes/medleys/scorebook/related`）を、**既存データを壊さ
 
 ## 11. お問い合わせフォーム・プライバシーポリシー（2026-10-19）
 
-状態: **ローカル実装・自動テスト完了。Cloudflare設定と実メール試験は未実施。デプロイ未実施。**
+状態: **本番デプロイ・実メール送信確認済み。**
 
 ### 11.1 変更ファイル一覧
 
@@ -296,6 +296,7 @@ youtube_main/takes/medleys/scorebook/related`）を、**既存データを壊さ
 - 送信先は`CONTACT_TO_EMAIL`から取得する。実設定値は`dqpiano.c@gmail.com`で、ソースコードには記載していない。
 - 送信元は`CONTACT_FROM_EMAIL`から取得する。想定値は`contact-form@dqpiano.com`。
 - Reply-Toは検証済みのフォーム入力メールアドレスとし、Gmailの通常の返信操作で問い合わせ者へ返信できる形にする。
+- Cloudflareの`CF-Connecting-IP`を文字種・長さ検査後、`X-Contact-IP`カスタムヘッダーに設定する。メール本文には重複して記載しない。不正な値や欠落時は`unknown`とする。
 - Cloudflare API受付成功とGmail受信トレイへの最終配送は別である。`send()`が例外を返した場合は成功扱いにしない。
 
 #### スパム分類方式
@@ -408,7 +409,8 @@ Cloudflare Dashboard操作、認証メールの承認、secret登録、実メー
 - `python3 build-seo-pages.py`: 556 URL生成成功。
 - `python3 build-worker-assets.py`: 617公開アセット生成成功。
 - モックで確認済み: 正常送信、Honeypot、blocklist、Turnstile成功/失敗/期限切れ/再利用、各入力境界、CRLF、同意なし、16KB、Origin/Referer、GET、メール失敗、全レート上限、同一isolate内同時送信、分類優先順位、UTF-8文字列とReply-To。
-- 未実施: Cloudflare公式テストキーを使った実Siteverify通信、Cloudflare KV実環境、実Email binding、Gmail最終配送、Gmail Reply-To操作、モバイル実機、キーボード/スクリーンリーダー実機確認。
+- 本番確認済み: Cloudflare KV、Email binding、Gmail最終配送、モバイル実機からの正常送信。
+- 未実施: Gmail Reply-To操作、`X-Contact-IP`の実メールヘッダー表示確認、キーボード/スクリーンリーダー実機確認。
 
 ### 11.8 ロールバック
 

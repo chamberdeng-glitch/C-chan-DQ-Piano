@@ -2445,8 +2445,41 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px 18px;
-  margin: 10px 0;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.site-legal-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 17px;
+  border: 1px solid rgba(244, 211, 124, 0.52);
+  border-radius: 999px;
+  color: var(--brand-deep);
+  background: rgba(244, 211, 124, 0.08);
+  font-weight: 700;
+  line-height: 1.35;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.site-legal-links a::after {
+  content: "›";
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.site-legal-links a:hover {
+  border-color: var(--brand-deep);
+  background: rgba(244, 211, 124, 0.16);
+  transform: translateY(-1px);
+}
+
+.site-legal-links a:focus-visible {
+  outline: 2px solid var(--brand-deep);
+  outline-offset: 3px;
 }
 
 .site-legal-notice {
