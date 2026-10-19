@@ -459,7 +459,9 @@ def medley_video_cards(items: list[dict], lang: str) -> str:
     for item in items:
         title = item.get('titleEn') if lang == 'en' else item.get('title')
         title = title or item.get('title') or ''
-        thumb = normalize_thumb(item.get('thumbnail'))
+        default_thumb = item.get('thumbnail', '')
+        thumb = item.get('thumbnailEn', default_thumb) if lang == 'en' else default_thumb
+        thumb = medley_thumbnail_url(thumb)
         thumb_html = f'<img class="playlist-thumb" src="{thumb}" alt="{esc(title)}" loading="lazy">' if thumb else ''
         link_label = '動画を開く' if lang == 'ja' else 'Open video'
         body.append(
@@ -852,6 +854,17 @@ def load_medley_catalog() -> dict:
 MEDLEY_CATALOG = load_medley_catalog()
 
 
+def medley_thumbnail_url(src: str | None) -> str:
+    thumb = normalize_thumb(src)
+    if not thumb:
+        return ''
+    version = re.sub(r'[^0-9]', '', MEDLEY_CATALOG.get('updatedAt', ''))[:14]
+    if not version:
+        return thumb
+    separator = '&' if '?' in thumb else '?'
+    return f'{thumb}{separator}v={version}'
+
+
 def medley_updated_date(value: str) -> str:
     if not value:
         return ''
@@ -876,6 +889,7 @@ def featured_medley_card(item: dict, lang: str, rank: int) -> str:
     title = item.get('title', '') if lang == 'ja' else item.get('titleEn', item.get('title', ''))
     default_thumb = item.get('thumbnail', '')
     thumb = item.get('thumbnailEn', default_thumb) if lang == 'en' else default_thumb
+    thumb = medley_thumbnail_url(thumb)
     duration = item.get('duration', '')
     track_count = item.get('trackCount')
     views = int(item.get('views', 0))
@@ -1693,7 +1707,8 @@ def build() -> None:
                 'titleEn': current.get('titleEn') or current.get('title') or track.get('rawTitle') or track.get('title') or playlist['title'],
                 'url': url,
                 'playlistTitle': playlist['title'],
-                'thumbnail': track.get('thumbnail') or youtube_video_thumb(url) or playlist.get('thumbnail', ''),
+                'thumbnail': current.get('thumbnail') or track.get('thumbnail') or youtube_video_thumb(url) or playlist.get('thumbnail', ''),
+                'thumbnailEn': current.get('thumbnailEn') or current.get('thumbnail') or track.get('thumbnail') or youtube_video_thumb(url) or playlist.get('thumbnail', ''),
             })
 
     urls = [BASE + '/', BASE + '/en/']

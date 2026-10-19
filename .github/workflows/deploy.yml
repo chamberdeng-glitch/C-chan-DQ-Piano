@@ -33,6 +33,10 @@ jobs:
           test -n "$YOUTUBE_API_KEY" || { echo "Missing GitHub secret: YOUTUBE_API_KEY"; exit 1; }
           python3 scripts/update-medley-data.py
 
+      - name: Refresh localized medley thumbnails
+        if: github.event_name == 'schedule'
+        run: python3 scripts/update-medley-thumbnails.py
+
       - name: Regenerate static pages
         run: python3 build-seo-pages.py
 
@@ -54,7 +58,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add medley-data.json index.html en/index.html category/medley/index.html en/category/medley/index.html
+          git add medley-data.json assets/medley-thumbnails index.html en/index.html category/medley/index.html en/category/medley/index.html
           if git diff --cached --quiet; then
             echo "No medley changes to save"
           else
