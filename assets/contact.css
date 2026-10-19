@@ -124,6 +124,25 @@
   color: #9de1ad;
 }
 
+.contact-form[data-state="success"] > :not([data-contact-status]) {
+  display: none;
+}
+
+.contact-form[data-state="success"] .contact-status {
+  min-height: 0;
+  padding: 22px;
+  border: 1px solid rgba(157, 225, 173, 0.45);
+  border-radius: 14px;
+  background: rgba(69, 145, 87, 0.12);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.contact-form[data-state="success"] .contact-status:focus {
+  outline: 2px solid rgba(157, 225, 173, 0.75);
+  outline-offset: 4px;
+}
+
 .contact-status[data-kind="error"] {
   color: #ffb4a9;
 }

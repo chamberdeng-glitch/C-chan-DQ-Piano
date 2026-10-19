@@ -20,6 +20,7 @@
   let widgetId = null;
   let token = "";
   let sending = false;
+  let sent = false;
 
   function show(message, kind = "") {
     status.textContent = message;
@@ -46,6 +47,7 @@
         theme: "dark",
         size: "flexible",
         callback(value) {
+          if (sent) return;
           token = value;
           show("");
         },
@@ -99,15 +101,23 @@
         body: JSON.stringify(payload),
       });
       if (!response.ok) throw new Error("send");
+      sent = true;
       form.reset();
-      resetTurnstile();
+      token = "";
+      if (widgetId !== null && window.turnstile) {
+        window.turnstile.remove(widgetId);
+        widgetId = null;
+      }
+      form.dataset.state = "success";
       show(messages.success, "success");
+      status.setAttribute("tabindex", "-1");
+      status.focus();
     } catch {
       resetTurnstile();
       show(messages.error, "error");
     } finally {
       sending = false;
-      submit.disabled = false;
+      if (!sent) submit.disabled = false;
     }
   });
 
