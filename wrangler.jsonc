@@ -10,5 +10,10 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "run_worker_first": true
-  }
+  },
+  "send_email": [
+    {
+      "name": "CONTACT_EMAIL"
+    }
+  ]
 }

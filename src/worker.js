@@ -1,3 +1,5 @@
+import { handleContactConfig, handleContactRequest } from "./contact.js";
+
 const OLD_HOST = "c-chan-dq-piano.chamberdeng.workers.dev";
 const NEW_ORIGIN = "https://dqpiano.com";
 const NEW_HOST = "dqpiano.com";
@@ -38,6 +40,14 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const normalizedPath = canonicalPath(url.pathname);
+
+    if (url.pathname === "/api/contact/config") {
+      return request.method === "GET" ? handleContactConfig(env) : new Response(null, { status: 405 });
+    }
+
+    if (url.pathname === "/api/contact") {
+      return handleContactRequest(request, env);
+    }
 
     if (url.hostname === OLD_HOST) {
       return Response.redirect(`${NEW_ORIGIN}${normalizedPath}${url.search}`, 301);

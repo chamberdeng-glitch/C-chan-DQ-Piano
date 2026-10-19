@@ -9,6 +9,8 @@ ROOT = Path(__file__).resolve().parent
 JA_LIBRARY_NAME = 'ドラゴンクエスト ピアノ演奏・BGMライブラリー'
 EN_LIBRARY_NAME = 'Dragon Quest Piano Music Library'
 EXCLUDED_MEDLEY_VIDEO_IDS = {'3mng8haBuGo', 'gHTLe2lg6ek'}
+JA_FAN_NOTICE = '本サイトは個人が運営する非公式のファンサイトで、株式会社スクウェア・エニックスおよびその関係会社・関係者とは関係ありません。「ドラゴンクエスト」は株式会社スクウェア・エニックスの登録商標です。'
+EN_FAN_NOTICE = 'This is an unofficial fan site run by an individual and is not affiliated with Square Enix Co., Ltd. or its affiliates. "DRAGON QUEST" is a registered trademark of Square Enix Co., Ltd.'
 
 SERIES = [
     ('I', 'dq1', 'ドラゴンクエストI', 'Dragon Quest I', 'DQ1'),
@@ -306,7 +308,7 @@ def make_head(lang: str, title: str, desc: str, canon: str, ja_href: str, en_hre
         '<meta name="twitter:card" content="summary_large_image">'
         f'<meta name="twitter:title" content="{esc(title)}">'
         f'<meta name="twitter:description" content="{esc(desc)}">'
-        '<link rel="stylesheet" href="/styles.css?v=20260626-1">'
+        '<link rel="stylesheet" href="/styles.css?v=20261019-1">'
         f'{LOCAL_PREVIEW}'
         f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)}</script>'
         '</head>'
@@ -568,7 +570,6 @@ def section(kicker: str, title: str, inner: str, copy: str = '') -> str:
 
 
 def shell(lang: str, current: str, alt: str, crumb_html: str, title: str, lead: str, metrics_html: str, actions_html: str, feature_html: str, main: str) -> str:
-    footer = '© しーちゃんピアノ' if lang == 'ja' else '© C-chan piano'
     feature_block = f'<div class="page-hero-feature">{feature_html}</div>' if feature_html else ''
     return (
         '<body><div class="site-bg" aria-hidden="true"></div>'
@@ -585,8 +586,199 @@ def shell(lang: str, current: str, alt: str, crumb_html: str, title: str, lead: 
         f'{feature_block}'
         '</section></header>'
         f'<main class="page seo-page">{main}</main>'
-        f'<footer class="seo-footer"><p>{footer}</p></footer></body></html>'
+        f'{site_footer(lang)}</body></html>'
     )
+
+
+def site_footer(lang: str, include_language_links: bool = False) -> str:
+    if lang == 'ja':
+        copyright_text = '© しーちゃんピアノ'
+        contact_label = 'お問い合わせ'
+        privacy_label = 'プライバシーポリシー'
+        contact_href = '/contact/'
+        privacy_href = '/privacy/'
+        notice = JA_FAN_NOTICE
+        language_links = (
+            '<p class="site-language-links"><a href="/" lang="ja">日本語</a>｜'
+            '<a href="/en/" lang="en">English</a></p>'
+        ) if include_language_links else ''
+    else:
+        copyright_text = '© C-chan piano'
+        contact_label = 'Contact'
+        privacy_label = 'Privacy Policy'
+        contact_href = '/en/contact/'
+        privacy_href = '/en/privacy/'
+        notice = EN_FAN_NOTICE
+        language_links = (
+            '<p class="site-language-links"><a href="/" lang="ja">日本語</a>｜'
+            '<a href="/en/" lang="en">English</a></p>'
+        ) if include_language_links else ''
+    return (
+        '<footer class="seo-footer site-legal-footer">'
+        f'<p>{esc(copyright_text)}</p>{language_links}'
+        '<nav class="site-legal-links" aria-label="Legal">'
+        f'<a href="{contact_href}">{esc(contact_label)}</a>'
+        f'<a href="{privacy_href}">{esc(privacy_label)}</a>'
+        '</nav>'
+        f'<p class="site-legal-notice">{esc(notice)}</p>'
+        '</footer>'
+    )
+
+
+def contact_page(lang: str) -> str:
+    if lang == 'ja':
+        page, alt = '/contact/', '/en/contact/'
+        title = f'お問い合わせ | {JA_LIBRARY_NAME}'
+        desc = '企業・団体、演奏・出演、コラボレーション、権利に関するご連絡、サイトの不具合報告を受け付けています。'
+        hero_title = 'お問い合わせ'
+        lead = '企業・団体、音楽関係者、権利者の方からのご連絡窓口です。'
+        crumbs = [('ホーム', '/'), ('お問い合わせ', page)]
+        before = (
+            '<div class="contact-copy"><h2>お問い合わせの前に</h2>'
+            '<p>本お問い合わせフォームは、企業・団体の方からのご連絡、出演・演奏依頼、コラボレーションのご相談、権利に関するご連絡、およびサイトの不具合報告などを対象としています。</p>'
+            '<p>本サイトとYouTubeチャンネルは、個人が運営する非公式のファンサイトです。ゲームの公式情報やサポートはご案内できません。</p>'
+            '<p>返信までに1〜2週間ほどかかる場合があります。内容によっては返信できないことがあります。</p>'
+            '<p>演奏へのご感想や楽曲のリクエストは、YouTubeのコメント欄またはコミュニティ投稿へお願いいたします。こちらのフォームからいただいたご感想には、原則として個別の返信は行っておりません。</p>'
+            '<p>次のご連絡には対応しません。</p>'
+            '<ul><li>広告掲載、SEO、被リンク、無関係な商品・サービスの営業や勧誘</li><li>レッスン、個別の演奏指導</li></ul>'
+            '<p>誹謗中傷、脅迫、差別的な内容、繰り返しの送信など、運営の妨げになる行為には対応せず、送信元の遮断などの措置をとる場合があります。</p>'
+            '<h3>権利者の方へ</h3>'
+            '<p>本サイトは非公式の個人活動で、市販の公式楽譜を改変せずに演奏した動画を紹介しています。</p>'
+            '<p>権利に関するご連絡は、本文の冒頭に「権利に関するご連絡」とご記入のうえ、対象のページまたは動画のURLとご連絡の趣旨をお書きください。</p>'
+            '<p>内容を確認のうえ、必要な対応をいたします。</p></div>'
+        )
+        labels = {
+            'name': 'お名前', 'email': 'メールアドレス', 'message': '本文',
+            'name_help': '1〜100文字', 'message_help': '10〜3000文字',
+            'consent': 'プライバシーポリシーに同意して送信する', 'submit': '送信する',
+            'privacy': '送信内容は、お問い合わせへの対応のみに使用します。詳しくはプライバシーポリシーをご覧ください。',
+            'noscript': 'フォームの送信にはJavaScriptが必要です。',
+        }
+        metrics = metric('返信目安', '1〜2週間') + metric('対象', '業務・権利・不具合') + metric('言語', '日本語')
+    else:
+        page, alt = '/en/contact/', '/contact/'
+        title = f'Contact | {EN_LIBRARY_NAME}'
+        desc = 'Contact form for business, performance, collaboration, rights-related matters, and website issue reports.'
+        hero_title = 'Contact'
+        lead = 'A contact point for business, music professionals, collaborators, and rights holders.'
+        crumbs = [('Home', '/en/'), ('Contact', page)]
+        before = (
+            '<div class="contact-copy"><h2>Before you contact me</h2>'
+            '<p>This contact form is intended for business and professional inquiries, performance requests, collaboration proposals, rights-related matters, and reports of website issues.</p>'
+            '<p>This site and my YouTube channel are an unofficial fan project run by an individual. I can\'t provide official game information or support.</p>'
+            '<p>Replies may take 1–2 weeks, and I may not be able to reply to every message.</p>'
+            '<p>For feedback on my performances or song requests, please use YouTube comments or community posts. I generally do not respond individually to performance feedback submitted through this form.</p>'
+            '<p>I do not respond to:</p>'
+            '<ul><li>Advertising, SEO, backlink requests, or unrelated sales and solicitation</li><li>Lessons or personal coaching</li></ul>'
+            '<p>Abusive, threatening or discriminatory messages, and repeated submissions that disrupt operation, will not be answered, and the sender may be blocked.</p>'
+            '<h3>For rights holders</h3>'
+            '<p>This is an unofficial personal project. The videos featured here are performances of commercially published official scores, played as written without alterations.</p>'
+            '<p>For any rights-related matter, please begin your message with "Rights-related contact" and include the URL of the page or video concerned and the purpose of your message.</p>'
+            '<p>I will review it and take any necessary action.</p></div>'
+        )
+        labels = {
+            'name': 'Name', 'email': 'Email', 'message': 'Message',
+            'name_help': '1–100 characters', 'message_help': '10–3000 characters',
+            'consent': 'I agree to the Privacy Policy', 'submit': 'Send',
+            'privacy': 'Your message is used only to respond to your inquiry. See the Privacy Policy for details.',
+            'noscript': 'JavaScript is required to send this form.',
+        }
+        metrics = metric('Reply time', '1–2 weeks') + metric('For', 'Business, rights, issues') + metric('Language', 'English')
+
+    privacy_href = '/privacy/' if lang == 'ja' else '/en/privacy/'
+    form = (
+        f'<form class="contact-form" data-contact-form data-lang="{lang}" novalidate>'
+        '<div class="contact-field">'
+        f'<label for="contact-name">{esc(labels["name"])}</label>'
+        f'<input id="contact-name" name="name" type="text" autocomplete="name" minlength="1" maxlength="100" required aria-describedby="contact-name-help">'
+        f'<p class="contact-help" id="contact-name-help">{esc(labels["name_help"])}</p></div>'
+        '<div class="contact-field">'
+        f'<label for="contact-email">{esc(labels["email"])}</label>'
+        '<input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>'
+        '<div class="contact-field">'
+        f'<label for="contact-message">{esc(labels["message"])}</label>'
+        f'<textarea id="contact-message" name="message" minlength="10" maxlength="3000" required aria-describedby="contact-message-help"></textarea>'
+        f'<p class="contact-help" id="contact-message-help">{esc(labels["message_help"])}</p></div>'
+        '<div class="contact-honeypot" aria-hidden="true">'
+        '<label for="contact-website">Website</label>'
+        '<input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>'
+        '<div class="contact-turnstile" data-turnstile aria-label="Cloudflare Turnstile"></div>'
+        '<div class="contact-consent"><label>'
+        '<input name="consent" type="checkbox" required> '
+        f'<span>{esc(labels["consent"])}</span></label></div>'
+        f'<p class="contact-help">{esc(labels["privacy"])} <a href="{privacy_href}">{esc("プライバシーポリシー" if lang == "ja" else "Privacy Policy")}</a></p>'
+        f'<button class="contact-submit" type="submit">{esc(labels["submit"])}</button>'
+        '<p class="contact-status" data-contact-status aria-live="polite" aria-atomic="true"></p>'
+        f'<noscript><p class="contact-status" data-kind="error">{esc(labels["noscript"])}</p></noscript>'
+        '</form>'
+    )
+    graph = [
+        website_json(lang),
+        breadcrumb_json(crumbs),
+        {'@type': 'ContactPage', 'name': hero_title, 'description': desc, 'url': BASE + page, 'inLanguage': 'ja-JP' if lang == 'ja' else 'en-US'},
+    ]
+    head = make_head(lang, title, desc, BASE + page, BASE + '/contact/', BASE + '/en/contact/', graph)
+    head = head.replace(
+        '</head>',
+        '<link rel="stylesheet" href="/assets/contact.css">'
+        '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" defer></script>'
+        '<script src="/assets/contact.js" defer></script></head>',
+    )
+    main = f'<section class="contact-section">{before}{form}</section>'
+    return head + shell(lang, page, alt, breadcrumbs(crumbs), hero_title, lead, metrics, '', '', main)
+
+
+def privacy_page(lang: str) -> str:
+    if lang == 'ja':
+        page, alt = '/privacy/', '/en/privacy/'
+        title = f'プライバシーポリシー | {JA_LIBRARY_NAME}'
+        desc = 'dqpiano.comにおけるお問い合わせ情報、スパム防止処理、外部サービスの利用について説明します。'
+        hero_title = 'プライバシーポリシー'
+        crumbs = [('ホーム', '/'), ('プライバシーポリシー', page)]
+        content = '''
+<div class="privacy-copy">
+<section><h2>1. 運営者</h2><p>【要確認：活動名「しーちゃん」のみの表記でよいか】</p></section>
+<section><h2>2. 取得する情報</h2><p>お問い合わせフォームで入力されたお名前、メールアドレス、本文、選択言語を取得します。また、不正利用防止のため、Cloudflareが提供する国コード、Turnstileの検証結果、IPアドレスおよびメールアドレスから秘密ソルトを用いて生成したハッシュを処理します。</p></section>
+<section><h2>3. 利用目的</h2><p>取得した情報は、お問い合わせ内容の確認・返信と、フォームの安全な運用、不正利用・スパム・繰り返し送信の防止にのみ利用します。</p></section>
+<section><h2>4. 不正利用・スパム防止</h2><p>IPアドレスとメールアドレスはレート制限のためにハッシュ化して扱い、生の値をサイト独自の保存領域には保存しません。内容による分類は受信メールの件名にタグを付けるために使用し、分類だけを理由にメールを破棄しません。</p></section>
+<section><h2>5. 第三者提供</h2><p>法令に基づく場合を除き、取得した個人情報を第三者へ提供しません。ただし、下記の外部サービスを利用したメール配送、受信、アクセス解析および不正利用防止に必要な範囲で、各サービス提供者が情報を処理する場合があります。</p></section>
+<section><h2>6. 外部サービスの利用</h2><p>本サイトはCloudflare WorkersおよびEmail Service、YouTube動画の埋め込み、Google Analyticsを利用しています。動画を再生した場合やサイトを閲覧した場合、各サービス提供者の規約・プライバシーポリシーに基づいて情報が処理されることがあります。</p></section>
+<section><h2>7. Turnstileによる検証</h2><p>お問い合わせフォームではCloudflare Turnstileを使用します。Turnstileは送信者が自動化されたプログラムでないことを確認するため、ブラウザや通信に関する情報をCloudflareへ送信して検証します。</p></section>
+<section><h2>8. メール配送・受信</h2><p>お問い合わせメールの配送にはCloudflare Email Serviceを、受信と返信にはGmailを使用します。返信時は、フォームに入力されたメールアドレスをReply-Toとして利用します。</p></section>
+<section><h2>9. 保存期間</h2><p>お問い合わせメールは【要確認：対応完了後◯か月で削除】。レート制限用ハッシュは最長24時間で自動的に削除します。</p></section>
+<section><h2>10. 開示・訂正・削除</h2><p>お問い合わせ情報の開示・訂正・削除をご希望の場合は、<a href="/contact/">お問い合わせページ</a>からご連絡ください。本人確認が必要になる場合があります。</p></section>
+<section><h2>11. 改定</h2><p>サービス内容や法令の変更に応じて本ポリシーを改定する場合があります。重要な変更は本ページでお知らせします。</p></section>
+</div>'''
+        metrics = metric('対象', 'お問い合わせ情報') + metric('レート情報', '最長24時間') + metric('言語', '日本語')
+    else:
+        page, alt = '/en/privacy/', '/privacy/'
+        title = f'Privacy Policy | {EN_LIBRARY_NAME}'
+        desc = 'How dqpiano.com handles contact information, abuse prevention, email delivery, and external services.'
+        hero_title = 'Privacy Policy'
+        crumbs = [('Home', '/en/'), ('Privacy Policy', page)]
+        content = '''
+<div class="privacy-copy">
+<section><h2>1. Operator</h2><p>[To confirm: whether the activity name “C-chan” alone is sufficient.]</p></section>
+<section><h2>2. Information collected</h2><p>The contact form collects your name, email address, message, and selected language. To prevent abuse, it also processes a Cloudflare-provided country code, the Turnstile verification result, and salted hashes derived from the IP address and email address.</p></section>
+<section><h2>3. Purpose of use</h2><p>The information is used only to review and respond to inquiries and to operate the form safely, including preventing abuse, spam, and repeated submissions.</p></section>
+<section><h2>4. Abuse and spam prevention</h2><p>IP and email addresses are hashed for rate limiting; their raw values are not stored in the site's own storage. Content classification only adds tags to the received email subject. Messages are not discarded solely because of classification.</p></section>
+<section><h2>5. Disclosure to third parties</h2><p>Personal information is not disclosed to third parties except where required by law. Service providers may process information as necessary for email delivery and receipt, analytics, and abuse prevention through the external services described below.</p></section>
+<section><h2>6. External services</h2><p>This site uses Cloudflare Workers and Email Service, embedded YouTube videos, and Google Analytics. When you view the site or play a video, information may be processed under each provider's terms and privacy policy.</p></section>
+<section><h2>7. Turnstile verification</h2><p>The contact form uses Cloudflare Turnstile. To verify that a submission is not automated, Turnstile sends browser and connection-related information to Cloudflare for verification.</p></section>
+<section><h2>8. Email delivery and receipt</h2><p>Cloudflare Email Service is used to deliver contact messages. Gmail is used to receive and reply to them. The email address entered in the form is used as the Reply-To address.</p></section>
+<section><h2>9. Retention</h2><p>Contact email: [To confirm: delete ◯ months after the inquiry is resolved]. Rate-limit hashes are automatically deleted within 24 hours.</p></section>
+<section><h2>10. Access, correction, and deletion</h2><p>To request access, correction, or deletion of contact information, use the <a href="/en/contact/">Contact page</a>. Identity verification may be required.</p></section>
+<section><h2>11. Changes to this policy</h2><p>This policy may be updated in response to changes in services or applicable law. Material changes will be announced on this page.</p></section>
+</div>'''
+        metrics = metric('Covers', 'Contact information') + metric('Rate data', 'Up to 24 hours') + metric('Language', 'English')
+    graph = [
+        website_json(lang),
+        breadcrumb_json(crumbs),
+        {'@type': 'WebPage', 'name': hero_title, 'description': desc, 'url': BASE + page, 'inLanguage': 'ja-JP' if lang == 'ja' else 'en-US'},
+    ]
+    head = make_head(lang, title, desc, BASE + page, BASE + '/privacy/', BASE + '/en/privacy/', graph)
+    head = head.replace('</head>', '<link rel="stylesheet" href="/assets/contact.css"></head>')
+    return head + shell(lang, page, alt, breadcrumbs(crumbs), hero_title, desc, metrics, '', '', content)
 
 
 def write(path: str | Path, content: str) -> None:
@@ -805,6 +997,8 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
     text = text.replace('href="/en/series-index.html"', 'href="/en/series-index/"')
     text = text.replace('href="/en/category-index.html"', 'href="/en/category-index/"')
     text = text.replace('href="/en.html"', 'href="/en/"')
+    text = text.replace('href="./styles.css"', 'href="./styles.css?v=20261019-1"')
+    text = text.replace('href="/styles.css"', 'href="/styles.css?v=20261019-1"')
     script_src = './featured-medleys.js?v=20260807-app-links' if lang == 'ja' else '/featured-medleys.js?v=20260807-app-links'
     text = re.sub(
         r'<script src="(?:\./|/)featured-medleys\.js(?:\?[^\"]*)?" defer></script>',
@@ -860,6 +1054,7 @@ def patch_home(path_str: str, lang: str, series_playlists: dict[str, dict]) -> N
         text = re.sub(r'<section class="section seo-hub-links[^"]*" id="seo-links">.*?</section>', showcase + hub, text, count=1, flags=re.S)
     else:
         text = text.replace('<main class="page">', '<main class="page">\n    ' + showcase + hub, 1)
+    text = re.sub(r'<footer\b.*?</footer>', site_footer(lang, include_language_links=True), text, count=1, flags=re.S)
     path.write_text(text, encoding='utf-8')
 
 
@@ -1225,7 +1420,7 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
         '<body><div class="site-bg" aria-hidden="true"></div>'
         f'<header class="hero hero-simple">{topbar(lang, page, alt)}</header>'
         f'<main class="page">{main}</main>'
-        f'<footer class="seo-footer"><p>{esc(labels["footer"])}</p></footer></body></html>')
+        f'{site_footer(lang)}</body></html>')
     write(Path(page[1:]) / 'index.html', html)
 
     SONG_VIDEO_ENTRIES[canon] = {
@@ -1737,7 +1932,17 @@ def build() -> None:
     write('en/category-index/index.html', category_index_en)
     write('en/category-index.html', category_index_en)
 
-    urls.extend([BASE + '/series-index/', BASE + '/en/series-index/', BASE + '/category-index/', BASE + '/en/category-index/'])
+    write('contact/index.html', contact_page('ja'))
+    write('en/contact/index.html', contact_page('en'))
+    write('privacy/index.html', privacy_page('ja'))
+    write('en/privacy/index.html', privacy_page('en'))
+
+    urls.extend([
+        BASE + '/series-index/', BASE + '/en/series-index/',
+        BASE + '/category-index/', BASE + '/en/category-index/',
+        BASE + '/contact/', BASE + '/en/contact/',
+        BASE + '/privacy/', BASE + '/en/privacy/',
+    ])
     patch_home('index.html', 'ja', series_playlists)
     patch_home('en/index.html', 'en', series_playlists)
     (ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: ' + BASE + '/sitemap.xml\n', encoding='utf-8')

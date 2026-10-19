@@ -1,0 +1,163 @@
+.contact-page {
+  max-width: 920px;
+}
+
+.contact-section {
+  display: grid;
+  gap: 24px;
+}
+
+.contact-copy,
+.contact-form,
+.privacy-copy {
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(8, 7, 5, 0.78);
+  box-shadow: var(--shadow);
+}
+
+.contact-copy h2,
+.privacy-copy h2 {
+  margin-top: 0;
+  color: var(--brand-light);
+  font-family: var(--serif);
+}
+
+.contact-copy h3,
+.privacy-copy h3 {
+  margin-top: 28px;
+  color: var(--gold);
+  font-family: var(--serif);
+}
+
+.contact-copy p,
+.contact-copy li,
+.privacy-copy p,
+.privacy-copy li {
+  line-height: 1.85;
+}
+
+.contact-form {
+  display: grid;
+  gap: 20px;
+}
+
+.contact-field {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-field label,
+.contact-consent label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.34);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.contact-field textarea {
+  min-height: 220px;
+  resize: vertical;
+}
+
+.contact-field input:focus-visible,
+.contact-field textarea:focus-visible,
+.contact-consent input:focus-visible,
+.contact-submit:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.contact-help {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+
+.contact-consent label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.contact-consent input {
+  margin-top: 0.35em;
+}
+
+.contact-submit {
+  justify-self: start;
+  min-width: 160px;
+  padding: 12px 22px;
+  border: 1px solid rgba(244, 211, 124, 0.65);
+  border-radius: 999px;
+  color: #171006;
+  background: var(--gold);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.contact-submit:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.contact-status {
+  min-height: 1.6em;
+  margin: 0;
+  font-weight: 700;
+}
+
+.contact-status[data-kind="success"] {
+  color: #9de1ad;
+}
+
+.contact-status[data-kind="error"] {
+  color: #ffb4a9;
+}
+
+.contact-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.contact-turnstile {
+  min-height: 65px;
+}
+
+.privacy-copy section + section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.privacy-copy section h2 {
+  margin-bottom: 12px;
+}
+
+@media (max-width: 620px) {
+  .contact-copy,
+  .contact-form,
+  .privacy-copy {
+    padding: 18px;
+  }
+
+  .contact-submit {
+    width: 100%;
+  }
+}

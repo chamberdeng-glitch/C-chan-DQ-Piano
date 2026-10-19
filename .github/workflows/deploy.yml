@@ -39,8 +39,15 @@ jobs:
       - name: Validate JavaScript
         run: |
           node --check analytics.js
+          node --check assets/contact.js
           node --check featured-medleys.js
+          node --check src/contact.js
+          node --check src/worker.js
           node --check site.js
+          node --test tests/contact.test.mjs
+
+      - name: Validate contact and privacy pages
+        run: python3 scripts/validate-contact.py
 
       - name: Save refreshed medley data
         if: github.event_name == 'schedule'

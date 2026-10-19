@@ -2427,6 +2427,36 @@ h1 {
   margin: 0;
 }
 
+.site-legal-footer {
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.site-language-links {
+  margin-top: 8px !important;
+}
+
+.site-language-links a {
+  margin: 0 8px;
+}
+
+.site-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  margin: 10px 0;
+}
+
+.site-legal-notice {
+  max-width: 900px;
+  margin: 14px auto 0 !important;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
 @media (max-width: 720px) {
   .page-hero {
     padding: 22px 18px 6px;

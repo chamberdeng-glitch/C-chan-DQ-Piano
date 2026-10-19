@@ -240,3 +240,196 @@ youtube_main/takes/medleys/scorebook/related`）を、**既存データを壊さ
 - scorebook未登録またはKMP以外の曲は、現時点では `要確認` / `Needs confirmation` と表示する実装。表示が多すぎる場合は、未確認行を非表示にする方針も検討する。
 - 全曲の公式楽譜データ、ピアノ編曲者、参考楽譜リンクは今後のデータ精査が必要。
 - デプロイは未実施。
+
+---
+
+## 11. お問い合わせフォーム・プライバシーポリシー（2026-10-19）
+
+状態: **ローカル実装・自動テスト完了。Cloudflare設定と実メール試験は未実施。デプロイ未実施。**
+
+### 11.1 変更ファイル一覧
+
+- `src/worker.js`: `/api/contact` と `/api/contact/config` を静的配信より先に処理するルートを追加。
+- `src/contact.js`: Origin/Referer検査、16KB制限、入力検証、Turnstile検証、ブロックリスト、ハッシュ化レート制限、分類、メール送信を実装。
+- `config/contact-classification.json`: `[RIGHTS]` と `[NG]` の編集可能な公開キーワード設定。
+- `assets/contact.js`: フォーム送信、二重送信防止、Turnstileの期限切れ・失敗時のリセット、汎用結果表示。
+- `assets/contact.css`: 既存配色・余白に合わせたフォーム、プライバシーポリシー、モバイル表示。
+- `build-seo-pages.py`: 日英のcontact/privacyページ生成、全ページの法務フッター、canonical/hreflang/sitemap登録。
+- `build-worker-assets.py`: `contact/` と `privacy/` を公開アセットへ追加。
+- `wrangler.jsonc`: `CONTACT_EMAIL` の`send_email` binding宣言を追加。
+- `tests/contact.test.mjs`: API、分類、レート制限、UTF-8、Reply-To、失敗系の単体テスト。
+- `scripts/validate-contact.py`: 生成ページ、SEO、Turnstileの読み込み範囲、フッター、秘密情報の静的検査。
+- `.github/workflows/deploy.yml`: 将来のデプロイ前にcontact関連JavaScript、単体テスト、生成ページ検証を実行。
+- 生成物: `/contact/`、`/en/contact/`、`/privacy/`、`/en/privacy/`、既存生成ページ、`sitemap.xml`、`dist/`。
+
+依存パッケージは追加していない。
+
+### 11.2 設計判断
+
+#### API実装方式
+
+- 既存のCloudflare Workerに`POST /api/contact`を追加した。ホスティング、フレームワーク、ビルド方式は変更していない。
+- `GET /api/contact/config`は公開情報であるTurnstile Site Keyだけを返す。これにより実Site Keyを静的HTMLへ直書きせずCloudflare環境変数で設定できる。
+- POST以外は405、16KB超過は413、Origin/Referer不一致または両方欠落は403、Content-Type不一致は415、入力・Turnstile不正は400、レート超過は429、設定不足は503、メール送信失敗は502とする。
+- 名前・メールへのCR/LFは拒否し、本文はtext/plainとしてのみ送る。本文・名前・メールをログ、DB、KVへ保存しない。
+
+#### Turnstile検証方式
+
+- サーバーからCloudflare Siteverifyへ毎回送信し、`success`、`hostname`、`action=contact`を検査する。
+- トークンは公式仕様どおり5分で期限切れ・1回限り。期限切れや再利用は`timeout-or-duplicate`を含む失敗として400にする。
+- 本番Secretは`TURNSTILE_SECRET_KEY`、公開Site Keyは`TURNSTILE_SITE_KEY`で管理する。
+- Cloudflare公式テストキーの利用手順は後述。実装テストではSiteverifyをモック化し、成功・失敗・期限切れ・再利用を区別した。
+
+#### レート制限方式
+
+- Workers Rate Limiting bindingは現行仕様で設定期間が10秒または60秒に限られ、IP 5回/時、20回/日、メール3回/日、全体200回/日をそのまま表現できないため採用しなかった。
+- `CONTACT_RATE_LIMITS` Workers KVで固定時間窓を実装した。IPとメールは`CONTACT_HASH_SALT`を使ったHMAC-SHA-256のみをキーに含め、生値は保存しない。IP時間キーは1時間、日次キーは24時間で失効する。
+- 同一キーへの1秒1書き込み制限を避けるため、カウンタの上書きではなく送信ごとの一意キーを作り、prefixの件数を数える。200件/日の上限まで最大約800書き込み/日で、Freeの1,000書き込み/日以内を想定する。
+- 同一Worker isolate内はロックで直列化する。同時リクエストのテストは5件成功・6件目429を確認した。
+- KVは結果整合であり、別isolate・別coloの完全な原子性は保証しない。短時間の同時送信で上限超過が通る可能性は既知の制限として残る。
+- 制限値は`CONTACT_RATE_LIMITS_JSON`で変更できる。権利関連であってもレート制限を回避しない。
+
+#### メール送信方式
+
+- `CONTACT_EMAIL`の`send_email` bindingを使用する。
+- 2026-10-15更新の公式Workers APIは、新規実装では生RFC 5322 MIMEではなく構造化`send()`を推奨している。そのため追加ライブラリなしで`from`、`to`、`subject`、`text`、`replyTo`を渡す。Cloudflare側がMIME-Version、Content-Type、Content-Transfer-Encoding等を生成する。
+- 送信先は`CONTACT_TO_EMAIL`から取得する。実設定値は`dqpiano.c@gmail.com`で、ソースコードには記載していない。
+- 送信元は`CONTACT_FROM_EMAIL`から取得する。想定値は`contact-form@dqpiano.com`。
+- Reply-Toは検証済みのフォーム入力メールアドレスとし、Gmailの通常の返信操作で問い合わせ者へ返信できる形にする。
+- Cloudflare API受付成功とGmail受信トレイへの最終配送は別である。`send()`が例外を返した場合は成功扱いにしない。
+
+#### スパム分類方式
+
+- `config/contact-classification.json`をNFKC正規化・小文字化して照合する。
+- `[RIGHTS]`が一致した場合は排他的にし、URL数やNGワードにかかわらず`[LINKS]`、`[NG]`、`[REPEAT]`を付けない。
+- `[RIGHTS]`でない場合だけURL3件以上、NGワード、同一行3回以上の繰り返しを判定する。複数タグを許可し、分類だけを理由に破棄しない。
+- ブロックリストとHoneypotだけはメールを送らず200を返し、理由をクライアントへ開示しない。
+
+#### 秘密情報
+
+- 実値をリポジトリへ保存しない。`TURNSTILE_SECRET_KEY`、`CONTACT_HASH_SALT`、`CONTACT_TO_EMAIL`、個別ブロックリストはCloudflare secretを推奨する。
+- Site Key、許可オリジン、許可ホスト名、送信元、制限値はCloudflare環境変数で管理できる。
+- `CONTACT_TO_EMAIL`が無い、KV bindingが無い、メールbindingが無い等の場合はメールを送らず503にする。
+
+#### SEO・CSP・既存サイトとの整合性
+
+- 新規4ページは既存の`make_head()`、`topbar()`、`shell()`を使い、末尾スラッシュ、canonical、ja/en/x-default hreflang、JSON-LD、sitemapを既存規約に合わせた。
+- 既存CSPと`_headers`は存在しなかったため、新しいCSPを全体へ追加していない。Turnstile公式で必要な`script-src`と`frame-src`は、将来CSPを導入する場合に限りcontactページへ追加する。
+- Turnstile外部スクリプトは日英contactページだけで読み込む。
+- 既存フッターの著作権・言語リンクを残し、Contact/Privacyと非公式ファンサイト表記だけを追加した。
+
+### 11.3 必要な環境変数・binding
+
+| 名前 | 種別 | 用途 | 推奨設定 |
+|---|---|---|---|
+| `TURNSTILE_SITE_KEY` | 環境変数 | contactページへ返す公開Site Key | Cloudflare Worker Settings |
+| `TURNSTILE_SECRET_KEY` | secret | Siteverify検証 | Cloudflare Worker Secret |
+| `CONTACT_TO_EMAIL` | secret/環境変数 | 固定送信先 | `dqpiano.c@gmail.com` |
+| `CONTACT_FROM_EMAIL` | 環境変数 | 固定送信元 | `contact-form@dqpiano.com` |
+| `CONTACT_HASH_SALT` | secret | IP・メールのHMAC | 十分に長いランダム値 |
+| `CONTACT_ALLOWED_ORIGINS` | 環境変数 | POSTを許可するorigin | 既定`https://dqpiano.com` |
+| `CONTACT_ALLOWED_HOSTNAMES` | 環境変数 | Turnstile hostname | 既定`dqpiano.com` |
+| `CONTACT_TURNSTILE_ACTION` | 環境変数 | Turnstile action | 既定`contact` |
+| `CONTACT_RATE_LIMITS_JSON` | 環境変数 | 制限値の上書き | 例`{"ipHour":5,"ipDay":20,"emailDay":3,"globalDay":200}` |
+| `CONTACT_BLOCKED_EMAILS` | secret | カンマ/改行区切りの個別アドレス | 必要時のみ |
+| `CONTACT_BLOCKED_DOMAINS` | secret | カンマ/改行区切りのドメイン | 必要時のみ |
+| `CONTACT_EMAIL` | `send_email` binding | Cloudflare Email送信 | `wrangler.jsonc`に名前のみ宣言済み |
+| `CONTACT_RATE_LIMITS` | Workers KV binding | 24時間以内のレート制限イベント | ユーザーがnamespace作成・binding登録 |
+
+KV namespace IDはユーザーのCloudflareアカウント固有なのでリポジトリへ仮値を記載していない。`CONTACT_RATE_LIMITS` bindingはデプロイ前にDashboardまたは有効なWrangler環境設定へ追加すること。
+
+### 11.4 ユーザーが行うCloudflare設定
+
+#### Turnstile
+
+1. Cloudflare DashboardでTurnstileウィジェットを作成し、許可hostnameを`dqpiano.com`にする。
+2. Site Keyを`TURNSTILE_SITE_KEY`環境変数へ登録する。
+3. Secret Keyを`TURNSTILE_SECRET_KEY` secretへ登録する。
+4. ローカル/テストでは公式テストSite Key `1x00000000000000000000AA` と成功Secret `1x0000000000000000000000000000000AA`を使用できる。失敗Secretと再利用Secretも公式テストページに記載されている。本番Secretと混在させない。
+
+#### Email Routing、受信先、送信元、binding
+
+1. Compute > Email Service > Email Routingで`dqpiano.com`のEmail Routingを有効化する。
+2. Destination Addressesへ`dqpiano.c@gmail.com`を登録する。
+3. Gmailに届くCloudflare認証メールを開き、送信先を認証する。
+4. 送信元`contact-form@dqpiano.com`を利用できるようにする。固定の認証済み宛先へ送る無料経路では、送信元はEmail Routingのonboard済みドメインに属している必要がある。DashboardがEmail Sendingドメインのonboardingを要求する場合は、案内される`cf-bounce` MX、SPF、DKIM、DMARCを確認して設定する。既存SPFがある場合は重複TXTを作らず統合する。
+5. Workerへ`CONTACT_EMAIL`という名前の`send_email` bindingを登録する。コード側の送信先は`CONTACT_TO_EMAIL`で固定し、認証済み1件以外へは設定しない。
+6. `CONTACT_TO_EMAIL=dqpiano.c@gmail.com`と`CONTACT_FROM_EMAIL=contact-form@dqpiano.com`をWorkerの環境設定へ登録する。
+7. 実フォームから日本語・英語を含むテストメールを送り、Cloudflare Email sending metrics/logsとGmail受信を確認する。Email Routing summaryではWorker送信が「dropped」と表示されても配送成功の場合があるため、Outbound側のログを見る。
+8. Gmailで「返信」を押し、宛先がフォーム入力者のメールアドレス（Reply-To）になることを確認する。`From`は`contact-form@dqpiano.com`、`To`は`dqpiano.c@gmail.com`であることも確認する。
+9. Gmailで件名フィルタを作成する。
+   - `[RIGHTS]`: スター・重要マーク（受信トレイを維持）
+   - `[LINKS]`: 専用ラベル、受信トレイをスキップ
+   - `[NG]`: 専用ラベル、受信トレイをスキップ
+   - `[REPEAT]`: 専用ラベル、受信トレイをスキップ
+   - スパム系タグも自動削除しない。
+
+#### KV、WAF、Bot Fight Mode
+
+1. Workers KV namespaceを作成し、Workerへ`CONTACT_RATE_LIMITS`としてbindingする。
+2. `CONTACT_HASH_SALT`をsecretとして登録する。
+3. 必要に応じて`CONTACT_RATE_LIMITS_JSON`、`CONTACT_BLOCKED_EMAILS`、`CONTACT_BLOCKED_DOMAINS`を登録する。
+4. WAF Rate Limitingは補助防御として`/api/contact`だけを対象に検討する。Freeは1ルール・10秒窓・IP単位のため、アプリ内の1時間/1日制限の代わりにはならない。正常送信を妨げない余裕のある閾値でManaged ChallengeまたはBlockを検討する。
+5. Bot Fight ModeはFreeで利用できるがドメイン全体へ作用し、WAFでcontactだけを除外できない。正常閲覧やAPIを誤検知する可能性があるため、Security Analyticsを確認しながら利用可否を判断する。
+
+Cloudflare Dashboard操作、認証メールの承認、secret登録、実メール試験はユーザー本人が行う。
+
+### 11.5 Cloudflare公式仕様の確認結果
+
+- Workers API: https://developers.cloudflare.com/email-service/api/send-emails/workers-api/
+  - `send_email` bindingで構造化`send()`が利用可能。`text`と`replyTo`は専用フィールド。生MIMEはlegacy扱い。
+- Send bindings: https://developers.cloudflare.com/email-service/configuration/send-bindings/
+  - 宛先はアカウント内の認証済みDestinationである必要があり、送信元はonboard済みEmail Serviceドメインに属する必要がある。
+- Routing addresses: https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/
+  - Gmailへ認証メールを送りDestinationを有効化する。認証済みDestinationへのWorkers binding送信は全プランで無料。
+- Email pricing/limits: https://developers.cloudflare.com/email-service/platform/pricing/ および https://developers.cloudflare.com/email-service/platform/limits/
+  - 認証済みDestinationへの送信は月次quota・日次送信制限に算入されない。任意宛先へのOutbound Email SendingはWorkers Paidが必要。本件は認証済み固定宛先1件なので無料経路に合致する。
+- Domain configuration: https://developers.cloudflare.com/email-service/configuration/domains/
+  - Email Sendingをonboardする場合、Cloudflareが`cf-bounce`用MX、SPF、DKIM、DMARCを設定する。RoutingとSendingの認証レコードは別。
+- Turnstile validation: https://developers.cloudflare.com/turnstile/get-started/server-side-validation/
+  - サーバー検証必須、トークンは5分・1回限り、hostname/action検査推奨。
+- Turnstile CSP: https://developers.cloudflare.com/turnstile/reference/content-security-policy/
+  - CSPがある場合は`script-src`と`frame-src`へ`https://challenges.cloudflare.com`が必要。本サイトには既存CSPが無いため今回は追加していない。
+- Workers KV limits: https://developers.cloudflare.com/kv/platform/limits/
+  - Freeは100,000 reads/日、1,000 writes/日、同一キー1 write/秒。KVは結果整合。
+- WAF Rate Limiting: https://developers.cloudflare.com/waf/rate-limiting-rules/
+  - Freeは1ルール、10秒の計数期間、IP characteristic。精密な到達件数保証ではない。
+- Bot Fight Mode: https://developers.cloudflare.com/bots/get-started/bot-fight-mode/
+  - Freeで利用可能だがドメイン全体へ作用し、WAF custom ruleでskipできない。
+
+### 11.6 Gmailフィルタ案
+
+上記11.4の件名フィルタを設定する。`[RIGHTS]`は見落とし防止のため受信トレイに残す。`[LINKS]`、`[NG]`、`[REPEAT]`はラベルを付けて受信トレイをスキップしても、自動削除しない。
+
+### 11.7 ローカルテスト結果
+
+- `node --test tests/contact.test.mjs`: 19テスト成功。
+- `python3 scripts/validate-contact.py`: 新規4ページ、560フッター、canonical/hreflang/sitemap、Turnstile読込範囲、環境変数参照を検証して成功。
+- `python3 build-seo-pages.py`: 556 URL生成成功。
+- `python3 build-worker-assets.py`: 617公開アセット生成成功。
+- モックで確認済み: 正常送信、Honeypot、blocklist、Turnstile成功/失敗/期限切れ/再利用、各入力境界、CRLF、同意なし、16KB、Origin/Referer、GET、メール失敗、全レート上限、同一isolate内同時送信、分類優先順位、UTF-8文字列とReply-To。
+- 未実施: Cloudflare公式テストキーを使った実Siteverify通信、Cloudflare KV実環境、実Email binding、Gmail最終配送、Gmail Reply-To操作、モバイル実機、キーボード/スクリーンリーダー実機確認。
+
+### 11.8 ロールバック
+
+1. `contact/`、`en/contact/`、`privacy/`、`en/privacy/`とcontact用assetsを生成対象から外す。
+2. `src/worker.js`から`/api/contact`とconfigルートを削除し、`src/contact.js`と分類configを撤去する。
+3. `site_footer()`の追加リンク・非公式表記を外し、従来の著作権・言語リンクだけへ戻す。
+4. Cloudflareで`CONTACT_EMAIL`と`CONTACT_RATE_LIMITS` bindingを解除する。
+5. Turnstile widget、Email Routing/送信設定、KV namespace、関連secret・環境変数を削除する。
+
+### 11.9 既知の制限・残課題
+
+- Workers KVは結果整合のため、別isolate・別coloからの同時送信では一時的に制限値を超える可能性がある。WAFは補助防御であり、メール単位・日単位の代替にはならない。
+- メールアドレス単位の制限は第三者が他人のアドレスを入力して枠を消費できる。権利連絡だけを無条件に回避させる実装はしていない。
+- Turnstile、分類キーワード、blocklistには誤判定の可能性がある。分類ではメールを破棄しない。
+- `send()`受付成功はGmail受信成功を保証しない。DashboardのEmail sending metrics/logsと実受信の両方を確認する。
+- Cloudflare Email Serviceの画面名称・Beta状態・プラン条件は変更される可能性がある。設定時にDashboardの現行表示を再確認する。
+- Email Routing/Email SendingのDNSを有効化する際、既存MX/SPF/DKIMとの競合を事前に確認する。
+
+### 11.10 ユーザーへの確認事項
+
+- メール送信先は`dqpiano.c@gmail.com`で確定済み。
+- 未確定: お問い合わせメールの保存期間（`【要確認：対応完了後◯か月で削除】`）。
+- フッター権利表記は、指定文言で最終承認済み。
+- 未確定: プライバシーポリシーの運営者表記を活動名「しーちゃん / C-chan」のみにしてよいか。

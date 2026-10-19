@@ -28,6 +28,7 @@ DIRECTORIES = [
     "assets",
     "category-index",
     "category",
+    "contact",
     "covers",
     "dq1",
     "dq2",
@@ -41,6 +42,7 @@ DIRECTORIES = [
     "dq10",
     "dq11",
     "en",
+    "privacy",
     "score",
     "series-index",
 ]
