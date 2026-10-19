@@ -30,6 +30,7 @@ EXCLUDED_VIDEO_IDS = {
 
 TRACK_COUNT_OVERRIDES = {
     "VIh5Sv3OoQE": 15,
+    "_LBBD6N_7bQ": 14,
     "yj95f0WFc-0": 8,
     "IlH4hTSrmUk": 17,
     "Qnpxjoa6Eyw": 23,

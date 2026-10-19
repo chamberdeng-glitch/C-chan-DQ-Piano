@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-10-19T12:29:47Z",
+  "updatedAt": "2026-10-19T12:57:53Z",
   "source": "current medley page playlists",
-  "count": 15,
+  "count": 18,
   "items": [
     {
       "videoId": "T8FJPYoGva0",
@@ -12,7 +12,7 @@
       "trackCount": 34,
       "duration": "1:31:11",
       "durationSeconds": 5471,
-      "views": 168503,
+      "views": 168528,
       "publishedAt": "2026-06-19T11:06:56Z",
       "thumbnail": "https://i.ytimg.com/vi/T8FJPYoGva0/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/T8FJPYoGva0-en.jpg"
@@ -180,7 +180,7 @@
       "trackCount": 17,
       "duration": "35:59",
       "durationSeconds": 2159,
-      "views": 21143,
+      "views": 21147,
       "publishedAt": "2024-01-05T03:00:13Z",
       "thumbnail": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg"
@@ -198,6 +198,48 @@
       "publishedAt": "2024-01-01T03:00:37Z",
       "thumbnail": "https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg"
+    },
+    {
+      "videoId": "4RMFotTMhxs",
+      "url": "https://www.youtube.com/watch?v=4RMFotTMhxs",
+      "title": "歴代ドラクエ ダンジョン・塔 ピアノメドレー｜リレミトしたくなる全37曲",
+      "titleEn": "Dragon Quest Dungeon & Tower Real Piano Medley | 37 Tracks",
+      "category": "scene",
+      "trackCount": 37,
+      "duration": "2:00:45",
+      "durationSeconds": 7245,
+      "views": 16000,
+      "publishedAt": "2026-10-03T11:00:27Z",
+      "thumbnail": "https://i.ytimg.com/vi/4RMFotTMhxs/maxresdefault.jpg",
+      "thumbnailEn": "/assets/medley-thumbnails/4RMFotTMhxs-en.jpg"
+    },
+    {
+      "videoId": "bLefZ0kqZVE",
+      "url": "https://www.youtube.com/watch?v=bLefZ0kqZVE",
+      "title": "歴代ドラクエ 教会・ほこら・神殿 ピアノメドレー｜全17曲",
+      "titleEn": "Dragon Quest Churches, Shrines & Temples Piano Medley | 17 Tracks",
+      "category": "scene",
+      "trackCount": 17,
+      "duration": "42:50",
+      "durationSeconds": 2570,
+      "views": 15503,
+      "publishedAt": "2026-09-12T11:00:14Z",
+      "thumbnail": "https://i.ytimg.com/vi/bLefZ0kqZVE/maxresdefault.jpg",
+      "thumbnailEn": "/assets/medley-thumbnails/bLefZ0kqZVE-en.jpg"
+    },
+    {
+      "videoId": "_LBBD6N_7bQ",
+      "url": "https://www.youtube.com/watch?v=_LBBD6N_7bQ",
+      "title": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.2 ～ぬくもりの祈り～",
+      "titleEn": "Dragon Quest Piano Medley for Relaxing | Vol.2",
+      "category": "purpose",
+      "trackCount": 14,
+      "duration": "40:20",
+      "durationSeconds": 2420,
+      "views": 4335,
+      "publishedAt": "2026-10-17T11:00:02Z",
+      "thumbnail": "https://i.ytimg.com/vi/_LBBD6N_7bQ/maxresdefault.jpg",
+      "thumbnailEn": "/assets/medley-thumbnails/_LBBD6N_7bQ-en.jpg"
     },
     {
       "videoId": "UOwrLr_pbbs",
