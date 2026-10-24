@@ -1776,9 +1776,9 @@ window.songReferenceData = {
       "sortNumber": 8,
       "songTitle": "酒場のポルカ",
       "category": "カジノ",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=2RgqWisbua0",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "IX-9",

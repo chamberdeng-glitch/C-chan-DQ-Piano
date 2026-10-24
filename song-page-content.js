@@ -1565,6 +1565,14 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "2:52"
   },
+  "IX-8": {
+    "slug": "tavern-polka",
+    "uploadDate": "2026-10-24T11:00:22Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "2:22"
+  },
   "IX-9": {
     "slug": "alchemy-pot",
     "uploadDate": "2026-05-27T01:30:00-07:00",
