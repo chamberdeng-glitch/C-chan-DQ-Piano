@@ -1875,18 +1875,18 @@ window.songReferenceData = {
       "sortNumber": 19,
       "songTitle": "サンディのテーマ",
       "category": "キャラクターテーマ",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=w01M_QwmG5E",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IX-20",
       "sortNumber": 20,
       "songTitle": "サンディの泪",
       "category": "イベント",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=w01M_QwmG5E&t=91s",
+      "difficultyLabel": "初級",
+      "difficultyStars": 1
     },
     {
       "id": "IX-21",
