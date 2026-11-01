@@ -1637,6 +1637,18 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "3:41"
   },
+  "IX-19": {
+    "slug": "sandys-theme",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
+  "IX-20": {
+    "slug": "sandys-tears",
+    "lead": "",
+    "description": "",
+    "timestamps": []
+  },
   "IX-21": {
     "slug": "soaring-in-the-sky",
     "uploadDate": "2026-09-01T11:00:04Z",
