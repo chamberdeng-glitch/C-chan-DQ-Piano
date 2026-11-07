@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "c-chan-dq-piano",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-05-03",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "vars": {
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAFbAnJKr5jTdcPmA",
+    "CONTACT_FROM_EMAIL": "contact-form@dqpiano.com"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "CONTACT_RATE_LIMITS",
+      "id": "22f915bc382f403abd03be91a084278e"
+    }
+  ],
+  "send_email": [
+    {
+      "name": "CONTACT_EMAIL"
+    }
+  ]
+}

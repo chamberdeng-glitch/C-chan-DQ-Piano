@@ -1,0 +1,220 @@
+.contact-page {
+  max-width: 920px;
+}
+
+.contact-section {
+  display: grid;
+  gap: 24px;
+}
+
+.contact-copy,
+.contact-form,
+.privacy-copy {
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(8, 7, 5, 0.78);
+  box-shadow: var(--shadow);
+}
+
+.contact-copy h2,
+.privacy-copy h2 {
+  margin-top: 0;
+  color: var(--brand-deep);
+  font-family: var(--serif);
+}
+
+.contact-copy h3,
+.privacy-copy h3 {
+  margin-top: 28px;
+  color: var(--brand-deep);
+  font-family: var(--serif);
+}
+
+.contact-copy p,
+.contact-copy li,
+.privacy-copy p,
+.privacy-copy li {
+  line-height: 1.85;
+}
+
+.contact-form {
+  display: grid;
+  gap: 20px;
+}
+
+.contact-field {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-field label,
+.contact-consent label {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.66);
+  border: 2px solid rgba(244, 211, 124, 0.58);
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  font: inherit;
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.contact-field input:hover,
+.contact-field textarea:hover {
+  border-color: rgba(244, 211, 124, 0.82);
+}
+
+.contact-field textarea {
+  min-height: 220px;
+  resize: vertical;
+}
+
+.contact-field input:focus-visible,
+.contact-field textarea:focus-visible,
+.contact-consent input:focus-visible,
+.contact-submit:focus-visible {
+  outline: 2px solid var(--brand-deep);
+  outline-offset: 3px;
+}
+
+.contact-field input:focus-visible,
+.contact-field textarea:focus-visible {
+  border-color: var(--brand-deep);
+  background: rgba(0, 0, 0, 0.82);
+  box-shadow: 0 0 0 4px rgba(244, 211, 124, 0.14);
+}
+
+.contact-help {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.contact-consent label {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.contact-consent input {
+  margin-top: 0.35em;
+}
+
+.contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  justify-self: start;
+  min-width: 160px;
+  padding: 12px 22px;
+  border: 1px solid rgba(244, 211, 124, 0.65);
+  border-radius: 999px;
+  color: #171006;
+  background: var(--brand-deep);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.contact-submit:disabled {
+  cursor: progress;
+  opacity: 1;
+}
+
+.contact-form[data-state="sending"] .contact-submit::before {
+  width: 16px;
+  height: 16px;
+  content: "";
+  border: 2px solid rgba(23, 16, 6, 0.35);
+  border-top-color: #171006;
+  border-radius: 50%;
+  animation: contact-submit-spin 0.75s linear infinite;
+}
+
+@keyframes contact-submit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.contact-status {
+  min-height: 1.6em;
+  margin: 0;
+  font-weight: 700;
+}
+
+.contact-status[data-kind="success"] {
+  color: #9de1ad;
+}
+
+.contact-status[data-kind="sending"] {
+  color: var(--brand-deep);
+}
+
+.contact-form[data-state="success"] > :not([data-contact-status]) {
+  display: none;
+}
+
+.contact-form[data-state="success"] .contact-status {
+  min-height: 0;
+  padding: 22px;
+  border: 1px solid rgba(157, 225, 173, 0.45);
+  border-radius: 14px;
+  background: rgba(69, 145, 87, 0.12);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.contact-form[data-state="success"] .contact-status:focus {
+  outline: 2px solid rgba(157, 225, 173, 0.75);
+  outline-offset: 4px;
+}
+
+.contact-status[data-kind="error"] {
+  color: #ffb4a9;
+}
+
+.contact-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.contact-turnstile {
+  min-height: 65px;
+}
+
+.privacy-copy section + section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.privacy-copy section h2 {
+  margin-bottom: 12px;
+}
+
+@media (max-width: 620px) {
+  .contact-copy,
+  .contact-form,
+  .privacy-copy {
+    padding: 18px;
+  }
+
+  .contact-submit {
+    width: 100%;
+  }
+}
