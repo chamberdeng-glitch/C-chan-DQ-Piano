@@ -1665,6 +1665,14 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "2:56"
   },
+  "IX-26": {
+    "slug": "destiny",
+    "uploadDate": "2026-11-14T11:00:38Z",
+    "lead": "",
+    "description": "",
+    "timestamps": [],
+    "performanceDuration": "1:42"
+  },
   "IX-27": {
     "slug": "gathering-place",
     "uploadDate": "2026-09-19T11:00:19Z",

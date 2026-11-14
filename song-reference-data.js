@@ -1938,9 +1938,9 @@ window.songReferenceData = {
       "sortNumber": 26,
       "songTitle": "宿命",
       "category": "イベント",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=NcGIpwmgEf0",
+      "difficultyLabel": "初級",
+      "difficultyStars": 1
     },
     {
       "id": "IX-27",
