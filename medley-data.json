@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-13T11:16:31Z",
+  "updatedAt": "2026-11-16T11:48:25Z",
   "source": "current medley page playlists",
   "count": 18,
   "items": [
@@ -12,7 +12,7 @@
       "trackCount": 15,
       "duration": "49:08",
       "durationSeconds": 2948,
-      "views": 210653,
+      "views": 213258,
       "publishedAt": "2026-08-07T11:00:14Z",
       "thumbnail": "https://i.ytimg.com/vi/VIh5Sv3OoQE/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/VIh5Sv3OoQE-en.jpg"
@@ -26,7 +26,7 @@
       "trackCount": 34,
       "duration": "1:31:11",
       "durationSeconds": 5471,
-      "views": 197876,
+      "views": 200217,
       "publishedAt": "2026-06-19T11:06:56Z",
       "thumbnail": "https://i.ytimg.com/vi/T8FJPYoGva0/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/T8FJPYoGva0-en.jpg"
@@ -40,7 +40,7 @@
       "trackCount": 26,
       "duration": "1:21:25",
       "durationSeconds": 4885,
-      "views": 64508,
+      "views": 64712,
       "publishedAt": "2024-12-08T15:00:44Z",
       "thumbnail": "https://i.ytimg.com/vi/daTrvg7jg9k/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/daTrvg7jg9k-en.jpg"
@@ -54,7 +54,7 @@
       "trackCount": 28,
       "duration": "1:08:08",
       "durationSeconds": 4088,
-      "views": 60420,
+      "views": 60818,
       "publishedAt": "2024-05-26T15:00:04Z",
       "thumbnail": "https://i.ytimg.com/vi/62ch8sY8DaA/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/62ch8sY8DaA/maxresdefault.jpg"
@@ -68,7 +68,7 @@
       "trackCount": 33,
       "duration": "1:22:02",
       "durationSeconds": 4922,
-      "views": 48318,
+      "views": 48916,
       "publishedAt": "2026-03-20T10:30:00Z",
       "thumbnail": "https://i.ytimg.com/vi/Pu9o2vfflx4/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/Pu9o2vfflx4-en.jpg"
@@ -82,7 +82,7 @@
       "trackCount": 28,
       "duration": "1:18:42",
       "durationSeconds": 4722,
-      "views": 47293,
+      "views": 47476,
       "publishedAt": "2025-08-25T15:00:21Z",
       "thumbnail": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/EofaXaPTK-8/maxresdefault.jpg"
@@ -96,7 +96,7 @@
       "trackCount": 14,
       "duration": "40:20",
       "durationSeconds": 2420,
-      "views": 41771,
+      "views": 47165,
       "publishedAt": "2026-10-17T11:00:02Z",
       "thumbnail": "https://i.ytimg.com/vi/_LBBD6N_7bQ/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/_LBBD6N_7bQ-en.jpg"
@@ -110,7 +110,7 @@
       "trackCount": 15,
       "duration": "42:10",
       "durationSeconds": 2530,
-      "views": 39363,
+      "views": 40004,
       "publishedAt": "2026-07-16T11:00:37Z",
       "thumbnail": "https://i.ytimg.com/vi/aPh-4XiM1Ow/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/aPh-4XiM1Ow-en.jpg"
@@ -124,24 +124,10 @@
       "trackCount": 25,
       "duration": "56:35",
       "durationSeconds": 3395,
-      "views": 36529,
+      "views": 36706,
       "publishedAt": "2024-09-27T03:00:38Z",
       "thumbnail": "https://i.ytimg.com/vi/kSOvI-RcJac/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/kSOvI-RcJac-en.jpg"
-    },
-    {
-      "videoId": "Qnpxjoa6Eyw",
-      "url": "https://www.youtube.com/watch?v=Qnpxjoa6Eyw",
-      "title": "【ドラクエ3】ピアノ全曲集｜全23曲メドレー（公式楽譜）",
-      "titleEn": "Dragon Quest III Complete Medley on Grand Piano :Performed from Official Sheet Music",
-      "category": "series",
-      "trackCount": 23,
-      "duration": "50:05",
-      "durationSeconds": 3005,
-      "views": 33300,
-      "publishedAt": "2024-01-08T03:00:19Z",
-      "thumbnail": "https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg",
-      "thumbnailEn": "https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg"
     },
     {
       "videoId": "6Rp2lOYCABE",
@@ -152,10 +138,24 @@
       "trackCount": 18,
       "duration": "1:00:07",
       "durationSeconds": 3607,
-      "views": 33023,
+      "views": 33568,
       "publishedAt": "2026-05-01T11:00:00Z",
       "thumbnail": "https://i.ytimg.com/vi/6Rp2lOYCABE/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/6Rp2lOYCABE-en.jpg"
+    },
+    {
+      "videoId": "Qnpxjoa6Eyw",
+      "url": "https://www.youtube.com/watch?v=Qnpxjoa6Eyw",
+      "title": "【ドラクエ3】ピアノ全曲集｜全23曲メドレー（公式楽譜）",
+      "titleEn": "Dragon Quest III Complete Medley on Grand Piano :Performed from Official Sheet Music",
+      "category": "series",
+      "trackCount": 23,
+      "duration": "50:05",
+      "durationSeconds": 3005,
+      "views": 33399,
+      "publishedAt": "2024-01-08T03:00:19Z",
+      "thumbnail": "https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg",
+      "thumbnailEn": "https://i.ytimg.com/vi/Qnpxjoa6Eyw/maxresdefault.jpg"
     },
     {
       "videoId": "aMaaqQwvwsM",
@@ -166,7 +166,7 @@
       "trackCount": 35,
       "duration": "1:52:18",
       "durationSeconds": 6738,
-      "views": 25473,
+      "views": 25699,
       "publishedAt": "2026-05-27T08:30:00Z",
       "thumbnail": "https://i.ytimg.com/vi/aMaaqQwvwsM/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/aMaaqQwvwsM-en.jpg"
@@ -180,10 +180,24 @@
       "trackCount": null,
       "duration": "25:30",
       "durationSeconds": 1530,
-      "views": 22422,
+      "views": 22544,
       "publishedAt": "2025-12-25T03:00:38Z",
       "thumbnail": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/RXEvjVzl9wY/maxresdefault.jpg"
+    },
+    {
+      "videoId": "bLefZ0kqZVE",
+      "url": "https://www.youtube.com/watch?v=bLefZ0kqZVE",
+      "title": "歴代ドラクエ 教会・ほこら・神殿 ピアノメドレー｜全17曲",
+      "titleEn": "Dragon Quest Churches, Shrines & Temples Piano Medley | 17 Tracks",
+      "category": "scene",
+      "trackCount": 17,
+      "duration": "42:50",
+      "durationSeconds": 2570,
+      "views": 21986,
+      "publishedAt": "2026-09-12T11:00:14Z",
+      "thumbnail": "https://i.ytimg.com/vi/bLefZ0kqZVE/maxresdefault.jpg",
+      "thumbnailEn": "/assets/medley-thumbnails/bLefZ0kqZVE-en.jpg"
     },
     {
       "videoId": "IlH4hTSrmUk",
@@ -194,7 +208,7 @@
       "trackCount": 17,
       "duration": "35:59",
       "durationSeconds": 2159,
-      "views": 21664,
+      "views": 21735,
       "publishedAt": "2024-01-05T03:00:13Z",
       "thumbnail": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/IlH4hTSrmUk/maxresdefault.jpg"
@@ -208,24 +222,10 @@
       "trackCount": 8,
       "duration": "23:20",
       "durationSeconds": 1400,
-      "views": 21615,
+      "views": 21698,
       "publishedAt": "2024-01-01T03:00:37Z",
       "thumbnail": "https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/yj95f0WFc-0/maxresdefault.jpg"
-    },
-    {
-      "videoId": "bLefZ0kqZVE",
-      "url": "https://www.youtube.com/watch?v=bLefZ0kqZVE",
-      "title": "歴代ドラクエ 教会・ほこら・神殿 ピアノメドレー｜全17曲",
-      "titleEn": "Dragon Quest Churches, Shrines & Temples Piano Medley | 17 Tracks",
-      "category": "scene",
-      "trackCount": 17,
-      "duration": "42:50",
-      "durationSeconds": 2570,
-      "views": 21407,
-      "publishedAt": "2026-09-12T11:00:14Z",
-      "thumbnail": "https://i.ytimg.com/vi/bLefZ0kqZVE/maxresdefault.jpg",
-      "thumbnailEn": "/assets/medley-thumbnails/bLefZ0kqZVE-en.jpg"
     },
     {
       "videoId": "4RMFotTMhxs",
@@ -236,7 +236,7 @@
       "trackCount": 37,
       "duration": "2:00:45",
       "durationSeconds": 7245,
-      "views": 19747,
+      "views": 20154,
       "publishedAt": "2026-10-03T11:00:27Z",
       "thumbnail": "https://i.ytimg.com/vi/4RMFotTMhxs/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/4RMFotTMhxs-en.jpg"
@@ -250,7 +250,7 @@
       "trackCount": null,
       "duration": "31:34",
       "durationSeconds": 1894,
-      "views": 1812,
+      "views": 1816,
       "publishedAt": "2025-08-15T10:30:06Z",
       "thumbnail": "https://i.ytimg.com/vi/UOwrLr_pbbs/sddefault.jpg",
       "thumbnailEn": "https://i.ytimg.com/vi/UOwrLr_pbbs/sddefault.jpg"
