@@ -1902,9 +1902,9 @@ window.songReferenceData = {
       "sortNumber": 22,
       "songTitle": "せつなき思い",
       "category": "イベント",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=5FZYFtGb7WQ&t=2019s",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IX-23",
@@ -1920,9 +1920,9 @@ window.songReferenceData = {
       "sortNumber": 24,
       "songTitle": "祈りの詩",
       "category": "イベント",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=_LBBD6N_7bQ&t=2217s",
+      "difficultyLabel": "初中級",
+      "difficultyStars": 2
     },
     {
       "id": "IX-25",

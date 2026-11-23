@@ -1367,8 +1367,13 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
     watch_link = ''
     if meta.get('watchTimestampOnYouTube') and start > 0:
         stamp = f'{start // 60}:{start % 60:02d}'
-        label = (f'YouTubeでこの曲を聴く（カジノメドレー {stamp}）' if lang == 'ja'
-                 else f'Listen on YouTube (Casino Medley {stamp})')
+        volume = meta.get('watchSleepMedleyVolume')
+        if isinstance(volume, int) and volume > 0:
+            label = (f'YouTubeでこの曲を聴く（睡眠用メドレー Vol.{volume} {stamp}）' if lang == 'ja'
+                     else f'Listen on YouTube (Sleep Medley Vol.{volume} {stamp})')
+        else:
+            label = (f'YouTubeでこの曲を聴く（カジノメドレー {stamp}）' if lang == 'ja'
+                     else f'Listen on YouTube (Casino Medley {stamp})')
         watch_link = (f'<a class="sr-textlink" href="{esc(row["videoUrl"])}" '
                       f'target="_blank" rel="noreferrer">{esc(label)}</a>')
 

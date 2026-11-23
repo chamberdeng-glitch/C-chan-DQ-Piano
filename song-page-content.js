@@ -1657,6 +1657,18 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "2:44"
   },
+  "IX-22": {
+    "slug": "sadness-of-the-heart",
+    "uploadDate": "2026-11-07T03:00:27-08:00",
+    "watchTimestampOnYouTube": true,
+    "watchSleepMedleyVolume": 3
+  },
+  "IX-24": {
+    "slug": "altar-of-change",
+    "uploadDate": "2026-10-17T04:00:02-07:00",
+    "watchTimestampOnYouTube": true,
+    "watchSleepMedleyVolume": 2
+  },
   "IX-25": {
     "slug": "together-in-the-fields",
     "uploadDate": "2026-03-20T03:30:00-07:00",
