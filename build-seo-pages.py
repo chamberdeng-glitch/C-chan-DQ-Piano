@@ -1364,6 +1364,14 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
     embed = (f'<lite-youtube videoid="{vid}" playlabel="{esc(play_label)}"{localized_poster}'
              + (f' params="{params}"' if params else '') + '></lite-youtube>')
 
+    watch_link = ''
+    if meta.get('watchTimestampOnYouTube') and start > 0:
+        stamp = f'{start // 60}:{start % 60:02d}'
+        label = (f'YouTubeでこの曲を聴く（カジノメドレー {stamp}）' if lang == 'ja'
+                 else f'Listen on YouTube (Casino Medley {stamp})')
+        watch_link = (f'<a class="sr-textlink" href="{esc(row["videoUrl"])}" '
+                      f'target="_blank" rel="noreferrer">{esc(label)}</a>')
+
     rows_info = ''.join([
         f'<tr><th scope="row">{esc(labels["composer"])}</th><td>{esc(SONG_COMPOSER if lang == "ja" else "Koichi Sugiyama")}</td></tr>',
         f'<tr><th scope="row">{esc(labels["arranger"])}</th><td>{esc(score_arranger(meta, lang))}</td></tr>',
@@ -1441,7 +1449,7 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
         f'<p class="sr-subtitle">{esc(song_subtitle)}</p>'
         f'<ul class="sr-tags">{tags}</ul>'
         '<div class="sr-lead-grid">'
-        f'<div>{embed}<p class="sr-embed-cap">{esc(video_title)}</p></div>'
+        f'<div>{embed}<p class="sr-embed-cap">{esc(video_title)}</p>{watch_link}</div>'
         f'{info_stack}</div>'
         f'{"".join(body_sections)}'
         '</div></div>'

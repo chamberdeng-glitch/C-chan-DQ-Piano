@@ -1777,6 +1777,11 @@ window.songPageContent = {
     "timestamps": [],
     "performanceDuration": "2:10"
   },
+  "X-17": {
+    "slug": "ton-ten-kan",
+    "uploadDate": "2026-11-21",
+    "watchTimestampOnYouTube": true
+  },
   "X-18": {
     "slug": "exploring-the-hills",
     "uploadDate": "2026-03-20T03:30:00-07:00",
@@ -1888,6 +1893,16 @@ window.songPageContent = {
     "description": "",
     "timestamps": [],
     "performanceDuration": "4:38"
+  },
+  "XI-10": {
+    "slug": "ole-sylvando",
+    "uploadDate": "2026-11-21",
+    "watchTimestampOnYouTube": true
+  },
+  "XI-13": {
+    "slug": "battling-race",
+    "uploadDate": "2026-11-21",
+    "watchTimestampOnYouTube": true
   },
   "XI-15": {
     "slug": "supernatural-evil-castle",

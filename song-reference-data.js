@@ -2147,9 +2147,9 @@ window.songReferenceData = {
       "sortNumber": 17,
       "songTitle": "トンテンカン",
       "category": "カジノ",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=MpsPsAsLLgM&t=1379s",
+      "difficultyLabel": "初級",
+      "difficultyStars": 1
     },
     {
       "id": "X-18",
@@ -2356,9 +2356,9 @@ window.songReferenceData = {
       "sortNumber": 10,
       "songTitle": "オーレ！シルビア！",
       "category": "キャラクターテーマ",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=MpsPsAsLLgM&t=1691s",
+      "difficultyLabel": "上級",
+      "difficultyStars": 5
     },
     {
       "id": "XI-11",
@@ -2383,9 +2383,9 @@ window.songReferenceData = {
       "sortNumber": 13,
       "songTitle": "レースバトル",
       "category": "カジノ",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=MpsPsAsLLgM&t=964s",
+      "difficultyLabel": "中上級",
+      "difficultyStars": 4
     },
     {
       "id": "XI-14",
