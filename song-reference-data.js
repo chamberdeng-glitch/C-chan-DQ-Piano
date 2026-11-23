@@ -2365,9 +2365,9 @@ window.songReferenceData = {
       "sortNumber": 11,
       "songTitle": "荘厳なる王宮",
       "category": "城",
-      "videoUrl": "",
-      "difficultyLabel": "",
-      "difficultyStars": null
+      "videoUrl": "https://www.youtube.com/watch?v=aPh-4XiM1Ow&t=2347s",
+      "difficultyLabel": "中級",
+      "difficultyStars": 3
     },
     {
       "id": "XI-12",

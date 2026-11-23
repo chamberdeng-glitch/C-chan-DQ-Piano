@@ -1371,6 +1371,9 @@ def write_song_page_rich(row: dict, prev_row: dict | None, next_row: dict | None
         if isinstance(volume, int) and volume > 0:
             label = (f'YouTubeでこの曲を聴く（睡眠用メドレー Vol.{volume} {stamp}）' if lang == 'ja'
                      else f'Listen on YouTube (Sleep Medley Vol.{volume} {stamp})')
+        elif meta.get('watchMedleyKind') == 'castle':
+            label = (f'YouTubeでこの曲を聴く（城メドレー {stamp}）' if lang == 'ja'
+                     else f'Listen on YouTube (Castle Medley {stamp})')
         else:
             label = (f'YouTubeでこの曲を聴く（カジノメドレー {stamp}）' if lang == 'ja'
                      else f'Listen on YouTube (Casino Medley {stamp})')

@@ -1911,6 +1911,12 @@ window.songPageContent = {
     "uploadDate": "2026-11-21",
     "watchTimestampOnYouTube": true
   },
+  "XI-11": {
+    "slug": "imperial-palace",
+    "uploadDate": "2026-07-16T04:00:37-07:00",
+    "watchTimestampOnYouTube": true,
+    "watchMedleyKind": "castle"
+  },
   "XI-13": {
     "slug": "battling-race",
     "uploadDate": "2026-11-21",
