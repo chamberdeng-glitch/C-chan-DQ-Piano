@@ -312,7 +312,7 @@ window.playlistData = [
     "title": "ドラクエ　場面別　ピアノメドレー",
     "description": "すべてのポッドキャストを表示",
     "thumbnail": "./covers/PLysHcBQKj6zThxetjTiWNUV1L2d7U-_xV.jpg",
-    "itemCountText": "6 件のエピソード",
+    "itemCountText": "7 件のエピソード",
     "url": "https://www.youtube.com/playlist?list=PLysHcBQKj6zThxetjTiWNUV1L2d7U-_xV",
     "tracks": [
       {
@@ -364,6 +364,14 @@ window.playlistData = [
         "difficultyDetail": ""
       },
       {
+        "title": "歴代ドラクエ カジノ・酒場 ピアノメドレー｜全19曲",
+        "rawTitle": "歴代ドラクエ カジノ・酒場 ピアノメドレー｜全19曲",
+        "url": "https://www.youtube.com/watch?v=MpsPsAsLLgM",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
         "title": "​【ドラクエ 序曲】楽譜12冊を5段階評価！元クラシックピアニストによる難易度・アレンジ弾き比べ",
         "rawTitle": "​【ドラクエ 序曲】楽譜12冊を5段階評価！元クラシックピアニストによる難易度・アレンジ弾き比べ",
         "url": "https://www.youtube.com/watch?v=RXEvjVzl9wY",
@@ -402,7 +410,7 @@ window.playlistData = [
     "title": "睡眠用BGM / For SLEEP＆RELAX",
     "description": "更新: 2 日前 / すべてのポッドキャストを表示",
     "thumbnail": "https://i.ytimg.com/vi/VIh5Sv3OoQE/maxresdefault.jpg",
-    "itemCountText": "2 件のエピソード",
+    "itemCountText": "3 件のエピソード",
     "url": "https://www.youtube.com/playlist?list=PLE8-zMt0hePc",
     "tracks": [
       {
@@ -417,6 +425,14 @@ window.playlistData = [
         "title": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.2 ～ぬくもりの祈り～",
         "rawTitle": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.2 ～ぬくもりの祈り～",
         "url": "https://www.youtube.com/watch?v=_LBBD6N_7bQ",
+        "difficultyLabel": "未設定",
+        "difficultyStars": null,
+        "difficultyDetail": ""
+      },
+      {
+        "title": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.3 ～遠き日の面影～",
+        "rawTitle": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.3 ～遠き日の面影～",
+        "url": "https://www.youtube.com/watch?v=5FZYFtGb7WQ",
         "difficultyLabel": "未設定",
         "difficultyStars": null,
         "difficultyDetail": ""

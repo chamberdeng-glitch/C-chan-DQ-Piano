@@ -1,7 +1,7 @@
 {
   "updatedAt": "2026-11-22T11:43:29Z",
   "source": "current medley page playlists",
-  "count": 18,
+  "count": 20,
   "items": [
     {
       "videoId": "VIh5Sv3OoQE",
@@ -240,6 +240,34 @@
       "publishedAt": "2026-10-03T11:00:27Z",
       "thumbnail": "https://i.ytimg.com/vi/4RMFotTMhxs/maxresdefault.jpg",
       "thumbnailEn": "/assets/medley-thumbnails/4RMFotTMhxs-en.jpg"
+    },
+    {
+      "videoId": "5FZYFtGb7WQ",
+      "url": "https://www.youtube.com/watch?v=5FZYFtGb7WQ",
+      "title": "【睡眠用BGM】眠れるドラクエピアノメドレー Vol.3 ～遠き日の面影～",
+      "titleEn": "Dragon Quest Piano Medley for Sleep | Vol.3",
+      "category": "purpose",
+      "trackCount": 16,
+      "duration": "42:59",
+      "durationSeconds": 2579,
+      "views": 13817,
+      "publishedAt": "2026-11-07T11:00:27Z",
+      "thumbnail": "https://i.ytimg.com/vi/5FZYFtGb7WQ/maxresdefault.jpg",
+      "thumbnailEn": "https://i.ytimg.com/vi/5FZYFtGb7WQ/maxresdefault.jpg"
+    },
+    {
+      "videoId": "MpsPsAsLLgM",
+      "url": "https://www.youtube.com/watch?v=MpsPsAsLLgM",
+      "title": "歴代ドラクエ カジノ・酒場 ピアノメドレー｜全19曲",
+      "titleEn": "Dragon Quest Casino & Tavern Piano Medley | 19 Tracks",
+      "category": "scene",
+      "trackCount": 19,
+      "duration": "34:57",
+      "durationSeconds": 2097,
+      "views": 2943,
+      "publishedAt": "2026-11-21T11:00:09Z",
+      "thumbnail": "https://i.ytimg.com/vi/MpsPsAsLLgM/maxresdefault.jpg",
+      "thumbnailEn": "https://i.ytimg.com/vi/MpsPsAsLLgM/maxresdefault.jpg"
     },
     {
       "videoId": "UOwrLr_pbbs",
