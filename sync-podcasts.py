@@ -7,7 +7,7 @@ from urllib.parse import urlencode
 
 
 ROOT = Path(__file__).resolve().parent
-PAGE_URL = "https://www.youtube.com/@chamberd_piano/podcasts"
+PAGE_URL = "https://www.youtube.com/@dqpiano/podcasts"
 HTML_FILE = ROOT / "podcasts-page.html"
 OUTPUT_FILE = ROOT / "playlist-data.js"
 COVERS_DIR = ROOT / "covers"
